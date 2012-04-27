@@ -1,11 +1,18 @@
 define(function(){
 	
 	var routes = [];
+	
 	routes.push(
 		{ hash: "#list", controller: "ListController" },
 		{ hash: "#add", controller: "AddController" },
 		{ hash: "#remove", controller: "RemoveController" }
 	);
+	
+	var index = {
+		"ListController": routes[0],
+		"AddController": routes[1],
+		"RemoveController": routes[2]
+	}
 	
 	var defaultRoute = "#list";
 	var currentHash = "";
@@ -14,6 +21,11 @@ define(function(){
 	    require(['Controllers/' + controllerName], function(controller){
 	        controller.start();
 	    });
+	    
+	    // 페이지 뷰 해쉬 불일치 조정
+	    if(window.location.hash !== index[controllerName].hash) {
+	    	currentHash = window.location.hash = index[controllerName].hash;
+	    }
 	}
 	
 	function hashCheck(){
