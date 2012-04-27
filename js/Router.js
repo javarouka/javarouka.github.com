@@ -3,13 +3,14 @@ define(function(){
 	var routes = [];
 	routes.push(
 		{ hash: "#list", controller: "ListController" },
-		{ hash: "#add", controller: "AddController" }
+		{ hash: "#add", controller: "AddController" },
+		{ hash: "#remove", controller: "RemoveController" }
 	);
 	
 	var defaultRoute = "#list";
 	var currentHash = "";
 	
-	function loadController(controllerName){
+	function loadController(controllerName) {
 	    require(['Controllers/' + controllerName], function(controller){
 	        controller.start();
 	    });

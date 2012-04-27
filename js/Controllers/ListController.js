@@ -1,11 +1,12 @@
-define(["Views/ListView"], function(ListView) {
+define(["Persist/Storage", "Views/ListView"], function(Storage, ListView) {
 	
 	function start() {
-		var users = JSON.parse(localStorage.users);
-		
-		console.log(users);
-		
-		ListView.render( { users: users } );
+		var userJSON = Storage.get("users"),
+			users = { };
+		if(userJSON) {
+			users.users = userJSON;			
+		}
+		ListView.render( users );
 	}
 	
 	return {
