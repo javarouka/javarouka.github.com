@@ -65,6 +65,8 @@ footer p {
 
 footer ul li {
 	display: inline-block;
+	zoom:1; 
+	*display:inline;
 	margin-right: 5px;
 }
 

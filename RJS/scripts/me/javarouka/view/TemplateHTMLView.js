@@ -20,8 +20,6 @@ define([
 	
 	var render = function(model) {
 		
-		console.log(model);
-		
 		document.title = model.name;
 		
 		var path = v.prefix + model.path + v.postfix;
