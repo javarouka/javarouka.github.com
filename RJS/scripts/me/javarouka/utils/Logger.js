@@ -13,11 +13,7 @@ function(Context) {
 	};
 	
 	return {
-		debug: debug,
-		info: info,
-		warning: warning,
-		error: error,
-		fatal: fatal
+		info: info
 	};
 	
 });
