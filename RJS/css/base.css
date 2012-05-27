@@ -34,11 +34,29 @@ header {
 	padding: 10px 6px;
 }
 
+nav {
+	padding: 10px 6px;
+}
+
+nav ul li {
+	padding-left: 10px;
+	list-style-type: disc;
+}
+
 footer {
 	border: solid 1px #aaa;
 	border-radius: 8px;
 	font-size: 12px;
 	padding: 10px 6px;
+}
+
+footer h1 {
+	font-size: 130%;
+}
+
+footer p {
+	font-size: 15px;
+	text-align: right;
 }
 
 footer ul li {
