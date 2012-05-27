@@ -19,8 +19,8 @@ define(function() {
 		},
 		view: {
 			contentArea: "content",
-			prefix: "",
-			postfix: "View",
+			prefix: "content/",
+			postfix: ".html",
 			viewPath: "me/javarouka/view"
 		}
 	};

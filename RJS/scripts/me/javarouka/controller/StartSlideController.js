@@ -3,15 +3,17 @@ define([
     "me/javarouka/view/ViewResolver"
 ], function(ObjectUtils, ViewResolver) {
 	
-	var execute = function() {
+	var execute = function(executeParams) {
 		
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Silde",
-			path: "content/Slide.html",
+			path: "Slide",
 			callback: function(res) {},
-			data: {}
+			data: {
+				controller: this,
+				executeParams: executeParams
+			}
 		});
-		
 	};
 	
 	return {

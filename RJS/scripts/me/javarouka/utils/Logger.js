@@ -4,9 +4,8 @@ define([
 function(Context) {
 	
 	var c = window.console;
-	
 	var getTimeString = function() {
-		return '[' + new Date().toString() + '] ';
+		return '[' + new Date().valueOf() + '] ';
 	}
 	
 	var debug = function(obj) {

@@ -3,12 +3,16 @@ define([
     "me/javarouka/view/ViewResolver"
 ], function(ObjectUtils, ViewResolver) {
 	
-	var execute = function() {
+	var execute = function(executeParams) {
 		
-		ViewResolver.resolve("InnerHTML", {
-			name: "Oops...",
-			dom: document.getElementById("content"),
-			html: "Error 입니다!!!"
+		ViewResolver.resolve("TemplateHTML", {
+			name: "Error",
+			path: "Error",
+			callback: function(res) {},
+			data: {
+				controller: this,
+				executeParams: executeParams
+			}
 		});
 	};
 	

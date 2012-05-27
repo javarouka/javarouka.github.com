@@ -7,14 +7,29 @@ define([
 
 	var v = Context.view;
 	
+	var includeCss = function (files, isDeleteCss) {
+		for(var i=0,len=files.length; i < len ; i++) {
+			var CSS   = document.createElement('link');
+            CSS.rel   = 'stylesheet';
+            CSS.type  = 'text/css';
+            CSS.href  = '/stylesheets/' + files[i] + '.css';
+            CSS.media = 'screen';
+            document.getElementsByTagName('head')[0].appendChild(CSS);
+		}
+    }
+	
 	var render = function(model) {
+		
+		console.log(model);
+		
 		document.title = model.name;
-		var path = model.path;
+		
+		var path = v.prefix + model.path + v.postfix;
 		var c = '#' + v.contentArea;
 		
 		Logger.info(path + " loading...");
 		$(c).load(path, model.callback);
-		console.log("appened on " + c);
+		Logger.info("appened on " + c);
 	};
 	
 	return {

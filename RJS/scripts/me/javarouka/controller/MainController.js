@@ -3,13 +3,16 @@ define([
     "me/javarouka/view/ViewResolver"
 ], function(ObjectUtils, ViewResolver) {
 	
-	var execute = function() {
+	var execute = function(executeParams) {
 		
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
-			path: "content/Main.html",
+			path: "Main",
 			callback: function(res) {},
-			data: {}
+			data: {
+				controller: this,
+				executeParams: executeParams
+			}
 		});
 	};
 	

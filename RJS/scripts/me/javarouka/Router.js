@@ -14,7 +14,11 @@ define([
 			var route = r.routingPrefix + '/' + controllerName;
 			require([route], function(controller) {
 				Logger.info(route + " execute...");
-		        controller.execute();
+		        controller.execute({
+		        	controllerName: controllerName,
+		        	currentHash: currentHash,
+		        	router: this
+		        });
 		    });
 		}
 		catch(e) {
