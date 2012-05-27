@@ -10,6 +10,7 @@ define([
 	var dataBinding = function(res) {
 		var c = v.contentArea;
 		$('#' + c).html(res);
+		
 	}
 	
 	var render = function(model) {
@@ -17,7 +18,10 @@ define([
 		var path = model.path;
 		Logger.info(path + " loading...");
 		
-		$.get(path, dataBinding);
+		// $.get(path, dataBinding);
+		$(v.contentArea).load(path);
+		
+		console.log("appened on " + c);
 	};
 	
 	return {
