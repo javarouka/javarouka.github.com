@@ -17,7 +17,6 @@ body a:hover {
 	text-decoration: underline;
 }
 
-body a:visited {
 a:hover: {
 	text-decoration: underline;
 }
@@ -80,5 +79,4 @@ body #content {
 }
 
 body #content ul li {
-	font-size
 }
