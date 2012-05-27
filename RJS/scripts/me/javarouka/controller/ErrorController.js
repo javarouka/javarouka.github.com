@@ -7,7 +7,7 @@ define([
 		
 		ViewResolver.resolve("InnerHTML", {
 			name: "Oops...",
-			dom: document.body,
+			dom: document.getElementById("content"),
 			html: "Error 입니다!!!"
 		});
 	};

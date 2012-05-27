@@ -7,7 +7,7 @@ define([
 		
 		ViewResolver.resolve("InnerHTML", {
 			name: "Slide Start",
-			dom: document.body,
+			dom: document.getElementById("content"),
 			html: "Start 입니다!!!"
 		});
 		
