@@ -18,7 +18,8 @@ body a:hover {
 }
 
 body a:visited {
-	color: #858;
+a:hover: {
+	text-decoration: underline;
 }
 
 body a:link {
