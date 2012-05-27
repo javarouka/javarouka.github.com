@@ -4,73 +4,73 @@ body {
 	color: #202020;
 }
 
-h1 {
+body h1 {
 	font-size: 200%;
 	margin: 2px 0px 0px 2px;
 }
 
-a {
+body a {
 	text-decoration: none;
 }
 
-a:hover {
+body a:hover {
 	text-decoration: underline;
 }
 
-a:visited {
+body a:visited {
 	color: #858;
 }
 
-a:link {
+body a:link {
 	color: #66A;
 }
 
-a:visited {
+body a:visited {
 	color: #848;
 }
 
-a:link {
+body a:link {
 	color: #339;
 }
 
-header {
+body header {
 	font-weight: bold;
 	padding: 10px 6px;
 }
 
-nav {
+body nav {
 	padding: 10px 6px;
 }
 
-nav ul li {
+body nav ul li {
 	margin-left: 20px;
 	list-style-type: disc;
 }
 
-footer {
+body footer {
 	font-size: 12px;
 	padding: 10px 6px;
 }
 
-footer h1 {
+body footer h1 {
 	font-size: 130%;
 	font-weight: bold;
 	border-bottom: solid 1px #bbb;
 }
 
-footer p {
+body footer p {
 	font-size: 15px;
 	text-align: right;
 }
 
-footer ul li {
+body footer ul li {
 	display: inline-block;
 	zoom:1; 
 	*display:inline;
 	margin-right: 5px;
 }
 
-#content {
+body #content {
 	margin: 0 auto;
 	max-width: 900px;
 	min-width: 320px;
@@ -78,6 +78,6 @@ footer ul li {
 	font-size: 14px;
 }
 
-#content ul li {
+body #content ul li {
 	font-size
 }

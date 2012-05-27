@@ -7,6 +7,7 @@ define([
 	var r = Context.route;
 	var global = Context.global;
 	var router = this;
+	var loc = loc;
 	
 	var currentHash = "";
 
@@ -23,26 +24,26 @@ define([
 		    });
 		}
 		catch(e) {
-			global.location.hash = r.defaultRoute;
+			loc.hash = r.defaultRoute;
 		};
 	    
 	};
 
 	var hashCheck = function() {
-	    if (global.location.hash != currentHash) {
-	    	var h = global.location.hash;
+	    if (loc.hash != currentHash) {
+	    	var h = loc.hash;
 	    	loadController(r.map[h]);
 	        currentHash = h;
 	    }
 	};
 
 	var start = function() {
-		global.location.hash = global.location.hash || r.defaultRoute;
+		loc.hash = loc.hash || r.defaultRoute;
         setInterval(hashCheck, r.routeTerm);
     };
     
 	var doErrorRouting = function(code, msg) {
-		global.location.hash = "#error";
+		loc.hash = "#error";
 	};
 	
 	return {

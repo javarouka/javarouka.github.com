@@ -8,23 +8,7 @@ function(Context) {
 		return '[' + new Date().valueOf() + '] ';
 	}
 	
-	var debug = function(obj) {
-		c.log(getTimeString() + obj);
-	};
-	
 	var info = function(obj) {
-		c.log(getTimeString() + obj);
-	};
-	
-	var warning = function(obj) {
-		c.log(getTimeString() + obj);
-	};
-	
-	var error = function(obj) {
-		c.log(getTimeString() + obj);
-	};
-	
-	var fatal = function(obj) {
 		c.log(getTimeString() + obj);
 	};
 	
