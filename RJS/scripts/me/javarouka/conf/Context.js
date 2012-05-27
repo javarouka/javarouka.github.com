@@ -18,6 +18,7 @@ define(function() {
 			defaultRoute: "#main"
 		},
 		view: {
+			contentArea: "content",
 			prefix: "",
 			postfix: "View",
 			viewPath: "me/javarouka/view"

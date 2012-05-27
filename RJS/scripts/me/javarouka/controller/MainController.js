@@ -5,10 +5,10 @@ define([
 	
 	var execute = function() {
 		
-		ViewResolver.resolve("InnerHTML", {
+		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
-			dom: document.body,
-			html: "Main 입니다!!!"
+			path: "../content/Main.html",
+			data: {}
 		});
 	};
 	
