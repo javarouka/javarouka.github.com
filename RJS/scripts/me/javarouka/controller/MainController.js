@@ -7,7 +7,7 @@ define([
 		
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
-			path: "../content/Main.html",
+			path: "content/Main.html",
 			data: {}
 		});
 	};
