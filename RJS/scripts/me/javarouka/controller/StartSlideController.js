@@ -5,10 +5,11 @@ define([
 	
 	var execute = function() {
 		
-		ViewResolver.resolve("InnerHTML", {
-			name: "Slide Start",
-			dom: document.getElementById("content"),
-			html: "Start 입니다!!!"
+		ViewResolver.resolve("TemplateHTML", {
+			name: "Silde",
+			path: "content/Slide.html",
+			callback: function(res) {},
+			data: {}
 		});
 		
 	};

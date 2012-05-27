@@ -8,6 +8,7 @@ define([
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
 			path: "content/Main.html",
+			callback: function(res) {},
 			data: {}
 		});
 	};

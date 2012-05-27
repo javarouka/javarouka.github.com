@@ -7,12 +7,6 @@ define([
 
 	var v = Context.view;
 	
-	var dataBinding = function(res) {
-		
-		$('#' + c).html(res);
-		
-	}
-	
 	var render = function(model) {
 		document.title = model.name;
 		var path = model.path;
@@ -21,7 +15,7 @@ define([
 		var c = '#' + v.contentArea;
 		
 		// $.get(path, dataBinding);
-		$(c).load(path);
+		$(c).load(path, model.callback);
 		
 		console.log("appened on " + c);
 	};
