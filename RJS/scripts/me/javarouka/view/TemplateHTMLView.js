@@ -10,13 +10,10 @@ define([
 	var render = function(model) {
 		document.title = model.name;
 		var path = model.path;
-		Logger.info(path + " loading...");
-		
 		var c = '#' + v.contentArea;
 		
-		// $.get(path, dataBinding);
+		Logger.info(path + " loading...");
 		$(c).load(path, model.callback);
-		
 		console.log("appened on " + c);
 	};
 	
