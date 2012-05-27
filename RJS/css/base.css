@@ -13,6 +13,10 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	text-decoration: underline;
+}
+
 a:visited {
 	color: #858;
 }
@@ -39,19 +43,19 @@ nav {
 }
 
 nav ul li {
-	padding-left: 10px;
+	margin-left: 20px;
 	list-style-type: disc;
 }
 
 footer {
-	border: solid 1px #aaa;
-	border-radius: 8px;
 	font-size: 12px;
 	padding: 10px 6px;
 }
 
 footer h1 {
 	font-size: 130%;
+	font-weight: bold;
+	border-bottom: solid 1px #bbb;
 }
 
 footer p {
@@ -66,7 +70,7 @@ footer ul li {
 
 #content {
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 900px;
 	min-width: 320px;
 	padding: 5px;
 	font-size: 14px;
