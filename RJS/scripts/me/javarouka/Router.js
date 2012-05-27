@@ -7,7 +7,7 @@ define([
 	var r = Context.route;
 	var global = Context.global;
 	var router = this;
-	var loc = loc;
+	var loc = global.location;
 	
 	var currentHash = "";
 
@@ -43,7 +43,7 @@ define([
     };
     
 	var doErrorRouting = function(code, msg) {
-		loc.hash = "#error";
+		global.loc.hash = "#error";
 	};
 	
 	return {
