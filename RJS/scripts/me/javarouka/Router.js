@@ -6,6 +6,7 @@ define([
 	
 	var r = Context.route;
 	var global = Context.global;
+	var router = this;
 	
 	var currentHash = "";
 
@@ -17,7 +18,7 @@ define([
 		        controller.execute({
 		        	controllerName: controllerName,
 		        	currentHash: currentHash,
-		        	router: this
+		        	router: router
 		        });
 		    });
 		}

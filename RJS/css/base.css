@@ -1,1 +1,46 @@
 @CHARSET "UTF-8";
+h1 {
+	font-size: 200%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #858;
+}
+
+a:link {
+	color: #66A;
+}
+
+a:visited {
+	color: #848;
+}
+
+a:link {
+	color: #339;
+}
+
+header {
+	font-weight: bold;
+}
+
+footer {
+	border: solid 1px #aaa;
+	border-radius: 8px;
+	font-size: 12px;
+}
+
+footer ul li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+#content {
+	margin: 0 auto;
+	max-width: 800px;
+	min-width: 320px;
+	padding: 5px;
+}
