@@ -1,6 +1,12 @@
 @CHARSET "UTF-8";
+body {
+	font: 0.95em/1.333 Arial, sans-serif;
+	color: #202020;
+}
+
 h1 {
 	font-size: 200%;
+	margin: 2px 0px 0px 2px;
 }
 
 a {
@@ -25,12 +31,14 @@ a:link {
 
 header {
 	font-weight: bold;
+	padding: 10px 6px;
 }
 
 footer {
 	border: solid 1px #aaa;
 	border-radius: 8px;
 	font-size: 12px;
+	padding: 10px 6px;
 }
 
 footer ul li {
@@ -43,4 +51,9 @@ footer ul li {
 	max-width: 800px;
 	min-width: 320px;
 	padding: 5px;
+	font-size: 14px;
+}
+
+#content ul li {
+	font-size
 }
