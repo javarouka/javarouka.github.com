@@ -8,7 +8,7 @@ define([
 	var v = Context.view;
 	
 	var dataBinding = function(res) {
-		var c = v.contentArea;
+		
 		$('#' + c).html(res);
 		
 	}
@@ -18,8 +18,10 @@ define([
 		var path = model.path;
 		Logger.info(path + " loading...");
 		
+		var c = '#' + v.contentArea;
+		
 		// $.get(path, dataBinding);
-		$(v.contentArea).load(path);
+		$(c).load(path);
 		
 		console.log("appened on " + c);
 	};
