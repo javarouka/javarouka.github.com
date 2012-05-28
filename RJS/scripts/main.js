@@ -10,7 +10,8 @@ require([
 		var k, v;
 		for(k in obj) {
 			dk = prefix + k;
-			v = (k === "global") ? obj[k].toString() : obj[k]; 
+			v = (k === "global") ? obj[k].toString() : obj[k];
+			if(ObjectUtils.isUndefined(k) || ObjectUtils.isUndefined(obj[k]))
 			if(ObjectUtils.isObject(v)) {
 				showObject(v, dk);
 			}
@@ -21,7 +22,7 @@ require([
 	};
 	
 	var showContextInfo = function() {
-		Logger.info("\n\n[Context info]");
+		Logger.info("## Context info Trace.....");
 		showObject(Context);
 		Logger.info("\n\n");
 	};
