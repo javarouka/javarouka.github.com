@@ -11,7 +11,9 @@ require([
 		for(k in obj) {
 			dk = prefix + k;
 			v = (k === "global") ? obj[k].toString() : obj[k];
-			if(ObjectUtils.isUndefined(k) || ObjectUtils.isUndefined(obj[k]))
+			if(ObjectUtils.isUndefined(k) || ObjectUtils.isUndefined(obj[k])) {
+				continue;
+			}
 			if(ObjectUtils.isObject(v)) {
 				showObject(v, dk);
 			}
