@@ -6,8 +6,8 @@ define([
 	var execute = function(executeParams) {
 		
 		ViewResolver.resolve("TemplateHTML", {
-			name: "Silde",
-			path: "Slide",
+			name: "Module",
+			path: "Module",
 			callback: function(res) {},
 			data: {
 				controller: this,
