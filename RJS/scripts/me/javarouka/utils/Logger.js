@@ -9,7 +9,9 @@ function(Context) {
 	}
 	
 	var info = function(obj) {
-		c.log(getTimeString() + obj);
+		if(c && c.log) {
+			c.log(getTimeString() + obj);
+		}
 	};
 	
 	return {
