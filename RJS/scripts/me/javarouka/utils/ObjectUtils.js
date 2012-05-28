@@ -14,6 +14,10 @@ define(function() {
 		return orig;
 	};
 	
+	var isUndefined = function(val) {
+		return typeof val === 'undefined';
+	};
+	
 	var isObject = function(val) {
 		return typeof val === 'object';
 	};
@@ -24,6 +28,7 @@ define(function() {
 	
 	return {
 		apply: apply,
+		isUndefined: isUndefined,
 		isObject: isObject,
 		isFunction: isFunction
 	};
