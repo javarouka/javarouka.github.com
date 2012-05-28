@@ -4,7 +4,8 @@ define(function() {
 		id: new Date().valueOf(),
 		global: window,
 		storage: {
-			type: "localStorage"
+			local: "localStorage",
+			session: "sessionStorage"
 		},
 		object: { },
 		route: {
