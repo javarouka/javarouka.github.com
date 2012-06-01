@@ -5,13 +5,13 @@ define([
 	
 	var execute = function(executeParams) {
 		
+		// 모델 작성 처리
+		
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
 			path: "Main",
-			callback: function(res) {},
-			data: {
-				controller: this,
-				executeParams: executeParams
+			callback: function(res) {
+				// 뷰 로딩 후 처리...이벤트 및 모델 데이터 할당
 			}
 		});
 	};

@@ -3,8 +3,10 @@ define([
 ], function(ObjectUtils) {
 	
 	var render = function(model) {
-		document.title = model.name;
 		model.dom.innerHTML = model.html;
+		if(ObjectUtils.isFunction(model.callback)){
+			model.callback(model);
+		}
 	};
 	
 	return {

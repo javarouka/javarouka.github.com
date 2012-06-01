@@ -14,9 +14,11 @@ define(function() {
 				"#start": "StartSlideController",
 				"#error": "ErrorController"
 			},
-			routingPrefix: "me/javarouka/controller",
 			routeTerm: 50,
 			defaultRoute: "#main"
+		},
+		controller: {
+			root: "me/javarouka/controller"
 		},
 		view: {
 			contentArea: "content",

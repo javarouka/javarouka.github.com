@@ -8,10 +8,8 @@ define([
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Error",
 			path: "Error",
-			callback: function(res) {},
-			data: {
-				controller: this,
-				executeParams: executeParams
+			callback: function(model) {
+				
 			}
 		});
 	};

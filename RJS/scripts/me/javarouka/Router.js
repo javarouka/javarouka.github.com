@@ -5,6 +5,7 @@ define([
 ], function(Context, ObjectUtils, Logger) {
 	
 	var r = Context.route;
+	var c = Context.controller;
 	var global = Context.global;
 	var router = this;
 	var loc = global.location;
@@ -13,7 +14,7 @@ define([
 
 	var loadController = function(controllerName) {
 		try {
-			var route = r.routingPrefix + '/' + controllerName;
+			var route = c.root + '/' + controllerName;
 			require([route], function(controller) {
 				Logger.info(route + " execute...");
 		        controller.execute({

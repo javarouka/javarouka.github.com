@@ -20,7 +20,9 @@ define([
 	
 	var render = function(model) {
 		
-		document.title = model.name;
+		if(!ObjectUtils.isFunction(model.callback)){
+			model.callback = function(model){};
+		}
 		
 		var path = v.prefix + model.path + v.postfix;
 		var c = '#' + v.contentArea;
