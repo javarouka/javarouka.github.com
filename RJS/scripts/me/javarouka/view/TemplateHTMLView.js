@@ -17,8 +17,8 @@ define([
 		var path = v.prefix + model.path + v.postfix;
 		var c = '#' + ((model.loadArea) ? model.loadArea : baseArea);
 		Logger.info(path + " loading...appened on " + c);
-		console.log($(c));
-		$(c).empty().load(path, model.callback);
+		var $content = $(c);
+		$content.empty().load(path, model.callback);
 	};
 	
 	return {
