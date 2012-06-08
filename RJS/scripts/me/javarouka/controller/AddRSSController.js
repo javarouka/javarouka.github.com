@@ -31,7 +31,7 @@ define([
 				var $addBtn = $("button.add-rss");
 				
 				console.log($addBtn);
-				$addBtn.click = addRss;
+				$addBtn.on("click", addRss);
 			}
 		});
 	};
