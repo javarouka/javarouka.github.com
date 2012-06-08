@@ -11,6 +11,7 @@ define([
 			name: "Main",
 			path: "Main",
 			callback: function(res) {
+				console.log("ㅗ띠ㅣㅐ?");
 				// 뷰 로딩 후 처리...이벤트 및 모델 데이터 할당
 			}
 		});
