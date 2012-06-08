@@ -18,9 +18,12 @@ function(Context, JSON, Logger) {
 	
 	var get = function(key) {
 		var item = local.getItem(key);
+		console.log(item);
+		/*
 		if(item) {			
 			return JSON.parse(item);
 		}
+		*/
 		return [];
 	}
 	
