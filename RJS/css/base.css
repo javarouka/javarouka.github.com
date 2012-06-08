@@ -17,7 +17,7 @@ body a:hover {
 	text-decoration: underline;
 }
 
-a:hover: {
+body a:hover: {
 	text-decoration: underline;
 }
 
@@ -79,4 +79,8 @@ body #content {
 }
 
 body #content ul li {
+}
+
+.template {
+	display: none;
 }

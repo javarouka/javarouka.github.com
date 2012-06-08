@@ -7,17 +7,6 @@ define([
 
 	var v = Context.view;
 	
-	var includeCss = function (files, isDeleteCss) {
-		for(var i=0,len=files.length; i < len ; i++) {
-			var CSS   = document.createElement('link');
-            CSS.rel   = 'stylesheet';
-            CSS.type  = 'text/css';
-            CSS.href  = '/stylesheets/' + files[i] + '.css';
-            CSS.media = 'screen';
-            document.getElementsByTagName('head')[0].appendChild(CSS);
-		}
-    }
-	
 	var render = function(model) {
 		
 		if(!ObjectUtils.isFunction(model.callback)){

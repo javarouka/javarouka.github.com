@@ -1,4 +1,7 @@
-define(["Persist/Storage", "Views/ListView"], function(Storage, ListView) {
+define([
+    "Persist/Storage", 
+    "Views/ListView"
+], function(Storage, ListView) {
 	
 	function start() {
 		var userJSON = Storage.get("users"),

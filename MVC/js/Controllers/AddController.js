@@ -1,4 +1,8 @@
-define(["Persist/Storage", "Models/User", "Views/AddView"], function(Storage, User, AddView) {
+define([
+    "Persist/Storage", 
+    "Models/User", 
+    "Views/AddView"
+], function(Storage, User, AddView) {
 	
 	function start() {
 		AddView.render();
@@ -6,8 +10,10 @@ define(["Persist/Storage", "Models/User", "Views/AddView"], function(Storage, Us
 	}
 
     function bindEvents() {
+    	
     	var eleAdd = document.getElementById('add');
-    	eleAdd.addEventListener('click', function(){
+    	
+    	eleAdd.addEventListener('click', function() {
         	var users = Storage.get('users') || [];
         	
             var params = {
@@ -23,6 +29,7 @@ define(["Persist/Storage", "Models/User", "Views/AddView"], function(Storage, Us
             require(['Controllers/ListController'], function(ListController){
                 ListController.start();
             });  
+            
             window.location.hash = "#list";
             
         }, false);

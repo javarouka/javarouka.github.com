@@ -1,4 +1,7 @@
-define(["Models/User", "Views/ListView"], function(User, ListView) {
+define([
+    "Models/User", 
+    "Views/ListView"
+], function(User, ListView) {
 	
 	var start = function() {
 		var storage = window.localStorage;	
