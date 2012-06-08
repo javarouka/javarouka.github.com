@@ -25,7 +25,7 @@ define([ "Views/Loader/HTMLLoader" ], function(HTMLLoader) {
 		"			<textarea id='user-comment'></textarea>" +
 		"		</li>" +
 		"	</ul>" +
-		"	<button id='add'>스터디 그룹원 추가하기!</button>" + 
+		"	<button id='add'>운영진 추가하기!</button>" + 
 		"</fieldset>"; 
 	
 	function render(parameters) {

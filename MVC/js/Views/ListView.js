@@ -20,7 +20,7 @@ define(function(){
 		 * DOM API 중 Document DocumentFragment를 사용하여 최적화가 필요한것 같다. 
 		 */
 		var html = 
-			"<table><caption>스터디 그룹원 정보</caption>" +
+			"<table><caption>운영진 정보</caption>" +
 			"<thead>" +
 			"	<tr>";
 		

@@ -15,8 +15,8 @@ define([
 	var loadController = function(controllerName) {
 		try {
 			var route = c.root + '/' + controllerName;
+			Logger.info(route + " execute...");
 			require([route], function(controller) {
-				Logger.info(route + " execute...");
 		        controller.execute({
 		        	controllerName: controllerName,
 		        	currentHash: currentHash,

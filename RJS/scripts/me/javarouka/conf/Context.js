@@ -20,6 +20,9 @@ define(function() {
 		controller: {
 			root: "me/javarouka/controller"
 		},
+		model: {
+			root: "me/javarouka/model"
+		},
 		view: {
 			contentArea: "content",
 			prefix: "content/",
