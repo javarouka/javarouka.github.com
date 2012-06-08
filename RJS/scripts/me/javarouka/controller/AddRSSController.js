@@ -2,8 +2,9 @@ define([
     "jquery",
     "me/javarouka/utils/ObjectUtils",
     "me/javarouka/storage/Storage",
-    "me/javarouka/view/ViewResolver"
-], function($, ObjectUtils, Storage, ViewResolver) {
+    "me/javarouka/view/ViewResolver",
+	"me/javarouka/utils/Logger"
+], function($, ObjectUtils, Storage, ViewResolver, Logger) {
 	
 	var addRss = function(e) {
 		var $feedurl = $("#feedurl");
@@ -12,7 +13,7 @@ define([
 			alert("주소를 입력해 주세요");
 			return;
 		}
-		jQuery.getFeed({
+		$.getFeed({
 		   url: url,
 		   success: function(feed) {
 		      alert(feed.title);
@@ -27,7 +28,10 @@ define([
 			path: "AddRss",
 			loadArea: "view-content",
 			callback: function(model) {
-				var $addBtn = $(".add-rss");
+				Logger.info("Event Binding...");
+				var $addBtn = $("button.add-rss");
+				
+				console.log($addBtn);
 				$addBtn.click = addRss;
 			}
 		});

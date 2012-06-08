@@ -1,19 +1,17 @@
 define([
     "me/javarouka/utils/ObjectUtils",
-    "me/javarouka/view/ViewResolver"
-], function(ObjectUtils, ViewResolver) {
+    "me/javarouka/view/ViewResolver",
+	"me/javarouka/utils/Logger"
+], function(ObjectUtils, ViewResolver, Logger) {
 	
 	var execute = function(executeParams) {
-		
-		// 모델 작성 처리
 		
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
 			path: "Main",
 			loadArea: "content",
 			callback: function(res) {
-				console.log("ㅗ띠ㅣㅐ?");
-				// 뷰 로딩 후 처리...이벤트 및 모델 데이터 할당
+				Logger.info("Main Content Loaded...");
 			}
 		});
 	};
