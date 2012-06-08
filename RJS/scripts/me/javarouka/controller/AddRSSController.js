@@ -26,7 +26,6 @@ define([
 		ViewResolver.resolve("TemplateHTML", {
 			name: "RSS 추가하기",
 			path: "AddRss",
-			loadArea: "view-content",
 			callback: function(model) {
 				Logger.info("Event Binding...");
 				var $addBtn = $("button.add-rss");

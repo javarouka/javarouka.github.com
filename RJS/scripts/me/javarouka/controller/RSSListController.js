@@ -14,7 +14,6 @@ define([
 		ViewResolver.resolve("TemplateHTML", {
 			name: "RSS 목록",
 			path: "RssList",
-			loadArea: "view-content",
 			callback: function(model) {
 				
 				var $template = $(".template");

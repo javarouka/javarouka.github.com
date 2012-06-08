@@ -18,7 +18,7 @@ define([
 		var c = '#' + ((model.loadArea) ? model.loadArea : baseArea);
 		Logger.info(path + " loading...appened on " + c);
 		console.log($(c));
-		$(c).load(path, model.callback);
+		$(c).empty().load(path, model.callback);
 	};
 	
 	return {

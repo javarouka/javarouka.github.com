@@ -9,7 +9,6 @@ define([
 		ViewResolver.resolve("TemplateHTML", {
 			name: "Main",
 			path: "Main",
-			loadArea: "content",
 			callback: function(res) {
 				Logger.info("Main Content Loaded...");
 			}
