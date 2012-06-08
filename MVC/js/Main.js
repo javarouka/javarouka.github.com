@@ -1,5 +1,5 @@
-require(
-	['Router'], 
-	function(Router) {
+require([
+    'Router'
+], function(Router) {
     Router.startRouting();
 });
