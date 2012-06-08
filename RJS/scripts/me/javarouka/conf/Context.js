@@ -11,8 +11,9 @@ define(function() {
 		route: {
 			map: {
 				"#main": "MainController",
-				"#start": "StartSlideController",
-				"#error": "ErrorController"
+				"#rss-list": "RSSListController",
+				"#add-rss": "AddRSSController",
+				"#delete-rss": "DeleteRSSController"
 			},
 			routeTerm: 50,
 			defaultRoute: "#main"
