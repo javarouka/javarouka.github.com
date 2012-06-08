@@ -1,6 +1,5 @@
 define([
 	"me/javarouka/conf/Context",
-	"me/javarouka/utils/JSON",
 	"me/javarouka/utils/Logger"
 ], 
 function(Context, JSON, Logger) {
@@ -20,7 +19,7 @@ function(Context, JSON, Logger) {
 		var item = local.getItem(key);
 		console.log(item);
 		/*
-		if(item) {			
+		if(item) {	
 			return JSON.parse(item);
 		}
 		*/
