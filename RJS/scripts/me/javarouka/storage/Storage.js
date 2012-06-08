@@ -1,8 +1,9 @@
 define([
+    "jquery",
 	"me/javarouka/conf/Context",
 	"me/javarouka/utils/Logger"
 ], 
-function(Context, Logger) {
+function($, Context, Logger) {
 	
 	var st = Context.storage;
 	var local = window[st.local];
@@ -18,11 +19,9 @@ function(Context, Logger) {
 	var get = function(key) {
 		var item = local.getItem(key);
 		console.log(item);
-		/*
 		if(item) {	
-			return JSON.parse(item);
+			return $.parseJSON(item);
 		}
-		*/
 		return [];
 	}
 	
