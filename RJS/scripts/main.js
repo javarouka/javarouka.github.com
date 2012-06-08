@@ -2,7 +2,8 @@ require([
     "me/javarouka/conf/Context",
     "me/javarouka/Router",
     "me/javarouka/utils/ObjectUtils",
-    "me/javarouka/utils/Logger"
+    "me/javarouka/utils/Logger",
+    "me/javarouka/utils/JSON"
 ], function(Context, Router, ObjectUtils, Logger) {
 
 	var showObject = function(obj, prefix) {

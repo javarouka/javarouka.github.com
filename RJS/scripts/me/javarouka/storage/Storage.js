@@ -2,7 +2,7 @@ define([
 	"me/javarouka/conf/Context",
 	"me/javarouka/utils/Logger"
 ], 
-function(Context, JSON, Logger) {
+function(Context, Logger) {
 	
 	var st = Context.storage;
 	var local = window[st.local];

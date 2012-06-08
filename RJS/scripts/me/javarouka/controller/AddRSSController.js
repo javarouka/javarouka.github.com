@@ -7,7 +7,17 @@ define([
 	
 	var addRss = function(e) {
 		var $feedurl = $("#feedurl");
-		console.log($feedurl.val());
+		var url = $feedurl.val();
+		if(!url) {
+			alert("주소를 입력해 주세요");
+			return;
+		}
+		jQuery.getFeed({
+		   url: url,
+		   success: function(feed) {
+		      alert(feed.title);
+		   }
+		});
 	}
 	
 	var execute = function(executeParams) {
@@ -18,7 +28,7 @@ define([
 			loadArea: "view-content",
 			callback: function(model) {
 				var $addBtn = $(".add-rss");
-				$addBtn.onclick = addRss;
+				$addBtn.click = addRss;
 			}
 		});
 	};
