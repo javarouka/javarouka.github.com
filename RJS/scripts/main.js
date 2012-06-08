@@ -30,7 +30,7 @@ require([
 	};
 	
 	try {
-		showContextInfo();
+		//showContextInfo();
 		Router.start();
 	}
 	catch(globalExeption) {
