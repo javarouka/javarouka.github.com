@@ -1,4 +1,7 @@
-define(function(){
+/**
+ * 해시뱅 스타일의 페이징 히스토리 라우터 모듈.
+ */
+define(function() {
 	
 	var routes = [];
 	
@@ -22,7 +25,7 @@ define(function(){
 	        controller.start();
 	    });
 	    
-	    // 페이지 뷰 해쉬 불일치 조정
+	    // XXX: 페이지 뷰 해쉬 불일치 조정
 	    if(window.location.hash !== index[controllerName].hash) {
 	    	currentHash = window.location.hash = index[controllerName].hash;
 	    }
@@ -40,7 +43,7 @@ define(function(){
 	    }
 	}
 	
-	function startRouting(){
+	function startRouting() {
         window.location.hash = window.location.hash || defaultRoute;
         setInterval(hashCheck, 100);
     }

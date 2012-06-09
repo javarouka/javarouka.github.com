@@ -1,4 +1,4 @@
-define([ "Views/Loader/HTMLLoader" ], function(HTMLLoader) {
+define(function(HTMLLoader) {
 	
 	/* 
 	 * TODO:
