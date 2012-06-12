@@ -6,9 +6,9 @@ require([
 ], function($, Song, Singer, View) {
 	
 	var requestMap = {
-		"#view-singer": renderRegistSong,
-		"#view-song": renderSingerList,
-		"#regist-song": renderSongList
+		"view-singer": renderRegistSong,
+		"view-song": renderSingerList,
+		"regist-song": renderSongList
 	};
 	
 	var renderRegistSong = function() {
