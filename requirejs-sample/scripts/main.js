@@ -58,7 +58,7 @@ require([
 		$("nav ul li a").click(function(e) {
 			e.preventDefault();
 			
-			var href = $(this).href;
+			var href = $(this).attr("href");
 			console.log(href + " hash event execute");
 			
 			var mapMethod = requestMap[href];
