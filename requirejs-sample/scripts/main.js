@@ -58,13 +58,10 @@ require([
 		$("nav ul li a").click(function(e) {
 			e.preventDefault();
 			
-			var href = $(this).attr("href");
+			var href = $(this).attr("href").substring(1);
 			console.log(href + " hash event execute");
 			
 			var mapMethod = requestMap[href];
-			
-			console.log(requestMap[href]);
-			
 			mapMethod();
 		});
 		
