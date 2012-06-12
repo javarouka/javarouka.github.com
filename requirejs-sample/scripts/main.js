@@ -63,6 +63,8 @@ require([
 			
 			var mapMethod = requestMap[href];
 			
+			console.log(requestMap[href]);
+			
 			mapMethod();
 		});
 		
