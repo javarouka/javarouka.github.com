@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var Extendable = function(Orig) {
+	var ex = function() {
+		this.init.apply(this, Array.prototype.slice.apply(arguments));
+	}
+	ex.prototype.init = function() { }
+	return ex;
+}
+
+var Person = new Extendable(Person);
+Person.prototype.init = function(name) {
+	this.name = name;
+}
+
+var p = new Person("이항희");
+console.log(p.name);
+
+
+
+</script>
+</body>
+</html>

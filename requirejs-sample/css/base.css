@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+body {
+	font: 0.95em/1.333 Arial, sans-serif;
+	color: #202020;
+}
+
+body h1 {
+	font-size: 200%;
+	margin: 2px 0px 0px 2px;
+}
+
+body a {
+	text-decoration: none;
+}
+
+body a:hover {
+	text-decoration: underline;
+}
+
+body a:hover: {
+	text-decoration: underline;
+}
+
+body a:link {
+	color: #66A;
+}
+
+body a:visited {
+	color: #848;
+}
+
+body a:link {
+	color: #339;
+}
+
+body header {
+	font-weight: bold;
+	padding: 10px 6px;
+}
+
+body nav {
+	padding: 10px 6px;
+}
+
+body nav ul li {
+	margin-left: 20px;
+	list-style-type: disc;
+}
+
+body footer {
+	font-size: 12px;
+	padding: 10px 6px;
+}
+
+body footer h1 {
+	font-size: 130%;
+	font-weight: bold;
+	border-bottom: solid 1px #bbb;
+}
+
+body footer p {
+	font-size: 15px;
+	text-align: right;
+}
+
+body footer ul li {
+	display: inline-block;
+	zoom:1; 
+	*display:inline;
+	margin-right: 5px;
+}
+
+body #content {
+	margin: 0 auto;
+	max-width: 900px;
+	min-width: 320px;
+	padding: 5px;
+	font-size: 14px;
+}
+
+body #content ul li {
+}
+
+.template {
+	display: none;
+}
+
+div#view-content fieldset ul {
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+	}
+		div#view-content fieldset {
+			border-color: #fefefe;
+			border-radius: 8px;
+		}
+			div#view-content fieldset ul li {
+				margin: 10px 0px;
+			}
+			
+			div#view-content fieldset ul li input[type=text],
+			div#view-content fieldset ul li textarea {
+				-webkit-transition: all 0.2s;
+				-moz-transition: all 0.2s;
+				-o-transition: all 0.2s;	
+				width: 100%;
+			}
+			
+			div#view-content fieldset ul li input[type=text]:focus {
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			
+			div#view-content fieldset ul li input[type=text]:focus {
+				font-weight: bold;
+			}
+			
+			div#view-content fieldset ul li textarea {
+				height: 85px;
+			}
