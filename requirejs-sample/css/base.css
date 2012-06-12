@@ -70,7 +70,7 @@ body footer ul li {
 	margin-right: 5px;
 }
 
-body #content {
+body #wrapper {
 	margin: 0 auto;
 	max-width: 900px;
 	min-width: 320px;
@@ -78,43 +78,6 @@ body #content {
 	font-size: 14px;
 }
 
-body #content ul li {
-}
-
 .template {
 	display: none;
 }
-
-div#view-content fieldset ul {
-		list-style: none;
-		margin: 0px;
-		padding: 0px;
-	}
-		div#view-content fieldset {
-			border-color: #fefefe;
-			border-radius: 8px;
-		}
-			div#view-content fieldset ul li {
-				margin: 10px 0px;
-			}
-			
-			div#view-content fieldset ul li input[type=text],
-			div#view-content fieldset ul li textarea {
-				-webkit-transition: all 0.2s;
-				-moz-transition: all 0.2s;
-				-o-transition: all 0.2s;	
-				width: 100%;
-			}
-			
-			div#view-content fieldset ul li input[type=text]:focus {
-				padding-top: 10px;
-				padding-bottom: 10px;
-			}
-			
-			div#view-content fieldset ul li input[type=text]:focus {
-				font-weight: bold;
-			}
-			
-			div#view-content fieldset ul li textarea {
-				height: 85px;
-			}
