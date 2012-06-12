@@ -2,7 +2,7 @@ require([
     "jquery",
     "me/javarouka/model/Song",
     "me/javarouka/model/Singer",
-    "me/javarouka/TemplateView
+    "me/javarouka/TemplateView"
 ], function($, Song, Singer, View) {
 	
 	var requestMap = {
