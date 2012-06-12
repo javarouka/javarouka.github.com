@@ -51,8 +51,11 @@ require([
 		);
 	};
 	
-	var eventBind = function() {
-		$("nav a").click(function(e) {
+	var eventBind = function(callback) {
+		
+		console.log("event binding...");
+		
+		$("nav ul li a").click(function(e) {
 			e.preventDefault();
 			
 			var href = $(this).href;
@@ -62,10 +65,14 @@ require([
 			
 			mapMethod();
 		});
+		
+		callback();
 	}
 	
 	var init = function() {
 		eventBind(renderSingerList);
 	}
+	
+	init();
 	
 });
