@@ -5,12 +5,6 @@ require([
     "me/javarouka/TemplateView"
 ], function($, Song, Singer, View) {
 	
-	var requestMap = {
-		"view-singer": renderRegistSong,
-		"view-song": renderSingerList,
-		"regist-song": renderSongList
-	};
-	
 	var renderRegistSong = function() {
 		
 		View.render(
@@ -49,6 +43,12 @@ require([
 				
 			}
 		);
+	};
+	
+	var requestMap = {
+		"#view-singer": renderRegistSong,
+		"#view-song": renderSingerList,
+		"#regist-song": renderSongList
 	};
 	
 	var eventBind = function(callback) {
