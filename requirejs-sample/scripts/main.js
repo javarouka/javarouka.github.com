@@ -54,7 +54,10 @@ require([
 	var eventBind = function() {
 		$("nav a").click(function(e) {
 			e.preventDefault();
+			
 			var href = $(this).href;
+			console.log(href + " hash event execute");
+			
 			var mapMethod = requestMap[href];
 			
 			mapMethod();
