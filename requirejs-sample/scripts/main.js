@@ -46,19 +46,21 @@ require([
 	};
 	
 	var requestMap = {
-		"#view-singer": renderRegistSong,
-		"#view-song": renderSingerList,
+		"#view-singer": "renderRegistSong",
+		"#view-song": "renderSingerList",
 		"#regist-song": renderSongList
 	};
 	
 	var eventBind = function(callback) {
+		
+		console.log(requestMap["#regist-song"]);
 		
 		console.log("event binding...");
 		
 		$("nav ul li a").click(function(e) {
 			e.preventDefault();
 			
-			var href = $(this).attr("href").substring(1);
+			var href = $(this).attr("href");
 			console.log(href + " hash event execute");
 			
 			var mapMethod = requestMap[href];
