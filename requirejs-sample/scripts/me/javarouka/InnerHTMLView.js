@@ -29,7 +29,7 @@ define(function(Storage) {
 	};
 	
 	return {
-		getList: renderSongList
+		renderSongList: renderSongList
 	}
 	
 });
