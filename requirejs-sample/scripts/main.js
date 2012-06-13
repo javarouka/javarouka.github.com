@@ -45,7 +45,7 @@ require([
 	
 	var articleClicked = function(e) {
 		var $target = $(e.target);
-		if($target.is("li.song-item h2, li.song-item h3")) {
+		if($target.is("li.song-item h2")) {
 			if($target.find("p").hasClass("hide")) {
 				$target.find("p").slideDown(300).removeClass("hide");
 			}
