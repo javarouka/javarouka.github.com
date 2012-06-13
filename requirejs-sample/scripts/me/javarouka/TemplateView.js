@@ -6,7 +6,9 @@ define([
 		
 		render: function(params, callback) {
 			callback = callback || function(){ }
-			$(params.loadArea).load(params.viewName, callback);
+			$(params.loadArea)
+				.empty()
+				.load(params.viewName, callback);
 		}
 		
 	}

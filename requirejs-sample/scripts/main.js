@@ -11,10 +11,10 @@ require([
 		
 		View.render(
 			{
-				viewName: "",
+				viewName: "content/regist-song.html",
 				loadArea: "article"
 			}, 
-			function(option) {
+			function() {
 				
 			}
 		);
@@ -28,7 +28,7 @@ require([
 				loadArea: "article",
 				data: Singer.getList()
 			}, 
-			function(option) {
+			function() {
 				
 			}
 		);
@@ -39,6 +39,7 @@ require([
 		View.render(
 			{
 				viewName: "",
+				loadArea: "article",
 				data: Song.getList()	
 			}, 
 			function(option) {
