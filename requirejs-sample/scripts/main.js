@@ -57,18 +57,16 @@ require([
 		
 		console.log("event binding...");
 		
-		$("nav ul li a").click(function(e) {
-			e.preventDefault();
+		$("nav").click(function(e) {
 			
-			for(var k in requestMap) {
-				console.log(requestMap[k]);
+			if($(e.target).is("a")) {
+				var href = $(this).attr("href");
+				console.log(requestMap[href] + " hash event execute");
+				
+				var mapMethod = requestMap[href];
+				mapMethod();
 			}
 			
-			var href = $(this).attr("href");
-			console.log(requestMap[href] + " hash event execute");
-			
-			var mapMethod = requestMap[href];
-			mapMethod();
 		});
 		
 		callback();
