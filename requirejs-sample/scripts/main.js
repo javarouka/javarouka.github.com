@@ -48,19 +48,21 @@ require([
 	};
 	
 	var requestMap = {
-		"#view-singer": "renderRegistSong",
-		"#view-song": "renderSingerList",
-		"#regist-song": renderSongList
+		"#view-singer": renderSingerList,
+		"#view-song": renderSongList,
+		"#regist-song": renderRegistSong
 	};
 	
 	var eventBind = function(callback) {
-		
-		console.log(requestMap["#regist-song"]);
 		
 		console.log("event binding...");
 		
 		$("nav ul li a").click(function(e) {
 			e.preventDefault();
+			
+			for(var k in requestMap) {
+				console.log(requestMap[k]);
+			}
 			
 			var href = $(this).attr("href");
 			console.log(requestMap[href] + " hash event execute");
