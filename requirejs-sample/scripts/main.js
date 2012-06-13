@@ -23,10 +23,10 @@ require([
 			html += "<ul>";
 			for(var i=0,len=songs.length; i < len; i++) {
 				html += 
-					"<li>" +
+					"<li class='song-item'>" +
 					"	<h2>" + songs[i].title + "</h2>" +
 					"	<h3>" + songs[i].singer + "</h3>" +
-					"	<p>" + songs[i].lyrics + "</p>" +
+					"	<p class='hide'>" + songs[i].lyrics + "</p>" +
 					"</li>";
 			}
 			html += "</ul>";
@@ -41,12 +41,29 @@ require([
 			var linkUrl = $target.attr("href");
 			$target.trigger(("nav:" + linkUrl));
 		}
+	};
+	
+	var articleClicked = function(e) {
+		var $target = $(e.target);
+		if($target.is("li.song-item h2, li.song-item h3")) {
+			if($target.find("p").hasClass("hide")) {
+				$target.find("p").slideDown(300).removeClass("hide");
+			}
+			else {
+				$target.find("p").slideUp(300).addClass("hide");
+			}
+		}
 	}
 	
 	var eventBind = function() {
 		
 		var $nav = $("nav");
 		var $anchorInNav = $("nav");
+		
+		$content.click(function(e) {
+			$(e.target).trigger("article:click");
+		})
+		$content.bind("article:click", articleClicked);
 		
 		$nav.click(function(e) {
 			$(e.target).trigger("nav:click");
