@@ -60,7 +60,9 @@ require([
 		$("nav").click(function(e) {
 			
 			if($(e.target).is("a")) {
+				
 				var href = $(this).attr("href");
+				console.log(requestMap, href);
 				console.log(requestMap[href] + " hash event execute");
 				
 				var mapMethod = requestMap[href];
