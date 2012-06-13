@@ -36,7 +36,6 @@ require([
 	
 	var navClicked = function(e) {
 		var $target = $(e.target);
-		console.log($target, "clicked!");
 		if($target.is("a")) {
 			e.stopPropagation();
 			var linkUrl = $target.attr("href");
@@ -47,6 +46,7 @@ require([
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		console.log($target, "clicked!");
+		console.log($target.is("li.song-item h2"));
 		if($target.is("li.song-item h2")) {
 			if($target.find("p").hasClass("hide")) {
 				$target.find("p").slideDown(300).removeClass("hide");
