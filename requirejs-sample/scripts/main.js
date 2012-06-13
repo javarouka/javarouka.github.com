@@ -5,6 +5,7 @@ require([
 	
 	var self = this;
 	var $content = $("article");
+	var $html = $("html, body");
 	
 	var insertNewSong = function(e) {
 		console.log(e);
@@ -34,7 +35,6 @@ require([
 	var navClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("a")) {
-			e.stopPropagation();
 			var linkUrl = $target.attr("href");
 			$target.trigger(("nav:" + linkUrl));
 		}
@@ -43,8 +43,15 @@ require([
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
+			// close All
 			$content.find("p").slideUp(300).addClass("hide");
+			
 			var $p = $target.parent().find("p");
+			
+			$html.animate({
+				scrollTop: $target.offset().top - 20
+			}, 500);
+			
 			if($p.hasClass("hide")) {
 				$p.slideDown(300).removeClass("hide");
 			}
