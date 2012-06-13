@@ -58,17 +58,10 @@ require([
 		console.log("event binding...");
 		
 		$("nav").click(function(e) {
-			var target = $(e.target);
-			
-			if($(e.target).is("a")) {
-				
-				console.log(target, this);
-				var href = $(target).attr("href");
-				
-				/*
-				var mapMethod = requestMap[href];
-				mapMethod();
-				*/
+			var $target = $(e.target);
+			if($target.is("a")) {
+				var href = $target.attr("href");
+				console.log(href);
 			}
 			
 		});
