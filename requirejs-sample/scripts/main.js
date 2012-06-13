@@ -5,6 +5,8 @@ require([
     "me/javarouka/TemplateView"
 ], function($, Song, Singer, View) {
 	
+	var self = this;
+	
 	var renderRegistSong = function() {
 		
 		View.render(
@@ -61,7 +63,7 @@ require([
 			e.preventDefault();
 			
 			var href = $(this).attr("href");
-			console.log(href + " hash event execute");
+			console.log(requestMap[href] + " hash event execute");
 			
 			var mapMethod = requestMap[href];
 			mapMethod();
