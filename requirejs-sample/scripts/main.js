@@ -45,14 +45,13 @@ require([
 	
 	var articleClicked = function(e) {
 		var $target = $(e.target);
-		console.log($target, "clicked!");
-		console.log($target.is("li.song-item h2"));
 		if($target.is("li.song-item h2")) {
-			if($target.find("p").hasClass("hide")) {
-				$target.find("p").slideDown(300).removeClass("hide");
+			var $p = $target.parent().find("p");
+			if($p.hasClass("hide")) {
+				$p.slideDown(300).removeClass("hide");
 			}
 			else {
-				$target.find("p").slideUp(300).addClass("hide");
+				$p.slideUp(300).addClass("hide");
 			}
 		}
 	}
