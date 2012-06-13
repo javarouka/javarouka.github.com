@@ -15,8 +15,8 @@ require([
 	
 	
 	
-	var navClicked = function(e, target) {
-		console.log(arguments);
+	var navClicked = function(e, nav) {
+		var target = $(e.target);
 		if(target.is("a")) {
 			e.stopPropagation();
 			var linkUrl = target.attr("href");
@@ -27,8 +27,7 @@ require([
 	var eventBind = function() {
 		
 		$("nav").click(function(e) {
-			var $target = $(e.target);
-			$target.trigger("nav:click", $(this));
+			$(e.target).trigger("nav:click", this);
 		});
 		
 		$("nav").bind("nav:click", navClicked);
