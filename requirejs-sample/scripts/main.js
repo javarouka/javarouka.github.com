@@ -56,17 +56,17 @@ require([
 	var eventBind = function(callback) {
 		
 		console.log("event binding...");
-		
+		var target = $(e.target);
 		$("nav").click(function(e) {
-			
 			if($(e.target).is("a")) {
 				
-				var href = $(this).attr("href");
-				console.log(requestMap, href);
-				console.log(requestMap[href] + " hash event execute");
+				console.log(target, this);
+				var href = $(target).attr("href");
 				
+				/*
 				var mapMethod = requestMap[href];
 				mapMethod();
+				*/
 			}
 			
 		});
