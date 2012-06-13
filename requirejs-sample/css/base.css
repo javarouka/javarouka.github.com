@@ -57,11 +57,14 @@ article {
 }
 
 article h2 {
+	font-size: 160%;
+	font-weight: bold;
 	border-bottom: solid 1px #3B5998;
-	padding-bottom: 2px;
+	padding: 4px 2px;
 }
 
 article h3 {
+	font-size: 120%;
 	padding: 2px;
 	padding-left: 10px;
 	background: #999;

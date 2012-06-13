@@ -48,12 +48,12 @@ require([
 			
 			var $p = $target.parent().find("p");
 			
-			$html.animate({
-				scrollTop: $target.offset().top - 20
-			}, 500);
-			
 			if($p.hasClass("hide")) {
-				$p.slideDown(300).removeClass("hide");
+				$p.slideDown(300, function(){
+					$html.animate({
+						scrollTop: $target.offset().top - 20
+					}, 500);
+				}).removeClass("hide");
 			}
 		}
 	}
