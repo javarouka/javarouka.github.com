@@ -4,6 +4,7 @@ require([
 ], function($, Song) {
 	
 	var self = this;
+	var $content = $("article");
 	var eventMap = function() {
 		
 	}
@@ -14,7 +15,23 @@ require([
 	
 	var renderSongList = function(e) {
 		var songs = Song.getList();
-		console.log(e, songs);
+		var html = "<h1>노래</h1>";
+		if(!song || songs.length === 0) {
+			html += "<p>등록된 노래가 없습니다</p>";
+		}
+		else {
+			html += "<ul>";
+			for(var i=0,len=songs.length; i < len; i++) {
+				html += 
+					"<li>" +
+					"	<h2>" + songs[i].title + "</h2>" +
+					"	<h3>" + songs[i].singer + "</h3>" +
+					"	<p>" + songs[i].lyrics + "</p>" +
+					"</li>";
+			}
+			html += "</ul>";
+		}
+		$content.empty().html(html);
 	};
 	
 	var navClicked = function(e) {

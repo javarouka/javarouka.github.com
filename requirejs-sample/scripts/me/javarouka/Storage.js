@@ -15,7 +15,6 @@ function($, Context, Logger) {
 	
 	var get = function(key) {
 		var item = local.getItem(key);
-		console.log(item);
 		if(item) {	
 			return $.parseJSON(item);
 		}
