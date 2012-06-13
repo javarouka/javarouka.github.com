@@ -4,33 +4,40 @@ require([
 ], function($, ORM) {
 	
 	var self = this;
-	
-	var insertNewSong = function(e) {
+	var eventMap = function() {
 		
 	}
 	
-	var renderSongList = function(e) {
-		var songs = Song.list();
+	var insertNewSong = function(e) {
+		console.log(e);
 	};
 	
+	var renderSongList = function(e) {
+		var songs = Song.list();
+		console.log(e, songs);
+	};
 	
-	
-	var navClicked = function(e, nav) {
-		var target = $(e.target);
-		if(target.is("a")) {
+	var navClicked = function(e) {
+		var $target = $(e.target);
+		if($target.is("a")) {
 			e.stopPropagation();
 			var linkUrl = target.attr("href");
-			console.log(linkUrl);
+			$target.trigger(("nav:" + linkUrl));
 		}
 	}
 	
 	var eventBind = function() {
 		
-		$("nav").click(function(e) {
-			$(e.target).trigger("nav:click", this);
+		var $nav = $("nav");
+		var $anchorInNav = $("nav");
+		
+		$nav.click(function(e) {
+			$(e.target).trigger("nav:click");
 		});
 		
-		$("nav").bind("nav:click", navClicked);
+		$nav.bind("nav:click", navClicked);
+		$anchorInNav.bind("nav:#view-song", renderSongList);
+		$anchorInNav.bind("nav:#regist-song", insertNewSong);
 		
 	};
 	
