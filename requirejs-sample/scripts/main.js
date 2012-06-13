@@ -1,7 +1,7 @@
 require([
     "jquery",
     "me/javarouka/Song"
-], function($, ORM) {
+], function($, Song) {
 	
 	var self = this;
 	var eventMap = function() {
@@ -13,7 +13,7 @@ require([
 	};
 	
 	var renderSongList = function(e) {
-		var songs = Song.list();
+		var songs = Song.getList();
 		console.log(e, songs);
 	};
 	

@@ -3,7 +3,7 @@ define([
 ], function(Storage) {
 	
 	var getList = function() {
-		
+		return Storage.get("song");
 	};
 	
 	return {
