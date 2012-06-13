@@ -21,7 +21,7 @@ require([
 		var $target = $(e.target);
 		if($target.is("a")) {
 			e.stopPropagation();
-			var linkUrl = target.attr("href");
+			var linkUrl = $target.attr("href");
 			$target.trigger(("nav:" + linkUrl));
 		}
 	}
