@@ -1,80 +1,41 @@
 require([
     "jquery",
-    "me/javarouka/model/Song",
-    "me/javarouka/model/Singer",
-    "me/javarouka/TemplateView"
-], function($, Song, Singer, View) {
+    "me/javarouka/Song"
+], function($, ORM) {
 	
 	var self = this;
 	
-	var renderRegistSong = function() {
+	var insertNewSong = function(e) {
 		
-		View.render(
-			{
-				viewName: "content/regist-song.html",
-				loadArea: "article"
-			}, 
-			function() {
-				
-			}
-		);
+	}
+	
+	var renderSongList = function(e) {
+		var songs = Song.list();
 	};
 	
-	var renderSingerList = function() {
-		
-		View.render(
-			{
-				viewName: "content/view-singer.html",
-				loadArea: "article",
-				data: Singer.getList()
-			}, 
-			function() {
-				
-			}
-		);
-	};
 	
-	var renderSongList = function() {
-		
-		View.render(
-			{
-				viewName: "",
-				loadArea: "article",
-				data: Song.getList()	
-			}, 
-			function(option) {
-				
-			}
-		);
-	};
 	
-	var requestMap = {
-		"#view-singer": renderSingerList,
-		"#view-song": renderSongList,
-		"#regist-song": renderRegistSong
-	};
+	var navClicked = function(e, target) {
+		if(target.is("a")) {
+			e.stopPropagation();
+			var linkUrl = target.attr("href");
+			console.log(linkUrl);
+		}
+	}
 	
-	var eventBind = function(callback) {
-		
-		console.log("event binding...");
+	var eventBind = function() {
 		
 		$("nav").click(function(e) {
 			var $target = $(e.target);
-			if($target.is("a")) {
-				var href = $target.attr("href");
-				console.log(href);
-				console.log(typeof requestMap[href]);
-				
-				(requestMap[href])();
-			}
-			
+			$(e.target).trigger("nav:click", $target);
 		});
 		
-		callback();
-	}
+		$("nav").bind("nav:click", navClicked);
+		
+	};
 	
 	var init = function() {
-		eventBind(renderSingerList);
+		eventBind();
 	}
 	
 	init();
