@@ -1,35 +1,22 @@
 require([
     "jquery",
-    "me/javarouka/Song"
-], function($, Song) {
+    "me/javarouka/Song",
+    "me/javarouka/InnerHTMLView"
+], function($, Song, View) {
 	
 	var self = this;
 	var $content = $("article");
 	var $html = $("html, body");
 	
 	var insertNewSong = function(e) {
-		console.log(e);
 	};
 	
 	var renderSongList = function(e) {
 		var songs = Song.getList();
-		var html = "<h1>노래</h1>";
-		if(!songs || songs.length === 0) {
-			html += "<p>등록된 노래가 없습니다!!</p>";
-		}
-		else {
-			html += "<ul>";
-			for(var i=0,len=songs.length; i < len; i++) {
-				html += 
-					"<li class='song-item'>" +
-					"	<h2>" + songs[i].title + "</h2>" +
-					"	<h3>" + songs[i].singer + "</h3>" +
-					"	<p class='hide'>" + songs[i].lyrics + "</p>" +
-					"</li>";
-			}
-			html += "</ul>";
-		}
-		$content.empty().html(html);
+		View.renderSongList({
+			renderArea: $content,
+			data: songs
+		});
 	};
 	
 	var navClicked = function(e) {
@@ -43,11 +30,6 @@ require([
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
-			
-			// close All
-			$content.find("p").slideUp(300, function() {
-				$(this).addClass("hide");
-			});
 			
 			var $p = $target.parent().find("p");
 			
