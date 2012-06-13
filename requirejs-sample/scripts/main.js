@@ -43,17 +43,21 @@ require([
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
+			
 			// close All
-			$content.find("p").slideUp(300).addClass("hide");
+			$content.find("p").slideUp(300, function() {
+				$(this).addClass("hide");
+			});
 			
 			var $p = $target.parent().find("p");
 			
-			if($p.hasClass("hide")) {
-				$p.slideDown(300, function(){
+			if($p.not(":visible")) {
+				$p.stop(true).slideDown(300, function(){
 					$html.animate({
 						scrollTop: $target.offset().top - 20
 					}, 500);
-				}).removeClass("hide");
+					$p.addClass("hide");
+				});
 			}
 		}
 	}
