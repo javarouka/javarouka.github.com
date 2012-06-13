@@ -5,9 +5,6 @@ require([
 	
 	var self = this;
 	var $content = $("article");
-	var eventMap = function() {
-		
-	}
 	
 	var insertNewSong = function(e) {
 		console.log(e);
@@ -46,12 +43,10 @@ require([
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
+			$content.find("p").slideUp(300).addClass("hide");
 			var $p = $target.parent().find("p");
 			if($p.hasClass("hide")) {
 				$p.slideDown(300).removeClass("hide");
-			}
-			else {
-				$p.slideUp(300).addClass("hide");
 			}
 		}
 	}

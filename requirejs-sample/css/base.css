@@ -56,6 +56,32 @@ article {
 	padding: 10px;
 }
 
+article h2 {
+	border-bottom: solid 1px #3B5998;
+	padding-bottom: 2px;
+}
+
+article h3 {
+	padding: 2px;
+	padding-left: 10px;
+	background: #666;
+	color: #FFF;
+}
+
+article ul li {
+	margin: 10px 10px;
+	background: #EDEFF4;
+	border: 1px solid #D2D9DD;
+	border-radius: 5px;
+}
+
+article ul li p {
+	margin-top: 4px;
+	background: #FFF;
+	border-radius: 5px;
+	padding: 5px;
+}
+
 article .hide {
 	display: none;
 }
