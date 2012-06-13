@@ -62,6 +62,7 @@ require([
 			if($target.is("a")) {
 				var href = $target.attr("href");
 				console.log(href);
+				console.log(requestMap[href]);
 			}
 			
 		});
