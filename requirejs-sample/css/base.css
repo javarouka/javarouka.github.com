@@ -33,51 +33,56 @@ body a:link {
 	color: #339;
 }
 
-body header {
+header {
 	font-weight: bold;
 	padding: 10px 6px;
 }
 
-body nav {
+nav {
 	padding: 10px 6px;
 }
 
-body nav ul li {
+nav ul li {
 	margin-left: 20px;
 	list-style-type: disc;
 }
 
-body footer {
+nav ul li {
+	margin-left: 20px;
+	list-style-type: disc;
+}
+
+article {
+	padding: 10px;
+}
+
+footer {
 	font-size: 12px;
 	padding: 10px 6px;
 }
 
-body footer h1 {
+footer h1 {
 	font-size: 130%;
 	font-weight: bold;
 	border-bottom: solid 1px #bbb;
 }
 
-body footer p {
+footer p {
 	font-size: 15px;
 	text-align: right;
 }
 
-body footer ul li {
+footer ul li {
 	display: inline-block;
 	zoom:1; 
 	*display:inline;
 	margin-right: 5px;
 }
 
-body #wrapper {
+#wrapper {
 	margin: 0 auto;
 	max-width: 900px;
 	min-width: 320px;
 	padding: 5px;
 	font-size: 14px;
-}
-
-.template {
-	display: none;
 }
