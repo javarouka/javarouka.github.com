@@ -56,8 +56,10 @@ require([
 	var eventBind = function(callback) {
 		
 		console.log("event binding...");
-		var target = $(e.target);
+		
 		$("nav").click(function(e) {
+			var target = $(e.target);
+			
 			if($(e.target).is("a")) {
 				
 				console.log(target, this);
