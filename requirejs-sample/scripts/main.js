@@ -16,7 +16,7 @@ require([
 	var renderSongList = function(e) {
 		var songs = Song.getList();
 		var html = "<h1>노래</h1>";
-		if(!song || songs.length === 0) {
+		if(!songs || songs.length === 0) {
 			html += "<p>등록된 노래가 없습니다</p>";
 		}
 		else {
