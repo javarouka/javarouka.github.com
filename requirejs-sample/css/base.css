@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 body {
-	font: 0.95em/1.333 Arial, sans-serif;
+	font: 0.95em/1.333 Gulim, Arial, sans-serif;
 	color: #202020;
 }
 
@@ -41,81 +41,84 @@ header {
 nav {
 	padding: 10px 6px;
 }
-
-nav ul li {
-	margin-left: 20px;
-	list-style-type: disc;
-}
-
-nav ul li {
-	margin-left: 20px;
-	list-style-type: disc;
-}
+	nav ul li {
+		margin-left: 20px;
+		list-style-type: disc;
+	}
+	nav ul li {
+		margin-left: 20px;
+		list-style-type: disc;
+	}
 
 article {
 	padding: 10px;
 }
+	article h1 {
+		font-size: 125%;
+		font-weight: bold;
+		padding: 4px 20px;
+	}
+	article h2 {
+		font-size: 115%;
+		font-weight: bold;
+		border-bottom: solid 1px #3B5998;
+		padding: 4px 6px;
+	}
+	article h3 {
+		font-size: 110%;
+		padding: 2px;
+		padding-left: 20px;
+		background: #777;
+		color: #FFF;
+	}
 
-article h1 {
-	font-size: 125%;
-	font-weight: bold;
-	padding: 4px 20px;
-}
+	article ul li {
+		margin: 10px 10px;
+		background: #EDEFF4;
+		border: 1px solid #D2D9DD;
+		border-radius: 5px;
+	}
+		article ul li p {
+			margin-top: 4px;
+			background: #FFF;
+			padding: 10px;
+		}
+		
+	article form label {
+		display: block;
+	}
+	article form input[type=text] {
+		width: 150px;
+	}
+	article form textarea {
+		width: 80%;
+		min-width: 500px;
+		height: 400px;
+	}
 
-article h2 {
-	font-size: 130%;
-	font-weight: bold;
-	border-bottom: solid 1px #3B5998;
-	padding: 4px 6px;
-}
-
-article h3 {
-	font-size: 110%;
-	padding: 2px;
-	padding-left: 20px;
-	background: #999;
-	color: #FFF;
-}
-
-article ul li {
-	margin: 10px 10px;
-	background: #EDEFF4;
-	border: 1px solid #D2D9DD;
-	border-radius: 5px;
-}
-
-article ul li p {
-	margin-top: 4px;
-	background: #FFF;
-	padding: 10px;
-}
-
-article .hide {
-	display: none;
-}
+	article .hide {
+		display: none;
+	}
 
 footer {
 	font-size: 12px;
 	padding: 10px 6px;
 }
-
-footer h1 {
-	font-size: 130%;
-	font-weight: bold;
-	border-bottom: solid 1px #bbb;
-}
-
-footer p {
-	font-size: 15px;
-	text-align: right;
-}
-
-footer ul li {
-	display: inline-block;
-	zoom:1; 
-	*display:inline;
-	margin-right: 5px;
-}
+	footer h1 {
+		font-size: 130%;
+		font-weight: bold;
+		border-bottom: solid 1px #bbb;
+	}
+	footer p {
+		font-size: 15px;
+		text-align: right;
+	}
+	footer ul li {
+		display: inline-block;
+		zoom:1; 
+		*display:inline;
+		margin-right: 5px;
+	}
 
 #wrapper {
 	margin: 0 auto;
