@@ -3,7 +3,7 @@ define(function(Storage) {
 	var renderTemplate = function(model, callback, complete) {
 		var $content = model.renderArea;
 		
-		$content.empty().html(callback(model));
+		$content.empty().html(callback(model.data));
 		
 		if(callback && typeof callback === 'function') {
 			callback();
@@ -28,6 +28,7 @@ define(function(Storage) {
 				"		<label>노래가사</label>" +
 				"		<textarea id='song-lyrics' name='lyrics' placeholder='가사를 입력하세요'></textarea>" +
 				"	</div>" +
+				"	<button class='btn-add-song'></button>" +
 				"</div>" +
 				"</form>";
 		}, complete);
@@ -39,8 +40,7 @@ define(function(Storage) {
 		var data = model.data;
 		var html = "";
 		*/
-		renderTemplate(model, function(model) {
-			var songs = model.data;
+		renderTemplate(model, function(songs) {
 			var html = "<h1>노래 목록</h1>";
 			if(!songs || songs.length === 0) {
 				html += "<p>등록된 노래가 없습니다!!</p>";

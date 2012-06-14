@@ -36,7 +36,7 @@ require([
 			
 			var $p = $target.parent().find("p");
 			
-			if($p.is(":animated")) return;
+			if($p.is(":animated") || $html.is(":animated")) return;
 			
 			if($p.hasClass("hide")) {
 				$p.slideDown(300, function(){
