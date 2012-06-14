@@ -2,9 +2,8 @@ define(function(Storage) {
 	
 	var renderTemplate = function(model, callback, complete) {
 		var $content = model.renderArea;
-		var data = model.data;
 		
-		$content.empty().html(callback(data));
+		$content.empty().html(callback(model));
 		
 		if(callback && typeof callback === 'function') {
 			callback();
