@@ -38,7 +38,7 @@ require([
 			
 			if($p.is(":animated")) return;
 			
-			if($p.hasClass("hide");) {
+			if($p.hasClass("hide")) {
 				$p.slideDown(300, function(){
 					$html.animate({
 						scrollTop: $target.offset().top - 20
