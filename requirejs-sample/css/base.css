@@ -109,9 +109,8 @@ article {
 	}
 	article form textarea:FOCUS,
 	article form input[type=text]:FOCUS {
-		margin-top: 10px;
 		margin-left: 10px;
-		border: solid 3px #76a6d6;
+		border: solid 3px #081c4f;
 	}
 
 	article .hide {

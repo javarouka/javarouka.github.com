@@ -112,7 +112,6 @@ div#app {
 			}
 			
 			div#app fieldset ul li input[type=text]:focus {
-				padding-top: 10px;
 				padding-bottom: 10px;
 			}
 			

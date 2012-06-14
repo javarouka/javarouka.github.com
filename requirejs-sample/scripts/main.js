@@ -11,15 +11,13 @@ require([
 	var eventSet = {
 		renderNewSongForm: function(e) {
 			View.renderNewSongForm({
-				renderArea: $content,
-				toggleEffect: 'fade'
+				renderArea: $content
 			});
 		},
 		renderSongList: function(e) {
 			var songs = Song.getList();
 			View.renderSongList({
-				renderArea: $content,
-				toggleEffect: 'fade',
+				renderArea: $content
 				data: songs
 			});
 		},
