@@ -84,7 +84,7 @@ require([
 	var eventBind = function() {
 		
 		$("body form").live("submit", function(e) {
-			e.preventdefault();
+			e.preventDefault();
 		});
 		
 		var $nav = $("nav");
