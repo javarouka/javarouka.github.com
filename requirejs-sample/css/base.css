@@ -68,6 +68,13 @@ article {
 		font-weight: bold;
 		border-bottom: solid 1px #3B5998;
 		padding: 4px 6px;
+		cursor: pointer;
+		-webkit-transition: all 0.2s;
+		-moz-transition: all 0.2s;
+		-o-transition: all 0.2s;
+	}
+	article h2:HOVER {
+		letter-spacing: 3px;
 	}
 	article h3 {
 		font-size: 110%;
