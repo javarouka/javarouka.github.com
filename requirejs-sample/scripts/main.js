@@ -41,6 +41,14 @@ require([
 					$p.addClass("hide");
 				});
 			}
+			else {
+				$p.stop(true).slideUp(300, function(){
+					$html.animate({
+						scrollTop: $content.offset().top - 20
+					}, 500);
+					$p.removeClass("hide");
+				});
+			}
 		}
 	}
 	

@@ -56,6 +56,11 @@ article {
 	padding: 10px;
 }
 
+article h1 {
+	font-size: 140%;
+	padding: 4px 20px;
+}
+
 article h2 {
 	font-size: 130%;
 	font-weight: bold;
