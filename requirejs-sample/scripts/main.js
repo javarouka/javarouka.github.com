@@ -35,12 +35,24 @@ require([
 	
 	var addSong = function($target, $form) {
 		var song = $form.serialize();
-		console.log(song);
-		//Song.add();
+	    var o = {};
+	    var a = $form.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] !== undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            o[this.name].push(this.value || '');
+	        } else {
+	            o[this.name] = this.value || '';
+	        }
+	    });
+	    console.log(o);
 	}
 	
 	var toggleLyrics = function(e) {
-		var $p = $(e.target).parent().find("p");
+		var $target = $(e.target);
+		var $p = $target.parent().find("p");
 		if($p.is(":animated") || $html.is(":animated")) return;
 		
 		if($p.hasClass("hide")) {
@@ -66,6 +78,9 @@ require([
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
 			toggleLyrics.apply($target, [e]);
+		}
+		if($target.is("form.add-form")) {
+			e.preventDefault();
 		}
 		if($target.is("form.add-form .btn-add-song")) {
 			addSong($target, $("form.add-form"));
