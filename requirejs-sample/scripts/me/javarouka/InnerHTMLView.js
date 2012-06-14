@@ -3,11 +3,16 @@ define(function(Storage) {
 	var renderTemplate = function(model, callback, complete) {
 		var $content = model.renderArea;
 		
-		$content.empty().html(callback(model.data));
+		$content.hide(model.toggleEffect, function() {
+			
+			$content.empty().html(callback(model.data));
 		
-		if(complete && typeof complete === 'function') {
-			complete();
-		}
+			$content.show(model.toggleEffect, function() {
+				if(complete && typeof complete === 'function') {
+					complete();
+				}
+			}
+		});
 	}
 	
 	var renderNewSongForm = function(model, complete) {

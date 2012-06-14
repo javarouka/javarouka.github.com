@@ -11,18 +11,16 @@ require([
 	var eventSet = {
 		renderNewSongForm: function(e) {
 			View.renderNewSongForm({
-				renderArea: $content
-			}, function() {
-				$content.show('fast');
+				renderArea: $content,
+				toggleEffect: 'fade'
 			});
 		},
 		renderSongList: function(e) {
 			var songs = Song.getList();
 			View.renderSongList({
 				renderArea: $content,
+				toggleEffect: 'fade',
 				data: songs
-			}, function() {
-				$content.show('fast');
 			});
 		},
 		addSong: function($target, $form) {
