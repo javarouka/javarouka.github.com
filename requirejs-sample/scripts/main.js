@@ -17,7 +17,7 @@ require([
 		renderSongList: function(e) {
 			var songs = Song.getList();
 			View.renderSongList({
-				renderArea: $content
+				renderArea: $content,
 				data: songs
 			});
 		},
