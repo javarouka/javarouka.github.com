@@ -3,12 +3,12 @@ define(function(Storage) {
 	var renderTemplate = function(model, callback, complete) {
 		var $content = model.renderArea;
 		
-		$content.hide(
-			model.toggleEffect, 
+		$content.fadeOut(
+			600, 
 			function() {
 				$content.empty().html(callback(model.data));
 			
-				$content.show(model.toggleEffect, function() {
+				$content.fadeIn(600, function() {
 					if(complete && typeof complete === 'function') {
 						complete();
 					}
