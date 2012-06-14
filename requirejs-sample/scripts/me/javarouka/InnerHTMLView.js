@@ -28,7 +28,7 @@ define(function(Storage) {
 				"		<label>노래가사</label>" +
 				"		<textarea id='song-lyrics' name='lyrics' placeholder='가사를 입력하세요'></textarea>" +
 				"	</div>" +
-				"	<button class='btn-add-song'></button>" +
+				"	<button class='btn-add-song'>입력하기</button>" +
 				"</div>" +
 				"</form>";
 		}, complete);

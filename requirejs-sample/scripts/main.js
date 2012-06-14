@@ -11,6 +11,9 @@ require([
 	var insertNewSong = function(e) {
 		View.insertNewSong({
 			renderArea: $content
+		},
+		function() {
+			
 		});
 	};
 	
@@ -30,37 +33,49 @@ require([
 		}
 	};
 	
+	var addSong = function($target, $form) {
+		var song = $form.serialize();
+		console.log(song);
+		//Song.add();
+	}
+	
+	var toggleLyrics = function(e) {
+		var $p = $(e.target).parent().find("p");
+		if($p.is(":animated") || $html.is(":animated")) return;
+		
+		if($p.hasClass("hide")) {
+			$p.slideDown(300, function(){
+				$html.animate({
+					scrollTop: $target.offset().top - 20
+				}, 500);
+				$p.removeClass("hide");
+			});
+		}
+		else {
+			$p.slideUp(300, function(){
+				$html.animate({
+					scrollTop: $content.offset().top - 20
+				}, 500);
+				$p.addClass("hide");
+			});
+		}
+	}
+	
+	
 	var articleClicked = function(e) {
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
-			
-			var $p = $target.parent().find("p");
-			
-			if($p.is(":animated") || $html.is(":animated")) return;
-			
-			if($p.hasClass("hide")) {
-				$p.slideDown(300, function(){
-					$html.animate({
-						scrollTop: $target.offset().top - 20
-					}, 500);
-					$p.removeClass("hide");
-				});
-			}
-			else {
-				$p.slideUp(300, function(){
-					$html.animate({
-						scrollTop: $content.offset().top - 20
-					}, 500);
-					$p.addClass("hide");
-				});
-			}
+			toggleLyrics.apply($target, [e]);
+		}
+		if($target.is("form.add-form .btn-add-song")) {
+			addSong($target, $("form.add-form"));
 		}
 	}
 	
 	var eventBind = function() {
 		
 		var $nav = $("nav");
-		var $anchorInNav = $("nav");
+		var $anchorInNav = $("nav ul li a");
 		
 		$content.click(function(e) {
 			$(e.target).trigger("article:click");
