@@ -4,7 +4,7 @@ define(function(Storage) {
 		var $content = model.renderArea;
 		
 		$content.fadeOut(
-			600, 
+			300, 
 			function() {
 				$content.empty().html(callback(model.data));
 			
