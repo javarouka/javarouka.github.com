@@ -10,15 +10,23 @@ require([
 	
 	var eventSet = {
 		renderNewSongForm: function(e) {
+			$content.hide();
 			View.renderNewSongForm({
 				renderArea: $content
+			},
+			function(){
+				$content.show('fast');
 			});
 		},
 		renderSongList: function(e) {
+			$content.hide();
 			var songs = Song.getList();
 			View.renderSongList({
 				renderArea: $content,
 				data: songs
+			},
+			function(){
+				$content.show('fast');
 			});
 		},
 		addSong: function($target, $form) {
@@ -43,7 +51,7 @@ require([
 			if($p.is(":animated") || $html.is(":animated")) return;
 			
 			if($p.hasClass("hide")) {
-				$p.slideDown(300, function(){
+				$p.slideDown(800, function(){
 					$html.animate({
 						scrollTop: $target.offset().top - 20
 					}, 500);
@@ -51,7 +59,7 @@ require([
 				});
 			}
 			else {
-				$p.slideUp(300, function(){
+				$p.slideUp(800, function(){
 					$html.animate({
 						scrollTop: $content.offset().top - 20
 					}, 500);
@@ -108,6 +116,7 @@ require([
 	};
 	
 	var init = function() {
+		$content.hide();
 		eventBind();
 	};
 	
