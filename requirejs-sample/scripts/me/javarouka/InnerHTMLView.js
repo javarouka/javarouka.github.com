@@ -10,11 +10,10 @@ define(function(Storage) {
 		}
 	}
 	
-	var insertNewSong = function(model, complete) {
+	var renderNewSongForm = function(model, complete) {
 		
 		renderTemplate(model, function() {
 			return	"<form class='add-form'>" +
-				"<h1>노래 입력</h1>" +
 				"<div>" +
 				"	<div>" +
 				"		<label>제목</label>" +
@@ -35,13 +34,8 @@ define(function(Storage) {
 	};
 	
 	var renderSongList = function(model, complete) {
-		/*
-		var $content = model.renderArea;
-		var data = model.data;
-		var html = "";
-		*/
 		renderTemplate(model, function(songs) {
-			var html = "<h1>노래 목록</h1>";
+			var html = "";
 			if(!songs || songs.length === 0) {
 				html += "<p>등록된 노래가 없습니다!!</p>";
 			}
@@ -59,19 +53,11 @@ define(function(Storage) {
 			}
 			return html;
 		}, complete);
-		
-		/*
-		$content.empty().html(html);
-		
-		if(callback && typeof callback === 'function') {
-			callback();
-		}
-		*/
 	};
 	
 	return {
 		renderSongList: renderSongList,
-		insertNewSong: insertNewSong
+		renderNewSongForm: renderNewSongForm
 	}
 	
 });
