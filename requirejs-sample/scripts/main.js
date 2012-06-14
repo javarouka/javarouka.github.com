@@ -14,7 +14,6 @@ require([
 				renderArea: $content
 			});
 		},
-		
 		renderSongList: function(e) {
 			var songs = Song.getList();
 			View.renderSongList({
@@ -22,7 +21,6 @@ require([
 				data: songs
 			});
 		},
-		
 		addSong: function($target, $form) {
 			var song = $form.serialize();
 		    var o = {};
@@ -39,7 +37,6 @@ require([
 		    });
 		    console.log(o);
 		},
-		
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
 			var $p = $target.parent().find("p");
@@ -61,7 +58,7 @@ require([
 					$p.addClass("hide");
 				});
 			}
-		};
+		}
 	};
 	
 	var delegation = {
