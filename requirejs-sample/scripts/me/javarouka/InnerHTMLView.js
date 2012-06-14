@@ -12,7 +12,7 @@ define(function(Storage) {
 					complete();
 				}
 			}
-		});
+		};
 	}
 	
 	var renderNewSongForm = function(model, complete) {
