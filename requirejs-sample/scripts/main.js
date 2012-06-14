@@ -10,7 +10,7 @@ require([
 	
 	var eventSet = {
 		renderNewSongForm: function(e) {
-			View.insertNewSong({
+			View.renderNewSongForm({
 				renderArea: $content
 			});
 		},
@@ -23,19 +23,19 @@ require([
 		},
 		addSong: function($target, $form) {
 			var song = $form.serialize();
-		    var o = {};
-		    var a = $form.serializeArray();
-		    $.each(a, function() {
-		        if (o[this.name] !== undefined) {
-		            if (!o[this.name].push) {
-		                o[this.name] = [o[this.name]];
+		    var songData = {};
+		    var serialized = $form.serializeArray();
+		    $.each(serialized, function() {
+		        if (songData[this.name] !== undefined) {
+		            if (!songData[this.name].push) {
+		            	songData[this.name] = [o[this.name]];
 		            }
-		            o[this.name].push(this.value || '');
+		            songData[this.name].push(this.value || '');
 		        } else {
-		            o[this.name] = this.value || '';
+		        	songData[this.name] = this.value || '';
 		        }
 		    });
-		    console.log(o);
+		    Song.add(songData);
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
