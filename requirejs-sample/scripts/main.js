@@ -10,22 +10,18 @@ require([
 	
 	var eventSet = {
 		renderNewSongForm: function(e) {
-			$content.hide();
 			View.renderNewSongForm({
 				renderArea: $content
-			},
-			function(){
+			}, function() {
 				$content.show('fast');
 			});
 		},
 		renderSongList: function(e) {
-			$content.hide();
 			var songs = Song.getList();
 			View.renderSongList({
 				renderArea: $content,
 				data: songs
-			},
-			function(){
+			}, function() {
 				$content.show('fast');
 			});
 		},

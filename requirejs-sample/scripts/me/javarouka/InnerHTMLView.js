@@ -5,8 +5,8 @@ define(function(Storage) {
 		
 		$content.empty().html(callback(model.data));
 		
-		if(callback && typeof callback === 'function') {
-			callback();
+		if(complete && typeof complete === 'function') {
+			complete();
 		}
 	}
 	
