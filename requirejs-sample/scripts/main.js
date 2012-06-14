@@ -9,6 +9,9 @@ require([
 	var $html = $("html, body");
 	
 	var insertNewSong = function(e) {
+		View.insertNewSong({
+			renderArea: $content
+		});
 	};
 	
 	var renderSongList = function(e) {
@@ -33,20 +36,22 @@ require([
 			
 			var $p = $target.parent().find("p");
 			
-			if($p.not(":visible")) {
-				$p.stop(true).slideDown(300, function(){
+			if($p.is(":animated")) return;
+			
+			if($p.hasClass("hide");) {
+				$p.slideDown(300, function(){
 					$html.animate({
 						scrollTop: $target.offset().top - 20
 					}, 500);
-					$p.addClass("hide");
+					$p.removeClass("hide");
 				});
 			}
 			else {
-				$p.stop(true).slideUp(300, function(){
+				$p.slideUp(300, function(){
 					$html.animate({
 						scrollTop: $content.offset().top - 20
 					}, 500);
-					$p.removeClass("hide");
+					$p.addClass("hide");
 				});
 			}
 		}
