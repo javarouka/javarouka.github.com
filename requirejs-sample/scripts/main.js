@@ -13,7 +13,9 @@ require([
 			renderArea: $content
 		},
 		function() {
-			
+			$("form.add-form").submit(function(e) {
+				e.preventDefault();
+			});
 		});
 	};
 	
@@ -78,9 +80,6 @@ require([
 		var $target = $(e.target);
 		if($target.is("li.song-item h2")) {
 			toggleLyrics.apply($target, [e]);
-		}
-		if($target.is("form.add-form")) {
-			e.preventDefault();
 		}
 		if($target.is("form.add-form .btn-add-song")) {
 			addSong($target, $("form.add-form"));
