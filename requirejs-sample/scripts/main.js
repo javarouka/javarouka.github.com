@@ -11,11 +11,6 @@ require([
 	var insertNewSong = function(e) {
 		View.insertNewSong({
 			renderArea: $content
-		},
-		function() {
-			$("form.add-form").submit(function(e) {
-				e.preventDefault();
-			});
 		});
 	};
 	
@@ -87,6 +82,10 @@ require([
 	}
 	
 	var eventBind = function() {
+		
+		$("body form").live("submit", function(e) {
+			e.preventdefault();
+		});
 		
 		var $nav = $("nav");
 		var $anchorInNav = $("nav ul li a");
