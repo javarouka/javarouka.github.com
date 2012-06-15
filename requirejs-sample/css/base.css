@@ -53,6 +53,13 @@ nav {
 		list-style-type: disc;
 	}
 
+div span.nowloading {
+	text-align: center;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 120%;
+}
+
 article {
 	margin: 0 auto;
 	padding: 10px;
