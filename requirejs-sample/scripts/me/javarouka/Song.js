@@ -14,9 +14,14 @@ define([
 		return Storage.get(key);
 	};
 	
+	var persistRemote = function() {
+		throw new Error("not Implements...")
+	};
+	
 	return {
 		add: add,
-		getList: getList
+		getList: getList,
+		persistRemote: persistRemote
 	}
 	
 });
