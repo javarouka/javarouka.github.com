@@ -20,11 +20,13 @@ require([
 	 */
 	var eventSet = {
 		renderNewSongForm: function(e) {
+			e.stopImmediatePropagation();
 			View.renderNewSongForm({
 				renderArea: $content
 			});
 		},
 		renderSongList: function(e) {
+			e.stopImmediatePropagation();
 			var songs = Song.getList();
 			View.renderSongList({
 				renderArea: $content,
@@ -86,7 +88,6 @@ require([
 			if($target.is("a")) {
 				var linkUrl = $target.attr("href");
 				$target.trigger(("nav:" + linkUrl));
-				e.stopImmediatePropagation();
 			}
 		},
 		articleClicked: function(e) {
