@@ -23,19 +23,21 @@ require([
 		},
 		addSong: function($target, $form) {
 			var song = $form.serialize();
-		    var songData = {};
-		    var serialized = $form.serializeArray();
-		    $.each(serialized, function() {
-		        if (songData[this.name] !== undefined) {
-		            if (!songData[this.name].push) {
-		            	songData[this.name] = [o[this.name]];
-		            }
-		            songData[this.name].push(this.value || '');
-		        } else {
-		        	songData[this.name] = this.value || '';
-		        }
-		    });
-		    Song.add(songData);
+			var songData = {};
+			var serialized = $form.serializeArray();
+			$.each(serialized, function() {
+		        	if (songData[this.name] !== undefined) {
+		        		if (!songData[this.name].push) {
+		        			songData[this.name] = [o[this.name]];		        			
+		        		}
+		    	   		songData[this.name].push(this.value || '');
+		       		} 
+		       		else {
+		       			songData[this.name] = this.value || '';
+		       		}
+			});
+			Song.add(songData);
+			eventSet.renderSongList();
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
