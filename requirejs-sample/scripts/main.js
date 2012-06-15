@@ -108,8 +108,7 @@ require([
 	};
 	
 	var init = function() {
-		$content.hide();
-		eventBind();
+		$content.hide(600, eventBind);
 	};
 	
 	init();
