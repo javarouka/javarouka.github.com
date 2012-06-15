@@ -47,7 +47,6 @@ require([
 		       		}
 			});
 			Song.add(songData);
-			//eventSet.renderSongList();
 			$("nav").trigger("nav:#regist-song");
 		},
 		toggleLyrics: function(e) {
@@ -79,6 +78,7 @@ require([
 	 * 
 	 * navClicked nav를 클릭시 발생할 이벤트 델리게이터
 	 * articleClicked article을 클릭시 발생할 이벤트 델리게이터
+	 * hashChaged 해쉬 체인지 이벤트. 페이지 히스토리 기능
 	 */
 	var delegation = {
 		navClicked: function(e) {
