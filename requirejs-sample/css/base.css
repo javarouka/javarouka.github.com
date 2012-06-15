@@ -82,7 +82,7 @@ article {
 		-o-transition: all 0.5s;
 	}
 	article h2:HOVER {
-		padding-left: 20px;
+		padding-left: 30px;
 	}
 	article h3 {
 		font-size: 110%;
@@ -115,7 +115,7 @@ article {
 	article form textarea {
 		width: 80%;
 		min-width: 500px;
-		height: 400px;
+		height: 200px;
 	}
 	
 	article form textarea,
