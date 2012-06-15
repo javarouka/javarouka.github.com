@@ -82,7 +82,7 @@ article {
 		-o-transition: all 0.5s;
 	}
 	article h2:HOVER {
-		letter-spacing: 5px;
+		padding-left: 20px;
 	}
 	article h3 {
 		font-size: 110%;
