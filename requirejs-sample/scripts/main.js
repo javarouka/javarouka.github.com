@@ -86,6 +86,7 @@ require([
 			if($target.is("a")) {
 				var linkUrl = $target.attr("href");
 				$target.trigger(("nav:" + linkUrl));
+				e.stopImmediatePropagation();
 			}
 		},
 		articleClicked: function(e) {
