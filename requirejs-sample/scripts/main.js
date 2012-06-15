@@ -124,7 +124,7 @@ require([
 		$nav.click(function(e) {
 			$(e.target).trigger("nav:click");
 		});
-		$(window).bind("hashchange", hashChaged);
+		$(window).bind("hashchange", delegation.hashChaged);
 		
 		// 커스텀 이벤트 바인딩
 		$content.bind("article:click", delegation.articleClicked);
