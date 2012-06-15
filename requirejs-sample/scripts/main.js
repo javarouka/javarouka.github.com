@@ -20,13 +20,11 @@ require([
 	 */
 	var eventSet = {
 		renderNewSongForm: function(e) {
-			e.stopImmediatePropagation();
 			View.renderNewSongForm({
 				renderArea: $content
 			});
 		},
 		renderSongList: function(e) {
-			e.stopImmediatePropagation();
 			var songs = Song.getList();
 			View.renderSongList({
 				renderArea: $content,
@@ -99,7 +97,7 @@ require([
 				eventSet.addSong($target, $("form.add-form"));
 			}
 		},
-		hashChaged: function(e) {
+		hashChanged: function(e) {
 			var hash = window.location.hash;
 			$("nav ul li a").trigger(("nav:" + hash));
 		}
@@ -126,15 +124,13 @@ require([
 		$nav.click(function(e) {
 			$(e.target).trigger("nav:click");
 		});
-		$(window).bind("hashchange", delegation.hashChaged);
+		$(window).bind("hashchange", delegation.hashChanged);
 		
 		// 커스텀 이벤트 바인딩
 		$content.bind("article:click", delegation.articleClicked);
 		$nav.bind("nav:click", delegation.navClicked);
 		$anchorInNav.bind("nav:#view-song", eventSet.renderSongList);
 		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);
-		
-		
 		
 	};
 	
