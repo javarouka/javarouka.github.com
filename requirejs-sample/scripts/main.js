@@ -37,7 +37,8 @@ require([
 		       		}
 			});
 			Song.add(songData);
-			eventSet.renderSongList();
+			//eventSet.renderSongList();
+			$("nav").trigger("nav:#regist-song");
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
