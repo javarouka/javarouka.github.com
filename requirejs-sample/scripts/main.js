@@ -96,6 +96,10 @@ require([
 			if($target.is("form.add-form .btn-add-song")) {
 				eventSet.addSong($target, $("form.add-form"));
 			}
+		},
+		hashChaged: function(e) {
+			var hash = window.location.hash;
+			$("nav ul li a").trigger(("nav:" + hash));
 		}
 	}
 	
@@ -120,12 +124,15 @@ require([
 		$nav.click(function(e) {
 			$(e.target).trigger("nav:click");
 		});
+		$(window).bind("hashchange", hashChaged);
 		
 		// 커스텀 이벤트 바인딩
 		$content.bind("article:click", delegation.articleClicked);
 		$nav.bind("nav:click", delegation.navClicked);
 		$anchorInNav.bind("nav:#view-song", eventSet.renderSongList);
 		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);
+		
+		
 		
 	};
 	
