@@ -1,13 +1,23 @@
 require([
-    "jquery",
-    "me/javarouka/Song",
-    "me/javarouka/InnerHTMLView"
+    "jquery",						// 제이쿼리 라이브러리 모듈 ($)
+    "me/javarouka/Song",			// 노래 모델 모듈 (Song)
+    "me/javarouka/InnerHTMLView"	// HTML 삽입 뷰 모듈 (View)
 ], function($, Song, View) {
 	
-	var self = this;
+	// 컨텐트 영역
 	var $content = $("article");
+	
+	// 문서
 	var $html = $("html, body");
 	
+	/**
+	 * 실제 이벤트 함수들
+	 * 
+	 * renderNewSongForm 노래를 추가할 폼을 그린다
+	 * renderSongList 노래 리스트를 그린다
+	 * addSong 새로운 노래를 추가한다
+	 * toggleLyrics 가사 영역을 토글한다
+	 */
 	var eventSet = {
 		renderNewSongForm: function(e) {
 			View.renderNewSongForm({
@@ -64,6 +74,12 @@ require([
 		}
 	};
 	
+	/**
+	 * 이벤트 델리게이트 함수들
+	 * 
+	 * navClicked nav를 클릭시 발생할 이벤트 델리게이터
+	 * articleClicked article을 클릭시 발생할 이벤트 델리게이터
+	 */
 	var delegation = {
 		navClicked: function(e) {
 			var $target = $(e.target);
@@ -83,33 +99,37 @@ require([
 		}
 	}
 	
+	/**
+	 * 이벤트를 바인딩한다.
+	 * 
+	 * jQuery 커스텀 이벤트와 이벤트 델리게이트를 사용하여 바인딩했다.
+	 */
 	var eventBind = function() {
 		
 		var $nav = $("nav");
 		var $anchorInNav = $("nav ul li a");
 		
-		// 폼 기본동작 방지
+		// 폼 기본동작 방지하여 오동작을 막는다
 		$("body form").live("submit", function(e) {
 			e.preventDefault();
 		});
 		
-		// 컨텐트 클릭 이벤트 델리게이트
 		$content.click(function(e) {
 			$(e.target).trigger("article:click");
 		})
-		$content.bind("article:click", delegation.articleClicked);
-		
-		// 네비게이션 클릭 이벤트 델리게이트
 		$nav.click(function(e) {
 			$(e.target).trigger("nav:click");
 		});
 		
+		// 커스텀 이벤트 바인딩
+		$content.bind("article:click", delegation.articleClicked);
 		$nav.bind("nav:click", delegation.navClicked);
 		$anchorInNav.bind("nav:#view-song", eventSet.renderSongList);
 		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);
 		
 	};
 	
+	// 스크립트 로딩이 끝나면 이벤트 바인딩을 시작한다.
 	var init = function() {
 		$content.hide(600, eventBind);
 	};

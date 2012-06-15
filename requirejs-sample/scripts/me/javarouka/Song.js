@@ -3,6 +3,7 @@ define([
 ], function(Storage) {
 	
 	var key = "song";
+	var scope = "local";
 	
 	var add = function(song) {
 		var songs = getList();

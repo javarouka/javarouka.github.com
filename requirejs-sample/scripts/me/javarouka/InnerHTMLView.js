@@ -1,12 +1,23 @@
 define(function(Storage) {
 	
+	/**
+	 * Template-Callback 패턴 문맥 메소드
+	 * html 문자열을 생성하는 콜백을 받아 전체적인 처리를 한다.
+	 * 
+	 * @model 컨트롤러에서 생성한 모델 객체
+	 * @callback 문맥 중 실행할 함수
+	 * @complete 작업 완료 뒤 실행할 함수
+	 */
 	var renderTemplate = function(model, callback, complete) {
 		var $content = model.renderArea;
 		
 		$content.fadeOut(
 			300, 
 			function() {
-				$content.empty().html(callback(model.data));
+				
+				$content.empty().html(
+					callback(model.data) // 콜백 실행후 반환 결과를 컨텐트 HTML에 할당
+				);
 			
 				$content.fadeIn(600, function() {
 					if(complete && typeof complete === 'function') {
@@ -17,6 +28,12 @@ define(function(Storage) {
 		);
 	}
 	
+	/**
+	 * 노래를 추가할 새로운 폼을 그리는 함수
+	 * 
+	 * @model 모델 객체
+	 * @complete 완료 뒤 호출될 객체
+	 */
 	var renderNewSongForm = function(model, complete) {
 		
 		renderTemplate(model, function() {
@@ -40,6 +57,12 @@ define(function(Storage) {
 		}, complete);
 	};
 	
+	/**
+	 * 노래 목록을 그리는 함수
+	 * 
+	 * @model 모델 객체
+	 * @complete 완료 뒤 호출될 객체
+	 */
 	var renderSongList = function(model, complete) {
 		renderTemplate(model, function(songs) {
 			var html = "";
@@ -62,6 +85,7 @@ define(function(Storage) {
 		}, complete);
 	};
 	
+	// 공개될 함수
 	return {
 		renderSongList: renderSongList,
 		renderNewSongForm: renderNewSongForm
