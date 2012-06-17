@@ -1,3 +1,7 @@
+/**
+ * 메인 엔트리 코드
+ * 페이지의 컨트롤러(Controller).
+ */
 require([
     "jquery",						// 제이쿼리 라이브러리 모듈 ($)
     "me/javarouka/Song",			// 노래 모델 모듈 (Song)
@@ -47,7 +51,7 @@ require([
 		       		}
 			});
 			Song.add(songData);
-			$("nav").trigger("nav:#regist-song");
+			$("nav").trigger("nav:#view-song");
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
@@ -126,9 +130,12 @@ require([
 		});
 		$(window).bind("hashchange", delegation.hashChanged);
 		
-		// 커스텀 이벤트 바인딩
+		// jQuery 에서 지원하는 커스텀 이벤트 바인딩
 		$content.bind("article:click", delegation.articleClicked);
 		$nav.bind("nav:click", delegation.navClicked);
+		
+		// 해쉬 이름을 이벤트 핸들러랑 일치시켜, 
+		// 브라우저의 뒤로가기 및 앞으로 가기 기능 구현
 		$anchorInNav.bind("nav:#view-song", eventSet.renderSongList);
 		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);
 		

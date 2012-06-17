@@ -1,4 +1,7 @@
-define(function(Storage) {
+/**
+ * HTML을 생성하여 문서에 삽입하는 방식의 View 모듈
+ */
+define(function() {
 	
 	/**
 	 * Template-Callback 패턴 문맥 메소드

@@ -1,10 +1,14 @@
+/**
+ * LocalStorage를 사용한 스토리지 모듈
+ * 
+ * @dependency jQuery
+ */
 define([
     "jquery"
 ], 
-function($, Context, Logger) {
+function($) {
 	
 	var local = window.localStorage;
-	var session = window.sessionStorage;
 	
 	var add = function(key, val) {
 		if(key) {
