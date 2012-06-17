@@ -51,7 +51,7 @@ require([
 		       		}
 			});
 			Song.add(songData);
-			$("nav").trigger("nav:#view-song");
+			$("nav ul li a").trigger("nav:#view-song");
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
