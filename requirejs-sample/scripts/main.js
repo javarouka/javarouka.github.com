@@ -142,10 +142,8 @@ require([
 	
 	// 스크립트 로딩이 끝나면 이벤트 바인딩을 시작한다.
 	var init = function() {
-		$content.hide(600, function(){
-			eventBind();
-			window.location.hash = "#view-song";
-		});
+		eventBind();
+		window.location.hash = "#view-song";		
 	};
 	
 	init();
