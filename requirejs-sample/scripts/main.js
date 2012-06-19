@@ -145,7 +145,6 @@ require([
 		$content.hide(600, function(){
 			eventBind();
 			window.location.hash = "#view-song";
-			$("nav ul li a").trigger("nav:#view-song");
 		});
 	};
 	
