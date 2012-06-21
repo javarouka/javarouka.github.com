@@ -137,13 +137,13 @@ require([
 		// 해쉬 이름을 이벤트 핸들러랑 일치시켜, 
 		// 브라우저의 뒤로가기 및 앞으로 가기 기능 구현
 		$anchorInNav.bind("nav:#view-song", eventSet.renderSongList);
-		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);
-		
+		$anchorInNav.bind("nav:#regist-song", eventSet.renderNewSongForm);		
 	};
 	
 	// 스크립트 로딩이 끝나면 이벤트 바인딩을 시작한다.
 	var init = function() {
-		$content.hide(600, eventBind);
+		eventBind();
+		window.location.hash = "#view-song";		
 	};
 	
 	init();
