@@ -40,13 +40,14 @@ define([
 	};
 	
 	var detailView = function(record) {
-		$layerLIs.hide(200, function(){
-			var $layerLIs = $("#article-list ul li");
-			$layerLIs.each(function() {
+		var $UL = $("#article-list ul");
+		$UL.hide(200, function(){
+			var $LIs = $UL.find("li");
+			$LIs.each(function() {
 				var v = record[$(this).attr("data-value")];
 				$(this).text(v);
 			});
-			$layerLIs.show('normal');
+			$UL.show('normal');
 		})
 	};
 	
