@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단한 예제</title>
+</head>
+<body>
+<div id="wrapper">
+	
+	<header>
+		<h1>영화 목록</h1>
+		<p>영화 목록입니다. 데이터는 JSON 형식이고, 그리드는 ExtJS를 사용하였습니다</p>
+	</header>
+	
+	<section id="article-list">
+	</section>
+	
+	<footer>
+		<p>간단한 샘플입니다</p>
+	</footer>
+
+</div>
+<div id="detail-layer" class="x-hidden">
+	<ul>
+		<li data-value="id"></li>
+		<li data-value="title"></li>
+		<li data-value="desc"></li>
+	</ul>
+</div>
+<script data-main="scripts/main" src="scripts/ext-3.4.0/adapter/ext/ext-base.js"></script>
+<script data-main="scripts/main" src="scripts/ext-3.4.0/ext-all.js"></script>
+<script data-main="scripts/main" src="scripts/Context.js"></script>
+<script type="text/javascript">
+	GOLBAL_CONTEXT.COTEXT: "nuri",
+	GOLBAL_CONTEXT.GADGET = "List";
+</script>
+<script data-main="scripts/main" src="scripts/require-jquery.js"></script>
+</body>
+</html>
