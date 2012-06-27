@@ -16,7 +16,6 @@ header h1 {
 	font-size: 150%;
 }
 section#article-list ul {
-	width: 60%;
 	border: solid 1px #ccc;
 	margin-bottom: 15px;
 	border-radius: 8px;
