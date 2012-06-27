@@ -44,7 +44,7 @@ require([
 		});
 		desc = new Ext.Window({
             applyTo:'detail-layer',
-            title: I18N['detail-window-title']
+            title: I18N['detail-window-title'],
             layout:'fit',
             width:500,
             height:300,

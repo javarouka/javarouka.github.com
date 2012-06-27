@@ -13,6 +13,6 @@ require([
 	}
 	
 	return {
-		list: getArticleList
+		list: getUserInfo
 	}
 });
