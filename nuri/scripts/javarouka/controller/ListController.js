@@ -2,6 +2,7 @@ require([
     "jquery",
     "javarouka/model/User",
     "javarouka/model/Article",
+    "javarouka/view/ListView",
     "javarouka/utils/Logger"
 ], function($, User, Article, View, Logger) {
 

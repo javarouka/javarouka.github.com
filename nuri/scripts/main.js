@@ -12,7 +12,8 @@ require([
 	var controller = ControllerMap[GLOBAL_CONTEXT.GADGET];
 	
 	require([ 'javarouka/controller/' + controller ], function(Controller) {
-		Controller.execute(CONTEXT);
+		console.log(Controller);
+		//Controller.execute(CONTEXT);
 	});
 	
 });
