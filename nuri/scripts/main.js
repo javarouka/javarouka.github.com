@@ -9,7 +9,7 @@ require([
 		Detail: "DetailController"
 	}
 	
-	var controller = ControllerMap[CONTEXT.GADGET];
+	var controller = ControllerMap[GLOBAL_CONTEXT.GADGET];
 	
 	require([ 'controller/' + controller ], function(Controller) {
 		Controller.execute(CONTEXT);
