@@ -8,10 +8,12 @@ header, section, footer {
 	font-size: 13px;
 	margin: 10px 0px;
 }
-header h1 {
-	font-size: 150%;
+header {
 	border-bottom: dashed 1px #aaa;
 	padding-bottom: 5px;
+}
+header h1 {
+	font-size: 150%;
 }
 section#article-list ul {
 	width: 60%;
