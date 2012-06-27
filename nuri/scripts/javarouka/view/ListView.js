@@ -1,6 +1,6 @@
 require([
     "jquery",
-    "utils/Logger"
+    "javarouka/utils/Logger"
 ], function($, Logger) {
 	
 	var I18N = GOLBAL_CONTEXT.I18N;

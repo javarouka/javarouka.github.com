@@ -1,5 +1,5 @@
 require([
-    "utils/Logger"
+    "javarouka/utils/Logger"
 ], function(Logger) {
 
 	var CONTEXT = window.GLOBAL_CONTEXT;
@@ -11,7 +11,7 @@ require([
 	
 	var controller = ControllerMap[GLOBAL_CONTEXT.GADGET];
 	
-	require([ 'controller/' + controller ], function(Controller) {
+	require([ 'javarouka/controller/' + controller ], function(Controller) {
 		Controller.execute(CONTEXT);
 	});
 	

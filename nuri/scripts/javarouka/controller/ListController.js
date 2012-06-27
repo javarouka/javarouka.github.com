@@ -1,8 +1,8 @@
 require([
     "jquery",
-    "model/User",
-    "model/Article",
-    "utils/Logger"
+    "javarouka/model/User",
+    "javarouka/model/Article",
+    "javarouka/utils/Logger"
 ], function($, User, Article, View, Logger) {
 
 	var CONTEXT;
