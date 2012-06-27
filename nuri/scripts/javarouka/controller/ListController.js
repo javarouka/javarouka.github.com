@@ -13,6 +13,8 @@ define([
 	var articleGrid;
 	var articleStore;
 	
+	var $loadingIndicator = $("#loading-indicator");
+	
 	var renderArticleList = function() {
 		var parameters = {};  // 파라미터가 필요하면 입력
 		Article.list(
@@ -57,11 +59,17 @@ define([
 	}
 	
 	var execute = function(Context) {
+		
+		$loadingIndicator.show();
+		
 		CONTEXT = Context;
 		User.getUserInfo(function(user) {
 			userInfo = user;
 			init();
 			eventBind();
+			
+			$loadingIndicator.hide();
+			
 		});
 	}
 	
