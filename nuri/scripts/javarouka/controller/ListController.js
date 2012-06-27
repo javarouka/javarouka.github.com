@@ -35,9 +35,6 @@ define([
 				// 인자로 그리드 제목과 데이터스토어를 준다
 				articleGrid = View.renderList(articleStore);
 				
-				// 데이터스토어를 로드
-				articleStore.load();
-				
 				// 행 클릭 이벤트를 할당한다
 				articleGrid.on("rowclick", function(g, i, e) {
 					var record = g.getStore().getAt(i);
