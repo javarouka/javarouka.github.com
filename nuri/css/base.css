@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+#wrapper {
+	max-width: 900px;
+	min-width: 450px;
+}
+header, section, footer {
+	margin: 10px auto;
+	font-size: 12px;
+}
+
+section#article-list ul li {
+	margin-left: 20px;
+	padding: 2px;
+}
