@@ -2,11 +2,11 @@ require([
     "jquery",
     "model/User",
     "model/Article",
-    "model/ListView",
+    "view/ListView",
     "utils/Logger"
 ], function($, User, Article, View, Logger) {
 
-	var CONTEXT;;
+	var CONTEXT;
 	
 	var userInfo = {};
 	
