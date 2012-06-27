@@ -2,7 +2,6 @@ require([
     "jquery",
     "model/User",
     "model/Article",
-    "view/ListView",
     "utils/Logger"
 ], function($, User, Article, View, Logger) {
 
