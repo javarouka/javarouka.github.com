@@ -10,10 +10,8 @@ define([
 	
 	var userInfo = {};
 	
-	var articleGrid;
-	var articleStore;
-	
 	var $loadingIndicator = $("#loading-indicator");
+	var $UL = $("#article-list ul");
 	
 	var renderArticleList = function() {
 		var parameters = {};  // 파라미터가 필요하면 입력
@@ -22,7 +20,7 @@ define([
 			function(list) {
 				
 				// 그리드에 사용할 데이터스토어를 만든다
-				articleStore = new Ext.data.JsonStore({
+				var articleStore = new Ext.data.JsonStore({
 					idProperty: 'id',
 					root: "data",
 			        fields: [
@@ -35,10 +33,10 @@ define([
 				
 				// 그리드를 생성하고 반환받은 그리드를 변수에 할당
 				// 인자로 그리드 제목과 데이터스토어를 준다
-				articleGrid = View.renderList(articleStore);
+				var articleGrid = View.renderList(articleStore);
 				
 				// 행 클릭 이벤트를 할당한다
-				articleGrid.on("rowclick", function(g, i, e) {
+				var articleGrid.on("rowclick", function(g, i, e) {
 					var record = g.getStore().getAt(i);
 					if(record) {
 						View.detailView(record.data);
@@ -52,22 +50,22 @@ define([
 	}
 	
 	var eventBind = function() {
+		$UL.live("dblclick", function(e) {
+			$(this).stop(true).hide(600);
+		});
 	}
 	
 	var init = function() {
 		renderArticleList();
+		eventBind();
+		$loadingIndicator.hide();
 	}
 	
 	var execute = function(Context) {
-		
 		CONTEXT = Context;
 		User.getUserInfo(function(user) {
 			userInfo = user;
 			init();
-			eventBind();
-			
-			$loadingIndicator.hide();
-			
 		});
 	}
 	
