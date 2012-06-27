@@ -5,7 +5,7 @@ define([
 	
 	var getArticleList = function(parameters, success, failure) {
 		$.getJSON(
-			CONTEXT + "/scripts/data/articles.json",
+			"scripts/data/articles.json",
 			function(data) {
 				if(data && typeof failure === 'function') {
 					if(data.result === 'success') {

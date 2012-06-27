@@ -6,7 +6,7 @@ define([
 	
 	var getUserInfo = function(success, failure) {
 		$.getJSON(
-			CONTEXT + "/scripts/data/userinfo.json",
+			"scripts/data/userinfo.json",
 			success,
 			failure
 		);
