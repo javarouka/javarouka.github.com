@@ -13,6 +13,6 @@ define([
 	}
 	
 	return {
-		list: getUserInfo
+		getUserInfo: getUserInfo
 	}
 });
