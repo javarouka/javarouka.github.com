@@ -3,7 +3,7 @@ require([
     "javarouka/utils/Logger"
 ], function($, Logger) {
 	
-	var I18N = GOLBAL_CONTEXT.I18N;
+	var I18N = GLOBAL_CONTEXT.I18N;
 	
 	var desc;
 	
