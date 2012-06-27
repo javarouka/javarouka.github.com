@@ -2,9 +2,11 @@ require([
     "jquery"
 ], function($) {
 
+	var CONTEXT = GLOBAL_CONTEXT.CONTEXT;
+	
 	var getUserInfo = function(success, failure) {
 		$.getJSON(
-			"script/data/userinfo.json",
+			CONTEXT + "/scripts/data/userinfo.json",
 			success,
 			failure
 		);

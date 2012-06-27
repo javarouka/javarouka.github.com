@@ -1,10 +1,11 @@
 require([
     "jquery"
 ], function($) {
-
+	var CONTEXT = GLOBAL_CONTEXT.CONTEXT;
+	
 	var getArticleList = function(parameters, success, failure) {
 		$.getJSON(
-			"script/data/articles.json",
+			CONTEXT + "/scripts/data/articles.json",
 			function(data) {
 				if(data && typeof failure === 'function') {
 					if(data.result === 'success') {

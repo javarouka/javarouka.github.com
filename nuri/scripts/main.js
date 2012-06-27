@@ -1,6 +1,6 @@
 require([
     "utils/Logger"
-], function(GLOBAL, Logger) {
+], function(Logger) {
 
 	var CONTEXT = window.GLOBAL_CONTEXT;
 	
