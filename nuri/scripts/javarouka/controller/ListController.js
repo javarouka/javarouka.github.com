@@ -22,11 +22,13 @@ define([
 				// 그리드에 사용할 데이터스토어를 만든다
 				articleStore = new Ext.data.JsonStore({
 					idProperty: 'id',
+					root: "data",
 			        fields: [
 			            { name: 'id', type: 'string' },
 			            { name: 'title', type: 'string' },
 			            { name: 'desc', type: 'string' }
-			        ]
+			        ],
+			        data: list
 			    });
 				
 				// 그리드를 생성하고 반환받은 그리드를 변수에 할당
@@ -34,7 +36,7 @@ define([
 				articleGrid = View.renderList(articleStore);
 				
 				// 데이터스토어를 로드
-				articleStore.load(list.data);
+				articleStore.load();
 				
 				// 행 클릭 이벤트를 할당한다
 				articleGrid.on("rowclick", function(g, i, e) {
