@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>간단한 예제</title>
 <link rel="stylesheet" type="text/css" href="scripts/ext-3.4.0/resources/css/ext-all.css" media="all" />
+<link rel="stylesheet" type="text/css" href="scripts/ext-3.4.0/resources/css/ext-all.css" media="all" />
 </head>
 <body>
 <div id="wrapper">
@@ -14,19 +15,17 @@
 	</header>
 	
 	<section id="article-list">
+		<ul class="x-hidden">
+			<li data-value="id"></li>
+			<li data-value="title"></li>
+			<li data-value="desc"></li>
+		</ul>
 	</section>
 	
 	<footer>
 		<p>간단한 샘플입니다</p>
 	</footer>
 
-</div>
-<div id="detail-layer" class="x-hidden">
-	<ul>
-		<li data-value="id"></li>
-		<li data-value="title"></li>
-		<li data-value="desc"></li>
-	</ul>
 </div>
 <script data-main="scripts/main" src="scripts/ext-3.4.0/adapter/ext/ext-base.js"></script>
 <script data-main="scripts/main" src="scripts/ext-3.4.0/ext-all.js"></script>

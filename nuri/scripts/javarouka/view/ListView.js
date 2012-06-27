@@ -15,6 +15,10 @@ define([
 			title: I18N['article-title'],
 			store: store,
 			width: 300,
+			autoHeight: true,
+			viewConfig : {
+	            forceFit: true
+	        },
 			selModel: new Ext.grid.RowSelectionModel({
 	    		singleSelect: true
 	    	}),
@@ -36,27 +40,14 @@ define([
 	};
 	
 	var detailView = function(record) {
-		Logger.info(record);
-		var $layerLIs = $("#detail-layer li");
-		$layerLIs.each(function() {
-			var v = record[$(this).attr("data-value")];
-			$(this).text(v);
-		});
-		desc = new Ext.Window({
-            applyTo:'detail-layer',
-            title: I18N['detail-window-title'],
-            layout:'fit',
-            width:500,
-            height:300,
-            closeAction:'hide',
-            plain: true,
-            buttons: [{
-                text: I18N['detail-window-close'],
-                handler: function(){
-                	desc.hide();
-                }
-            }]
-        });
+		$layerLIs.hide(200, function(){
+			var $layerLIs = $("#article-list ul li");
+			$layerLIs.each(function() {
+				var v = record[$(this).attr("data-value")];
+				$(this).text(v);
+			});
+			$layerLIs.show('normal');
+		})
 	};
 	
 	return {
