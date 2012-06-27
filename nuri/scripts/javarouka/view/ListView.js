@@ -14,7 +14,7 @@ define([
 			renderTo: 'article-list',
 			title: I18N['article-title'],
 			store: store,
-			width: 200,
+			width: 300,
 			selModel: new Ext.grid.RowSelectionModel({
 	    		singleSelect: true
 	    	}),
