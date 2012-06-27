@@ -60,8 +60,6 @@ define([
 	
 	var execute = function(Context) {
 		
-		$loadingIndicator.show();
-		
 		CONTEXT = Context;
 		User.getUserInfo(function(user) {
 			userInfo = user;
