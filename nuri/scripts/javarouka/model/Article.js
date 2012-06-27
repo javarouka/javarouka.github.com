@@ -1,4 +1,4 @@
-require([
+define([
     "jquery"
 ], function($) {
 	var CONTEXT = GLOBAL_CONTEXT.CONTEXT;

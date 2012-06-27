@@ -1,4 +1,4 @@
-require([
+define([
     "jquery",
     "javarouka/utils/Logger"
 ], function($, Logger) {

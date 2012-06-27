@@ -1,4 +1,4 @@
-require([
+define([
     "jquery",
     "javarouka/model/User",
     "javarouka/model/Article",
@@ -51,9 +51,6 @@ require([
 	}
 	
 	var eventBind = function() {
-		$("div#detail-layer .close").live("click", function(e) {
-			$("div#detail-layer").hide('fast');
-		});
 	}
 	
 	var init = function() {
