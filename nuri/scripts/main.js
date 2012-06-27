@@ -9,15 +9,10 @@ require([
 		Detail: "DetailController"
 	}
 	
-	try {
-		var controller = ControllerMap[CONTEXT.GADGET];
-		
-		require([ 'controller/' + controller ], function(Controller) {
-			Controller.execute(CONTEXT);
-		});
-	}
-	catch(globalExeption) {
-		Logger.info(globalExeption);
-	}
+	var controller = ControllerMap[CONTEXT.GADGET];
+	
+	require([ 'controller/' + controller ], function(Controller) {
+		Controller.execute(CONTEXT);
+	});
 	
 });
