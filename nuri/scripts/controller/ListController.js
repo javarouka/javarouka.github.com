@@ -1,8 +1,8 @@
 require([
     "jquery",
-    "scripts/model/User",
-    "scripts/model/Article",
-    "scripts/utils/Logger"
+    "model/User",
+    "model/Article",
+    "utils/Logger"
 ], function($, User, Article, View, Logger) {
 
 	var CONTEXT;
