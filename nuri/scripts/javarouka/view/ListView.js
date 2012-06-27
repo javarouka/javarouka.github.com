@@ -51,7 +51,7 @@ require([
             closeAction:'hide',
             plain: true,
             buttons: [{
-                text: title: I18N['detail-window-close'],
+                text: I18N['detail-window-close'],
                 handler: function(){
                 	desc.hide();
                 }
