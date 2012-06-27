@@ -2,13 +2,19 @@
 #wrapper {
 	max-width: 900px;
 	min-width: 450px;
+	margin: 0px auto;
 }
 header, section, footer {
-	margin: 10px auto;
 	font-size: 12px;
+	margin: 10px 0px;
 }
-
 section#article-list ul li {
-	margin-left: 20px;
-	padding: 2px;
+	border: solid 1px #ccc;
+	margin-bottom: 15px;
+	border-radius: 8px;
+	padding: 10px;
 }
+	section#article-list ul li {
+		margin-left: 20px;
+		padding: 2px;
+	}
