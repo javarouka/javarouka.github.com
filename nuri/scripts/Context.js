@@ -1,4 +1,4 @@
-var GOLBAL_CONTEXT = {
+var GLOBAL_CONTEXT = {
 	GADGET: "",
 	CONTEXT: "",
 	I18N: {
