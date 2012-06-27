@@ -14,7 +14,7 @@ define([
 			renderTo: 'article-list',
 			title: I18N['article-title'],
 			store: store,
-			width: 300,
+			width: 500,
 			autoHeight: true,
 			viewConfig : {
 	            forceFit: true

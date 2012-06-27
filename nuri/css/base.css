@@ -5,14 +5,15 @@
 	margin: 0px auto;
 }
 header, section, footer {
-	font-size: 12px;
+	font-size: 13px;
 	margin: 10px 0px;
 }
-section#article-list ul li {
+section#article-list ul {
 	border: solid 1px #ccc;
 	margin-bottom: 15px;
 	border-radius: 8px;
 	padding: 10px;
+	box-shadow: 3px 3px 4px #ccc;
 }
 	section#article-list ul li {
 		margin-left: 20px;
