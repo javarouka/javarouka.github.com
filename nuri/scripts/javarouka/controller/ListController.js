@@ -26,13 +26,13 @@ define([
 				var articleStore = new Ext.data.JsonStore({
 					idProperty: 'id',
 					root: "data",
-			        fields: [
-			            { name: 'id', type: 'string' },
-			            { name: 'title', type: 'string' },
-			            { name: 'desc', type: 'string' }
-			        ],
-			        data: list
-			    });
+			        	fields: [
+			            		{ name: 'id', type: 'string' },
+			            		{ name: 'title', type: 'string' },
+			            		{ name: 'desc', type: 'string' }
+			        	],
+			        	data: list
+			    	});
 				
 				// 그리드를 생성하고 반환받은 그리드를 변수에 할당
 				// 인자로 그리드 제목과 데이터스토어를 준다
