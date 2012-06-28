@@ -18,7 +18,7 @@ define(function() {
 	
 	var info = function(obj) {
 		if(c && c.log) {
-			c.log(getTimeString(level.INFO) + obj);
+			c.log(getTimeString(level.INFO), obj);
 		}
 	};
 	
