@@ -9,6 +9,7 @@ define([
 	Logger.info("ListController loaded.");
 
 	var CONTEXT;
+	var Ext = window.Ext;
 	
 	var userInfo = {};
 	
