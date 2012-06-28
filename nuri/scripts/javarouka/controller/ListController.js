@@ -22,6 +22,9 @@ define([
 			parameters,
 			function(list) {
 				
+				Logger.info("## article datalist ##");
+				Logger.info(list);
+				
 				// 그리드에 사용할 데이터스토어를 만든다
 				var articleStore = new Ext.data.JsonStore({
 					idProperty: 'id',
