@@ -6,6 +6,8 @@ define([
     "javarouka/utils/Logger"
 ], function($, User, Article, View, Logger) {
 
+	Logger.info("ListController loaded.");
+
 	var CONTEXT;
 	
 	var userInfo = {};
@@ -14,6 +16,7 @@ define([
 	var $UL = $("#article-list ul");
 	
 	var renderArticleList = function() {
+		Logger.info("rendering article grid...");
 		var parameters = {};  // 파라미터가 필요하면 입력
 		Article.list(
 			parameters,
@@ -50,20 +53,25 @@ define([
 	}
 	
 	var eventBind = function() {
+		Logger.info("event binding...");
 		$UL.live("dblclick", function(e) {
 			$(this).stop(true).hide(600);
-		});
+		});		
 	}
 	
 	var init = function() {
 		renderArticleList();
 		eventBind();
 		$loadingIndicator.hide();
+		Logger.info("controller init complete.");
 	}
 	
 	var execute = function(Context) {
+		Logger.info("ListController execute...");
 		CONTEXT = Context;
 		User.getUserInfo(function(user) {
+			Logger.info("## User info ## ");
+			Logger.info(user);
 			userInfo = user;
 			init();
 		});
