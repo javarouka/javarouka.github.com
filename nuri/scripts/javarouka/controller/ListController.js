@@ -39,8 +39,10 @@ define([
 				var articleGrid = View.renderList(articleStore);
 				
 				// 행 클릭 이벤트를 할당한다
-				articleGrid.on("rowclick", function(g, i, e) {
+				articleGrid.on("rowclick", function(g, i, e) {					
 					var record = g.getStore().getAt(i);
+					Logger.info("## click record ##");
+					Logger.info(record);
 					if(record) {
 						View.detailView(record.data);
 					}
