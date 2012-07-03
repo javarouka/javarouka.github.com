@@ -1,10 +1,9 @@
 define([
-    "jquery",
-    "javarouka/model/User",
+    "jquery",    
     "javarouka/model/Article",
     "javarouka/view/ListView",
     "javarouka/utils/Logger"
-], function($, User, Article, View, Logger) {
+], function($, Article, View, Logger) {
 
 	Logger.info("ListController loaded.");
 
@@ -26,6 +25,7 @@ define([
 				Logger.info(list);
 				
 				// 그리드에 사용할 데이터스토어를 만든다
+				// @ dependancy Extjs
 				var articleStore = new Ext.data.JsonStore({
 					idProperty: 'id',
 					root: "data",
@@ -42,6 +42,7 @@ define([
 				var articleGrid = View.renderList(articleStore);
 				
 				// 행 클릭 이벤트를 할당한다
+				// @ dependancy Extjs
 				articleGrid.on("rowclick", function(g, i, e) {					
 					var record = g.getStore().getAt(i);
 					Logger.info("## click record ##");
@@ -74,11 +75,14 @@ define([
 	var execute = function(Context) {
 		Logger.info("ListController execute...");
 		CONTEXT = Context;
-		User.getUserInfo(function(user) {
-			Logger.info("## User info ## ");
-			Logger.info(user);
-			userInfo = user;
-			init();
+
+		require(["javarouka/model/User"], function() {
+			User.getUserInfo(function(user) {
+				Logger.info("## User info ## ");
+				Logger.info(user);
+				userInfo = user;
+				init();
+			});
 		});
 	}
 	

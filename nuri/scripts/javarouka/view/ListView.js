@@ -5,6 +5,10 @@ define([
 	
 	var I18N = GLOBAL_CONTEXT.I18N;
 	
+	/**
+	 * 그리드를 그린다
+	 * @ dependancy Extjs
+	 */
 	var renderList = function(store) {
 		var conf = {
 			id: "article-list-ex",
