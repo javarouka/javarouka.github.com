@@ -1,7 +1,7 @@
-require([ "/ext-3.4.0/adapter/ext/ext-base"], function() {
+require([ "ext-3.4.0/adapter/ext/ext-base"], function() {
 
 	require([
-		"scripts/ext-3.4.0/ext-all",
+		"ext-3.4.0/ext-all",
 	    "javarouka/utils/Logger"
 	], function(Logger) {
 
@@ -19,5 +19,5 @@ require([ "/ext-3.4.0/adapter/ext/ext-base"], function() {
 		});
 		
 	});
-	
+
 })
