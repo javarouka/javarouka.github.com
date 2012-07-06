@@ -21,7 +21,7 @@ define(function() {
 			if(typeof obj === 'object') {
 				c.group(getTimeString(level.INFO))
 				c.dir(obj);
-				c.groupEnd(getTimeString(level.INFO))
+				c.groupEnd()
 			}
 			else {
 				c.log(getTimeString(level.INFO), obj);
