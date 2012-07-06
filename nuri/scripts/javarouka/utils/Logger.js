@@ -19,7 +19,9 @@ define(function() {
 	var info = function(obj) {
 		if(c && c.log) {
 			if(typeof obj === 'object') {
-				c.dir(getTimeString(level.INFO), obj);
+				c.group(getTimeString(level.INFO))
+				c.dir(obj);
+				c.groupEnd(getTimeString(level.INFO))
 			}
 			else {
 				c.log(getTimeString(level.INFO), obj);
