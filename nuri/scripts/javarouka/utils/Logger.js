@@ -18,7 +18,12 @@ define(function() {
 	
 	var info = function(obj) {
 		if(c && c.log) {
-			c.log(getTimeString(level.INFO), obj);
+			if(typeof obj === 'object') {
+				c.dir(getTimeString(level.INFO), obj);
+			}
+			else {
+				c.log(getTimeString(level.INFO), obj);
+			}
 		}
 	};
 	
