@@ -76,7 +76,7 @@ define([
 		Logger.info("ListController execute...");
 		CONTEXT = Context;
 
-		require(["javarouka/model/User"], function() {
+		require(["javarouka/model/User"], function(User) {
 			User.getUserInfo(function(user) {
 				Logger.info("## User info ## ");
 				Logger.info(user);
