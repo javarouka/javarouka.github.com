@@ -1,9 +1,7 @@
 define([
     "jquery",    
-    "javarouka/model/Article",
-    "javarouka/view/ListView",
     "javarouka/utils/Logger"
-], function($, Article, View, Logger) {
+], function($, Logger) {
 
 	Logger.info("DetailController loaded.");
 
