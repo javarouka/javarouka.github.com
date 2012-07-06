@@ -1,8 +1,8 @@
-require([ "ext-3.4.0/adapter/ext/ext-base"], function() {
+require([ "ext-3.4.0/adapter/ext/ext-base" ], function() {
 
 	require([
-		"ext-3.4.0/ext-all",
-	    "javarouka/utils/Logger"
+		"javarouka/utils/Logger",
+		"ext-3.4.0/ext-all"	    
 	], function(Logger) {
 
 		var CONTEXT = window.GLOBAL_CONTEXT;
