@@ -27,17 +27,14 @@ define([
 	var getArticleDataStore = function(option) {
 		return new Ext.data.JsonStore({
 	        root: 'data',
-	        totalProperty: 'totalCount',
+	        url: 'scripts/data/articles.json',
+	        totalProperty: 'count',
 	        idProperty: 'id',
 	        fields: [
             		{ name: 'id', type: 'string' },
             		{ name: 'title', type: 'string' },
             		{ name: 'desc', type: 'string' }
-        	],
-	        proxy: new Ext.data.HttpProxy({
-	            url: 'scripts/data/articles.json'
-	        }),
-	        autoLoad: true
+        	]
 	    });
 	}
 	
