@@ -1,6 +1,5 @@
 define([
     "jquery",    
-    
     "javarouka/view/ListView",
     "javarouka/utils/Logger"
 ], function($, View, Logger) {
