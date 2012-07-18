@@ -25,20 +25,10 @@ define([
 	}
 
 	var getArticleDataStore = function(option) {
-		// return new Ext.data.JsonStore({
-		// 	idProperty: 'id',
-		// 	root: "data",
-  //       	fields: [
-  //           		{ name: 'id', type: 'string' },
-  //           		{ name: 'title', type: 'string' },
-  //           		{ name: 'desc', type: 'string' }
-  //       	],
-  //       	data: option.data
-  //   	});
 		return new Ext.data.JsonStore({
-	        root: 'topics',
+	        root: 'data',
 	        totalProperty: 'totalCount',
-	        idProperty: 'data',
+	        idProperty: 'id',
 	        fields: [
             		{ name: 'id', type: 'string' },
             		{ name: 'title', type: 'string' },
