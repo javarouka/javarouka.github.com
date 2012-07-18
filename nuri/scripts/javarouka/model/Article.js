@@ -34,7 +34,8 @@ define([
             		{ name: 'id', type: 'string' },
             		{ name: 'title', type: 'string' },
             		{ name: 'desc', type: 'string' }
-        	]
+        	],
+    		autoLoad: true
 	    });
 	}
 	
