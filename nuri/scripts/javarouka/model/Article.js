@@ -36,7 +36,8 @@ define([
         	],
 	        proxy: new Ext.data.HttpProxy({
 	            url: 'scripts/data/articles.json'
-	        })
+	        }),
+	        autoLoad: true
 	    });
 	}
 	
