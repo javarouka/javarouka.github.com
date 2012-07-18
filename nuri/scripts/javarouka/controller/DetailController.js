@@ -12,7 +12,7 @@ define([
 		CONTEXT = Context;
 
 		throw new Error({
-			code: 500,
+			httpErrorCode: 500,
 			msg: "not implements",
 			file: CONTEXT.CONTEXT + "javarouka/controller/DetailController.js"
 		});

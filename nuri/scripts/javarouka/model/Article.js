@@ -23,8 +23,35 @@ define([
 			}
 		);
 	}
+
+	var getArticleDataStore = function(option) {
+		// return new Ext.data.JsonStore({
+		// 	idProperty: 'id',
+		// 	root: "data",
+  //       	fields: [
+  //           		{ name: 'id', type: 'string' },
+  //           		{ name: 'title', type: 'string' },
+  //           		{ name: 'desc', type: 'string' }
+  //       	],
+  //       	data: option.data
+  //   	});
+		return new Ext.data.JsonStore({
+	        root: 'topics',
+	        totalProperty: 'totalCount',
+	        idProperty: 'data',
+	        fields: [
+            		{ name: 'id', type: 'string' },
+            		{ name: 'title', type: 'string' },
+            		{ name: 'desc', type: 'string' }
+        	],
+	        proxy: new Ext.data.HttpProxy({
+	            url: 'scripts/data/articles.json'
+	        })
+	    });
+	}
 	
 	return {
-		list: getArticleList
+		list: getArticleList,
+		getArticleDataStore: getArticleDataStore
 	}
 });
