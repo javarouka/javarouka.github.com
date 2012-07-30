@@ -20,7 +20,7 @@
 		<div id="robot-container">
 		</div>
 		<div id="controller-panel">
-			<button data-module="frame">기본 프레임 설계<button>
+			<button data-module="frame">기본 프레임 설계</button>
 			<button data-module="body">몸통 조립</button>
 			<button data-module="etc">얼굴 다리 팔 조립</button>
 			<button data-module="paint">도색</button>
@@ -83,7 +83,7 @@ $(document).ready(function(e) {
 		};
 
 		var eventBinding = function() {
-			$buttons.live("click", doWork);
+			$buttons.bind("click", doWork);
 		};
 
 	});
