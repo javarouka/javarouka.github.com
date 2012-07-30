@@ -8,7 +8,7 @@ define([
 	var paint = function($robot) {
 
 		if(executed) {
-			Logger.log("이미 칠했습니다.");
+			Logger.error("이미 칠했습니다.");
 			return;
 		}
 

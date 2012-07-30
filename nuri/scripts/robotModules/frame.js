@@ -8,7 +8,7 @@ define([
 	var build = function() {
 
 		if(isBuild) {
-			Logger.log("이미 만들었습니다.");
+			Logger.error("이미 만들었습니다.");
 			return;
 		}
 

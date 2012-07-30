@@ -8,15 +8,17 @@ define([
 	var build = function() {
 
 		if(isBuild) {
-			Logger.log("이미 만들었습니다.");
+			Logger.error("이미 만들었습니다.");
 			return;
 		}
-		
+
 		Logger.log("몸통을 만들고 있습니다.");
 
 		var body = $("<div>몸통<div>");
 
 		Logger.log("완료되었습니다.");
+
+		isBuild = true;
 
 		return body;
 	};

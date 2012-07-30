@@ -53,6 +53,8 @@ $(document).ready(function(e) {
 	// 인자의 이름은 뭘 줘도 상관없지만 편의상 $를 사용하였다.
 	require([ "jquery" ], function($) {
 
+		$("#loading-indicator").hide('slow');
+
 		$robotContainer = $("#robot-container");
 		$controllerPanel = $("#controller-panel");
 		$buttons = $controllerPanel.find("button");
@@ -67,6 +69,10 @@ $(document).ready(function(e) {
 			// 지정된 파일이 로드되기 전까지는 아래 코드는 수행되지 않고 블럭된다.
 			// 그렇다고 화면이 멈추는건 아니고 
 			// 모듈 로딩이 Ajax 처럼 비동기적으로 수행될 뿐이다.
+			// 해당 모듈은 한번 로딩되고 수행되고 나면 다시는 다시 생성되지 않고,
+			// 다시 로드할 경우 예전에 로드된 모듈이 반환된다.
+			//
+			// 스프링 프레임워크의 ApplicationContext에 등록된 빈같은 싱글톤이 된다.
 			require([ workName ], function(Work) {
 
 				// 워킹 모듈일 경우 빌드작업을 수행

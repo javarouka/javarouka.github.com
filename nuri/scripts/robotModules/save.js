@@ -8,7 +8,7 @@ define([
 	var saveOurEarth = function($robot) {
 
 		if(executed) {
-			Logger.log("이미 출동했습니다.");
+			Logger.error("이미 출동했습니다.");
 			return;
 		}
 
