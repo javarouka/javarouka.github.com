@@ -17,11 +17,18 @@ define([
 		}
 
 		Logger.log("출동합니다.");
-		
+
+		var w = $robot.width();
+		var h = $robot.height();
+
 		$robot.css("position", "relative").animate({
 			right: -9000,
-			bottom: -5000
-		}, 2000);		
+			bottom: -5000,
+			width: w * 2,
+			height: h * 2,
+		}, 4000, function() {
+			$robot.hide();
+		});		
 
 		executed = true;
 	};
