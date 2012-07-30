@@ -5,7 +5,7 @@ define([
 
 	var executed = false;
 
-	var paint = function($robot) {
+	var saveOurEarth = function($robot) {
 
 		if(executed) {
 			Logger.log("이미 출동했습니다.");

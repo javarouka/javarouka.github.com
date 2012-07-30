@@ -14,6 +14,8 @@ define([
 
 		Logger.log("페인트를 칠하고 있습니다.");
 		Logger.log("완료되었습니다.");
+
+		executed = true;
 	};
 
 	var isComplete = function() {

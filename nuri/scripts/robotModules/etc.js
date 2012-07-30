@@ -18,6 +18,8 @@ define([
 
 		Logger.log("완료되었습니다.");
 
+		isBuild = true;
+
 		return etc;
 	};
 
