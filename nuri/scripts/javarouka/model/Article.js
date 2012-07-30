@@ -23,8 +23,24 @@ define([
 			}
 		);
 	}
+
+	var getArticleDataStore = function(option) {
+		return new Ext.data.JsonStore({
+	        root: 'data',
+	        url: 'scripts/data/articles.json',
+	        totalProperty: 'count',
+	        idProperty: 'id',
+	        fields: [
+            		{ name: 'id', type: 'string' },
+            		{ name: 'title', type: 'string' },
+            		{ name: 'desc', type: 'string' }
+        	],
+    		autoLoad: true
+	    });
+	}
 	
 	return {
-		list: getArticleList
+		list: getArticleList,
+		getArticleDataStore: getArticleDataStore
 	}
 });
