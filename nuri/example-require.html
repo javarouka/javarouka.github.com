@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RequireJS의 간단한 예제</title>
+<link rel="stylesheet" type="text/css" href="scripts/ext-3.4.0/resources/css/ext-all.css" media="all" />
+<link rel="stylesheet" type="text/css" href="scripts/ext-3.4.0/resources/css/ext-all.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
+</head>
+<body>
+<div id="wrapper">
+	
+	<header>
+		<h1>로봇 조립</h1>
+		<p>로봇의 각 부분을 모듈이라고 생각합니다.</p>
+	</header>
+	
+	<section id="article-list">
+		<div id="loading-indicator">Loading...</div>
+		<div id="robot-container">
+		</div>
+		<div id="controller-panel">
+			<button data-module="frame">기본 프레임 설계<button>
+			<button data-module="body">몸통 조립</button>
+			<button data-module="etc">얼굴 다리 팔 조립</button>
+			<button data-module="paint">도색</button>
+			<button data-module="save">지구를 구하러 떠나기</button>
+		</div>
+	</section>
+	
+	<footer>
+		<p>
+			간단한 샘플입니다<br/>
+			<address><a href="http://blog.javarouka.me/">blog.javarouka.me</a></address>
+		</p>
+	</footer>
+
+</div>
+
+<!-- page scripts -->
+<script type="text/javascript" src="scripts/require-jquery.js"></script>
+<script>
+$(document).ready(function(e) {
+
+	// require는 코드간 의존성을 정의하는 함수.
+	// java의 import 구문이라고 생각하면 된다.
+	// 자바와는 다르게 import 후 따로 생성하거나 @Autowired 등으로 
+	// DI받을 필요 없이 자동으로 그 모듈이 생성되어 뒤의 함수의 인자로 전달된다.
+	// 한번 생성된 모듈은 캐시되어 다시 생성되지 않는 싱글톤 형식이다.
+	// 
+	// 이 코드는 jQuery가 필요하며 jQuery를 서버에서 다운로드받아 페이지에 로드하기
+	// 전까지 대기하겠다는 뜻이다.
+	// 인자의 이름은 뭘 줘도 상관없지만 편의상 $를 사용하였다.
+	require([ "jquery" ], function($) {
+
+		$robotContainer = $("#robot-container");
+		$controllerPanel = $("#controller-panel");
+		$buttons = $controllerPanel.find("button");
+
+		var doWork = function(e) {
+			var $target = $(e.target);
+
+			var workPart = target.attr("data-module");
+			var workName = "scripts/robotModules/" + module;
+
+			// 코드 중간에 자바스크립트 파일을 로딩한다.
+			// 지정된 파일이 로드되기 전까지는 아래 코드는 수행되지 않고 블럭된다.
+			// 그렇다고 화면이 멈추는건 아니고 
+			// 모듈 로딩이 Ajax 처럼 비동기적으로 수행될 뿐이다.
+			require([ workName ], function(Work) {
+
+				// 워킹 모듈일 경우 빌드작업을 수행
+				if(Work.build) {
+					var buildedModule = Work.build();
+					$robotContainer.append(buildedModule);
+				}
+
+				// 수행 모듈일 경우 액션을 실행
+				if(Work.execute) {
+					Work.execute($robotContainer);
+				}				
+			});
+		};
+
+		var eventBinding = function() {
+			$buttons.live("click", doWork);
+		};
+
+	});
+
+})
+</script>
+</body>
+</html>
