@@ -61,7 +61,7 @@ $(document).ready(function(e) {
 			var $target = $(e.target);
 
 			var workPart = $target.attr("data-module");
-			var workName = "scripts/robotModules/" + module;
+			var workName = "scripts/robotModules/" + workPart;
 
 			// 코드 중간에 자바스크립트 파일을 로딩한다.
 			// 지정된 파일이 로드되기 전까지는 아래 코드는 수행되지 않고 블럭된다.
