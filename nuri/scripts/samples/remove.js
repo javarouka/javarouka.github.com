@@ -19,7 +19,6 @@ define([
 		    var ctx = canvas.getContext('2d');
 		    ctx.fillStyle = "#ffffff";
 		    ctx.fill();
-		    ctx.beginPath();
 			Logger.error("지웠습니다.");
 		});		
 	};
