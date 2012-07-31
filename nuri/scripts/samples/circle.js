@@ -7,31 +7,27 @@ define([
 	"scripts/samples/Logger"
 ], function($, Logger) {
 
+	function fn = function() {
+		Logger.log($canvasContainer.attr("id") + "에 그리고 있습니다.");
+		var canvas = $canvasContainer.find("canvas")[0];
+
+		var ctx = canvas.getContext("2d");
+
+		ctx.beginPath();
+		ctx.arc(100, 175, 70, 0, Math.PI*2, true); 
+		ctx.closePath();
+		ctx.fillStyle = "#ffc821";
+		ctx.fill();
+	}
+
 	var paint = function($canvasContainer, callback) {
-
-		function fn = function() {
-			var canvas = $canvasContainer.find("canvas")[0];
-
-			var ctx = canvas.getContext("2d");
-
-			ctx.beginPath();
-			ctx.arc(100, 175, 70, 0, Math.PI*2, true); 
-			ctx.closePath();
-			ctx.fillStyle = "#ffc821";
-			ctx.fill();
-		}
 
 		if(!$canvasContainer.is(":visible")) {
 			$canvasContainer.show("normal", fn);
 		}
 		else {
 			fn();
-		}
-
-		Logger.log($canvasContainer.attr("id") + "에 그리고 있습니다.");
-
-		
-
+		}		
 		Logger.log("완료되었습니다.");
 	};
 
