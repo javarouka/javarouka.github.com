@@ -11,20 +11,20 @@
 <div id="wrapper">
 	
 	<header>
-		<h1>로봇 조립</h1>
-		<p>로봇의 각 부분을 모듈이라고 생각합니다.</p>
+		<h1>도형 그리기</h1>
+		<p>각 도형을 모듈이라고 생각합니다.</p>
 	</header>
 	
 	<section id="article-list">
 		<div id="loading-indicator">Loading...</div>
-		<div id="robot-container">
+		<div id="canvas-container" style="overflow: hidden;">
+			<canvas id="canvas" width="400", height="300"></canvas>
 		</div>
 		<div id="controller-panel" style="border: solid 1px #ccc;">
-			<button data-module="frame">기본 프레임 설계</button>
-			<button data-module="body">몸통 조립</button>
-			<button data-module="etc">얼굴 다리 팔 조립</button>
-			<button data-module="paint">도색</button>
-			<button data-module="save">지구를 구하러 떠나기</button>
+			<button data-module="circle">원 그리기</button>
+			<button data-module="square">사각형 그리기</button>
+			<button data-module="triangle">삼각형 그리기</button>
+			<button data-module="remove">모두 지우기</button>
 		</div>
 	</section>
 	
@@ -55,7 +55,7 @@ $(document).ready(function(e) {
 
 		$("#loading-indicator").hide('slow');
 
-		$robotContainer = $("#robot-container");
+		$container = $("#canvas-container");
 		$controllerPanel = $("#controller-panel");
 		$buttons = $controllerPanel.find("button");
 
@@ -63,27 +63,33 @@ $(document).ready(function(e) {
 			var $target = $(e.target);
 
 			var workPart = $target.attr("data-module");
-			var workName = "scripts/robotModules/" + workPart;
+			var workName = "scripts/samples/" + workPart;
 
-			// 코드 중간에 자바스크립트 파일을 로딩한다.
+			// require를 사용하여 코드 중간에 자바스크립트 파일을 비동기 로딩한다.
 			// 지정된 파일이 로드되기 전까지는 아래 코드는 수행되지 않고 블럭된다.
 			// 그렇다고 화면이 멈추는건 아니고 
 			// 모듈 로딩이 Ajax 처럼 비동기적으로 수행될 뿐이다.
 			// 해당 모듈은 한번 로딩되고 수행되고 나면 다시는 다시 생성되지 않고,
 			// 다시 로드할 경우 예전에 로드된 모듈이 반환된다.
+			// 
+			// 원 그리기 버튼을 눌렀을 경우, 모듈 이름은 scripts/samples/circle 이 되며
+			// 경로 이름은 //{컨텍스트}/nuri/scripts/samples/circle.js 이 된다.
 			//
 			// 스프링 프레임워크의 ApplicationContext에 등록된 빈같은 싱글톤이 된다.
 			require([ workName ], function(Work) {
 
-				// 워킹 모듈일 경우 빌드작업을 수행
-				if(Work.build) {
-					var buildedModule = Work.build();
-					$robotContainer.append(buildedModule);
+				// 행동 조사 타입식별(Duck-Typing)으로 모듈의 인터페이스를 구분한다.
+
+				// 그리기 모듈일 경우 빌드작업을 수행
+				if(Work.paint) {
+					var buildedModule = Work.paint($container, function() {
+
+					});					
 				}
 
 				// 수행 모듈일 경우 액션을 실행
 				if(Work.execute) {
-					Work.execute($robotContainer);
+					Work.execute($container);
 				}				
 			});
 		};
