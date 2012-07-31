@@ -15,7 +15,7 @@ define([
 		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
-		ctx.arc(75, 75, 200, 0, Math.PI*2, true); 
+		ctx.arc(75, 75, 100, 0, Math.PI*2, true); 
 		ctx.closePath();
 		ctx.fillStyle = "#ffc821";
 		ctx.fill();
