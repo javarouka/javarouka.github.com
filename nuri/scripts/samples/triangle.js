@@ -7,7 +7,7 @@ define([
 	"scripts/samples/Logger"
 ], function($, Logger) {
 
-	function fn = function() {
+	var fn = function() {
 		Logger.log($canvasContainer.attr("id") + "에 그리고 있습니다.");
 		
 		var canvas = $canvasContainer.find("canvas")[0];
