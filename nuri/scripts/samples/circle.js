@@ -15,12 +15,12 @@ define([
 		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
-		ctx.arc(75, 75, 10, 0, Math.PI*2, true); 
+		ctx.arc(275, 275, 10, 0, Math.PI*2, true); 
 		ctx.closePath();
+		ctx.fillStyle = "#ffc821";
 		ctx.fill();
 
 		Logger.log("완료되었습니다.");
-		return body;
 	};
 
 	return {

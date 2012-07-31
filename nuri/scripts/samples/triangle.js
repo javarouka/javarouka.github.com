@@ -15,9 +15,9 @@ define([
 		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
-		ctx.moveTo(padding + width/2, padding);
-		ctx.lineTo(padding + width, height + padding);
-		ctx.lineTo(padding, height + padding);
+		ctx.moveTo(padding + 200/2, 20);
+		ctx.lineTo(padding + 200, 125 + 20);
+		ctx.lineTo(padding, 125 + 20);
 		ctx.closePath();
 		
 		ctx.fillStyle = "#ffc821";
