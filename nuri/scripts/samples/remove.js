@@ -17,7 +17,8 @@ define([
 		$canvasContainer.fadeOut(2000, function() {
 		    var canvas = $canvasContainer.find("canvas")[0];
 		    var ctx = canvas.getContext('2d');
-		    ctx.clearRect(0, 0, canvas.width, canvas.height);
+		    ctx.fillStyle = "#ffffff";
+		    ctx.fill();
 		    ctx.beginPath();
 			Logger.error("지웠습니다.");
 		});		
