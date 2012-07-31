@@ -7,9 +7,9 @@ define([
 	"scripts/samples/Logger"
 ], function($, Logger) {
 
-	var fn = function() {
+	var paint = function($canvasContainer, callback) {
 		Logger.log($canvasContainer.attr("id") + "에 그리고 있습니다.");
-		
+
 		var canvas = $canvasContainer.find("canvas")[0];
 
 		var ctx = canvas.getContext("2d");
@@ -22,24 +22,6 @@ define([
 		
 		ctx.fillStyle = "green";
 		ctx.fill();
-	}
-
-	var paint = function($canvasContainer, callback) {		
-
-		function fn = function() {
-			var canvas = $canvasContainer.find("canvas")[0];
-
-			var ctx = canvas.getContext("2d");
-
-			ctx.beginPath();
-			ctx.moveTo(60 + 135/2, 60);
-			ctx.lineTo(60 + 135, 125 + 60);
-			ctx.lineTo(60, 125 + 60);
-			ctx.closePath();
-			
-			ctx.fillStyle = "green";
-			ctx.fill();
-		}
 
 		if(!$canvasContainer.is(":visible")) {
 			$canvasContainer.show("normal", fn);
