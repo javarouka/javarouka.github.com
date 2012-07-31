@@ -23,13 +23,6 @@ define([
 		ctx.fillStyle = "green";
 		ctx.fill();
 
-		if(!$canvasContainer.is(":visible")) {
-			$canvasContainer.show("normal", fn);
-		}
-		else {
-			fn();
-		}
-
 		Logger.log("완료되었습니다.");
 	};
 
