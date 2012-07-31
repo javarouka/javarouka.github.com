@@ -1,6 +1,6 @@
 define([
 	"jquery",
-	"scripts/robotModules/Logger"
+	"scripts/samples/Logger"
 ], function($, Logger) {
 
 	var executed = false;

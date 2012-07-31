@@ -15,9 +15,9 @@ define([
 		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
-		ctx.moveTo(20 + 200/2, 20);
-		ctx.lineTo(20 + 200, 125 + 20);
-		ctx.lineTo(20, 125 + 20);
+		ctx.moveTo(60 + 135/2, 60);
+		ctx.lineTo(60 + 135, 125 + 60);
+		ctx.lineTo(60, 125 + 60);
 		ctx.closePath();
 		
 		ctx.fillStyle = "green";
