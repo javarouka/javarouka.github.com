@@ -59,6 +59,7 @@ $(document).ready(function(e) {
 		$controllerPanel = $("#controller-panel");
 		$buttons = $controllerPanel.find("button");
 
+		// 버튼 핸들러 함수
 		var doWork = function(e) {
 			var $target = $(e.target);
 
@@ -94,15 +95,17 @@ $(document).ready(function(e) {
 			});
 		};
 
+		// 이벤트 바인딩 함수.
 		var eventBinding = function() {
 			$buttons.bind("click", doWork);
 		};
 
+		// 초기화 코드
 		eventBinding();
 
 	});
+});
 
-})
 </script>
 </body>
 </html>
