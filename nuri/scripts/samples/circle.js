@@ -8,11 +8,11 @@ define([
 ], function($, Logger) {
 
 	var paint = function($canvasContainer, callback) {
-		Logger.log($canvas.attr("id") + "에 그리고 있습니다.");
+		Logger.log($canvasContainer.attr("id") + "에 그리고 있습니다.");
 
 		var canvas = $canvasContainer.find("canvas")[0];
 
-		var ctx = $('#canvas')[0].getContext("2d");
+		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
 		ctx.arc(75, 75, 10, 0, Math.PI*2, true); 

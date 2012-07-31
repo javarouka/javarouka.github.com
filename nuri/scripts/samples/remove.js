@@ -5,16 +5,16 @@ define([
 
 	var executed = false;
 
-	var remove = function($canvas, callback) {
+	var remove = function($canvasContainer, callback) {
 		
-		if($canvas.size() < 1) {
+		if($canvasContainer.size() < 1) {
 			Logger.error("지울 도형이 없습니다.");
 			return;
 		}
-		var w = $canvas.width();
-		var h = $canvas.height();
+		var w = $canvasContainer.width();
+		var h = $canvasContainer.height();
 
-		$canvas.css("position", "relative").animate({
+		$canvasContainer.css("position", "relative").animate({
 			right: -9000,
 			bottom: -5000,
 			width: w * 2,
