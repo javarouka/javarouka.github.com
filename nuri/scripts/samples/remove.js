@@ -12,11 +12,14 @@ define([
 			return;
 		}
 	    var canvas = $canvasContainer.find("canvas")[0];
+
+	    console.log($canvasContainer.find("canvas"));
+
 	    var ctx = canvas.getContext('2d');
 	    ctx.fillStyle = "#ffffff";
 	    ctx.fill();
-	    
-		Logger.error("지웠습니다.");
+
+		Logger.log("지웠습니다.");
 	};
 
 	return {
