@@ -15,12 +15,12 @@ define([
 		var ctx = canvas.getContext("2d");
 
 		ctx.beginPath();
-		ctx.moveTo(padding + 200/2, 20);
-		ctx.lineTo(padding + 200, 125 + 20);
-		ctx.lineTo(padding, 125 + 20);
+		ctx.moveTo(20 + 200/2, 20);
+		ctx.lineTo(20 + 200, 125 + 20);
+		ctx.lineTo(20, 125 + 20);
 		ctx.closePath();
 		
-		ctx.fillStyle = "#ffc821";
+		ctx.fillStyle = "green";
 		ctx.fill();
 
 		Logger.log("완료되었습니다.");
