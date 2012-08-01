@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" media="screen" type="text/css" href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" />
+<link rel="stylesheet" media="screen" type="text/css" href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" />
+	<style type="text/css">
+		@charset "utf-8";
+		body{
+			font: 14px/1.5 Dotum, Verdana, AppleGothic, Sans-serif;
+			padding:20px 0;
+			color : #666;
+			background-color:/*@background-color=#ddd*/#ddd/*@*/;
+		}
+		hr {
+			display:none;
+		}
+		button.retry {
+		         width: 100px;
+		         font-style: normal;
+		         color: red;        
+		}
+		#container h3 {
+			transition:all 0.7s ease;
+			-moz-transition:all 0.7s ease;
+			-webkit-transition:all 0.7s ease;
+			-o-transition:all 0.7s ease;
+		}
+		#container h3:hover {
+			-moz-transform: translate(40px);
+			-webkit-transform: translate(40px);
+			-o-transform: translate(40px);
+			transform: translate(40px);
+		}
+	</style>
+</head>
+<body>
+<h1>JavaScript Basic Quiz</h1>
+<p>
+아래 문제 공통으로, 각 문제마다 <strong style='color: red;'>별도로 문맥이 존재</strong>한다고 가정하고, 아무런 <strong style='color: red;'>외부 변수 선언상태가 없는 깨끗한 문맥</strong>이라고 가정합니다.
+</p>
+<!--
+<p>
+<span style='text-decoration: underline'>문제 타이틀을 더블 클릭</span>하면 문제를 토글합니다.
+</p>
+-->
+<div style="height: 1px; background-color: #ccc; padding: 0px;">&nbsp;</div>
+
+<h3>#1 Scope - strArray.join의 값</h3>
+<div class="quiz">
+<pre class="brush: js">
+var a = "xhtml";
+b = "css3.0";
+function setUp() {
+	var a = "html5";
+	b = "css2.0";
+	c = "javascript";
+}
+setUp();
+
+var strArray = [ a, b, c ];
+strArray.join(', '); // ???
+</pre>
+<ol>	
+	<li><input name="q1" value="1" type="radio"/>html5, css3.0, undefined</li>
+	<li><input name="q1" value="2" type="radio"/>Error</li>
+	<li><input name="q1" value="3" type="radio"/>xhtml, css2.0, javascript</li>
+</ol>
+<button class="next_step">다음</button>
+</div>
+<div style="height: 1px; background-color: #ccc; padding: 0px;">&nbsp;</div>
+
+<h3>#2 Data Type - 각 typeof 연산 결과 값</h3>
+<div class="quiz">
+<pre class="brush: js">
+var o1 = 3.14;
+var o2 = 'Hello, 世界';
+var o3 = function() { return true; };
+var o4 = new o3();
+var o5 = [ 1, 2 ];
+var o6 = null;
+var o7 = undefined;
+
+typeof o1;
+typeof o2;
+typeof o3;
+typeof o4;
+typeof o5;
+typeof o6;
+typeof o7;
+</pre>
+<p style='font-weight: bold; font-size: 11px;'>예측되는 typeof 결과를 콤마(,)로 구별하여 순서대로 죽 나열하세요</p>
+<textarea name="q2" style="width: 100%; height: 20px;" placeholder="콤마로 구분해서 나열하세요"></textarea>
+<button class="next_step">다음</button>
+</div>
+<div style="height: 1px; background-color: #ccc; padding: 0px;">&nbsp;</div>
+
+<h3>#3 Object and Reference - 오브젝트 값들의 변화</h3>
+<div class="quiz">
+<pre class="brush: js">
+var cities = {
+	title: "도시들",
+	units: [
+	    {
+	    	name: "서울시",
+	    	happy: true
+	    },
+	    {
+	    	name: "뉴욕",
+	    	happy: false
+	    }
+	]
+};
+
+function check1(arg) {
+	var copy = arg;
+	if(!copy.units[1].happy) {
+		copy.units[1].happy = true;
+	}
+}
+
+function check2(arg) {
+	arg = false;
+}
+check1(cities);
+check2(cities.units[0].happy);
+
+cities.units[0].happy; // ?
+cities.units[1].happy; // ?
+</pre>
+<ol>
+	<li><input name="q3" value="1" type="radio"/>Error</li>
+	<li><input name="q3" value="2" type="radio"/>true, true</li>
+	<li><input name="q3" value="3" type="radio"/>true, false</li>
+	<li><input name="q3" value="4" type="radio"/>false, true</li>
+</ol>
+<button class="next_step">다음</button>
+</div>
+
+<div style="height: 1px; background-color: #ccc; padding: 0px;">&nbsp;</div>
+
+<h3>#4 Hoisting - rs 변수의 값</h3>
+<div class="quiz">
+<pre class="brush: js">
+var global = "Global";
+function hoisted() {
+	if(global != null) {
+		return global + ' 스코프';
+	}
+	else {
+		var global = 'Hosting';
+		return global + ' 스코프';
+	}
+}
+var rs = hoisted();
+rs; // ?
+</pre>
+<ol>
+	<li><input name="q4" value="1" type="radio"/>Error</li>
+	<li><input name="q4" value="2" type="radio"/>Global 스코프</li>
+	<li><input name="q4" value="3" type="radio"/>Hoisting 스코프</li>
+	<li><input name="q4" value="4" type="radio"/>undefined 스코프</li>
+</ol>
+<button class="next_step">다음</button>
+</div>
+
+<div style="height: 1px; background-color: #ccc; padding: 0px;">&nbsp;</div>
+
+<h3>#5 reading function statement - html5() + CSS() 의 실행결과</h3>
+<div class="quiz">
+<pre class="brush: js">
+html5() + CSS(); // ?
+
+function html5() {
+	return "html5";
+}
+function CSS() {
+	return "CSS";
+}
+var html5 = "html5";
+</pre>
+<ol>
+	<li><input name="q5" value="1" type="radio"/>Error</li>
+	<li><input name="q5" value="2" type="radio"/>errorCSS</li>
+	<li><input name="q5" value="3" type="radio"/>function(){ return "html5"; }function(){ return "CSS"; }</li>
+	<li><input name="q5" value="4" type="radio"/>html5CSS</li>
+</ol>
+<div class="check_quiz" style="text-align: right; paddding-right: 10px;">
+<button class="view_result" style="width: 100%; margin-top: 10px; ">채점하기!</button>
+<div class="result_area" style="padding: 10px; border: solid 1px #888; color: red; diplay: none;">
+</div>
+</div>
+<div class="desc_area" style="display: hidden;">
+<section>
+	<h1>해설</h1>
+		<article style="border: solid 1px #aaa; padding: 10px; font-size: 14px; margin: 10px 2px;">
+		<h2>1번</h2>
+		<p>
+			변수 선언시, var 선언과 보통 선언의 차이를 묻는 문제였습니다.<br/>
+			(보너스로 Aarry 객체의 join 함수 사용법도 포함했습니다)
+			<br/>
+			자바스크립트에서는 변수의 유효범위는 함수 단위로 결정되며, 다시 var 선언문 사용 여부에 따라 다릅니다.
+			유효범위라는 것은 변수의 생존 범위를 말하는 것으로, 보통 프로그래밍에서 많이 쓰이는 스코프라는 말과 같습니다. 뒤로는 스코프라고 명명하겠습니다.
+			<br/><br/>
+			변수에 var 를 선언하면, 그 변수는 현재 스코프에 속하는 변수가 됩니다. 제일 외부(글로벌 영역)에 선언한 변수는 당연히 글로벌 스코프가 되죠.
+			함수 안에서 var 로 변수를 선언하면 함수 스코프가 되며 함수 밖에서는 일반적으로(클로저를 사용하지 않고서는) 접근이 되지 않습니다.
+			하지만, var 없이 선언하게 되면 그 변수는 언제나 글로벌 스코프가 되며 같은 변수이름이 있다면 덮어 씁니다.
+			<br/>
+			<br/>
+			문제를 보면, 처음 a와 b는 변수는 글로벌 스코프가 되어 어디서든지 접근할 수 있습니다. 물론 덮어 쓸수도 있습니다.
+			다음에 setUp 함수 안에서 var를 선언하여 a가 정의되지만 함수 스코프이기에 전역변수와는 다른 스코프에 속합니다.
+			그렇기에 전역 변수는 변하지 않고 함수가 끝나면 가비지 컬렉팅되어 사라집니다.
+			그러나 b는 var 없이 선언되었으므로 전역 스코프에 속하며 같은 변수이름을 덮어씁니다.
+			다시 c도 var 없이 선언되었으므로 함수가 끝나서도 생존해 있는 전역 스코프입니다.
+			<br/><br/>
+			이제 a,b,c라는 변수를 배열 리터럴문인 []요소로 선언하고 join을 호출하면 join 동작에 따라 요소에 대해 각기 toString 메소드를 호출한뒤,
+			그 결과를 인자로 준 ", " 문자열을 구분자로 결합합니다.<br/><br/>
+			그 결과는 답 3번이 됩니다
+		</p>
+	</article>
+	<article style="border: solid 1px #aaa; padding: 10px; font-size: 14px; margin: 10px 2px;">
+		<h2>2번</h2>
+		<p>
+			typeof 연산자의 용도와 자바스크립트 타입에 대해 묻는 문제입니다<br/>
+			자바스크립트에서의 타입은 string, number, boolean, function, object, undefined 이 있습니다.
+			<br/>
+			<br/>
+			주의할 점은 null은 object 타입입니다. 하지만 값이 없기에 속성 할당이나 메서드를 호출하지 못합니다.<br/>
+			null.id 나 null["id"] 이런게 안되죠.(너무 당연한가요...)
+			<br/>
+			또한 undefined 는 말 그대로, "정의되지 않은" 타입을 말합니다.
+			<br/>
+			<br/>
+			답은, number, string, function, object, object, object, undefined 가 됩니다
+		</p>
+	</article>
+	
+	<article style="border: solid 1px #aaa; padding: 10px; font-size: 14px; margin: 10px 2px;">
+		<h2>3번</h2>
+		<p>
+			Call by value와 Call by Reference와 Object 리터럴 선언에 대해 묻는 문제입니다<br/>
+			문제의 cities에 할당하는 형식처럼 {} 를 사용하여 안에 뭔가를 정의하는 방식을 자바스크립트 리터럴 객체라고 합니다.
+			<br/>
+			JSON과 비슷하고 동작도 같지만 둘은 다른 개념입니다. 
+			<br/>
+			<br/>
+			자바스크립트에서는 함수 인자 전달시 객체타입은 레퍼런스로 전달합니다.<br/>
+			원시값은 함수 인자 전달 시 복사해서 전달합니다<br/><br/>
+			check1에서는 객체가 전달되었으니 레퍼런스가 전달되었으며 그것을 다른 변수에 할당한다고 해도, 실제 값은 원본을 참조합니다.
+			copy 변수를 사용하여 객체의 값을 변경하면 실제 변경됩니다.<br/>
+			그러나 check2에서는 객체가 아닌 그냥 값을 전달하고 있습니다. 그렇기에 복사한 값이 전달되고 그것을 변경해도 원본에 영향이 없습니다.
+			<br/>
+			<br/>
+			답은, true, true 가 됩니다
+		</p>
+	</article>
+	
+	<article style="border: solid 1px #aaa; padding: 10px; font-size: 14px; margin: 10px 2px;">
+		<h2>4번</h2>
+		<p>
+			자바스크립트의 특수한 동작인 hoisting에 대해 묻는 문제입니다.<br/>
+			자바스크립트 엔진이 자바스크립트를 해석하고 실행하는건 명확하게 구분되어 있습니다.
+			<br/>
+			자바스크립트의 값들은 실제 실행시 할당됩니다. 런타임이 굉장히 중요합니다. 실행 전에는 단순히 선언 상태입니다.<br/><br/>
+			만일 var a = 1; 이라는 문장을 썼다면 해석할시에는 a 변수가 "선언" 만 된 것이고 실제 실행될 때 "할당" 됩니다.<br/>
+			그 변수가 선언된 위치가 코드의 최상단이든 최 하단이든 상관 없습니다.<br/>
+			자바스크립트는 해당 코드를 해석할 때 전부 선언 상태로 해 둡니다. 값의 할당은 위에 말했듯이 실행 시입니다.
+			<br/>
+			이제 문제를 보면 전역스코프에 global로 변수가 선언되어 있습니다. 그리고 함수가 하나 선언되어 있고 아래에 다시 rs라는 변수가 선언되어 있습니다.
+			<br/>
+			이 변수들은 전부 undefined 상태입니다. 아직까지는요.
+			<br/><br/>
+			이제 실제 실행때가 되면 global에 "global"이라는 값이 할당됩니다. 그리고 함수를 지나고 rs에 할당하기 위해 hoisted를 실행합니다. 
+			<br/>
+			함수가 실행되면서 다시 자바스크립트 엔진은 함수를 실행하기 위해 다시 스코프 내의 변수들을 선언하기 시작합니다.
+			<br/>
+			여기서의 스코프는 함수 내이므로 함수 내의 변수들을 선언합니다.함수 내에는 다시 global이 선언되어 있고 var가 붙어 있으므로 hosited 함수 스코프입니다.
+			<br/>
+			선언을 마치고 나면 이제 실행합니다.<br/>
+			if 문으로 global의 값을 검사하고 있습니다. global은 함수 내부 스코프안에서 할당이 되지 않은 상태입니다. 그래서 첫번째 조건은 지나갑니다.
+			<br/>
+			(일치 비교연산자가 아닌 동등 비교연산자인 '!=' 를 사용했기에 null 과 undefined를 같게 해석합니다.)
+			<br/>
+			<br/>
+			두번째 조건에서 global에 값이 할당되며 리턴됩니다.
+			<br/>
+			이처럼, 변수가 코드 어디에 있든지 선언부터 되어 코드 시작부에 선언되는 것을 끌어올려진다고 하여 hoisting 이라고 합니다.
+			<br/>
+			<br/>
+			답은, 3번이 됩니다
+		</p>
+	</article>
+	
+	<article style="border: solid 1px #aaa; padding: 10px; font-size: 14px; margin: 10px 2px;">
+		<h2>5번</h2>
+		<p>
+			위에 이어, 자바스크립트의 특수한 동작인 hoisting에 대해 묻는 문제입니다.<br/>
+			다만 이번에는 그 대상이 함수 문장입니다. 함수 문장은 특이하게 동작합니다.
+			<br/>
+			일반적인 hoisting에서는 선언만 되지만 문장은 선언을 한뒤 다시 할당까지 합니다.
+			그렇기에 함수 문장은 선언된 위치와 관계없이, 실행할 수 있습니다.
+			<br/>
+			코드 맨 아래에서 html5를 변수가 덮어쓰려고 하지만, 변수를 덮어 쓰는 시점은 실제 실행 시점이 됩니다.
+			<br/>
+			<br/>
+			답은, html5CSS가 됩니다
+		</p>
+	</article>	
+</section>
+</div>
+</div>
+<button class="retry">다시 하기</button>
+
+<div style="color: #000; text-align:right;">
+this document was written by <a style="color: blue;" href="mailto:javarouka@gmail.com">javarouka</a>.
+<br />
+| <a style="color: blue;" href="http://www.facebook.com/hanghui.i">Facebook</a> |
+<a style="color: blue;" href="https://plus.google.com/100780709864528473953">Google+</a> |
+<a style="color: blue;" href="https://twitter.com/#!/YiHanghee">Twitter</a> |
+<a style="color: blue;" href="http://blog.javarouka.me/">Blogger</a> |
+</div>
+	<!-- 1step footer -->
+<script src='http://syntaxhighlight-blogger-dynamic.googlecode.com/files/syntaxhighlighter-20111212.js' type='text/javascript'></script>	
+<!--
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+
+    var ra = $("div.result_area");
+    $("div.desc_area").hide();
+    ra.hide();
+
+    $("body")
+    .bind("contextmenu", function(e){ return false; })
+    .bind("selectstart", function(e){ return false; });
+
+    $("h3 + div.quiz").hide();
+    $("div#container h3:first + div.quiz").show();
+    $("div#container h3").css({
+        "cursor": "pointer"    
+    });
+    
+    $("button.next_step").bind("click", function(e) {       
+        var btn = $(this).closest("div.quiz").hide('normal').next().next().find(" + div.quiz");
+        btn.show('normal');
+    });
+
+    var correct = {
+        "q1": "3",
+        "q2": "numberstringfunctionobjectobjectobjectundefined",
+        "q3": "2",
+        "q4": "3",
+        "q5": "4"
+    };
+
+    var r = { "q1": false, "q2": false, "q3": false, "q4": false, "q5": false }
+
+    $("button.retry").click(function() {
+        $("h3 + div.quiz").hide('fast');
+        $("div.desc_area").hide();
+        $("div#container h3:first + div.quiz").show('slow');
+        $(window).scroll(0);
+        ra.hide();
+        $("button.next_step").show();
+        $("ol, textarea, button.view_result").show();
+    });
+    $("div.check_quiz button").bind("click", function(e) {    
+          
+        var score = 0;
+        var radios = $("input:checked");
+        var textareaq2 = $('textarea[name=q2]');
+        var tval = textareaq2.val().replace(/,|[ ]/g, '').toLowerCase();
+        if(correct["q2"] === tval) {
+            r["q2"] = true;
+            score++;
+        }
+        radios.each(function() {
+            var val = $(this).val();
+            if(val === correct[$(this).attr("name")]) {
+                r[$(this).attr("name")] = true;
+                score++;
+            }
+        });
+        
+        ra.hide().empty();
+        
+        // 귀찮음이 낳은 코드. ㅋ 
+        // XXX: Refactor 필수.
+        ra.append($("<div style='margin: 5px 0px; font-weight: bold; text-decoration: underline;'>").html((score * 20) + "점"));
+        if(score === 5) {
+             ra.append($("<div style='color: black; padding: 2px; background-color: #eee; font-weight: bold;'>").html("Perfect!"));
+        }
+        else if(score >= 4) {
+             ra.append($("<div style='color: black; padding: 2px; background-color: #eee; font-weight: bold;'>").html("Great."));
+        }
+        else if(score >= 2) {
+             ra.append($("<div style='color: black; padding: 2px; background-color: #eee; font-weight: bold;'>").html("Not Bad."));
+        }
+        else if(score > 0) {
+             ra.append($("<div style='color: black; padding: 2px; background-color: #eee; font-weight: bold;'>").html("Should need more study"));
+        }
+        else {
+             ra.append($("<div style='color: black; padding: 2px; background-color: #eee; font-weight: bold;'>").html("Oops..."));
+        }
+        for(var k in r) {
+            if(r[k]) {
+                ra.append($("<div>").html(k + ": 정답"));
+             } 
+             else {
+                ra.append($("<div>").html(k + ": 오답"));
+            }
+        }
+        ra.show('normal');
+        $(this).hide('fast');
+        $("div.desc_area").show();
+        $("h3 + div.quiz").show('fast', function() {
+            $('html, body').animate({
+                scrollTop: $($("div.result_area")[0]).offset().top - 50
+            }, 500);
+        });
+        $("button.next_step").hide();
+        $("ol, textarea").hide();
+    });
+});
+</script>
+</body>
+</html>
