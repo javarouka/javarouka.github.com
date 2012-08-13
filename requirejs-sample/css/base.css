@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 body {
-	font: 0.95em/1.333 Gulim, Arial, sans-serif;
+	font: 0.95em/1.333 "NanumGothic", Gulim, Arial, sans-serif;
 	color: #202020;
 	overflow-y: scroll;
 }
