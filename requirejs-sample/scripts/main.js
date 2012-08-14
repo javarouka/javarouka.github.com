@@ -4,7 +4,6 @@
  */
 require([
     "jquery",						// 제이쿼리 라이브러리 모듈 ($)
-    "me/javarouka/Song",			// 노래 모델 모듈 (Song)
     "me/javarouka/InnerHTMLView"	// HTML 삽입 뷰 모듈 (View)
 ], function($, Song, View) {
 	
@@ -29,16 +28,20 @@ require([
 			});
 		},
 		renderSongList: function(e) {
-			var songs = Song.getList();
-			View.renderSongList({
-				renderArea: $content,
-				data: songs
+			require(["me/javarouka/Song"], function() {
+				var songs = Song.getList();
+				View.renderSongList({
+					renderArea: $content,
+					data: songs
+				});
 			});
 		},
 		addSong: function($target, $form) {
+			
 			var song = $form.serialize();
 			var songData = {};
 			var serialized = $form.serializeArray();
+
 			$.each(serialized, function() {
 		        	if (songData[this.name] !== undefined) {
 		        		if (!songData[this.name].push) {
@@ -50,8 +53,11 @@ require([
 		       			songData[this.name] = this.value || '';
 		       		}
 			});
-			Song.add(songData);
-			$("nav ul li a").trigger("nav:#view-song");
+
+			require(["me/javarouka/Song"], function() {
+				Song.add(songData);
+				$("nav ul li a").trigger("nav:#view-song");
+			}
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);

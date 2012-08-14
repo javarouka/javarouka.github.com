@@ -11,16 +11,23 @@
  * }
  */
 define([
-    "me/javarouka/Storage",
-], function(Storage) {
+	"me/javarouka/GenericModel",
+    "me/javarouka/Storage"
+], function(Parent, Storage) {
 	
-	var key = "song";
-	var scope = [ "local" ];
-	
+	var MEMBER = {
+		key: "song"
+	};
+
+	var Song = function(spec) {
+		this.name = spec.name;		
+	};
+	GenericModel.inherits(Song);
+
 	var add = function(song) {
 		var songs = getList();
 		songs.push(song);
-		Storage.add(key, songs);
+		Storage.add(MEMBER.key, songs);
 	};
 	
 	var getList = function() {
