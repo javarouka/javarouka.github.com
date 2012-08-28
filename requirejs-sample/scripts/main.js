@@ -57,7 +57,7 @@ require([
 			require(["me/javarouka/Song"], function() {
 				Song.add(songData);
 				$("nav ul li a").trigger("nav:#view-song");
-			}
+			});
 		},
 		toggleLyrics: function(e) {
 			var $target = $(e.target);
