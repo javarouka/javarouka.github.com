@@ -5,7 +5,7 @@
 require([
     "jquery",						// 제이쿼리 라이브러리 모듈 ($)
     "me/javarouka/InnerHTMLView"	// HTML 삽입 뷰 모듈 (View)
-], function($, Song, View) {
+], function($, View) {
 	
 	// 컨텐트 영역
 	var $content = $("article");
@@ -28,7 +28,7 @@ require([
 			});
 		},
 		renderSongList: function(e) {
-			require(["me/javarouka/Song"], function() {
+			require(["me/javarouka/Song"], function(Song) {
 				var songs = Song.getList();
 				View.renderSongList({
 					renderArea: $content,
@@ -54,7 +54,7 @@ require([
 		       		}
 			});
 
-			require(["me/javarouka/Song"], function() {
+			require(["me/javarouka/Song"], function(Song) {
 				Song.add(songData);
 				$("nav ul li a").trigger("nav:#view-song");
 			});

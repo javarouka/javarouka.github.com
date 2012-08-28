@@ -19,9 +19,8 @@ define([
 		key: "song"
 	};
 
-	var Song = function(spec) {
-	};
-	GenericModel.inherits(Song);
+	var Song = function(spec) {};
+	Parent.inherits(Song);
 
 	var add = function(song) {
 		var songs = getList();
@@ -30,7 +29,7 @@ define([
 	};
 	
 	var getList = function() {
-		return Storage.get(key);
+		return Storage.get(MEMBER.key);
 	};
 	
 	var saveRemote = function() {
