@@ -20,7 +20,6 @@ define([
 	};
 
 	var Song = function(spec) {
-		this.name = spec.name;		
 	};
 	GenericModel.inherits(Song);
 

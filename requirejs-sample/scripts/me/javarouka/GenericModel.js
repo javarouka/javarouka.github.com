@@ -13,12 +13,17 @@ define(["me/javarouka/Storage"], function(Storage) {
 		return "[object " + (this.constructor.className() || "InstanceObject") + "]";
 	};
 
+	var getList = function() {
+		return Storage.get(key);
+	};
+
 	GenericModel.inherits = function(Constructor) {		
 
 		var k;
 		var parent = this;
 
 		Constructor.parent = parent;
+		Constructor.list = {};
 
 		for(k in GenericModel) {
 			Constructor[k] = GenericModel[k];
