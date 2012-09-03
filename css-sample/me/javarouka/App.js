@@ -12,6 +12,7 @@ define([
 			var text = $btn.parent("span").data("selector");
 			$btn.text("Selector : " + text);
 		});
+		syntaxh.highlight();
 	};
 
 	var eventBinding = function() {
