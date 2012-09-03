@@ -1,7 +1,8 @@
 define([ 	
 	"javarouka/BaseObject",
-	"javarouka/Context"
-], function(parent, Context) {	
+	"javarouka/Context",
+	"syntaxh"
+], function(parent, Context, syntaxh) {	
 
 	var version = "0.1.0";
 
@@ -11,10 +12,7 @@ define([
 			var text = $btn.parent("span").data("selector");
 			$btn.text("Selector : " + text);
 		});
-	};
-
-	var syntaxHighlight = function() {	
-		SyntaxHighlighter.all();
+		syntaxHighlight();
 	};
 
 	var eventBinding = function() {
@@ -28,7 +26,6 @@ define([
 
 	var init = function() {
 		initializeUI();
-		syntaxHighlight();
 		eventBinding();
 	};
 
