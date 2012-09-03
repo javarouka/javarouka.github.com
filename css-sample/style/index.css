@@ -1,0 +1,29 @@
+#content-wrapper {
+	margin: 0 auto;
+	width: 80%;
+	max-width: 800px;
+	min-width: 400px;
+}
+section dl dt {
+	background-color: #333;
+	color: white;
+	padding: 3px;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+section dl dd {
+	margin-bottom: 30px;
+}
+
+section dl dd > div.target {
+	border-radius: 4px;
+	box-shadow: 1px 1px 2px 2px #ccc;
+	padding: 2px 5px;
+	margin-bottom: 10px;
+}
+
+.type-selector {
+	font-size: 170%;
+	color: green;
+	font-weight: bold;
+}
