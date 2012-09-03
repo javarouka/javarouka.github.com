@@ -1,8 +1,9 @@
 define([ 	
+	"jquery",
 	"javarouka/BaseObject",
 	"javarouka/Context",
 	"syntaxh"
-], function(parent, Context, syntaxh) {	
+], function($, parent, Context, syntaxh) {	
 
 	var version = "0.1.0";
 
@@ -15,7 +16,7 @@ define([
 		syntaxh.highlight();
 	};
 
-	var eventBinding = function() {
+	var eventBinding = function() {		
 		$("section dl").on("click", "a.apply-button", function(e) {		
 			e.preventDefault();	
 			var selector = $(e.target).parent("span").data("selector");	

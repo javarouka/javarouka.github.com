@@ -18,12 +18,13 @@ section dl dd {
 section dl dd > div.target {
 	border-radius: 4px;
 	box-shadow: 1px 1px 2px 2px #ccc;
-	padding: 2px 5px;
-	margin-bottom: 10px;
+	padding: 3px 5px;	
+	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 
 .type-selector {
 	font-size: 170%;
-	color: green;
+	color: red;
 	font-weight: bold;
 }
