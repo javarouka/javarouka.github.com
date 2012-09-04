@@ -26,59 +26,55 @@
 <div id="content-wrapper">
 
 	<header>
-		<h1>CSS 샘플</h1>
+		<h1>CSS Play Ground</h1>
 		<p>CSS 선택자 샘플입니다</p>
 	</header>
 
 	<section>		
-		<dl>
-			<dt id="type-selector">Type Selector</dt>
-			<dd>				
-				<pre class="brush: css">div p a {
-	font-size: 120%;
-	color: green;
-	font-weight: bold;
-}</pre>
-				<pre class="brush: xml"><div>
+		<pre class="brush: xml"><header>
+	<h1>HTML5 마크업에 대해...</h1>
+</header>
+<article>	
+	<h2>구조적 태그</h2>			
+	<p>HTML5는 시맨틱 개념이 강화되었는데, 한 예로
+		<code>div</code> 태그가 <code>header</code>, <code>section</code>,
+		<code>article</code>, <code>nav</code>, <code>footer</code>, <code>aside</code>
+		등으로 나뉜 것입니다.
+		<div>div</div>는 이제 단순한 구역 설정이나 스크립팅, 디자인 용도의 구역 지정에만 사용 하는 것이 좋습니다.
+	</p>
+	<h2>a 링크</h2>
 	<p>a 링크의 기본 동작은 윈도우의
 		<a href='http://ko.wikipedia.org/wiki/URL' target="new">URL</a>을
-		<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>
-			href
-		</a>
+		<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>href</a>
 		속성값으로 교체하는 것입니다.
-	</p>					
-</div></pre>
-				<div class="target">
-					<p>a 링크의 기본 동작은 윈도우의
+	</p>
+</article></pre>
+		<div class="target">
+			<header>
+				<h1>HTML5 마크업에 대해...</h1>
+			</header>
+			<article>	
+				<h2>구조적 태그</h2>			
+				<p>HTML5는 시맨틱 개념이 강화되었는데, 한 예로
+					<code>div</code> 태그가 <code>header</code>, <code>section</code>,
+					<code>article</code>, <code>nav</code>, <code>footer</code>, <code>aside</code>
+					등으로 나뉜 것입니다.
+					<code>div</code>는 이제 단순한 구역 설정이나 스크립팅, 디자인 용도의 구역 지정에만 사용 하는 것이 좋습니다.
+				</p>
+				<h2>a 링크</h2>
+				<p>a 링크의 기본 동작은 윈도우의
 					<a href='http://ko.wikipedia.org/wiki/URL' target="new">URL</a>을
-					<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a' target="new">href</a> 속성값으로 교체하는 것입니다.</p>					
-				</div>
-				<span class="button black large" data-selector="div p a">
-					<a class="apply-button" href="#">anchor</a>
-				</span>
-			</dd>
-			<dt id="id-selector">ID Selector</dt>
-			<dd>	
-			<pre class="brush: css">#paragraph1, #paragraph3 {
-	background-color: #666;
-	color: #eee;
-}</pre>			
-				<div class="target">	
-					<p id="paragraph1">
-						p 엘리먼트는 문장을 표현합니다.						
-					</p>	
-					<p id="paragraph2">
-						블럭 엘리먼트이며, 인라인 요소를 가질 수 있습니다.
-					</p>				
-					<p id="paragraph3">
-						대부분의 브라우저에서 p 태그의 기본 스타일은 줄 바꿈과 일정 간격을 띄어놓는 형태입니다.
-					</p>
-				</div>			
-				<span class="button black large" data-selector="div p a">
-					<a class="apply-button" href="#">anchor</a>
-				</span>
-			</dd>			
-		</dl>		
+					<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>
+						href
+					</a>
+					속성값으로 교체하는 것입니다.
+				</p>
+			</article>			
+		</div>		
+		<div class="ctrl-bar">
+			<label for="selector-string">선택자 문자열</label>
+			<input id="selector-string" type="text" placeholder="텍스트를 입력하세요" />
+		</div>			
 	</section>
 
 	<footer>

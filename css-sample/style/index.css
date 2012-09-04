@@ -1,30 +1,54 @@
 #content-wrapper {
 	margin: 0 auto;
 	width: 80%;
-	max-width: 800px;
+	max-width: 900px;
 	min-width: 400px;
 }
-section dl dt {
+#content-wrapper .syntaxhighlighter {
+	font-size: 0.8em !important;
+}
+
+header p {
 	background-color: #333;
 	color: white;
 	padding: 3px;
 	padding-left: 10px;
 	border-radius: 4px;
 }
-section dl dd {
-	margin-bottom: 30px;
-}
 
-section dl dd > div.target {
+div.target {
+	font-size: 0.8em;
 	border-radius: 4px;
 	box-shadow: 1px 1px 2px 2px #ccc;
 	padding: 3px 5px;	
 	margin-bottom: 5px;
 	margin-bottom: 15px;
 }
+	div.target h1 {
+		font-size: 1.1em;
+	}
+	div.target h2 {
+		font-size: 1.0em;
+	}
 
-.type-selector {
-	font-size: 170%;
-	color: red;
-	font-weight: bold;
+div.ctrl-bar input#selector-string {
+	border-radius: 8px;
+	padding-left: 2%;
+	width: 65%;
+	-webkit-transition: 0.7s;
+	background-color: #111;
+	color: #AAA;
+	border: 0px;
+	line-height: 20px;
+}
+div.ctrl-bar label {
+	display: block; 
+}
+div.ctrl-bar input#selector-string:focus {
+	width: 98%;	
+}
+
+.highlight {
+	border: inset 1px red;
+	background-color: #AEAEAE;
 }
