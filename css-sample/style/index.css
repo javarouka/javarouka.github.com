@@ -13,13 +13,14 @@
 	line-height: 50px;
 	font-size: 2.0em;
 	font-weight: bold;
-	text-align: center;		
+	text-align: center;	
 }
-.js #content-wrapper section {
+.js #content-wrapper .absolute-hidden {
 	display: none;
 }
 #content-wrapper .syntaxhighlighter {
 	font-size: 0.8em !important;
+	position: absolute;
 }
 h1 {
 	font-size: 1.1em;

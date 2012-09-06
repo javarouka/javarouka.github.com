@@ -22,6 +22,7 @@ define([
 			controlBar: $(".ctrl-bar"),
 			selectorString: $("#selector-string")
 		};
+		$el.mainSection.hide();
 
 		$el.syntaxing.text($el.findContext.html());
 		syntaxh.highlight();
