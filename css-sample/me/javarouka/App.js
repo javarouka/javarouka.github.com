@@ -7,7 +7,7 @@ define([
 
 	var version = "0.1.0";
 
-	var modifyInterval = 1000;
+	var modifyInterval = 800;
 	var G = {
 		highlightClass: "highlight",
 		$ELEMENTS: {}
@@ -24,17 +24,16 @@ define([
 		};
 		$el.mainSection.hide();
 
-		$el.syntaxing.text($el.findContext.html());
-		syntaxh.highlight();
+		//$el.syntaxing.text($el.findContext.html());
+		//syntaxh.highlight();
 
 		$el.loadingIndicator.hide();
-		$el.mainSection.fadeIn('slow');
+		$el.mainSection.fadeIn(2000);
 
 		return $el;
 	};
 
 	var doHighlighting = function(selector) {	
-		console.log(selector);	
 		clear();
 		try {
 			var t = G.$ELEMENTS.findContext.find(selector);
