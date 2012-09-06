@@ -31,42 +31,30 @@
 	</header>
 
 	<section>		
-		<pre class="brush: xml"><header>
-	<h1>HTML5 마크업에 대해...</h1>
-</header>
-<article>	
-	<h2>구조적 태그</h2>			
-	<p>HTML5는 시맨틱 개념이 강화되었는데, 한 예로
-		<code>div</code> 태그가 <code>header</code>, <code>section</code>,
-		<code>article</code>, <code>nav</code>, <code>footer</code>, <code>aside</code>
-		등으로 나뉜 것입니다.
-		<div>div</div>는 이제 단순한 구역 설정이나 스크립팅, 디자인 용도의 구역 지정에만 사용 하는 것이 좋습니다.
-	</p>
-	<h2>a 링크</h2>
-	<p>a 링크의 기본 동작은 윈도우의
-		<a href='http://ko.wikipedia.org/wiki/URL' target="new">URL</a>을
-		<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>href</a>
-		속성값으로 교체하는 것입니다.
-	</p>
-</article></pre>
+		<pre id="syntaxing" class="brush: html"></pre>
 		<div class="target">
 			<header>
 				<h1>HTML5 마크업에 대해...</h1>
 			</header>
 			<article>	
 				<h2>구조적 태그</h2>			
-				<p>HTML5는 시맨틱 개념이 강화되었는데, 한 예로
-					<code>div</code> 태그가 <code>header</code>, <code>section</code>,
-					<code>article</code>, <code>nav</code>, <code>footer</code>, <code>aside</code>
-					등으로 나뉜 것입니다.
-					<code>div</code>는 이제 단순한 구역 설정이나 스크립팅, 디자인 용도의 구역 지정에만 사용 하는 것이 좋습니다.
-				</p>
+				<p class='paragraph'>HTML5는 시맨틱 개념이 강화되었는데, 한 예로 <code>div</code> 태그가</p>
+				<ul>
+					<li><code>header</code></li>
+					<li><code>
+						<a href='https://developer.mozilla.org/ko/docs/HTML/Element/section' target='self'>section</a>
+					</code></li>
+					<li><code>article</code></li>
+					<li><code>nav</code></li>
+					<li><code>footer</code></li>
+					<li><code>aside</code></li>
+				</ul>	
+				<p class='paragraph'>등으로 나뉜 것입니다. <code>div</code>는 이제 단순한 구역 설정이나
+					스크립팅, 디자인 용도의 구역 지정에만 사용 하는 것이 좋습니다.</p>
 				<h2>a 링크</h2>
-				<p>a 링크의 기본 동작은 윈도우의
+				<p class='paragraph' id='a-tag-para'>a 링크의 기본 동작은 윈도우의
 					<a href='http://ko.wikipedia.org/wiki/URL' target="new">URL</a>을
-					<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>
-						href
-					</a>
+					<a href='https://developer.mozilla.org/en-US/docs/HTML/Element/a'>href</a>
 					속성값으로 교체하는 것입니다.
 				</p>
 			</article>			

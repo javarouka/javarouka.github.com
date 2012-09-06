@@ -8,12 +8,30 @@
 	font-size: 0.8em !important;
 }
 
+h1 {
+	font-size: 1.1em;
+}
+h2 {
+	font-size: 1.0em;
+}
+ul {
+	margin-top: 0px;
+}
+code {
+	font-weight: bold;
+	color: #333;
+}
+ul li {
+	display: inline-block;
+	margin-right: 3px;
+}
 header p {
 	background-color: #333;
 	color: white;
 	padding: 3px;
 	padding-left: 10px;
 	border-radius: 4px;
+	font-size: 0.8em;
 }
 
 div.target {
@@ -30,13 +48,16 @@ div.target {
 	div.target h2 {
 		font-size: 1.0em;
 	}
+	div.target code {
+		font-size: 1.1em;
+	}
 
 div.ctrl-bar input#selector-string {
 	border-radius: 8px;
 	padding-left: 2%;
 	width: 65%;
 	-webkit-transition: 0.7s;
-	background-color: #111;
+	background-color: #555;
 	color: #AAA;
 	border: 0px;
 	line-height: 20px;
@@ -46,9 +67,9 @@ div.ctrl-bar label {
 }
 div.ctrl-bar input#selector-string:focus {
 	width: 98%;	
+	background-color: #101010;
 }
 
-.highlight {
-	border: inset 1px red;
-	background-color: #AEAEAE;
+.highlight {	
+	background-color: yellow;
 }
