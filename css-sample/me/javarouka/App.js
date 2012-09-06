@@ -15,13 +15,20 @@ define([
 
 	var initializeUI = function() {						
 		var $el =  {
+			loadingIndicator: $("#ui-loading-indicator"),
+			mainSection: $("#content-wrapper section"),
 			syntaxing: $("#syntaxing"),
 			findContext: $("section .target"),
 			controlBar: $(".ctrl-bar"),
 			selectorString: $("#selector-string")
 		};
+
 		$el.syntaxing.text($el.findContext.html());
 		syntaxh.highlight();
+
+		$el.loadingIndicator.hide();
+		$el.mainSection.fadeIn('slow');
+
 		return $el;
 	};
 

@@ -4,10 +4,22 @@
 	max-width: 900px;
 	min-width: 400px;
 }
+#ui-loading-indicator {
+	position: absolute;
+	margin: 0 auto;
+	width: 80%;
+	color: #666;
+	line-height: 50px;
+	font-size: 2.0em;
+	font-weight: bold;
+	text-align: center;	
+}
+.js #content-wrapper section {
+	display: none;
+}
 #content-wrapper .syntaxhighlighter {
 	font-size: 0.8em !important;
 }
-
 h1 {
 	font-size: 1.1em;
 }

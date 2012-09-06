@@ -17,6 +17,12 @@
 		type='text/javascript'></script>
 	<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js' 
 		type='text/javascript'></script>
+	<script type="text/javascript">
+		(function() {
+			var doc = document.documentElement || document.body;
+			doc.className += " js";
+		})();		
+	</script>
 
 	<title>CSS Sample</title>	
 
@@ -30,6 +36,9 @@
 		<p>CSS 선택자 샘플입니다</p>
 	</header>
 
+	<div id="ui-loading-indicator">
+		Now Loading...
+	</div>
 	<section>		
 		<pre id="syntaxing" class="brush: html"></pre>
 		<div class="target">
