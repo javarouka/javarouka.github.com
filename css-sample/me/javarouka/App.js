@@ -25,10 +25,9 @@ define([
 		$el.mainSection.hide();
 
 		//$el.syntaxing.text($el.findContext.html());
-		//syntaxh.highlight();
 
 		$el.loadingIndicator.hide();
-		$el.mainSection.fadeIn(2000);
+		$el.mainSection.fadeIn(1000);
 
 		return $el;
 	};
