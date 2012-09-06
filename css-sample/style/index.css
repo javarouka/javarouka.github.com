@@ -5,7 +5,7 @@
 	min-width: 400px;
 }
 #ui-loading-indicator {
-	position: absolute;
+	position: relative;
 	margin: 20 auto;
 	width: 80%;
 	height: 50px;
