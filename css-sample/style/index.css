@@ -6,13 +6,14 @@
 }
 #ui-loading-indicator {
 	position: absolute;
-	margin: 0 auto;
+	margin: 20 auto;
 	width: 80%;
+	height: 50px;
 	color: #666;
 	line-height: 50px;
 	font-size: 2.0em;
 	font-weight: bold;
-	text-align: center;	
+	text-align: center;		
 }
 .js #content-wrapper section {
 	display: none;
