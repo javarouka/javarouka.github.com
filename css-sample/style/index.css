@@ -70,7 +70,9 @@ div.ctrl-bar input#selector-string {
 	border-radius: 8px;
 	padding-left: 2%;
 	width: 65%;
+	-moz-transition: 0.7s;
 	-webkit-transition: 0.7s;
+	transition: 0.7s;
 	background-color: #555;
 	color: #AAA;
 	border: 0px;

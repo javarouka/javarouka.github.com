@@ -33,7 +33,8 @@ define([
 		return $el;
 	};
 
-	var doHighlighting = function(selector) {
+	var doHighlighting = function(selector) {	
+		console.log(selector);	
 		clear();
 		try {
 			var t = G.$ELEMENTS.findContext.find(selector);
@@ -57,17 +58,15 @@ define([
 		G.$ELEMENTS.controlBar.on(
 			"keyup",
 			G.$ELEMENTS.selectorString,
-			function(e) {				
+			function(e) {								
 				if(e) {
 					e.stopPropagation();
 					if(modifyInterval) {
 						clearTimeout(modifyInterval);
 					}
-					modifyInterval = setTimeout(
-						doHighlighting, 
-						modifyInterval, 
-						e.target.value
-					);					
+					modifyInterval = setTimeout(function() {						
+						doHighlighting(e.target.value);
+					}, modifyInterval);					
 				}
 			}
 		);
