@@ -4,7 +4,6 @@ define([
 ], function(Http, Storage) {
 
 	return {
-		requireModels: [],
 		Storage: Storage,
 		Request: Http
 	};

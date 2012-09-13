@@ -64,9 +64,7 @@ define(function() {
  	init(); 	
 
 	return {
-		
 		version: version, 
-
 		isObject: isObject,
 		isArray: isArray,
 		isNumber: isNumber,

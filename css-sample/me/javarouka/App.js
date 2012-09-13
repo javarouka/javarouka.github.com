@@ -1,9 +1,8 @@
 define([ 	
 	"jquery",
 	"javarouka/BaseObject",
-	"javarouka/Context",
-	"syntaxh"
-], function($, parent, Context, syntaxh) {	
+	"javarouka/Context"
+], function($, parent, Context) {	
 
 	var version = "0.1.0";
 
@@ -40,9 +39,7 @@ define([
 				t.addClass(G.highlightClass);
 			}
 		}	
-		catch(jQueryError) {
-			clear();
-		}
+		catch(jQueryError) { }
 	}
 
 	var clear = function() {

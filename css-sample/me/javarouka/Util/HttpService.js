@@ -22,15 +22,9 @@ define([
 	};
 
 	var statusHandler = {
-		302: function() {
-
-		},
-		500: function() {
-
-		},
-		404: function() {
-
-		}
+		302: function() {},
+		500: function() {},
+		404: function() {}
 	};
 
 	var extendStatusHandler = function(handler) {
