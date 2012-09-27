@@ -2,7 +2,7 @@ var require = {
 	baseUrl: '/requirejs-html5js/',	
  	paths : {
 		jquery: [
-    	'//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min',
+    	'//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js',
       'lib/jquery'
     ],
     jqueryui: [
@@ -21,3 +21,4 @@ var require = {
     */
   }
 };
+
