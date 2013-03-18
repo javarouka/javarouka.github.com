@@ -8,7 +8,7 @@
 
 */
 var require = { 
-  baseUrl: '/js/',	
+  baseUrl: '',	
   waitSeconds: 15,
   paths : {    
     jquery: [ 
