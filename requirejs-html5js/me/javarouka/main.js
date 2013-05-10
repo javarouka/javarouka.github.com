@@ -1,6 +1,0 @@
-require([
-	"jquery", 
-	"jqueryui"
-], function($) {
-	
-});
