@@ -16,7 +16,6 @@ StudyGroup.prototype.study = function(something) {
 
 function Octobersky(){}
 
-// Inherit properties from Person
 Octobersky.prototype = new StudyGroup();
 
 Octobersky.prototype.study = function(){
