@@ -18,7 +18,8 @@
 
   // 문자열화 - 속성을 열거하면서 직접 구현해야만 했다!
   var serialize = function(obj) {
-    //https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+    // by Douglas Crockford
+    // https://github.com/douglascrockford/JSON-js/blob/master/json2.js
     // implements...
   };
 
