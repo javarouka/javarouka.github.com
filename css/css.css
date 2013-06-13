@@ -1,10 +1,3 @@
-@font-face {
-	font-family: NanumGothic; 
-	src: url("fonts/NanumGothic.eot");
-	src: local('※'), url("fonts/NanumGothic.woff") format('woff');
-}
 body {
-	font-family: NanumGothic;
-	height: 100%;
 	/*background: url('images/240px-JavaScript-logo.png') no-repeat top right;*/
 }
