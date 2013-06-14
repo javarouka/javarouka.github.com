@@ -122,7 +122,7 @@
                     </section>
                     <section>
                         <h4>ECMA Script 3nd</h4>
-                        <pre class="code"><code data-trim>(function(){
+                        <pre class="code"><code data-trim>(function() {
   var jsonString = "{ \"hello\": \"world\" }";
 
   // eval 사용
@@ -135,7 +135,7 @@
                     </section>
                     <section>
                         <h4>ECMA Script 5th</h4>
-                        <pre class="code"><code data-tarim>(function(){
+                        <pre class="code"><code data-tarim>(function() {
   var jsonString = "{ \"hello\": \"world\" }";
 
   // Native JSON Object 사용
@@ -147,6 +147,41 @@
 })();                   </code></pre>
                         <a data-executor>실행</a>
                     </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Strict Mode</h3>
+                        <p>엄격한 코드 검사 및 수행 모드</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Object 지향 프로그래밍 지원</h3>
+                        <p>객체 불변, get/set, 리플렉션 강화 ...</p>
+                    </section>
+                    <section>
+                        <h3>Object Freeze</h3>
+                        <p>불변 객체 생성</p>
+                    </section>
+                    <section>
+                        <h3>Object get/set</h3>
+                        <p>객체 프로퍼티의 Get / Set 핸들러 지원</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Array</h3>
+                        <p>다양한 메서드 추가</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>기타</h3>
+                    <p>String.trim</p>
+                    <p>Immutable undefined</p>
                 </section>
 
 				<section>
@@ -191,8 +226,7 @@
             Array.prototype.forEach.call(codeExecutor, function(v) {
                 v.onclick = function(e) {
                     var parent = e.target.parentNode;
-                    var code = parent.querySelector("pre.code code").innerText;
-                    eval.call(window, code);
+                    eval.call(window, parent.querySelector("pre.code code").innerText);
                 }
             });
 
