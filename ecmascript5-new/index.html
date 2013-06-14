@@ -228,16 +228,16 @@ delete Object.prototype // Syntax Error</code></pre>
 
   // Object.freeze
   var javacafe = { study: "재미있어요" };
-  Object.freeze(javacafe);
+  Object.freeze(javacafe); // 객체 불변으로 만들기
 
   javacafe.study = "하기싫어요";
-  alert(javacafe.study);
+  alert(javacafe.study); // 변하지 않음
 
   javacafe.play = "놀러갑시다";
-  alert(javacafe.play);
+  alert(javacafe.play); // 새 속성 추가 불가
 
   delete javacafe.study;
-  alert(javacafe.study);
+  alert(javacafe.study); // 삭제도 불가
 
 })();               </code></pre>
                     <a data-executor>RUN</a>
