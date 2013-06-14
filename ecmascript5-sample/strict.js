@@ -3,16 +3,17 @@
   "use strict";
 
   // 전부 오류
-  eval = 17;
-  arguments++;
+  var eval = 17;
+  var arguments = "hello";
   ++eval;
-  var obj = { set p(arguments) { } };
-  var eval;
-  try { } catch (arguments) { }
+  arguments++;
   function x(eval) { }
   function arguments() { }
+  var obj = { x: 1, x: 2 };
   var y = function eval() { };
   var f = new Function("arguments", "'use strict'; return 17;");
+  with({ x: 2 }){}
+  implictVar = 10;
 
   // 특정 스코프에 한정적
   function hello() {
