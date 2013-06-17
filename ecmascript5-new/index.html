@@ -218,7 +218,84 @@ delete Object.prototype // Syntax Error</code></pre>
 
                 <section>
                     <h3>Object 지향 프로그래밍 지원</h3>
-                    <p>객체 불변, get/set, 리플렉션 강화 ...</p>
+                    <p>객체 불변, get/set, 리플렉션, prototype ...</p>
+                </section>
+                <section>
+                    <h3>Prototype</h3>
+                    <p class="fragment">객체의 원본</p>
+                    <p class="fragment">JavaScript 객체는 전부 Object 생성자의 prorotype이 원본</p>
+                </section>
+                <section>
+                    <h4>생성된 객체에서 Prototype 객체를 알아내는 방법</h4>
+                </section>
+                <section>
+                    <p>Object.getPrototypeOf(obj)</p>
+                    <pre class="code"><code data-tarim>(function() {
+    var today = new Date();
+
+    // ECMA Script 3nd -
+    alert(today.__proto__ === Date.prototype);
+    alert(today.constructor.prototype === Date.prototype);
+
+    // ECMA Script 5th +
+    alert(Object.getPrototypeOf(today) === Date.prototype);
+})();               </code></pre>
+                    <a data-executor>RUN</a>
+                </section>
+                <section>
+                    <h4>특정 객체를 상속하는 객체 생성은</h4>
+                    <pre class="code"><code data-tarim>// 단순 Object
+var javacafe = {}; // 리터럴 표기법
+javacafe = new Object(); // Built-in 생성자 사용
+
+// 사용자 생성자 함수 사용
+var JavacafeConstructor = function() {
+    // 구현
+};
+JavacafeConstructor.prototype = {
+    constructor: JavacafeConstructor
+    /*, 기타 등등 속성 .. */
+};
+javacafe = new JavacafeConstructor();</code></pre>
+                </section>
+                <section>
+                    <h4>ECMA Script 5th 에서는 어떻게...?</h4>
+                    <p class="fragment">Object.create(prototype) !</p>
+                    <div class="fragment">
+                        <pre class="code"><code data-tarim>(function() {
+    var javacafe = Object.create({
+        hello: "world",
+        "hi": "안녕"
+    });
+    alert(javacafe.hello);
+    alert(javacafe.hi);
+})();                   </code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                    <p class="fragment">그렇다면 prototype chain은 어떻게 되지?</p>
+                </section>
+                <section>
+                    <h4>세가지 방법의 객체 생성과 Prototype-Chain</h4>
+                    <pre class="code"><code data-tarim>(function() {
+    var obj1 = {};
+    var obj2 = new Object();
+    var obj3 = Object.create(null);
+    alert(
+        Object.getPrototypeOf(obj1)
+        === Object.getPrototypeOf(obj2)
+        === Object.getPrototypeOf(obj3)
+    ); // ??
+})();               </code></pre>
+                    <a data-executor>RUN</a>
+                </section>
+                <section>
+                    <h4>Object.create 에 null을 prototype으로 주면 원본을 가지지 않은 객체 생성</h4>
+                    <pre class="code"><code data-tarim>(function() {
+    var nullObject = Object.create(null)
+    alert(nullObject.constructor !== Object) // true.
+    alert(typeof nullObject.toString) // undefined.
+})();               </code></pre>
+                    <a data-executor>RUN</a>
                 </section>
                 <section>
                     <h3>Object Freeze</h3>
@@ -240,6 +317,52 @@ delete Object.prototype // Syntax Error</code></pre>
 
 })();               </code></pre>
                     <a data-executor>RUN</a>
+                </section>
+                <section>
+                    <h3>Object Key</h3>
+                    <p>객체의 모든 속성명을 얻고싶은데...</p>
+                    <pre class="code"><code data-tarim>// 객체의 속성명 name, boss, type 을 가져오고 싶다.
+var javacafe = {
+    name: "javacafe",
+    boss: "hrkim",
+    type: "study group"
+}</code></pre>
+                </section>
+                <section>
+                    <p>기존에는 for - in 구문으로</p>
+                    <div class="fragment roll-in">
+                        <pre class="code"><code data-tarim>(function() {
+    // ES3
+    var javacafe = {
+            name: "javacafe",
+            boss: "hrkim",
+            type: "study group"
+        },
+        keys = [];
+    for(var k in javacafe) {
+        if(!javacafe.hasOwnProperty(k)) continue;
+        keys.push(k);
+    }
+    alert(keys);
+})();                   </code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
+                    <p>ECMA Script 5th 에서는 Object.keys(obj) 사용!</p>
+                    <div class="fragment roll-in">
+                        <pre class="code"><code data-tarim>(function() {
+    // ES5
+    var javacafe = {
+        name: "javacafe",
+        boss: "hrkim",
+        type: "study group"
+    };
+    var keys = Object.keys(javacafe);
+    alert(keys);
+})();                   </code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
                 </section>
                 <section>
                     <h3>Object get/set</h3>
