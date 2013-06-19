@@ -8,6 +8,9 @@
 Ext.Loader.setConfig({enabled: true});
 
 Ext.application({
-  name: 'LoveMeExt',
-  autoCreateViewport: true
+  name: 'LoveExtMVC',
+  autoCreateViewport: true,
+  launch: function() {
+    console.log("Launched!");
+  }
 });
