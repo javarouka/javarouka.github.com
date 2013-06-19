@@ -8,14 +8,6 @@
 Ext.Loader.setConfig({enabled: true});
 
 Ext.application({
-
   name: 'LoveMeExt',
-
-  autoCreateViewport: true,
-
-  launch: function() {
-    // app 이 ready 되었을때
-    console.log("app launch!");
-  }
-
+  autoCreateViewport: true
 });
