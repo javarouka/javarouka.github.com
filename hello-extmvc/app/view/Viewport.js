@@ -7,10 +7,14 @@
  */
 Ext.define("App.view.Viewport", {
   extend: "Ext.container.Viewport",
+  use: [
+    "Ext.panel.Panel"
+  ],
   layout: "fit",
-  items: [{
-    xtype: "panel",
-    title: "hello",
-    html: "안녕하세요!"
-  }]
+  items: [Ext.create('Ext.panel.Panel', {
+    title: 'Hello',
+    width: 200,
+    html: '<p>World!</p>',
+    renderTo: Ext.getBody()
+  })]
 });
