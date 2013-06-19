@@ -7,5 +7,10 @@
  */
 Ext.define("App.view.Viewport", {
   extend: "Ext.container.Viewport",
-  layout: "fit"
+  layout: "fit",
+  items: [{
+    xtype: "panel",
+    title: "hello",
+    html: "안녕하세요!"
+  }]
 });
