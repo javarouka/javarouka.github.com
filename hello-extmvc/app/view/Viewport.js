@@ -8,7 +8,7 @@
 Ext.define("LoveExtMVC.view.Viewport", {
   extend: "Ext.container.Viewport",
   requires:['LoveExtMVC.view.LovePanel'],
-  layout: "vbox",
+  //layout: "hbox",
   items: [
     {
       xtype: "lovepanel"
@@ -27,6 +27,9 @@ Ext.define("LoveExtMVC.view.Viewport", {
       width: 200,
       html: '<p>World!</p>',
       renderTo: Ext.getBody()
-    })
+    }),
+    {
+      xtype: 'userGrid'
+    }
   ]
 });

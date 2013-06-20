@@ -10,7 +10,9 @@ Ext.Loader.setConfig({enabled: true});
 Ext.application({
   name: 'LoveExtMVC',
   autoCreateViewport: true,
+  controllers: [ 'LoveController', 'HateController', 'Users' ],
   launch: function() {
     console.log("Launched!");
+
   }
 });
