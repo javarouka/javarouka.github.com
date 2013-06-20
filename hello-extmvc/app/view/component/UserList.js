@@ -9,8 +9,8 @@ Ext.define("LoveExtMVC.view.component.UserList", {
   extend: "Ext.grid.Panel",
   alias: "widget.userGrid",
   title : 'All Users',
+  store: "UserStore",
   initComponent: function() {
-    this.store = Ext.create('LoveExtMVC.store.UserStore');
     this.columns = [
       {header: 'Sequence',  dataIndex: 'no',  flex: 1},
       {header: '아이디',  dataIndex: 'id',  flex: 1},

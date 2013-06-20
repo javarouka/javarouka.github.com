@@ -7,20 +7,24 @@
  */
 Ext.define('LoveExtMVC.store.UserStore', {
   extend : 'Ext.data.Store',
+  alias: "userStore",
   model : 'LoveExtMVC.model.UserListModel',
   autoLoad : true,
   pageSize : 10,
-  storeId : 'UserListData',
   proxy : {
     type : 'ajax',
-    url : 'data/data.json',
+    api: {
+      read: 'data/data.json',
+      update: 'data/data.json'
+    },
     reader : {
       type : 'json',
-      root: ""
+      root: '',
+      successProperty: 'success'
     },
     listeners : {
       exception : function(_this, response, operation, eventOpts){
-        Aimir.ajax.failure(response);
+        console.log(_this)
       }
     }
   }

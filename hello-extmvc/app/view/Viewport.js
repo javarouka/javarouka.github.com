@@ -8,26 +8,27 @@
 Ext.define("LoveExtMVC.view.Viewport", {
   extend: "Ext.container.Viewport",
   requires:['LoveExtMVC.view.LovePanel'],
-  //layout: "hbox",
+//  padding: "20",
+//  layout: "vbox",
   items: [
-    {
-      xtype: "lovepanel"
-    },
-    {
-      xtype:'panel',
-      title:'hello',
-      html:'this is a panel inside a viewport!',
-      items:[{
-        xtype:'button',
-        text:'click me'
-      }]
-    },
-    Ext.create('Ext.panel.Panel', {
-      title: 'Hello',
-      width: 200,
-      html: '<p>World!</p>',
-      renderTo: Ext.getBody()
-    }),
+//    {
+//      xtype: "lovepanel"
+//    },
+//    {
+//      xtype:'panel',
+//      title:'hello',
+//      html:'this is a panel inside a viewport!',
+//      items:[{
+//        xtype:'button',
+//        text:'click me'
+//      }]
+//    },
+//    Ext.create('Ext.panel.Panel', {
+//      title: 'Hello',
+//      width: 200,
+//      html: '<p>World!</p>',
+//      renderTo: Ext.getBody()
+//    }),
     {
       xtype: 'userGrid'
     }

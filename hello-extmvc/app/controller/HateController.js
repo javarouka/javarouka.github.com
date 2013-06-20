@@ -16,7 +16,7 @@ Ext.define("LoveExtMVC.controller.HateController", {
     });
   },
   caughtTheClick: function(button, event, eOpts) {
-    console.log(this.application);
-    console.log(button, event, eOpts);
+    //console.log(this.application);
+    //console.log(button, event, eOpts);
   }
 });
