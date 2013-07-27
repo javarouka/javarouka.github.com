@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        ul.image-map-link-set {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .image-map-tag {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            z-index: 9999;
+            overflow: hidden;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+            background-image: url(trans.png);
+        }
+        .image-map-tag span {
+            color: #FFF;
+            position: absolute;
+            width: 98%;
+            line-height: 30px;
+            bottom: -60px;
+            background: #118051;
+            border-radius: 10px;
+            padding: 0 1%;
+            text-align: center;
+            -webkit-transition: all .3s ease-in-out;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+        .image-map-tag:hover {
+            border-radius: 10px;
+            box-shadow: 0 0 1em #ccc;
+        }
+        .image-map-tag:hover span {
+            bottom: 0;
+        }
+        .tag1 {
+            top: 0 !important;
+            left: 0 !important;
+        }
+        .tag2 {
+            top: 65px !important;
+            left: 490px !important;
+        }
+        .tag3 {
+            top: 210px !important;
+            left: 15px !important;
+        }
+        .tag4 {
+            left: 490px !important;
+            top: 280px !important;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative;">
+        <img class="size-full wp-image-231 aligncenter" alt=""
+             src="http://skintwinkler.com/wordpress/wp-content/uploads/2013/05/face.png"
+             style="width: 646px; height: 593px;" width="646" height="593" />
+        <ul class="image-map-link-set">
+            <li>
+                <a class="image-map-tag tag1">
+                    <span>hello?</span>
+                </a>
+            </li>
+            <li>
+                <a class="image-map-tag tag2">
+                    <span>hello?</span>
+                </a>
+            </li>
+            <li>
+                <a class="image-map-tag tag3">
+                    <span>hello?</span>
+                </a>
+            </li>
+            <li>
+                <a class="image-map-tag tag4">
+                    <span>hello?</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+<!--
+<p style="text-align: center;"><img class="size-full wp-image-231 aligncenter" alt="" src="http://skintwinkler.com/wordpress/wp-content/uploads/2013/05/face.png" style="min-width: 646px; min-height: 593px;" usemap="#twinkle-mainface" width="646" height="593" /></p>
+<map id="twinkle-mainface" name="twinkle-mainface"> <area coords="18,11,93,9,112,16,143,53,149,115,83,144,28,133,5,101,7,39,9,29" shape="poly" href="http://skintwinkler.com/?page_id=113" /> <area coords="559,63,510,105,498,151,467,179,530,207,593,208,636,163,626,102,592,65" shape="poly" href="http://skintwinkler.com/?page_id=115" target="" /> <area coords="69,213,26,262,32,341,68,370,110,380,139,393,139,365,169,309,154,250,113,214,73,211" shape="poly" href="http://skintwinkler.com/?page_id=117" target="" /> <area coords="619,269,529,278,501,337,466,431,467,449,482,437,570,438,635,411,638,306" shape="poly" href="http://skintwinkler.com/?page_id=119" target="" /></map>
+-->
+</body>
+</html>

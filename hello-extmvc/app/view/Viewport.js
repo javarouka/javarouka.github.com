@@ -30,7 +30,8 @@ Ext.define("LoveExtMVC.view.Viewport", {
 //      renderTo: Ext.getBody()
 //    }),
     {
-      xtype: 'userGrid'
+      xtype: 'userGrid',
+      cls: "myClass"
     }
   ]
 });
