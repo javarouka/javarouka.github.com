@@ -65,17 +65,21 @@
   </p>
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
 
-  (function($) {
+  (function(doc) {
+    function setInitializClass(nodeList) {
+      for(var i = 0, len = nodeList.length; i < len; i++) {
+        nodeList[i].classList.remove("first-position");
+      }
+    }
     setTimeout(function(){
-      $("section, header, footer").removeClass("first-position");
+      setInitializClass(doc.querySelectorAll("section, header, footer"));
     }, 10);
     setTimeout(function(){
-      $("a.github-link").removeClass("first-position");
-    }, 1500);
-  })(jQuery);
+      setInitializClass(doc.querySelectorAll("a.github-link"));
+    }, 1000);
+  })(document);
 
 </script>
 
