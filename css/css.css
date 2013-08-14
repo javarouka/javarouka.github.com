@@ -1,3 +1,37 @@
 body {
-	/*background: url('images/240px-JavaScript-logo.png') no-repeat top right;*/
+    margin: 0 auto;
+}
+ul {
+    padding-left: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+header, section, footer {
+    padding: 5px 1%;
+    margin: 0.5%;
+    float: left;
+    min-width: 320px;
+    box-shadow: 2px 3px 3px #CCC;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+header {
+    top: 0;
+    left: 0;
+    float: left;
+    background-color: #dbfbd6;
+    width: 29%;
+    /*border-bottom: solid 1px #babdbd;*/
+}
+section {
+    width: 33%;
+    background-color: #f0fbdb;
+}
+footer {
+    width: 29%;
+}
+.first-position {
+    margin-left: -300px;
 }
