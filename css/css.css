@@ -11,7 +11,7 @@ header, section, footer {
     padding: 5px 1%;
     margin: 0.5%;
     float: left;
-    min-width: 320px;
+    min-width: 280px;
     box-shadow: 2px 3px 3px #CCC;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -46,4 +46,13 @@ footer {
     left: -300px;
     margin-top: -50px;
     margin-left: -300px;
+}
+
+@media all and (max-width:650px) {
+    header, section, footer {
+        position: relative;
+        margin: 5px auto;
+        padding: 5px 2%;
+        width: 96%;
+    }
 }
