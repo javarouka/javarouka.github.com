@@ -18,6 +18,10 @@ header, section, footer {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+header:hover, section:hover, footer:hover {
+    background-color: #70c0b1;
+    box-shadow: 2px 3px 3px #666;
+}
 header {
     top: 0;
     left: 0;
@@ -32,6 +36,14 @@ header .github-link {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     float: right;
+}
+
+header .github-link:hover {
+    -webkit-transform: rotate(360deg) scale(1.1);
+    -moz-transform:    rotate(360deg) scale(1.1);
+    -ms-transform:     rotate(360deg) scale(1.1);
+    -o-transform:      rotate(360deg) scale(1.1);
+    transform:         rotate(360deg) scale(1.1);
 }
 section {
     width: 33%;
