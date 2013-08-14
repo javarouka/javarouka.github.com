@@ -7,6 +7,7 @@ ul {
     margin-bottom: 20px;
 }
 header, section, footer {
+    position: relative;
     padding: 5px 1%;
     margin: 0.5%;
     float: left;
@@ -22,18 +23,27 @@ header {
     left: 0;
     float: left;
     background-color: #dbfbd6;
-    width: 29%;
+    width: 28.5%;
     /*border-bottom: solid 1px #babdbd;*/
+}
+header .github-link {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    float: right;
 }
 section {
     width: 33%;
     background-color: #f0fbdb;
 }
 footer {
-    width: 29%;
+    width: 28.5%;
+    background-color: #f3fbb5;
 }
 .first-position {
-    display: none;
-    margin-top: -100px;
+    top: -50px;
+    left: -300px;
+    margin-top: -50px;
     margin-left: -300px;
 }
