@@ -6,6 +6,9 @@ ul {
     margin-top: 0;
     margin-bottom: 20px;
 }
+img {
+    border: solid 0;
+}
 header, section, footer {
     position: relative;
     padding: 5px 1%;
