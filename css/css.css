@@ -57,8 +57,6 @@ footer {
     background-color: #f3fbb5;
 }
 .first-position {
-    top: -50px;
-    left: -300px;
     margin-top: -50px;
     margin-left: -300px;
 }
@@ -67,9 +65,6 @@ footer {
     list-style: none;
     margin: 0 0 30px 0;
     padding: 0;
-}
-.sns li  {
-    display: inline-block;
 }
 .sns li  {
     display: inline-block;
