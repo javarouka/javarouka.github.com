@@ -1,6 +1,7 @@
 body {
     width: 99%;
     margin: 0 auto;
+    *width: 740px;
 }
 ul {
     padding-left: 30px;
@@ -15,7 +16,7 @@ header, section, footer {
     position: relative;
     padding: 5px 1%;
     margin: 0.5%;
-    min-width: 280px;
+    min-width: 250px;
     box-shadow: 2px 3px 3px #CCC;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -125,9 +126,17 @@ footer {
     background-position: -544px 0;
 }
 
-@media all and (max-width:650px) {
+@media all and (max-width: 800px) {
+    header {
+        width: 96%;
+    }
+    section, footer {
+        width: 46.5%;
+    }
+}
+
+@media all and (max-width: 600px) {
     header, section, footer {
-        position: relative;
         margin: 5px auto;
         padding: 5px 2%;
         width: 96%;
