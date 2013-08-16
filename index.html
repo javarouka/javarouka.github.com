@@ -27,7 +27,7 @@
     <li>tipJS Contributer</li>
     <li>like JavaScript</li>
   </ul>
-  <a class="github-link first-position" href="https://github.com/javarouka" target="_blank">
+  <a class="github-link" href="https://github.com/javarouka" target="_blank">
     <img src="css/images/github-icon.png" title="Go to javarouka's github page" alt="javarouka's github page link">
   </a>
 </header>
@@ -92,17 +92,17 @@
 <script>
 
   (function(doc) {
+
     function setInitializClass(nodeList) {
       for(var i = 0, len = nodeList.length; i < len; i++) {
         nodeList[i].classList.remove("first-position");
       }
     }
+
     setTimeout(function(){
       setInitializClass(doc.querySelectorAll("section, header, footer"));
     }, 100);
-    setTimeout(function(){
-      setInitializClass(doc.querySelectorAll("a.github-link"));
-    }, 1500);
+
   })(document);
 
 </script>

@@ -1,4 +1,5 @@
 body {
+    width: 99%;
     margin: 0 auto;
 }
 ul {
@@ -10,10 +11,10 @@ img {
     border: solid 0;
 }
 header, section, footer {
+    float: left;
     position: relative;
     padding: 5px 1%;
     margin: 0.5%;
-    float: left;
     min-width: 280px;
     box-shadow: 2px 3px 3px #CCC;
     -webkit-transition: all 1s ease;
@@ -26,9 +27,6 @@ header:hover, section:hover, footer:hover {
     box-shadow: 2px 3px 3px #666;
 }
 header {
-    top: 0;
-    left: 0;
-    float: left;
     background-color: #dbfbd6;
     width: 28.5%;
     /*border-bottom: solid 1px #babdbd;*/
