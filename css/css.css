@@ -1,4 +1,5 @@
 body {
+    width: 99%;
     margin: 0 auto;
 }
 ul {
@@ -10,11 +11,11 @@ img {
     border: solid 0;
 }
 header, section, footer {
+    float: left;
     position: relative;
     padding: 5px 1%;
     margin: 0.5%;
-    float: left;
-    min-width: 280px;
+    min-width: 250px;
     box-shadow: 2px 3px 3px #CCC;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -26,9 +27,6 @@ header:hover, section:hover, footer:hover {
     box-shadow: 2px 3px 3px #666;
 }
 header {
-    top: 0;
-    left: 0;
-    float: left;
     background-color: #dbfbd6;
     width: 28.5%;
     /*border-bottom: solid 1px #babdbd;*/
@@ -57,19 +55,16 @@ footer {
     background-color: #f3fbb5;
 }
 .first-position {
-    top: -50px;
-    left: -300px;
     margin-top: -50px;
     margin-left: -300px;
+    margin-top: 0.5%\0/;
+    margin-left: 0.5%\0/;
 }
 
 .sns  {
     list-style: none;
     margin: 0 0 30px 0;
     padding: 0;
-}
-.sns li  {
-    display: inline-block;
 }
 .sns li  {
     display: inline-block;
@@ -132,9 +127,17 @@ footer {
     background-position: -544px 0;
 }
 
-@media all and (max-width:650px) {
+@media all and (max-width: 800px) {
+    header {
+        width: 96%;
+    }
+    section, footer {
+        width: 46.5%;
+    }
+}
+
+@media all and (max-width: 600px) {
     header, section, footer {
-        position: relative;
         margin: 5px auto;
         padding: 5px 2%;
         width: 96%;
