@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Introduce Yeoman By javarouka (@YiHanghee)</title>
+    <meta name="description" content="Introduce Yeoman">
+    <meta name="author" content="javarouka">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/github.css">
+
+    <!-- For spotllight -->
+    <link rel="stylesheet" href="plugin/spotlight/spotlight.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>Yeoman</h1>
+            <h3>모던 웹 개발을 위한 보좌관 Yeoman</h3>
+            <p>
+                <small>Created by
+                    <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a> /
+                    <a href="http://atconsole.com" target="new">atconsole.com (Team Blog)</a>
+                </small>
+            </p>
+        </section>
+
+        <section>
+            <h1>목차</h1>
+            <ul>
+                <li>Yeoman이 무엇</li>
+                <li>Scaffolding</li>
+                <li>Grunt</li>
+                <li>Bower</li>
+                <li>Generator</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Yeoman?</h3>
+            <p class="fragment roll-in">이건 뭘까...?</p>
+            <p class="fragment roll-in">보좌관, 영국 황실 근위병</p>
+        </section>
+
+        <section>
+            <h3>이런 분들...</h3>
+            <img src="img/Y4b.jpg" alt="yeomans">
+        </section>
+
+        <section>
+            <h3>이런분들이 프로그래밍을?</h3>
+            <img src="img/ic9cq.jpg" >
+        </section>
+
+        <section>
+            <h4>그건 아니고, 웹 개발을 보조해주는 툴입니다.</h4>
+            <h4>개발 보좌관이지요.</h4>
+            <img src="img/logo.jpg" alt="yeoman logo">
+            <p>
+                공식 사이트는 여기<br/>
+                <a href="http://yeoman.io/" target="_blank">http://yeoman.io/</a>
+            </p>
+        </section>
+
+        <section>
+            <h1>THE END</h1>
+            <h3>Thank You!</h3>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'simple',//Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: 'zoom', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/spotlight/spotlight.js', async: true, condition: function() { return !!document.body.classList; } }
+            //{ src: 'plugin/repoll/repoll.js', async: true, condition: function() { return !!document.body.classList; } },
+        ]
+    });
+
+    var codeExecutor = document.querySelectorAll("a[data-executor]");
+    Array.prototype.forEach.call(codeExecutor, function(v) {
+        v.onclick = function(e) {
+            var parent = e.target.parentNode;
+            eval.call(window, parent.querySelector("pre.code code").innerText);
+        }
+    });
+
+</script>
+
+</body>
+</html>
