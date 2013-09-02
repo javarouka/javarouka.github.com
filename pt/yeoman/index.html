@@ -44,18 +44,35 @@
         <section>
             <h1>목차</h1>
             <ul>
-                <li>Yeoman?</li>
-                <li>Scaffolding</li>
-                <li>Grunt</li>
-                <li>Bower</li>
-                <li>Generator</li>
+                <li class="fragment roll-in">Yeoman?</li>
+                <li class="fragment roll-in">Scaffolding</li>
+                <li class="fragment roll-in">Installation</li>
+                <li class="fragment roll-in">Grunt + Bower</li>
+                <li class="fragment roll-in">RequireJS Example</li>
             </ul>
         </section>
 
         <section>
+            <h2>오늘 할 이야기</h2>
+            <p>최근의 웹 어플리케이션을 만들려면 고려해야할게 너무나 많습니다.</p>
+            <p class="fragment roll-in">각종 라이브러리들 관리,</p>
+            <p class="fragment roll-in">공통 소스파일 생성, 로컬 웹서버 세팅</p>
+            <p class="fragment roll-in">만드는 도중의 지속적 테스트, 빌드, 배포...</p>
+            <p class="fragment roll-in">ETC...</p>
+        </section>
+
+        <section>
+            <h2>오늘 할 이야기</h2>
+            <p>
+                이것들을 조금이라도 해소시켜줄 방법의 하나인 Yeoman에 대해 아주
+                <strong class="fragment highlight-red">기초</strong>만 알아보겠습니다
+            </p>
+        </section>
+
+        <section>
             <h2>Yeoman?</h2>
-            <p class="fragment roll-in">이건 뭘까...?</p>
-            <p class="fragment roll-in">보좌관, 영국 황실 근위병</p>
+            <p class="fragment roll-in">발음이 이상하죠.</p>
+            <p class="fragment roll-in">사전의 뜻은 보좌관, 영국 황실 근위병</p>
         </section>
 
         <section>
@@ -64,7 +81,7 @@
         </section>
 
         <section>
-            <h3>이런분들이 프로그래밍을?</h3>
+            <h3>이분들이 위험한 프로그래밍을...?</h3>
             <img src="img/ic9cq.jpg" alt="a nice programer">
         </section>
 
@@ -78,34 +95,181 @@
             </p>
         </section>
 
+        <section>
+            <h3>Yeoman은 Scaffolding 툴입니다.</h3>
+            <p>웹 어플리케이션을 제작하기 전에 필요한 디렉토리 구조 및 기본적인 파일을 생성해 줍니다.</p>
+        </section>
 
         <!--
            스캐폴딩 단어 뜻이 생소해서 한번 검색해보았습니다.
            이렇게 나오더군요.
         -->
         <section>
-            <h2>Scaffolding</h2>
+            <h2>Scaffolding의 정의</h2>
             <p>
                 조력. 초기 단계에 적절한 도움을 통한 작업시간의 단축.
             </p>
             <p>
                 작업자에 대하여 적절한 도움을 제공함으로써 유의미한 작업을 수행할 수 있게 도움을 주는 것.
-                특히 초보자의 경우 스캐폴딩(Scaffolding)을 통해 더욱 작업에 익숙해지는 결과를 얻기도 함.
             </p>
+            <p class="fragment roll-in">특히 초보자의 경우 더욱 작업에 익숙해지는 결과를 얻기도 함.</p>
         </section>
 
         <!--
             건축계에서는 이렇게 부릅니다.
         -->
         <section>
-            <h4>건축</h4>
-            <p>건축 공사에서는 비계 라고 부르며, 건축 공사에서 높은 곳에서 일할 장소를 제공하거나, 재료 및 작업의 이동 경로 제공</p>
+            <p>건축 공사에서는 비계 라고 부르기도 합니다</p>
+            <p>빌딩 건축시 높은 곳에서 일할 장소를 제공하거나, 재료 및 작업의 동선을 제공하지요</p>
             <img src="img/scaffolding.jpg" alt="scaffolding">
         </section>
 
         <section>
-            <h3>Yeoman은 Scaffolding 툴입니다.</h3>
-            <p>웹 어플리케이션을 제작하기 전에 필요한 디렉토리 구조 및 기본적인 파일을 생성해 줍니다.</p>
+            <h3>Yeoman도 개발 시</h3>
+            <p>코드를 자동 생성해주거나 라이브러리와 각종 테스트, 배포, 컴파일 과정을 간단하게 실행시켜 줍니다</p>
+        </section>
+
+        <!--
+        요새 Node.JS는 언어로서도 인기가 많지만, 개발툴(?)로서도 아주 많이 쓰이는 것 같기도 합니다.
+        -->
+        <section>
+            <h2>Installation</h2>
+            <p>설치는 아주 간단합니다.</p>
+            <ul>
+            <li class="fragment roll-in">Node.JS가 없다면 <a href="http://www.nodejs.org/" target="_blank">설치</a> 합니다.</li>
+            <li class="fragment roll-in">Ruby가 없다면 <a href="https://www.ruby-lang.org/ko/downloads/" target="_blank">설치</a> 합니다.</li>
+            <li class="fragment roll-in">
+                <p>그 다음 코드를 커맨드라인에 타이핑합니다. npm으로 설치하는 거죠.</p>
+                <pre class="code"><code data-trim>$ npm install -g yo</code></pre>
+            </li>
+            </ul>
+        </section>
+
+        <!--
+        왜 yeoman을 설치하는데 grunt와 bower를 설치하는가는 나중에 다루겠습니다
+        -->
+        <section>
+            <h3>npm 버전이 낮다면 (1.2.10 이하) </h3>
+            <p>추가로 다음도 실행해 줍니다</p>
+            <pre class="code"><code data-trim>$ npm install -g grunt-cli bower</code></pre>
+            <p class="fragment roll-in">이걸로 설치가 끝났습니다.</p>
+        </section>
+
+        <section>
+            <h2>Grunt와 Bower</h2>
+            <div>
+                <img src="img/bower-logo.png" alt="bower logo" style="border: none">
+                <img src="img/grunt-logo.png" alt="grunt logo" style="border: none">
+            </div>
+            <p class="fragment roll-in">뜬금없지만, Yeoman을 하려면 이 둘도 반드시 알아야 합니다!</p>
+        </section>
+
+        <section>
+            <h3>일단...Yeoman의 작동 흐름을 살펴보면</h3>
+        </section>
+
+        <section>
+            <h3>Yeoman - Scaffolding!</h3>
+            <p class="fragment roll-in">앞서 설명드렸다시피 Yeoman 을 사용하면 웹 개발시 반드시 작성해야 하는 파일과,</p>
+            <p class="fragment roll-in">프레임워크 기반, 즉 AngularJS, Backbone, Bootstrap...기타등등을 사용하는 기본 구조의 웹 스캐폴딩을 작성해줍니다.</p>
+        </section>
+
+        <section>
+            <p>이러한 구조를 직접 yeoman 없이 만들려면 프로그래머는 직접</p>
+            <ul>
+                <li class="fragment roll-in">js, css, asset, view 등등의 디렉토리를 만들고</li>
+                <li class="fragment roll-in">사용하려는 컴포넌트를 배포 사이트에 가서 다운로드 받고</li>
+                <li class="fragment roll-in">index.html을 생성하고</li>
+                <li class="fragment roll-in">다운로드 받은 컴포넌트 파일들을 페이지에 일일히 include 시켜줍니다.</li>
+                <li class="fragment roll-in">또한 돌려볼 로컬 서버가 필요하므로 서버도 셋업합니다.</li>
+                <li class="fragment roll-in">코딩한 파일에 대한 검증과 테스트, 그리고 minify 를 하기 위해 툴도 돌리겠죠.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>귀찮다...</h3>
+            <img src="img/hannes.jpg">
+            <small>반복 작업을 할 그럴 용기도 생기지 않는구나</small>
+        </section>
+
+        <section>
+            <h3>Yeoman을 쓰면</h3>
+            <p>방금 나열한 작업들을 전부 커맨드라인 몇줄로 해결할 수 있습니다.</p>
+        </section>
+
+        <section>
+            <h3>디렉토리 구조 작성 및 의존 컴포넌트 다운로드 및 삽입</h3>
+            <pre class="code"><code data-trim>$ yo webapp</code></pre>
+        </section>
+
+        <section>
+            <h3>개발 로컬 서버 세팅</h3>
+            <pre class="code"><code data-trim>$ grunt server</code></pre>
+        </section>
+
+        <section>
+            <h3>컴파일 및 배포</h3>
+            <pre class="code"><code data-trim>$ grunt build</code></pre>
+        </section>
+
+        <section>
+            <h3>간단하다!</h3>
+            <img src="img/ohohoh.jpg" alt="amazing">
+            <small class="fragment roll-in">사실 개발이 이렇게 간단하지만은 않지만 귀찮은 작업이 확 줄어드는건 사실입니다</small>
+        </section>
+
+        <section>
+            <h4>소개드린 작업의 워크플로우는 다음과 같습니다.</h4>
+            <img src="img/workflow.jpg" alt="workflow">
+            <p class="fragment roll-in">그럼 Bower와 Grunt에 대해 <span class="fragment highlight-red">간단</span>하게 살펴보겠습니다.</p>
+        </section>
+
+        <section>
+            <h2>Bower</h2>
+            <p>의존성 컴포넌트 관리자</p>
+            <img src="img/bower-logo.png" alt="bower logo">
+        </section>
+
+        <section>
+            <h3>프로젝트의 여러 의존 컴포넌트를 간단한 설정파일로 관리할 수 있습니다.</h3>
+            <p class="fragment roll-in">Java를 하신 분이라면 Maven 빌드 툴의 의존성 관리와 비슷하다고 보시면 됩니다.</p>
+        </section>
+
+        <section>
+            <h4>만일 프로젝트에 jquery와 underscore, bootstrap을 사용해야 한다고 가정하면</h4>
+            <pre class="code fragment roll-in"><code data-trim>$ bower install underscore bootstrap</code></pre>
+            <p class="fragment roll-in">잠시 후 bower_components 라는 디렉토리 아래에 다운로드가 됩니다.</p>
+        </section>
+
+        <section>
+            <h3>bower.json</h3>
+            <p>이 파일을 프로젝트 루트에 생성하고 의존성 정보를 정의해두면 의존성을 일일히 쳐넣을 필요가 없습니다.</p>
+            <pre class="code fragment roll-in"><code data-trim>{
+    "name": "very-good-excellent-webapp",
+    "version": "1.0.0",
+    "main": "very/good/excellent.js",
+    "ignore": [
+        ".gitignore",
+        "**/.*",
+        "hatefile"
+    ],
+    "dependencies": {
+        "underscore": "~1.5.1",
+        "bootstrap": "~3.0.0"
+    }
+}</code></pre>
+            <pre class="code fragment roll-in"><code data-trim>$ bower instal</code></pre>
+        </section>
+
+        <section>
+            <h2>Grunt</h2>
+            <p>태스크 실행 툴. 테스트, 빌드 배포, 기타등등 여러 정의한 태스크를 수행해준다</p>
+            <img src="img/grunt-logo.png" alt="grunt logo">
+        </section>
+
+        <section>
+            <h2>RequireJS Example</h2>
+            <p>간단하게 RequireJS Generator 를 사용해서 웹앱을 만들어 보겠습니다</p>
         </section>
 
         <section>
