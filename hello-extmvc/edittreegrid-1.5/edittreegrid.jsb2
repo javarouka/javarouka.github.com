@@ -1,0 +1,55 @@
+{
+    "projectName": "EditTreeGrid",
+    "deployDir": "edittreegrid-1.5",
+    "licenseText": "Ext.ux.tree.EditTreeGrid v1.5",
+    "pkgs": [{
+        "name": "EditTreeGrid Package",
+        "file": "edittreegrid-pkg.js",
+        "fileIncludes": [{
+            "text": "TreeGridSorter.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeGridColumnResizer.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeGridNodeUI.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeGridLoader.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeGridColumns.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeGrid.js",
+            "path": "examples/extjs/3.2.1/ux/treegrid/"
+        }, {
+            "text": "TreeRowEditor.js",
+            "path": "src/"
+        }, {
+            "text": "EditTreeGrid.js",
+            "path": "src/"
+        }]
+    }],
+    "resources": [{
+        "src": "src/",
+        "dest": "src/",
+        "filters": ".*\\.js"
+    }, {
+        "src": "resources/",
+        "dest": "resources/",
+        "filters": ".*"
+    }, {
+        "src": "examples/",
+        "dest": "examples/",
+        "filters": ".*[\\.html|\\.jpg|\\.png|\\.gif|\\.css|\\.js|\\.php|\\.java]"
+    }, {
+        "src": "WEB-INF/",
+        "dest": "WEB-INF/",
+        "filters": ".*"
+    }, {
+        "src": "edittreegrid.jsb2",
+        "dest": "edittreegrid.jsb2",
+        "filters": ".*"
+    }]
+}
