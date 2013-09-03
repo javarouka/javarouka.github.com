@@ -437,7 +437,7 @@ grunt.registerTask('default', ['uglify']); // 기본 Task로 등록</code></pre>
         </section>
 
         <section>
-            <h3>Step #1</h3>
+            <h3>Scaffolding 만들기</h3>
             <pre class="code fragment roll-in"><code data-trim>$ npm install -g generator-angular // angular generator 설치
 $ yo angular // scaffolding 생성
 $ grunt // 빌드
@@ -455,8 +455,29 @@ $ grunt server // 로컬서버 구동</code></pre>
         </section>
 
         <section>
-            <h1>THE END</h1>
-            <h3>Thank You!</h3>
+            <h3>페이지 추가해보기</h3>
+            <pre class="code fragment roll-in"><code data-trim>$ yo angular:route auto-create // auto-create 라우팅 생성</code></pre>
+            <img class="fragment roll-in" src="img/an3.png">
+        </section>
+
+        <section>
+            <h3>watch 플러그인</h3>
+            <p>grunt server 로 서버를 수행하면 기본적으로 watch 플러그인 덕분에 실시간으로 소스가 갱신됩니다.</p>
+        </section>
+
+        <section>
+            <h2>정리</h2>
+            <ul>
+                <li class="fragment roll-in">Yeoman을 사용하면 웹 프로젝트 개발 효율을 증가시킬 수 있고, 생성된 코드를 보며 학습 비용도 덜 수 있다</li>
+                <li class="fragment roll-in">기본적인 스캐폴딩이 마음에 들지 않으면 직접 정의해서 사용할 수도 있으며 효율적인 외부 컴포넌트 관리 및 배포 테스트가 쉽다.</li>
+                <li class="fragment roll-in">제네레이터 공유만으로 쉽게 프로젝트 환경을 공유할 수 있다</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>감사합니다</h1>
+            <img src="img/7.gif">
+            <p><small>여러분 모두 언제나 즐거운 코딩 되길 바랍니다</small></p>
         </section>
 
     </div>
