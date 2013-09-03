@@ -42,6 +42,15 @@
         </section>
 
         <section>
+            <pre style="font-size: 35px;" class="code"><code data-trim>{
+    "slide"  : "발표자 소개",
+    "name"   : "이항희",
+    "age"    : 34,
+    "job"    : "백수"
+}</code></pre>
+        </section>
+
+        <section>
             <h1>목차</h1>
             <ul>
                 <li class="fragment roll-in">Yeoman?</li>
@@ -150,12 +159,27 @@
           <p class="fragment roll-in">bootstrap 앱을 만든다면 bootstrap Generator...AngularJS를 사용한 앱을 만든다면 angular Generator를 사용하여 스캐폴딩을 만듭니다.</p>
         </section>
 
+        <section>
+            <p>제너레이터를 실행하면,</p>
+            <pre class="code"><code data-trim>// 백본 제너레이터 설치
+$ npm install -g generator-backbone
+
+// 백본 스캐폴딩 생성
+$ yo backbone</code></pre>
+            <small class="fragment roll-in">아직 위의 커맨드를 이해할 필요 없습니다. 그냥 백본 제네레이터를 실행하고 있다고 이해하세요</small>
+        </section>
+
+        <section>
+            <h4>이런 디렉토리 구조가 자동 생성됩니다.</h4>
+            <img src="img/backbone-scaffolding.png">
+        </section>
+
         <!--
         여기서 간단한 스캐폴딩 생성을 보여준다.
         -->
         <section>
-          <p>Java를 하신 분이라면, Maven의 Archetype 과 좀 비슷하다고 느끼실 겁니다.</p>
-          <p class="fragment roll-in">yeoman 공식 Generator 는 다음과 같습니다.</p>
+          <p>Java를 하신 분이라면, Maven의 Archetype 과 좀 비슷하다고 느끼실 겁니다. 실은 많이 다르지만요.</p>
+          <p class="fragment roll-in">yeoman의 공식 Generator 는 다음과 같습니다.</p>
           <div class="fragment roll-in">
             <ul>
               <li><a href="https://github.com/yeoman/generator-webapp" target="_blank">Web App</a></li>
@@ -172,7 +196,7 @@
         </section>
 
         <section>
-          <h3>등록된 Generator List</h3>
+          <h3>기타 커뮤니티 Generator List</h3>
           <p>
             아직 얼마 안되어서인지 공식 제너레이터가 많진 않습니다.<br/>
             <a href="http://yeoman.io/community-generators.html" target="_blank">http://yeoman.io/community-generators.html</a>
@@ -233,7 +257,7 @@ npm install -g yo</code></pre>
         </section>
 
         <section>
-            <p>이러한 구조를 직접 yeoman 없이 만들려면 프로그래머는 직접</p>
+            <p>이러한 구조를 직접 yeoman 없이 만들려면 프로그래머는</p>
             <ul>
                 <li class="fragment roll-in">js, css, asset, view 등등의 디렉토리를 만들고</li>
                 <li class="fragment roll-in">사용하려는 컴포넌트를 배포 사이트에 가서 다운로드 받고</li>
@@ -264,7 +288,17 @@ npm install -g yo</code></pre>
             <h3>개발 서버 준비</h3>
             <pre class="code"><code data-trim>$ grunt server</code></pre>
             <p class="fragment roll-in">간단한 localhost 서버입니다.<br/>별도 서버를 설치하지 않아도 로컬에서 접속해볼 수 있습니다</p>
+            <small class="fragment roll-in">별도 준비된 REST 서버가 있거나 하면 안써도 됩니다</small>
         </section>
+
+        <!--
+        <section>
+            <h4>작업 중간중간 추가 스캐폴딩 생성</h4>
+            <pre class="code"><code data-trim>$ yo {제너레이터 대표이름}:{제네레이터이름}</code></pre>
+            <p class="fragment roll-in">제네레이터에 따라 추가 제네레이터 이름을 줘서 스켈레톤 소스코드 파일을 생성해낼 수 있습니다</p>
+            <p class="fragment roll-in">예를 들면, AngularJS의 Controller나 Service, Backbone의 Model을 템플릿 형태로 생성해 줍니다.</p>
+        </section>
+        -->
 
         <section>
             <h3>컴파일 및 배포</h3>
@@ -320,15 +354,104 @@ npm install -g yo</code></pre>
         </section>
 
         <section>
+            <h3>Yeoman은 제네레이터에 따라</h3>
+            <p class="fragment roll-in">bower.json을 자동 생성하고, bower로 의존 컴포넌트를 자동으로 받아 스캐폴딩을 생성하죠.</p></ㅔ>
+        </section>
+
+        <section>
             <h2>Grunt</h2>
-            <p>태스크 실행 툴. 테스트, 빌드 배포, 기타등등 여러 정의한 태스크를 수행해줍니다.</p>
+            <p>태스크 실행 툴. 테스트, 빌드 배포, 기타등등 여러 정의한 태스크를 수행.</p>
             <img src="img/grunt-logo.png" alt="grunt logo">
             <p class="fragment roll-in">제일 혹사당하는 녀석 같습니다. 그만큼 기능이 막강하다는 뜻도 되겠네요.</p>
         </section>
 
         <section>
+            <h3>Grunt는 사실상 만능입니다.</h3>
+            <p class="fragment roll-in">Node.JS 를 사용하여 태스크 스크립트를 만들수 있어서 Node.JS에서 할 수 있는 모든 것을 프로젝트에 적용할 수 있습니다.</p>
+        </section>
+
+        <section>
+            <h3>Gruntfile.js</h3>
+            <p class="fragment roll-in">Grunt는 스크립트 파일인 Gruntfile.js을 참고로 수행됩니다</p>
+            <p class="fragment roll-in">
+                Grunt는 Maven처럼 플러그인 기반이라서<br/>
+                작업을 수행하려면 <a href="http://gruntjs.com/plugins" target="_blank">플러그인</a>을 설치하고 스크립트에 수행 계획과 함께 등록해야 합니다.
+            </p>
+        </section>
+
+        <section>
+            <h3>Gruntfile.js Example</h3>
+            <pre class="code fragment roll-in"><code data-trim>module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON("package.json"),
+        // 소스를 난독화하고 minify 하는 uglify Task 등록
+        uglify: {
+            build: {
+                src: "src/ultra.js",
+                dest: "build/ultra.min.js'
+            }
+        }
+    });
+};
+grunt.loadNpmTasks('grunt-contrib-uglify'); // uglify Task 로딩
+grunt.registerTask('default', ['uglify']); // 기본 Task로 등록</code></pre>
+            <pre class="code fragment roll-in"><code data-trim>$ grunt uglify // 코드가 uglify 됩니다.</code></pre>
+        </section>
+
+        <section>
+            <h3>할일이 많다.</h3>
+            <pre class="code fragment roll-in"><code data-trim>module.exports = function(grunt) {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON("package.json"),
+        uglify: { ... }, // 소스 minify Task
+        changelog: { ... }, // 체인지로깅 Task
+        jshint: { ... }, // 소스 문법 검사 Task
+        connect: { ... }, // 로컬서버 Task
+        mocha: { ... },  // 테스트 Task
+        watch: { ... }, // 실시간 소스 감시 Task
+        shell: { ... }, // 쉘 명령 Task
+        ...  // 기
+        ...  // 타
+        ...  // 등등 사용자 정의 Task
+        build: { ... } // 배포 Task
+    });
+};</code></pre>
+            <p class="fragment roll-in">프로젝트 구조마다 달라지기도 합니다.</p>
+            <p class="fragment roll-in">아니 그전에 태스크마다의 설정을 파악하는 것도 큰일이네요.</p>
+        </section>
+
+        <section>
+            <h3>Yeoman으로 Scaffolding을 생성하면</h3>
+            <p>해당 Scaffolding에 맞는 기본 Gruntfile.js 을 생성해줍니다.</p>
+            <p class="fragment roll-in">
+                별도로 필요한 Task가 있다면 Yeoman이 생성해준 Gruntfile.js에 약간의 추가만 하면 되겠죠.
+            </p>
+            <p class="fragment roll-in">
+                생성된 Gruntfile.js 는 grunt를 학습하려는 입문자에게 좋은 예제 소스가 되기도 합니다
+            </p>
+        </section>
+
+        <section>
             <h2>AngularJS Example</h2>
             <p>간단하게 AngularJS Generator 를 사용해서 웹앱을 만들어 보겠습니다</p>
+        </section>
+
+        <section>
+            <h3>Step #1</h3>
+            <pre class="code fragment roll-in"><code data-trim>$ npm install -g generator-angular // angular generator 설치
+$ yo angular // scaffolding 생성
+$ grunt // 빌드
+$ grunt server // 로컬서버 구동</code></pre>
+        </section>
+
+        <section>
+            <h4>scaffolding 결과 디렉토리</h4>
+            <img src="img/an2.png" alt="grunt server task result">
+        </section>
+
+        <section>
+            <h4>자동 생성된 프론트페이지</h4>
+            <img src="img/an1.png" alt="grunt server task result">
         </section>
 
         <section>
@@ -352,7 +475,7 @@ npm install -g yo</code></pre>
         center: true,
 
         theme: 'simple',//Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: 'concave', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: 'zoom', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
         dependencies: [
             { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
