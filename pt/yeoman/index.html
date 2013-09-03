@@ -225,15 +225,6 @@ $ yo backbone</code></pre>
 npm install -g yo</code></pre>
               </li>
             </ul>
-        </section>
-
-        <!--
-        왜 yeoman을 설치하는데 grunt와 bower를 설치하는가는 나중에 다루겠습니다
-        -->
-        <section>
-            <h3>npm 버전이 낮다면 (1.2.10 이하) </h3>
-            <p>추가로 다음도 실행해 줍니다</p>
-            <pre class="code"><code data-trim>npm install -g grunt-cli bower</code></pre>
             <p class="fragment roll-in">이걸로 설치가 끝났습니다. 간단합니다 ㅋ</p>
         </section>
 
@@ -251,7 +242,7 @@ npm install -g yo</code></pre>
         </section>
 
         <section>
-            <h3>Yeoman - Scaffolding!</h3>
+            <h3>Yeoman의 Scaffolding 생성</h3>
             <p class="fragment roll-in">앞서 설명드렸다시피 Yeoman 을 사용하면 웹 개발시 반드시 작성해야 하는 파일과,</p>
             <p class="fragment roll-in">프레임워크 기반, 즉 AngularJS, Backbone, Bootstrap...기타등등을 사용하는 기본 구조의 웹 스캐폴딩을 작성해줍니다.</p>
         </section>
@@ -288,7 +279,6 @@ npm install -g yo</code></pre>
             <h3>개발 서버 준비</h3>
             <pre class="code"><code data-trim>$ grunt server</code></pre>
             <p class="fragment roll-in">간단한 localhost 서버입니다.<br/>별도 서버를 설치하지 않아도 로컬에서 접속해볼 수 있습니다</p>
-            <small class="fragment roll-in">별도 준비된 REST 서버가 있거나 하면 안써도 됩니다</small>
         </section>
 
         <!--
@@ -355,7 +345,8 @@ npm install -g yo</code></pre>
 
         <section>
             <h3>Yeoman은 제네레이터에 따라</h3>
-            <p class="fragment roll-in">bower.json을 자동 생성하고, bower로 의존 컴포넌트를 자동으로 받아 스캐폴딩을 생성하죠.</p></ㅔ>
+            <p class="fragment roll-in">bower.json을 자동 생성하고, bower로 의존 컴포넌트를 자동으로 받아 스캐폴딩을 생성하죠.</p>
+            <p class="fragment roll-in">스캐폴딩 생성 설정 외에 추가로 받을게 있다면 bower.json에 추가하고 다시 install 해주면 됩니다.</p>
         </section>
 
         <section>
