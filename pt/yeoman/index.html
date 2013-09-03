@@ -46,6 +46,7 @@
             <ul>
                 <li class="fragment roll-in">Yeoman?</li>
                 <li class="fragment roll-in">Scaffolding</li>
+                <li class="fragment roll-in">Yeoman Generator</li>
                 <li class="fragment roll-in">Installation</li>
                 <li class="fragment roll-in">Grunt + Bower</li>
                 <li class="fragment roll-in">RequireJS Example</li>
@@ -62,7 +63,6 @@
         </section>
 
         <section>
-            <h2>오늘 할 이야기</h2>
             <p>
                 이것들을 조금이라도 해소시켜줄 방법의 하나인 Yeoman에 대해 아주
                 <strong class="fragment highlight-red">기초</strong>만 알아보겠습니다
@@ -129,19 +129,68 @@
             <p>코드를 자동 생성해주거나 라이브러리와 각종 테스트, 배포, 컴파일 과정을 간단하게 실행시켜 줍니다</p>
         </section>
 
+        <section>
+          <h3>가정집과 아파트, 스타디움?</h3>
+          <p class="fragment roll-in">가정집을 만들때의 스캐폴딩과 고층 아파트의 스캐폴딩은 다를 수 밖에 없습니다.</p>
+          <p class="fragment roll-in">bootstrap을 사용한 앱을 만드는 것과 Chrome Extension 을 만드는건 디렉토리 구조부터 컴포넌트까지 아예 다릅니다.</p>
+        </section>
+
+        <section>
+          <h2>Generator</h2>
+          <p>Scaffolding을 만들어 주는 생성기입니다.</p>
+          <p class="fragment roll-in">bootstrap 앱을 만든다면 bootstrap Generator...AngularJS를 사용한 앱을 만든다면 angular Generator를 사용하여 스캐폴딩을 만듭니다.</p>
+        </section>
+
+        <!--
+        여기서 간단한 스캐폴딩 생성을 보여준다.
+        -->
+        <section>
+          <p>Java를 하신 분이라면, Maven의 Archetype 과 좀 비슷하다고 느끼실 겁니다.</p>
+          <p class="fragment roll-in">yeoman 공식 Generator 는 다음과 같습니다.</p>
+          <div class="fragment roll-in">
+            <ul>
+              <li><a href="https://github.com/yeoman/generator-webapp" target="_blank">Web App</a></li>
+              <li><a href="https://github.com/yeoman/generator-angular#readme">AngularJS</a></li>
+              <li><a href="https://github.com/yeoman/generator-backbone#readme">Backbone</a></li>
+              <li><a href="https://github.com/yeoman/generator-bbb#readme">BBB</a></li>
+              <li><a href="https://github.com/yeoman/generator-chromeapp#readme">Chrome Apps Basic Boilerplate</a></li>
+              <li><a href="https://github.com/yeoman/generator-ember#readme">Ember</a></li>
+              <li><a href="https://github.com/yeoman/generator-jasmine#readme">Jasmine</a></li>
+              <li><a href="https://github.com/yeoman/generator-mocha#readme">Mocha</a></li>
+              <li><a href="https://github.com/yeoman/generator-karma#readme">Karma</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3>등록된 Generator List</h3>
+          <p>
+            아직 얼마 안되어서인지 공식 제너레이터가 많진 않습니다.<br/>
+            <a href="http://yeoman.io/community-generators.html" target="_blank">http://yeoman.io/community-generators.html</a>
+          </p>
+          <p>원한다면 <a href="http://yeoman.io/generators.html#writing-your-first-generator">직접 만들어서</a> 사용하거나 여기에 등록할 수도 있습니다.</p>
+        </section>
+
         <!--
         요새 Node.JS는 언어로서도 인기가 많지만, 개발툴(?)로서도 아주 많이 쓰이는 것 같기도 합니다.
         -->
         <section>
             <h2>Installation</h2>
             <p>설치는 아주 간단합니다.</p>
+            <p><a href="https://npmjs.org/" target=_blank>npm</a>을 사용해서 window, linux 동일하게 설치할 수 있습니다.<br/>Node.JS와 Ruby 에 의존성이 있기에 둘다 설치해야 합니다.</p>
+        </section>
+
+        <section>
             <ul>
-            <li class="fragment roll-in">Node.JS가 없다면 <a href="http://www.nodejs.org/" target="_blank">설치</a> 합니다.</li>
-            <li class="fragment roll-in">Ruby가 없다면 <a href="http://rubyinstaller.org/" target="_blank">설치</a> 합니다.</li>
-            <li class="fragment roll-in">
-                <p>그 다음 코드를 커맨드라인에 타이핑합니다. npm으로 설치하는 거죠.</p>
-                <pre class="code"><code data-trim>$ npm install -g yo</code></pre>
-            </li>
+              <li class="fragment roll-in">Node.JS가 없다면 <a href="http://www.nodejs.org/" target="_blank">설치</a>합니다.</li>
+              <li class="fragment roll-in">Ruby가 없다면 <a href="http://rubyinstaller.org/" target="_blank">설치</a>합니다.</li>
+              <li class="fragment roll-in">
+                  <p>
+                    다음 명령어를 커맨드라인에 타이핑합니다.
+                  </p>
+                  <pre class="code"><code data-trim>// Yeoman을 설치합니다.
+npm install -g yo</code></pre>
+              </li>
             </ul>
         </section>
 
@@ -151,8 +200,8 @@
         <section>
             <h3>npm 버전이 낮다면 (1.2.10 이하) </h3>
             <p>추가로 다음도 실행해 줍니다</p>
-            <pre class="code"><code data-trim>$ npm install -g grunt-cli bower</code></pre>
-            <p class="fragment roll-in">이걸로 설치가 끝났습니다.</p>
+            <pre class="code"><code data-trim>npm install -g grunt-cli bower</code></pre>
+            <p class="fragment roll-in">이걸로 설치가 끝났습니다. 간단합니다 ㅋ</p>
         </section>
 
         <section>
@@ -199,18 +248,18 @@
 
         <section>
             <h3>디렉토리 구조 작성 및 의존 컴포넌트 다운로드 및 삽입</h3>
-            <pre class="code"><code data-trim>// yo 제너레이터명. 아래의 경우 jquery 앱의 스캐폴딩 작성
-$ yo jquery:app</code></pre>
+            <pre class="code"><code data-trim>$ yo {제너레이터 이름}</code></pre>
         </section>
 
         <section>
-            <h3>개발 로컬 서버 세팅</h3>
+            <h3>개발 서버 준비</h3>
             <pre class="code"><code data-trim>$ grunt server</code></pre>
+            <p class="fragment roll-in">간단한 localhost 서버입니다.</p>
         </section>
 
         <section>
             <h3>컴파일 및 배포</h3>
-            <pre class="code"><code data-trim>$ grunt build</code></pre>
+            <pre class="code"><code data-trim>$ grunt</code></pre>
         </section>
 
         <section>
@@ -258,7 +307,7 @@ $ yo jquery:app</code></pre>
         "bootstrap": "~3.0.0"
     }
 }</code></pre>
-            <pre class="code fragment roll-in"><code data-trim>$ bower instal</code></pre>
+            <pre class="code fragment roll-in"><code data-trim>$ bower install</code></pre>
         </section>
 
         <section>
@@ -293,7 +342,7 @@ $ yo jquery:app</code></pre>
         center: true,
 
         theme: 'simple',//Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: 'zoom', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: 'concave', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
         dependencies: [
             { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
