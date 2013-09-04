@@ -58,13 +58,14 @@
                 <li class="fragment roll-in">Yeoman Generator</li>
                 <li class="fragment roll-in">Installation</li>
                 <li class="fragment roll-in">Grunt + Bower</li>
-                <li class="fragment roll-in">RequireJS Example</li>
+                <li class="fragment roll-in">AngularJS Example</li>
             </ul>
         </section>
 
         <section>
             <h2>오늘 할 이야기</h2>
-            <p>최근의 웹 어플리케이션을 만들려면 고려해야할게 너무나 많습니다.</p>
+            <p>최근의 웹 어플리케이션을 만들려면 할게 너무나 많습니다.</p>
+            <p class="fragment roll-in">너무나 많은 파일과 디렉토리 생성,</p>
             <p class="fragment roll-in">각종 라이브러리들 관리,</p>
             <p class="fragment roll-in">공통 소스파일 생성, 로컬 웹서버 세팅</p>
             <p class="fragment roll-in">만드는 도중의 지속적 테스트, 빌드, 배포...</p>
@@ -154,7 +155,7 @@
         </section>
 
         <section>
-          <h2>Generator</h2>
+          <h2>그래서 Generator를</h2>
           <p>Scaffolding을 만들어 주는 생성기입니다.</p>
           <p class="fragment roll-in">bootstrap 앱을 만든다면 bootstrap Generator...AngularJS를 사용한 앱을 만든다면 angular Generator를 사용하여 스캐폴딩을 만듭니다.</p>
         </section>
@@ -254,15 +255,17 @@ npm install -g yo</code></pre>
                 <li class="fragment roll-in">사용하려는 컴포넌트를 배포 사이트에 가서 다운로드 받고</li>
                 <li class="fragment roll-in">index.html을 생성하고</li>
                 <li class="fragment roll-in">다운로드 받은 컴포넌트 파일들을 페이지에 일일히 include 시켜줍니다.</li>
-                <li class="fragment roll-in">또한 돌려볼 로컬 서버가 필요하므로 서버도 셋업합니다.</li>
-                <li class="fragment roll-in">코딩한 파일에 대한 검증과 테스트, 그리고 minify 를 하기 위해 툴도 돌리겠죠.</li>
+                <li class="fragment roll-in">또한 프리뷰 빌트인 서버가 필요하므로 서버도 셋업합니다.</li>
+                <li class="fragment roll-in">프로토타입 코드 작성 및 반복코드 작성은 피하고 싶고,</li>
+                <li class="fragment roll-in">코딩한 파일에 대한 검증과 테스트는 필수입니다.</li>
+                <li class="fragment roll-in">이미지 최적화, 스크립트, CSS minified 작업 및 파일 합치기...etc</li>
             </ul>
         </section>
 
         <section>
             <h3>귀찮다...</h3>
             <img src="img/hannes.jpg">
-            <small class="fragment roll-in">내가 yeoman을 쓴건 반복 작업을 할 용기가 없어서였다!</small>
+            <small class="fragment roll-in">내가 yeoman을 쓴건 반복 작업을 할 용기가 없어서였어... by 한모씨</small>
         </section>
 
         <section>
@@ -357,7 +360,7 @@ npm install -g yo</code></pre>
         </section>
 
         <section>
-            <h3>Grunt는 아주 스마트합니다.</h3>
+            <h3>Grunt는 아주 유능합니다.</h3>
             <p class="fragment roll-in">Node.JS 를 사용하여 태스크 스크립트를 만들수 있어서 Node.JS에서 할 수 있는 모든 것을 프로젝트에 적용할 수 있습니다.</p>
         </section>
 
@@ -401,9 +404,10 @@ grunt.registerTask('default', ['uglify']); // 기본 Task로 등록</code></pre>
         mocha: { ... },  // 테스트 Task
         watch: { ... }, // 실시간 소스 감시 Task
         shell: { ... }, // 쉘 명령 Task
-        ...  // 기
-        ...  // 타
-        ...  // 등등 사용자 정의 Task
+        xxxTask     // 기
+        yyyTask     // 등등
+        coolTask  // 사용자 정의 Task
+        ...
         build: { ... } // 배포 Task
     });
 };</code></pre>
@@ -415,16 +419,13 @@ grunt.registerTask('default', ['uglify']); // 기본 Task로 등록</code></pre>
             <h3>Yeoman으로 Scaffolding을 생성하면</h3>
             <p>해당 Scaffolding에 맞는 기본 Gruntfile.js 을 생성해줍니다.</p>
             <p class="fragment roll-in">
-                별도로 필요한 Task가 있다면 Yeoman이 생성해준 Gruntfile.js에 약간의 추가만 하면 되겠죠.
-            </p>
-            <p class="fragment roll-in">
-                생성된 Gruntfile.js 는 grunt를 학습하려는 입문자에게 좋은 예제 소스가 되기도 합니다
+                별도로 새 Task나 작 변경이 필요한 Task가 있다면 Yeoman이 생성해준 Gruntfile.js에 약간의 추가나 수정만 하면 되겠죠.
             </p>
         </section>
 
         <section>
-            <h2>AngularJS Example</h2>
-            <p>간단하게 AngularJS Generator 를 사용해서 웹앱을 만들어 보겠습니다</p>
+            <h2>AngularJS Generator Example</h2>
+            <p>AngularJS Generator 를 사용하는 예제를 살펴보겠습니다</p>
         </section>
 
         <section>
@@ -449,6 +450,20 @@ $ grunt server // 로컬서버 구동</code></pre>
             <h3>페이지 추가해보기</h3>
             <pre class="code fragment roll-in"><code data-trim>$ yo angular:route auto-create // auto-create 라우팅 생성</code></pre>
             <img class="fragment roll-in" src="img/an3.png">
+        </section>
+
+        <section>
+          <h3>AngularJS Generator 종류</h3>
+          <pre class="code fragment roll-in"><code data-trim>
+$ yo angular // 기본 스캐폴딩 생성
+$ yo angular:controller user // user 컨트롤러 생성
+$ yo angular:directive myDirective // myDirective Directive 생성
+$ yo angular:filter myFilter // myFilter filter 생성
+$ yo angular:route user // user 컨트롤러, 뷰, 그리고 라우팅 설정 한번에 생성
+$ yo angular:service myService // myService 서비스 생성
+$ yo angular:decorator myDecorator // myDecorator 생성
+$ yo angular:view user // user view 생성
+          </code></pre>
         </section>
 
         <section>
