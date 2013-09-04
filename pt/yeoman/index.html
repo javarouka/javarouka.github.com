@@ -382,7 +382,7 @@ $ npm install -g yo</code></pre>
             <pre class="code fragment roll-in"><code data-trim>module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
-        // 소스를 난독화하고 minify 하는 uglify Task 등록
+        // 소스를 못생기게 만드는(...) Task 등록
         uglify: {
             build: {
                 src: "src/ultra.js",
