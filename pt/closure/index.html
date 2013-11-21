@@ -224,7 +224,7 @@ alert(obj.costco);</code></pre>
         <section>
             <h3>이렇게...</h3>
             <pre class="code fragment roll-in"><code data-trim>// 전역에 함수를 생성했습니다.
-function getById(id) {
+function getById(id, prefix) {
     prefix = prefix || "coupang_";
     return document.getElementById(prefix + id);
 }</code></pre>
@@ -287,7 +287,7 @@ getById.[[Scope]] = [ {
         <section>
             <h3>이제 실행됩니다.</h3>
             <p class="fragment roll-in">인터프리터는 변수를 만날 때마다 ScopeChain 속성에서 배열 첫번째 부터 차례대로 찾습니다</p>
-            <pre class="code fragment roll-in"><code data-trim>function getById(id) {
+            <pre class="code fragment roll-in"><code data-trim>function getById(id, prefix) {
     prefix = prefix || "coupang_";
     return document.getElementById(prefix + id);
 }
