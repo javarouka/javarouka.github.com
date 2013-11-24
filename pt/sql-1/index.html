@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -517,6 +517,204 @@ SELECT count(DISTINCT firstName, lastName) FROM employees;</code></pre>
         </section>
 
 
+        <section>
+            <section>
+                <h3>JOIN</h3>
+                <h4>순서와 인덱스 #1</h4>
+                <ol>
+                    <li class="fragment roll-in">인덱스에서 조건을 만족하는 값의 위치를 찾는다. 이 과정을 인덱스 탐색이라고 한다.</li>
+                    <li class="fragment roll-in">탐색된 위치부터 필요한 만큼 인덱스를 읽는다. 이 과정을 인덱스 스캔이라고 한다.</li>
+                    <li class="fragment roll-in">읽어들인 인덱스 키와 레코드주소를 이용해 레코드가 저장된 페이지를 가져오고 최종 레코드를 읽어온다</li>
+                </ol>
+            </section>
+            <section>
+                <h4>순서와 인덱스 #2</h4>
+                <p>드라이빙 테이블에서는 인덱스 탐색을 한번만 하고 조인 진행시에는 스캔만 실행하면 된다</p>
+                <p class="fragment roll-in">드리븐 테이블은 드라이빙 레코드 수만큼 탐색, 스캔을 반복한다.</p>
+                <p class="fragment roll-in">그래서 옵티마이저는 드리븐 테이블을 최적으로 읽을 수 있게 실행 계획을 정한다.</p>
+            </section>
+            <section>
+                <h4>순서와 인덱스 #3</h4>
+                <p>두 컬럼 모두 인덱스가 있다면 옵티마이저의 기준에 따라 드라이빙을 정한다.</p>
+                <p class="fragment roll-in">한쪽에만 있는 경우 없는 쪽을 드라이빙 테이블로 정한다.</p>
+                <p class="fragment roll-in">
+                    어느쪽을 선택해도 풀 스캔이 일어나기에 다른 기준으로 드라이빙을 정한다.<br/>
+                    단 건수가 적은 테이블을 드리븐 테이블로 정하는 것이 효율적이다.<br/>
+                    조인 버퍼가 실행되기에 성능이 저하되고 계획에 Using join buffer 가 표시된다.
+                </p>
+            </section>
+            <section>
+                <h4>JOIN 컬럼 타입</h4>
+                <p>조인 조건에서도 인덱스와 동일하게 같은 데이터타입일때 최적의 성능을 낸다.</p>
+            </section>
+            <section>
+                <h4>OUTER JOIN 유의사항</h4>
+                <p>OUTER JOIN에서는 테이블의 컬럼에 대한 조건은 모두 ON 조건에 명시해야 한다.</p>
+                <p class="fragment roll-in">그렇지 않으면 MySQL은 Inner JOIN 처리한다.</p>
+                <pre class="fragment sql"><code data-trim>/* OUTER JOIN NO~ */
+SELECT * FROM A a LEFT JOIN B b ON a.id = b.aid
+WHERE b.extra = 100;
+
+/* OUTER JOIN OK! */
+SELECT * FROM A a LEFT JOIN B b ON a.id = b.aid ON b.extra = 100;</code></pre>
+            </section>
+            <section>
+                <h4>OUTER JOIN 과 COUNT(*)</h4>
+                <p>보통 페이징 쿼리를 만들 때 SELECT 에서 쓰던 구문에 컬럼만 count(*) 를 넣는 경우가 많다</p>
+                <p class="fragment roll-in">OUTER JOIN 의 특성상 제거해주면 빠른 성능을 낼 수 있다.</p>
+                <ol>
+                    <li class="fragment roll-in">드라이빙 테이블과 드리븐 테이블 관계가 1:1, M:1 인 경우</li>
+                    <li class="fragment roll-in">드리븐 테이블에 조인조건 외의 별도 조건이 없을 경우</li>
+                </ol>
+                <!--<p class="fragment roll-in">1번째는 OUTER JOIN으로 연결되는 테이블에 의해 레코드건수가 늘지 않아야 한다</p>-->
+                <!--<p class="fragment roll-in">2번째는 OUTER JOIN으로 연결되는 테이블에 의해 레코드건수가 더 줄지 않아야 한다</p>-->
+            </section>
+            <section>
+                <h4>OUTER JOIN을 사용한 ANTI JOIN</h4>
+                <p>한쪽 테이블에는 있지만 다른 한쪽 테이블에는 없는 레코드를 검색할 때 최적</p>
+                <p>(subquery) 구문은 최적화가 부실하여 성능이 많이 떨어진다.</p>
+                <pre class="fragment sql"><code data-trim>/* NOT IN */
+SELECT * FROM A a WHERE a.id NOT IN (SELECT b.aid FROM B b);
+
+/* NOT EXISTS. 서브쿼리가 어떤 값이든 리턴하면 true. 아니면 false */
+SELECT * FROM A a WHERE a.id NOT EXISTS (SELECT b.aid FROM B b WHERE a.id = b.aid);
+
+/* ANTI JOIN. 제일 좋다. */
+SELECT * FROM A a LEFT JOIN B b ON a.id = b.aid
+WHERE b.aid IS NULL</code></pre>
+            </section>
+            <section>
+                <h4>FULL OUTER JOIN 구현</h4>
+                <p>MySQL에서는 제공하지 않기에 UNION 으로 구현 가능하나 임시테이블로 인해 성능이 떨어진다</p>
+                <p>Mutex 테이블로 최적화가 가능하다. t_copy 라는 이름으로도 많이 알려져 있다</p>
+                <pre class="fragment sql"><code data-trim>CREATE TABLE mutex ( no INT NOT NULL PRIMARY KEY(no) );
+INSERT INTO mutex VALUES (0), (1);
+
+SELECT IFNULL(a.id, b.aid) AS id, e.name, a.age
+FROM mutex m
+    LEFT JOIN A a ON m.no = 0
+    LEFT JOIN B b ON m.no = 1 OR a.id = a.aid
+    LEFT JOIN A a2 ON m.no = 0 AND a2.id = b.aid
+WHERE b.aid IS NULL OR a2.id IS NULL;</code></pre>
+            </section>
+
+            <section>
+                <h4>Delayed JOIN #1</h4>
+                <p>JOIN 시 GROUP BY 나 ORDER BY 를 사용할 때 인덱스를 사용하지 못할 때 사용</p>
+                <p class="fragment roll-in">GROUP BY 나 ORDER BY 를 먼저 처리하고 JOIN. LIMIT 가 사용되면 더욱 큰 효과를 얻는다.</p>
+                <pre class="fragment sql"><code data-trim>SELECT * FROM A a LEFT JOIN B b ON a.id = b.aid;
+LIMIT 990, 10</code></pre>
+                <p class="fragment sql">쿼리의 결과를 1000개 조회하고 990개를 버린다.</p>
+            </section>
+            <section>
+                <h4>Delayed JOIN #2</h4>
+                <pre class="fragment sql"><code data-trim>SELECT *
+FROM (SELECT * FROM A a LIMIT 990, 10) a
+    LEFT JOIN B b ON a.id = b.aid
+LIMIT 990, 10;</code></pre>
+                <p class="fragment sql">쿼리의 결과를 990 번째 인덱스부터 10개 조회한다</p>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h3>GROUP BY</h3>
+                <p>MySQL에서는 GROUP BY 에 사용되지 않은 컬럼을 별도의 집합함수 없이 사용할 수 있으나 예측 불가이기에 사용을 안하는게 좋다.</p>
+            </section>
+            <section>
+                <h4>GROUP BY</h4>
+                <p>MySQL에서는 GROUP BY 가 정렬까지 수행한다.</p>
+                <p class="fragment sql">보통 정렬까지 수행할 필요가 없으므로 ORDER BY NULL 이라고 명시적으로 정렬을 중단시킬 수있다.</p>
+            </section>
+            <section>
+                <h4>GROUP BY .. WITH ROLLUP</h4>
+                <p>그룹핑 소계 및 총 합을 제공.</p>
+            </section>
+            <section>
+                <h4>레코드 컬럼 변환</h4>
+                <p>GROUP BY 와 CASE WHEN을 사용하여 테이블 결과를 가로에서 세로로 변경하거나 하나의 칼럼을 여러개로 나눌 수 있다.</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>ORDER BY</h3>
+                <p>MySQL의 정렬 기준</p>
+                <ul>
+                    <li>인덱스를 사용한 경우에는 인덱스 정렬 기준으로 가져온다</li>
+                    <li>Primary 키 기준으로 가져온다.</li>
+                    <li>임시 테이블을 거쳤을 경우 예측할 수 없다.</li>
+                </ul>
+            </section>
+            <section>
+                <h4>사용법, 주의사항</h4>
+                <p>여러개를 줄 수 있다.</p>
+                <p>숫자를 주게 되면 컬럼의 순서에 해당하는 컬럼이 정렬 기준이 된다</p>
+                <p>문자열 상수를 줄 경우 무시한다.</p>
+                <p>랜덤한 행을 꼽을 땐 ORDER BY RAND() 를 사용하나 행 수가 많아지면 성능이 저하된다</p>
+                <p>정렬이 어려운 경우 쿼리를 나눠 여러번 실행하는게 오히려 성능 향상에 좋을 수 있다.</p>
+                <p>MySQL DESC 인덱스는 명목상일 뿐 지원하지 않고 있다.</p>
+            </section>
+            <section>
+                <h4>함수나 표현식을 사용한 정렬</h4>
+                <pre><code data-trim>SELECT * FROM A ORDER BY id;
+SELECT * FROM A ORDER BY id + 10;</code></pre>
+                <p class="fragment sql">첫번째 예제는 정상 동작. 두번째 예제는 최적화를 실패하고 별도 정렬 작업을 수행하기에 성능이 저하된다.</p>
+                <p class="fragment sql">조금이라도 컬럼값을 연산하게 되면 인덱스 정렬이 불가능해진다.</p>
+            </section>
+            <section>
+                <h4>레코드 컬럼 변환</h4>
+                <p>GROUP BY 와 CASE WHEN을 사용하여 테이블 결과를 가로에서 세로로 변경하거나 하나의 칼럼을 여러개로 나눌 수 있다.</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Sub Query</h3>
+                <p>단위 처리별로 쿼리를 독립시킬 수 있다. 하지만 MySQL은 서브쿼리 최적화를 제대로 못할 경우가 많다.</p>
+            </section>
+            <section>
+                <h4>Sub Query 의 종류</h4>
+                <div class="fragment roll-in">
+                    <p>상관 서브쿼리. 자신의 실행이 외부의 영향을 받는 경우</p>
+                    <pre><code data-trim>SELECT * FROM A a WHERE EXISTS
+    (SELECT 1 FROM B b FROM a.id = b.aid);</code></pre>
+                </div>
+                <div class="fragment roll-in">
+                    <p>독립 서브쿼리. 자신의 실행이 외부의 영향을 받지 않는 경우</p>
+                    <pre><code data-trim>SELECT * FROM A a WHERE a.id =
+    (SELECT b.aid FROM B b WHERE name LIKE 'Joe%');</code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h4>Sub Query의 제약</h4>
+                <ul>
+                    <li>LIMIT 절과 LOAD DATA INFILE 절에 사용할 수 없다</li>
+                    <li>서브쿼리를 IN 연산자와 사용할 경우 효율적이지 않다.</li>
+                    <li>IN 연산자 안의 서브쿼리는 ORDER BY와 LIMIT 를 동시에 사용할 수 없다</li>
+                    <li>FROM 절의 서브쿼리는 상관 서브쿼리 형태로 사용할 수 없다.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>SELECT 절에 사용된 서브쿼리</h4>
+                <ul>
+                    <li>하나의 결과만을 반환해야 한다.</li>
+                    <li>반환된 값이 0건이면 NULL 이 된다</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>SELECT 절에 사용된 서브쿼리</h4>
+                <ul>
+                    <li>하나의 결과만을 반환해야 한다.</li>
+                    <li>반환된 값이 0건이면 NULL 이 된다</li>
+                </ul>
+            </section>
+
+        </section>
 
     </div>
 
