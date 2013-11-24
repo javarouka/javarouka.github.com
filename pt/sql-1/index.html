@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>쿼리 작성 및 최적화 By javarouka (@YiHanghee)</title>
+    <meta name="description" content="쿼리 작성 및 최적화">
+    <meta name="author" content="javarouka">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/github.css">
+
+    <!-- For spotllight -->
+    <link rel="stylesheet" href="plugin/spotlight/spotlight.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>쿼리 작성 및 최적화</h1>
+            <p>
+                <small>Created by
+                    <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a> /
+                    <a href="http://atconsole.com" target="new">atconsole.com (Team Blog)</a>
+                </small>
+            </p>
+        </section>
+
+        <section>
+            <h1>목차</h1>
+            <ul>
+                <li class="fragment roll-in"><a href="#SQL의구성">SQL 의 구성</a></li>
+                <li class="fragment roll-in"><a href="#시스템설정">쿼리와 연관된 시스템 설정</a></li>
+                <li class="fragment roll-in"><a href="#표기읽기">매뉴얼의 SQL 문법 표기를 읽는 방법</a></li>
+                <li class="fragment roll-in"><a href="#연산자내장함수">MySQL의 연산자와 내장 함수</a></li>
+                <li class="fragment roll-in"><a href="#SELECT">SELECT</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <section id="SQL의구성">
+                <h2>SQL 의 구성</h2>
+                <p>SQL = DDL + DML</p>
+            </section>
+            <section>
+                <h3>DDL</h3>
+                <p>스키마, 테이블 구조 정의</p>
+            </section>
+            <section>
+                <h3>DML</h3>
+                <ul>
+                    <li class="fragment roll-in">
+                        <h4>Query</h4>
+                        <ul>
+                            <li>SELECT</li>
+                        </ul>
+                    </li>
+                    <li class="fragment roll-in">
+                        <h4>Statement</h4>
+                        <ul>
+                            <li>INSERT</li>
+                            <li>DELETE</li>
+                            <li>UPDATE</li>
+                        </ul>
+                    </li>
+                    <li class="fragment roll-in">...라고 부르는데 보통 구분없이 부른다.</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2 id="시스템설정">쿼리와 연관된 시스템 설정</h2>
+                <p>SQL_MODE 라는 키 값으로 저장된다.</p>
+                <p>시스템 설정값이다.<br/>설정에 따라 SQL 작성법과 결과에 영향을 준다</p>
+                <pre class="sql"><code data-trim>SHOW global variables  where variable_name = 'sql_mode'</code></pre>
+            </section>
+            <section>
+                <h3>STRICT_ALL_TABLE</h3>
+                <p class="fragment roll-in">
+                    설정되면 데이터 입력 시 컬럼값의 길이보다 입력하는 값이 클 경우 오류 발생.
+                </p>
+            </section>
+            <section>
+                <h3>STRICT_TRANS_TABLE</h3>
+                <p class="fragment roll-in">
+                    설정되면 데이터 입력 시 타입과 호환되지 않을 때 오류.
+                </p>
+            </section>
+            <section>
+                <h3>NO_AUTO_CREATE_USER</h3>
+                <p class="fragment roll-in">
+                    설정되면 특정 유저에게 권한을 GRANT 시 공백문자가 아닌 패스워드가 반드시 필요하다.
+                </p>
+            </section>
+            <section>
+                <h3>NO_ENGINE_SUBSTITUTION</h3>
+                <p class="fragment roll-in">
+                    설정되면 테이블 생성 시 테이블 엔진 명시가 반드시 필요하다.
+                </p>
+            </section>
+            <section>
+                <h3>PIPE AS CONCAT</h3>
+                <p class="fragment roll-in">
+                    설정되면 오라클 스타일의 문자열 결합 (||) 을 사용할 수 있다.
+                </p>
+            </section>
+            <section>
+                <h3>기본값</h3>
+                <ul>
+                    <li>STRICT_TRANS_TABLES</li>
+                    <li>NO_AUTO_CREATE_USER</li>
+                    <li>NO_ENGINE_SUBSTITUTION</li>
+                </ul>
+            </section>
+            <section>
+                <h3>테이블 명 대소문자 구분</h3>
+                <h3>lower_table_case_name</h3>
+                <p>테이블 명에서 윈도우 MySQL은 대소문자를 구별하지 않으나 리눅스는 구별한다.</p>
+                <p>기본값은 0으로 구분하게 되어 있으나 1로 지정하면 모든 테이블은 소문자 저장된다.</p>
+            </section>
+        </section>
+
+        <section>
+            <h3>MySQL 예약어</h3>
+            <p>MySQL은 각 DBMS 자체에서 쓸 각종 키워드를 예약해두고 있다.</p>
+            <p>예약어를 토큰으로 사용하려 할 경우 역따옴표(`)로 감싸줘야 정상 동작을 기대할 수 있다.</p>
+        </section>
+
+        <section>
+            <section>
+                <h2 id="표기읽기">매뉴얼의 SQL 문법 표기를 읽는 방법</h2>
+                <p>MySQL 공식 매뉴얼의 경우 다음과 같은 구조로 되어 있다</p>
+                <img src="img/1.png">
+            </section>
+            <section>
+                <ul>
+                    <li>대문자는 키워드를 가르킨다. 키워드는 사용 시 대소문자 구별이 없다.</li>
+                    <li>이탤릭체는 사용자 입력 토큰을 가르킨다. 테이블명이나 컬럼 등</li>
+                    <li>[] 는 옵셔널 구문을 가르킨다. 구문에 반드시 필요하지 않다.</li>
+                    <li>| 는 앞과 뒤중 하나만을 선택해야 한다는 걸 나타낸다.</li>
+                    <li>{} 는 안의 내용 중 반드시 하나를 사용해야 한다는 것을 나타낸다.</li>
+                    <li>... 은 앞의 키워드나 표현식이 반복될 수 있음을 나타낸다</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>연산자와 내장 함수</h2>
+                <p>MySQL은 보통 ANSI 표준을 준수하지만 독자적인 사용이 되는 연산자나 표기법이 있다</p>
+                <p>특히 내장 함수는 DBMS마다 다들 다른 이름을 가지고 있는게 보통이다.</p>
+            </section>
+            <section>
+                <h3>문자열</h3>
+                <p>MySQL은 문자열 표기 시 쌍따옴표와 홑따옴표 두개를 사용할 수 있지만 ANSI 표준은 홑따옴표이다.<br/>
+                문자열 안에 홑따옴표나 쌍따옴표가 있을 경우 연속으로 두개를 입력하면 된다.</p>
+                <pre class="sql"><code data-trim>SELECT * FROM employee WHERE name = 'Joe';
+SELECT * FROM employee WHERE name = "Joe";
+SELECT * FROM employee WHERE name = 'De''Raven';
+SELECT * FROM employee WHERE name = "De""Raven";</code></pre>
+                <p>sql_mode 값에 ANSI_QUOTE 옵션을 지정하면 사용할 수 없게 된다</p>
+            </section>
+            <section>
+                <h3>숫자</h3>
+                <p>MySQL은 숫자나 문자 사용 시 상황에 맞게 자동 변환한다.</p>
+                <pre class="sql"><code data-trim>SELECT * FROM xxx WHERE number_col = '1';
+SELECT * FROM xxx WHERE string_col = 1;</code></pre>
+                <p class="fragment roll-in">첫번째 쿼리는 비교할 상수 하나만 문자열 변환하면 되기에 문제가 없다.</p>
+                <p class="fragment roll-in">두번째 쿼리는 모든 테이블의 컬럼을 숫자로 변환 뒤 비교하기 때문에 문제가 있다.</p>
+            </section>
+            <section>
+                <h3>날짜</h3>
+                <p>
+                    MySQL은 다른 DBMS와는 다르게 정해진 포맷으로 표기하면 서버에서 자동으로 변환하여
+                    비교하기에 TO_DATE 함수등을 사용하지 않아도 된다.
+                </p>
+                <pre class="sql"><code data-trim>SELECT * FROM dept_emp WHERE from_date = '2011-04-29';
+SELECT * FROM dept_emp WHERE from_date = STR_TO_DATE('2011-04-29', '%Y-%m-%d');</code></pre>
+                <p class="fragment roll-in">두 쿼리는 동작이 같다</p>
+            </section>
+            <section>
+                <h3>불리언</h3>
+                <p>
+                    TINYINT 타입에 대한 동의어. TRUE는 1. FALSE는 0.<br/>
+                    만일 진정한 불리언 값을 사용하고 싶다면 ENUM 을 사용하는게 좋다.
+                </p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>연산자</h3>
+                <h4>
+                    <=>
+                </h4>
+                <p>보통은 = 연산자와 같지만 NULL 값 비교시 차이가 있다.</p>
+                <p>보통 NULL은 비교할 방법은 IS NULL 뿐이지만, <=> 는 NULL을 하나로 값으로 보고 비교한다.</p>
+            </section>
+            <section>
+                <h4><>, !=</h4>
+                <p>둘의 의미는 같다. 다만 프로젝트 시 하나만 통일하여 사용하는게 좋다.</p>
+            </section>
+            <section>
+                <h4>NOT, !</h4>
+                <p>둘의 의미는 같다. 조건의 반전을 할때 쓰인다.</p>
+            </section>
+            <section>
+                <h4>&&,AND / ||,OR</h4>
+                <p>가급적 AND, OR를 사용하는게 가독성 면에서 좋다</p>
+            </section>
+            <section>
+                <h4>REGEXP, RLIKE</h4>
+                <p>피연산자의 값에서 패턴을 만족하는지 찾는 연산자이다. RLIKE 와 동일한 비교를 수행한다.</p>
+                <pre class="sql"><code data-trim>SELECT 'abs' REGEXP '^[a-z]';
+SELECT 'abs' RLIKE '^[a-z]';</code></pre>
+            </section>
+            <section>
+                <h4>LIKE</h4>
+                <p>와일드 카드로 '%', '_' 을 사용할 수있다. 와일드카드 이스케이프에는 ESCAPE 키워드를 사용한다.</p>
+                <ul>
+                    <li>% 는 개 혹은 1개 이상의 모든 문자열 일치</li>
+                    <li>_ 는 0정확히 1개 문자에 일치</li>
+                </ul>
+                <pre class="sql"><code data-trim>SELECT 'abs' LIKE 'a%' /* true */;
+SELECT 'abs' LIKE 'a_' /* false */;
+SELECT 'abs' LIKE 'ab_' /* true */;
+SELECT 'ab%sxyz' LIKE 'ab/%s%' ESCAPE '/'/* true */;</code></pre>
+            </section>
+            <section>
+                <h4>BETWEEN</h4>
+                <p>크거나 같다와 작거나 같다라는 두개의 연산자를 합친 연산자.</p>
+                <p>이러한 방식에서 잘못된 실행 계획이 탄생하는 경우가 있다.</p>
+                <pre class="sql"><code data-trim>SELECT * FROM dept_emp
+WHERE dept_no BWTEEN 'd003' AND 'd005' AND emp_no = 10001; /* BAD */
+
+SELECT * FROM dept_emp
+WHERE dept_no IN ( 'd003', 'd004', 'd005') AND emp_no = 10001; /* GOOD */</code></pre>
+            </section>
+            <section>
+                <h4>그런데</h4>
+                <p>BEWTEEN을 IN 으로 바꾸려고 SELECT 쿼리를 한번 더 실행해야 할 경우가 있는데 이럴 경우 실제 계획 테스트가 필요하다.<br/>주의할 점은 IN (subquery) 형태는 대부분 나쁜 결과를 가져올 수 있다.</p>
+            </section>
+            <section>
+                <h4>IN 연산자</h4>
+                <p>
+                    여러 번의 동등 비교로 수행된다. 만일 IN 연산자 안에 서브쿼리가 있다면 서브쿼리가 먼저 실행되는것이 아니라 외부의 쿼리가 먼저 실행되고<br/>
+                    그 다음 조건으로 서브 쿼리가 실행되기에 대부분 안좋은 결과를 가져온다.
+                </p>
+                <p>NOT 과 함께 수행되는 IN 연산자는 동등이 아닌 부정형 비교가 되기에 인덱스 풀 스캔을 수행하고,처리 범위를 줄일 수가 없다.</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>내장 함수</h3>
+                <h4>ISNULL</h4>
+                <p>NULL 여부를 검사하여 0, 1 을 반환한다.</p>
+            </section>
+            <section>
+                <h4>IFNULL</h4>
+                <p>NULL 이면 첫번째, 아니면 두번째 인자를 반환한다.</p>
+            </section>
+            <section>
+                <h4>NOW, SYSDATE</h4>
+                <p>둘다 현재의 시간을 반환한다.<br/>하지만 NOW는 SQL 안에서 전부 값이 같지만 SYSDATE는 SQL 내에서도 호출 시점에 따라 값이 달라진다. 주의.</p>
+                <p>my.cnf 나 my.ini 파일에 sysdate-is-now 설정으로 둘의 동작을 같게 할 수 있다.</p>
+            </section>
+            <section>
+                <h4>날짜 관련</h4>
+                <ul>
+                    <li>
+                        <h5>날짜 시간 포맷</h5>
+                        <p>DATE_FORAMT, STR_TO_DATE</p>
+                    </li>
+                    <li>
+                        <h5>날짜 연산</h5>
+                        <p>DATE_ADD, DATE_SUB</p>
+                    </li>
+                </ul>
+                <pre class="sql"><code data-trim>SELECT DATE_ADD(NOW(), INTERVAL 1 DAY);
+SELECT DATE_ADD('2013-11-26', INTERVAL 2 DAY);</code></pre>
+            </section>
+            <section>
+                <h4>타임스탬프 연산</h4>
+                <p>UNIX_TIMESTAMP, FROM_UNIXTIME</p>
+            </section>
+            <section>
+                <h4>문자열 처리</h4>
+                <p>RPAD, LPAD, LTRIM, RTRIM, CONCAT(_WS)</p>
+                <p>GROUP_CONCAT. GROUP BY 절과 같이 사용하면 그룹절을 하나의 결과로 만든다.</p>
+            </section>
+            <section>
+                <h4>값의 비교와 대체</h4>
+                <p>CASE...WHEN...THEN...END</p>
+                <p>구문 사이에 서브 쿼리도 사용할 수 있다.</p>
+            </section>
+            <section>
+                <h4>타입 변환</h4>
+                <p>CAST, CONVERT</p>
+            </section>
+            <section>
+                <h4>이진값, 16진수</h4>
+                <p>HEX, UNHEX</p>
+            </section>
+            <section>
+                <h4>해시 함수</h4>
+                <p>MD5, SHA</p>
+                <p>문자열 저장이라 원래 크기보다 더 큰 문자열 타입으로 저장되는데 원래의 크기로 저장하려면 BINARY 타입을 사용하면 된다.</p>
+            </section>
+            <section>
+                <h4>SLEEP</h4>
+                <p>지정된 시간만큼 쿼리를 대기한다.</p>
+                <pre class="sql"><code data-trim>/* 각 행마다 1초씩 대기. 즉 5초간 실행 */
+SELECT SLEEP(1), firstName FROM employees LIMIT 5;</code></pre>
+            </section>
+            <section>
+                <h4>BENCHMARK</h4>
+                <p>첫번째 인자의 숫자만큼 두번째 쿼리를 반복 실행한다. 반환값보다 수행 시간을 보기 위해 사용.<br/>반드시 쿼리는 스칼라 값을 반환해야 한다.</p>
+                <pre class="sql"><code data-trim>SELECT benchmark(10, (SELECT firstName FROM employees LIMIT 1))</code></pre>
+            </section>
+            <section>
+                <h4>INET_ATON, INET_NTOA</h4>
+                <p>IP Adresss를 Integer 형태의 컬럼에 넣을 수 있게 변환하거나 복구하는 기능.</p>
+            </section>
+            <section>
+                <h4>PASSWORD, OLD_PASSWORD</h4>
+                <p>문자열을 단반향 비대칭 비밀번호로 만든다. OLD_PASSWORD는 4.0 이하 버전에서 사용되던 PASSWORD 함수의 fallback 이다.</p>
+                <p>현재도 계속 알고리즘이 변하고 있으므로 실제 고객 정보 관리에는 해시 함수를 사용하는 편이 좋다.</p>
+            </section>
+            <section>
+                <h4>VALUES</h4>
+                <p>INSERT INTO 나 ON DUPLICAT KEY UPDATE SQL 구문에만 사용할 수 있다.</p>
+            </section>
+            <section>
+                <h4>COUNT</h4>
+                <p>레코드의 건수를 반환하는 함수. 인자로 *를 줄 경우 레코드 자체를 의미한다. COUNT(1)이나 COUNT(*) 이나 완전히 같다.</p>
+                <p>사용 시 쿼리에 불필요한 ORDER BY 나 LEFT JOIN 등의 쿼리는 빼자.</p>
+                <p>특정 컬럼을 지정할 경우 NULL 이 아닌 컬럼만을 계산한다.</p>
+            </section>
+        </section>
+
+        <section>
+            <h1>감사합니다</h1>
+            <img src="img/7.gif">
+            <p><small>Happy Coding!</small></p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'night',//Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: 'default', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/spotlight/spotlight.js', async: true, condition: function() { return !!document.body.classList; } }
+            //{ src: 'plugin/repoll/repoll.js', async: true, condition: function() { return !!document.body.classList; } },
+        ]
+    });
+
+    var codeExecutor = document.querySelectorAll("a[data-executor]");
+    Array.prototype.forEach.call(codeExecutor, function(v) {
+        v.onclick = function(e) {
+            var parent = e.target.parentNode;
+            eval.call(window, parent.querySelector("pre.code code").innerText);
+        }
+    });
+
+</script>
+
+</body>
+</html>
