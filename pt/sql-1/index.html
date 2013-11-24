@@ -161,7 +161,7 @@
 
         <section>
             <section>
-                <h2>연산자와 내장 함수</h2>
+                <h2 id="연산자내장함수">연산자와 내장 함수</h2>
                 <p>MySQL은 보통 ANSI 표준을 준수하지만 독자적인 사용이 되는 연산자나 표기법이 있다</p>
                 <p>특히 내장 함수는 DBMS마다 다들 다른 이름을 가지고 있는게 보통이다.</p>
             </section>
@@ -355,10 +355,168 @@ SELECT SLEEP(1), firstName FROM employees LIMIT 5;</code></pre>
         </section>
 
         <section>
-            <h1>감사합니다</h1>
-            <img src="img/7.gif">
-            <p><small>Happy Coding!</small></p>
+            <h3>SQL 주석</h3>
+            <pre class="sql"><code data-trim>-- 한줄 주석
+
+# MySQL 전용 한줄 주석
+
+/* 여러 라인 주석 */
+
+/*! SQL 컴파일러 지시자 주석. 적법하지 못한 문자열이 올 경우 Error */
+SELECT /*! STRAIGHT JOIN */
+FROM employees e, dept_no de WHERE de.emp_no = e.emp_no</code></pre>
         </section>
+
+        <section>
+            <h2 id="SELECT">SELECT</h2>
+        </section>
+
+        <section>
+            <h3>SELECT 구문의 절</h3>
+            <ul>
+                <li>SELECT 절</li>
+                <li>FROM 절</li>
+                <li>WHERE 절</li>
+                <li>GROUP BY 절</li>
+                <li>HAVING 절</li>
+                <li>ORDER BY 절</li>
+                <li>LIMIT 절</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>SELECT 각 절 실행 순서</h3>
+            <p>대다수의 쿼리는 이 순서를 벗어나지 않는다. 다만 FROM 절의 서브쿼리 등의 DERIVED 실행 계획 등이 생기면 LIMIT 가 먼저 실행되는 등 순서가 달라진다.</p>
+            <ol>
+                <li>드라이빙 및 드리븐 테이블의 WHERE 절 실행, JOIN</li>
+                <li>GROUP BY 적용</li>
+                <li>DISTINCT 적용</li>
+                <li>HAVING 적용</li>
+                <li>ORDER BY 적용</li>
+                <li>LIMIT 적용</li>
+            </ol>
+        </section>
+
+        <section>
+            <section>
+                <h3>WHERE, GROUP BY, ORDER BY INDEX 사용</h3>
+            </section>
+            <section>
+                <h4>기본 규칙</h4>
+                <ul>
+                    <li>컬럼 가공을 하게 되면 정렬된 인덱스를 사용하지 못한다.</li>
+                    <li>가급적 같은 데이터 타입을 사용한다</li>
+                </ul>
+            </section>
+            <section>
+                <h4>WHERE 절의 인덱스 사용</h4>
+                <p>AND 연산이 있을 경우 대부분 행 수가 줄어들며 인덱스 이용이 쉽다.</p>
+                <p>OR 연산이 있을 경우 옵티마이저는 풀 테이블 스캔을 사용한다.</p>
+            </section>
+            <section>
+                <h4>GROUP BY 절의 인덱스 사용</h4>
+                <ul>
+                    <li class="fragment roll-in">컬럼의 순서가 맞아야 한다.</li>
+                    <li class="fragment roll-in">컬럼이 전부 인덱스에 있어야 한다.</li>
+                </ul>
+                <pre class="sql"><code data-trim>/* col1, col2, col3 이 인덱스인 경우 */
+... WHERE col1 = '1' GROUP BY  col1, col2, col3
+... WHERE col1 = '1' GROUP BY  col2, col3</code></pre>
+            </section>
+            <section>
+                <h4>ORDER BY 절의 인덱스 사용</h4>
+                <p>GROUP BY 절과 유사하지만 한가지 더, 정렬 순서가 모두 오름차순이거나 내림차순일 경우에만 해당된다.</p>
+                <pre class="sql"><code data-trim>/* col1, col2, col3 이 인덱스인 경우 */
+... ORDER BY  col1, col2, col3 /* OK */
+... ORDER BY  col1, col2 DESC, col3 /* NO */</code></pre>
+            </section>
+            <section>
+                <h4>WHERE, ORDER BY 절의 혼용 인덱스 사용</h4>
+                <ul>
+                    <li>WHERE 절과 ORDER BY 절이 동시에 같은 인덱스를 사용. 제일 좋다</li>
+                    <li>WHERE 절만 인덱스를 사용. 처리 레코드가 적을 때만 효율적</li>
+                    <li>ORDER BY 절만 인덱스를 사용. 아주 많은 레코드 정렬시에만 사용</li>
+                </ul>
+            </section>
+            <section>
+                <h4>GROUP BY, ORDER BY 절의 혼용 인덱스 사용</h4>
+                <p>
+                    전에 기술한 둘의 제약이 비슷함.
+                    <br>
+                    다만 MySQL의 GROUP BY는 ORDER BY의 기능까지 내부적으로 수행하므로 대부분 ORDER BY는 제거하는 쪽이 좋다
+                </p>
+            </section>
+            <section>
+                <h4>WHERE, GROUP BY, ORDER BY 절의 혼용 인덱스 사용</h4>
+                <p>다음 사항을 순차 검토하고 수행.</p>
+                <ol>
+                    <li>WHERE 절이 인덱스를 사용할 수 있는가</li>
+                    <li>GROUP BY 절이 인덱스를 사용할 수 있는가</li>
+                    <li>GROUP BY과 ORDER BY 절이 인덱스를 사용할 수 있는가</li>
+                </ol>
+                <p>432-7-10</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>WHERE 비교 시 주의사항</h3>
+            </section>
+            <section>
+                <h4>NULL 비교</h4>
+                <p>비교할 수 없는 값.</p>
+                <pre class="sql"><code data-trim>SELECT * FROM employees WHERE to_date IS NULL /* OK */
+SELECT * FROM employees WHERE ISNULL(to_date) = 1 /* NO... Full Scan! */</code></pre>
+            </section>
+            <section>
+                <h4>문자열 숫자열 타입 일치</h4>
+            </section>
+            <section>
+                <h4>날자 비교</h4>
+                <p>기본적으로 날자 형식으로 포매팅된 문자열은 자동적으로 변환 후 비교하며 인덱스도 잘 적용됨</p>
+                <p>다만 컬럼에 대해 함수로 조작하는 행위는 Full Scan.</p>
+            </section>
+
+        </section>
+
+        <section>
+            <section>
+                <h3>DISTINCT</h3>
+                <p>유니크한 값을 조회할 경우 사용</p>
+                <p>실수가 잦은 부분이 있는데 DISTINCT(컬럼명) 문법은 유니크 조회가 레코드 단위이기에 의미가 없는 구문.</p>
+                <pre class="sql"><code data-trim>SELECT DISTINCT firstName, lastName FROM employees;
+SELECT DISTINCT(firstName), lastName FROM employees;</code></pre>
+            </section>
+            <section>
+                <h3>집합 함수와 함께 사용된 DISTINCT</h3>
+                <p>레코드 단위가 아닌 컬럼 안의 유일한 값만 가져옴.</p>
+                <pre class="sql"><code data-trim>SELECT count(DISTINCT firstName) as f, count(lastName) as l FROM employees;
+SELECT count(DISTINCT firstName) as f, lastName FROM employees;
+SELECT count(DISTINCT firstName, lastName) FROM employees;</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>LIMIT</h3>
+                <p>오라클의 ROWNUM, MSSQL의 TOP-n 과 비슷. 제일 마지막 실행.</p>
+                <ul>
+                    <li>검색 조건에 일치하는 테이블을 전부 가져온다</li>
+                    <li>그룹 및 정렬</li>
+                    <li>결과에서 LIMIT 지정된 레코드 수만큼만 반환</li>
+                </ul>
+            </section>
+            <section>
+                <h3>쿼리 성능 향상 효과</h3>
+                <p>대부분의 경우 쿼리 성능이 상승한다.</p>
+                <p>
+                    LIMIT 0 으로 할 경우, 옵티마이저는 쿼리에 대한 최적화만 하고 즉시 사용자 응답을 한다
+                    <br/>커넥션 유효성 체크 시 유용.
+                </p>
+            </section>
+        </section>
+
+
 
     </div>
 
