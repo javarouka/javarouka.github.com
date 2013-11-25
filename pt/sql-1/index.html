@@ -756,13 +756,13 @@ SELECT * FROM dept_emp de WHERE EXISTS
                 <h4>LOCK IN SHARE MODE</h4>
                 <p>SELECT 된 레코드에 대해 읽기 잠금을 걸고 다른 세션의 변경을 막는다</p>
                 <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE;
-    SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! LOCK IN SHARE MODE */;</code></pre>
+SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! LOCK IN SHARE MODE */;</code></pre>
             </section>
             <section>
                 <h4>FOR UPDATE</h4>
                 <p>SELECT 된 레코드에 대해 쓰기 잠금을 걸고 다른 세션의 변경 뿐 아니라 읽기도 막는다.</p>
                 <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 FOR UPDATE;
-    SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! FOR UPDATE */;</code></pre>
+SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! FOR UPDATE */;</code></pre>
             </section>
 
             <section>
