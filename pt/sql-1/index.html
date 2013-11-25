@@ -722,55 +722,54 @@ SELECT * FROM dept_emp de WHERE EXISTS
                 <h4>FROM 절에 사용된 서브쿼리</h4>
                 <p>FROM 절의 서브쿼리는 제일 우선되는 튜닝사항. 항상 임시테이블을 사용하기에 성능이 저하된다.</p>
             </section>
+        </section>
 
+        <section>
             <section>
-                <section>
-                    <h3>집합 연산</h3>
-                    <p>JOIN 이 여러 테이블의 컬럼을 연결하는 거라면 집합 연산은 여러 테이블의 레코드를 연결하는 방법이다.</p>
-                    <p>UNION, INTERSECT, MINUS 가 있다.</p>
-                </section>
-                <section>
-                    <h4>UNION( ALL)</h4>
-                    <p>중복 처리로 UNION ALL 혹은 UNION DISTINCT 처리할 수 있다. 기본값은 DISTINCT 이다.</p>
-                    <p>ALL 은 두 집합에 대해 별도 처리 과정을 거치지 않고 바로 반환한다.</p>
-                    <p>DISTINCT 는 두개의 집합에서 중복된 레코드를 제거한 뒤 합집합을 사용자에게 반환한다.</p>
-                    <p>실제 이 둘의 차이는 유니크 인덱스 생성 유무에 있다. 쿼리 결과에 중복이 없을거라고 생각되면 UNION ALL로 성능을 높이는게 좋다.</p>
-                </section>
-                <section>
-                    <h4>INTERSECT</h4>
-                    <p>INNER JOIN 쿼리와 동일하지만 성능은 떨어진다. 가급적 INNER JOIN 을 쓰자</p>
-                </section>
-                <section>
-                    <h4>MINUS</h4>
-                    <p>앞에서 살펴 본 ANTI JOIN과 동일하다. ANTI JOIN 이 더 빠르므로 이쪽을 쓰자.</p>
-                </section>
+                <h3>집합 연산</h3>
+                <p>JOIN 이 여러 테이블의 컬럼을 연결하는 거라면 집합 연산은 여러 테이블의 레코드를 연결하는 방법이다.</p>
+                <p>UNION, INTERSECT, MINUS 가 있다.</p>
+            </section>
+            <section>
+                <h4>UNION( ALL)</h4>
+                <p>중복 처리로 UNION ALL 혹은 UNION DISTINCT 처리할 수 있다. 기본값은 DISTINCT 이다.</p>
+                <p>ALL 은 두 집합에 대해 별도 처리 과정을 거치지 않고 바로 반환한다.</p>
+                <p>DISTINCT 는 두개의 집합에서 중복된 레코드를 제거한 뒤 합집합을 사용자에게 반환한다.</p>
+                <p>실제 이 둘의 차이는 유니크 인덱스 생성 유무에 있다. 쿼리 결과에 중복이 없을거라고 생각되면 UNION ALL로 성능을 높이는게 좋다.</p>
+            </section>
+            <section>
+                <h4>INTERSECT</h4>
+                <p>INNER JOIN 쿼리와 동일하지만 성능은 떨어진다. 가급적 INNER JOIN 을 쓰자</p>
+            </section>
+            <section>
+                <h4>MINUS</h4>
+                <p>앞에서 살펴 본 ANTI JOIN과 동일하다. ANTI JOIN 이 더 빠르므로 이쪽을 쓰자.</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>LOCK IN SHARE MODE 와 FOR UPDATE</h3>
+                <p>InnoDB에서는 SELECT 시 레코드 락을 걸 경우 사용.</p>
+            </section>
+            <section>
+                <h4>LOCK IN SHARE MODE</h4>
+                <p>SELECT 된 레코드에 대해 읽기 잠금을 걸고 다른 세션의 변경을 막는다</p>
+                <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE;
+    SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! LOCK IN SHARE MODE */;</code></pre>
+            </section>
+            <section>
+                <h4>FOR UPDATE</h4>
+                <p>SELECT 된 레코드에 대해 쓰기 잠금을 걸고 다른 세션의 변경 뿐 아니라 읽기도 막는다.</p>
+                <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 FOR UPDATE;
+    SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! FOR UPDATE */;</code></pre>
             </section>
 
             <section>
-                <section>
-                    <h3>LOCK IN SHARE MODE 와 FOR UPDATE</h3>
-                    <p>InnoDB에서는 SELECT 시 레코드 락을 걸 경우 사용.</p>
-                </section>
-                <section>
-                    <h4>LOCK IN SHARE MODE</h4>
-                    <p>SELECT 된 레코드에 대해 읽기 잠금을 걸고 다른 세션의 변경을 막는다</p>
-                    <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE;
-        SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! LOCK IN SHARE MODE */;</code></pre>
-                </section>
-                <section>
-                    <h4>FOR UPDATE</h4>
-                    <p>SELECT 된 레코드에 대해 쓰기 잠금을 걸고 다른 세션의 변경 뿐 아니라 읽기도 막는다.</p>
-                    <pre><code data-trim>SELECT * FROM dept_emp de WHERE id = 100 FOR UPDATE;
-        SELECT * FROM dept_emp de WHERE id = 100 LOCK IN SHARE MODE /*! FOR UPDATE */;</code></pre>
-                </section>
-
-                <section>
-                    <h4>레코드 해제</h4>
-                    <p>COMMIT 이나 ROLLBACK으로 해제된다.</p>
-                    <p>데드락이나 보틀넥을 증가시키므로 사용에 주의를 요한다.</p>
-                </section>
+                <h4>레코드 해제</h4>
+                <p>COMMIT 이나 ROLLBACK으로 해제된다.</p>
+                <p>데드락이나 보틀넥을 증가시키므로 사용에 주의를 요한다.</p>
             </section>
-
         </section>
 
     </div>
