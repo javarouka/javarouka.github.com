@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>Coukie 실습</title>
+    <style>
+        .top-wrapper {
+            position: relative;
+            margin: 1% auto;
+            width: 70%;
+        }
+        #deal-list {
+            padding: 1%;
+            background-color: #efefef;
+            border: solid 1px #ccc;
+            margin-bottom: 2%;
+        }
+
+        .highlight {
+            background-color: #0b58a2;
+            color: #FFF;
+        }
+
+        #selector {
+            width: 70%;
+        }
+
+        #log {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-wrapper">
+        <div id="deal-list">
+            <ul>
+                <li class="deal">유아동</li>
+                <li class="deal">잡화</li>
+                <li class="deal local">음식</li>
+            </ul>
+        </div>
+
+        <label for="selector">
+            Selector 문자열
+            <input id="selector" type="text">
+        </label>
+        <pre id="log"></pre>
+    </div>
+
+    <script type="text/javascript">
+
+
+        function bootstrap(e) {
+
+            var logElement = document.getElementById("log"),
+                matcherHighligt = /highlight/g;
+
+            function removeHighlight() {
+                var highlight = document.querySelectorAll(".highlight");
+                console.log("highlight size", highlight.length);
+                for(var i = 0, len = highlight.length; i < len; i++) {
+                    highlight[i].className = highlight[i].className.replace(matcherHighligt, '');
+                }
+            }
+
+            function matchHighlight(e) {
+
+                removeHighlight();
+
+                logElement.innerHTML = "";
+
+                var input = e.currentTarget, selString = '', selected = [];
+                try {
+                    if (input.tagName && input.tagName.toUpperCase() === 'INPUT') {
+                        selString = input.value;
+                        if(selString) {
+                            selected = document.querySelectorAll(selString);
+                            for (var i = 0, len = selected.length; i < len; i++) {
+                                selected[i].className += " highlight";
+                            }
+                        }
+                    }
+                }
+                catch(e) {
+                    logElement.innerHTML = e.stack;
+                }
+            }
+
+            var selector = document.getElementById("selector");
+            selector.addEventListener("keyup", matchHighlight);
+
+        }
+
+        window.addEventListener("load", bootstrap);
+
+    </script>
+
+</body>
+</html>

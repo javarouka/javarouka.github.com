@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <title></title>
+    <style>
+        body,html{width:100%;height:100%;padding:0;margin:0;}
+        #main {
+            background-color: BurlyWood;
+            float: right;
+            position: absolute;
+            top:100px;
+            bottom: 0px;
+            right: 0;
+            left:200px;
+        }
+        #sidebar {
+            background-color: IndianRed;
+            width:200px;
+            float: left;
+            position: absolute;
+            top:100px;
+            bottom: 0px;
+            overflow-y: hidden;
+        }
+
+        #header {
+            background-color: wheat;
+            width:100%;
+            height: 100px;
+        }
+
+        #dragbar {
+            background-color:black;
+            height:100%;
+            float: right;
+            width: 3px;
+            cursor: col-resize;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+    <div id="header">
+        header
+        <span id="mousestatus"></span>
+        <span id="clickevent"></span>
+    </div>
+    <div id="sidebar">
+        <span id="position"></span>
+        <div id="dragbar"></div>
+        sidebar
+    </div>
+    <div id="main">
+        main
+    </div>
+
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
+<script>
+    var i = 0;
+    $('#dragbar').mousedown(function(e){
+
+        e.preventDefault();
+        $('#mousestatus').html("mousedown" + i++);
+        $(document).mousemove(function(e){
+            $('#position').html(e.pageX +', '+ e.pageY);
+            $('#sidebar').css("width",e.pageX+2);
+            $('#main').css("left",e.pageX+2);
+        })
+        console.log("leaving mouseDown");
+    });
+    $(document).mouseup(function(e){
+        $('#clickevent').html('in another mouseUp event' + i++);
+        $(document).unbind('mousemove');
+    });
+</script>
+</body>
+</html>
