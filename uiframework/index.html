@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        #full-size-wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #toggle-button {
+            top: 20px;
+            padding: 5px 10px;
+            position: fixed;
+            z-index: 300;
+            background-color: #4C4C4C;
+            color: #FFF;
+            margin-left: 250px;
+            border-radius: 0 10px 10px 0;
+            overflow: hidden;
+        }
+
+        #toggle-button:hover {
+            cursor: pointer;
+        }
+
+        #toggle-button .text {
+            display: none;
+        }
+
+        #csa-panel {
+            height: 100%;
+        }
+
+        #menu-holder {
+            z-index: 301;
+            position: absolute;
+            display: block;
+            width: 250px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            background-color: #eaffc8;
+        }
+
+        #menu-holder .scroll-holder {
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        #menu-holder nav {
+            padding: 5%;
+        }
+
+        #display-holder {
+            padding-top: 10px;
+            padding-left: 40px;
+            position: absolute;
+            overflow: hidden;
+            height: 100%;
+            margin-left: 250px;
+            display: inline-block;
+            -webkit-transition: all .25s ease;
+            -moz-transition: all .25s ease;
+            -ms-transition: all .25s ease;
+            -o-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="full-size-wrapper" class="container">
+
+    <div id="csa-panel">
+
+        <aside id="menu-holder">
+            <div id="toggle-button">
+                <span class="glyphicon glyphicon-align-justify"></span>
+                <span class="text">MENU</span>
+            </div>
+            <div class="scroll-holder">
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="divider">Coupang</li>
+                        <li><a href="#">상담하자</a></li>
+                        <li><a href="#">상담할까</a></li>
+                        <li><a href="#">CS는 힘들어</a></li>
+                        <li><a href="#">이력보자</a></li>
+                        <li class="divider">다른메뉴는?</li>
+                        <li><a href="#">고충</a></li>
+                        <li><a href="#">League Of Legend</a></li>
+                        <li><a href="#">OMG!</a></li>
+                    </ul>
+                </nav>
+                <hr/>
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="divider">Coupang</li>
+                        <li><a href="#">상담하자</a></li>
+                        <li><a href="#">상담할까</a></li>
+                        <li><a href="#">CS는 힘들어</a></li>
+                        <li><a href="#">이력보자</a></li>
+                        <li class="divider">다른메뉴는?</li>
+                        <li><a href="#">고충</a></li>
+                        <li><a href="#">League Of Legend</a></li>
+                        <li><a href="#">OMG!</a></li>
+                    </ul>
+                </nav>
+                <hr/>
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="divider">Coupang</li>
+                        <li><a href="#">상담하자</a></li>
+                        <li><a href="#">상담할까</a></li>
+                        <li><a href="#">CS는 힘들어</a></li>
+                        <li><a href="#">이력보자</a></li>
+                        <li class="divider">다른메뉴는?</li>
+                        <li><a href="#">고충</a></li>
+                        <li><a href="#">League Of Legend</a></li>
+                        <li><a href="#">OMG!</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <section id="display-holder">
+
+            <div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Contents</div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">1</div>
+                                <div class="col-md-6">2</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">1</div>
+                                <div class="col-md-9">2</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">1</div>
+                                <div class="col-md-4">2</div>
+                                <div class="col-md-4">2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script>
+    (function($) {
+
+        var $menuHolder = $("#menu-holder"),
+            $toggleButton = $("#toggle-button"),
+            $displayHolder = $("#display-holder");
+
+        var w = $(window).width() - 260;
+        $displayHolder.css("width", w);
+
+        $toggleButton
+        .click(
+            function(e) {
+                var ml = parseInt($displayHolder.css("margin-left"));
+                var pos = -250, pos2 = 0;
+                if(ml <= 10) {
+                    pos = 0;
+                    pos2 = 250;
+                }
+                $menuHolder.animate({
+                    left: pos
+                }, function() {
+                    $displayHolder.css("margin-left", pos2);
+                    $displayHolder.css("width", w + -pos);
+                });
+            }
+        );
+
+    })(jQuery);
+</script>
+</body>
+</html>
