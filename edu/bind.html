@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>Coukie 실습</title>
+    <link rel="stylesheet" href="edu.css" media="all">
+</head>
+<body>
+
+<div class="top-wrapper">
+    <label for="bound">
+        Selector 문자열
+        <input id="bound" type="text">
+    </label>
+    <pre id="bounded"></pre>
+</div>
+
+<script type="text/javascript">
+
+
+    function bootstrap(e) {
+
+        var bound = document.getElementById("bound"),
+            bounded = document.getElementById("bounded");
+
+        function showText(e) {
+            var input = e.currentTarget;
+            if (input.tagName && input.tagName.toUpperCase() === 'INPUT') {
+                bounded.innerHTML = input.value;
+            }
+        }
+
+        function alertText(e) {
+            alert(bounded.innerHTML);
+        }
+
+        bound.addEventListener("click", alertText);
+        bounded.addEventListener("keyup", showText);
+    }
+
+    window.addEventListener("load", bootstrap);
+
+</script>
+
+</body>
+</html>
