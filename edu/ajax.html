@@ -17,6 +17,7 @@
         <dt>두번쨰 취미</dt>
         <dd id="second-hobby"></dd>
     </dl>
+    <pre id="orig"></pre>
 </div>
 
 <script type="text/javascript">
@@ -24,7 +25,8 @@
 
     function bootstrap(e) {
 
-        var btnGetInfo = document.getElementById("get-info");
+        var btnGetInfo = document.getElementById("get-info"),
+            orig = document.getElementById("orig");
 
         function createXHR() {
             var httpRequest;
@@ -53,6 +55,9 @@
             xhr.onreadystatechange = function(e) {
                 if(xhr.readyState === 4) {
                     if(xhr.status === 200) {
+
+                        orig.innerHTML = xhr.responseText;
+
                         var resJSON = JSON.parse(xhr.responseText),
                             name = document.getElementById("name"),
                             age = document.getElementById("age"),
