@@ -23,3 +23,14 @@
     color: red;
     font-weight: bold;
 }
+
+dl {
+    width: 50%;
+    min-width: 500px;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10px;
+    border-bottom: solid 1px #aaa;
+}

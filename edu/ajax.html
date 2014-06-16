@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>Coukie 실습</title>
+    <link rel="stylesheet" href="edu.css" media="all">
+</head>
+<body>
+
+<div class="top-wrapper" >
+    <button id="get-info">정보 가져오기</button>
+    <dl>
+        <dt>이름</dt>
+        <dd id="name"></dd>
+        <dt>나이</dt>
+        <dd id="age"></dd>
+        <dt>두번쨰 취미</dt>
+        <dd id="second-hobby"></dd>
+    </dl>
+</div>
+
+<script type="text/javascript">
+
+
+    function bootstrap(e) {
+
+        var btnGetInfo = document.getElementById("get-info");
+
+        function createXHR() {
+            var httpRequest;
+            try {
+
+                if (window.XMLHttpRequest) {
+                    httpRequest = new XMLHttpRequest();
+                }
+
+                else if (window.ActiveXObject) {
+                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+            }
+            catch(e) {
+                try {
+                    httpRequest = new ActiveXObject("MicroSoft.XMLHTTP");
+                }
+                catch(e) { throw new Error("안돼..."); }
+            }
+            return httpRequest;
+        }
+
+        function getData(e) {
+            var xhr = createXHR();
+            xhr.open("get", "data/backsoo.json");
+            xhr.onreadystatechange = function(e) {
+                if(xhr.readyState === 4) {
+                    if(xhr.status === 200) {
+                        var resJSON = JSON.parse(xhr.responseText),
+                            name = document.getElementById("name"),
+                            age = document.getElementById("age"),
+                            secondHobby = document.getElementById("second-hobby");
+
+                        name.innerHTML = resJSON.name;
+                        age.innerHTML = resJSON.age;
+                        secondHobby.innerHTML = resJSON.hobby[0];
+                    }
+                    else {
+                        alert("Error!! > " + xhr.status);
+                    }
+                }
+            }
+
+            xhr.send();
+
+        }
+
+        btnGetInfo.addEventListener("click", getData);
+    }
+
+    window.addEventListener("load", bootstrap);
+
+</script>
+
+</body>
+</html>
