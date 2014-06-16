@@ -17,7 +17,7 @@
         <dt>두번쨰 취미</dt>
         <dd id="second-hobby"></dd>
     </dl>
-    <pre id="orig"></pre>
+    <pre id="orig" class="hidden-element"></pre>
 </div>
 
 <script type="text/javascript">
@@ -56,6 +56,7 @@
                 if(xhr.readyState === 4) {
                     if(xhr.status === 200) {
 
+                        orig.style.display = "block";
                         orig.innerHTML = xhr.responseText;
 
                         var resJSON = JSON.parse(xhr.responseText),

@@ -1,3 +1,23 @@
+dl {
+    width: 50%;
+    min-width: 500px;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10px;
+    border-bottom: solid 1px #aaa;
+}
+
+pre {
+    width: 50%;
+    min-width: 500px;
+    padding: 10px;
+    border-radius: 6px;
+    border: solid 1px #aaa;
+    background-color: #ececec;
+}
+
 .top-wrapper {
     position: relative;
     margin: 1% auto;
@@ -24,13 +44,6 @@
     font-weight: bold;
 }
 
-dl {
-    width: 50%;
-    min-width: 500px;
-}
-
-dt {
-    font-weight: bold;
-    margin-top: 10px;
-    border-bottom: solid 1px #aaa;
+.hidden-element {
+    display: none;
 }
