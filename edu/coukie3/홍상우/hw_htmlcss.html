@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+<script type="text/javascript" language="JavaScript">
+    function layout1()  //1번레이아웃
+    {
+
+        //id값으로 가져오기
+        var l1 = document.getElementById("lay1");
+        var l2 = document.getElementById("lay2");
+        var l3 = document.getElementById("lay3");
+        var x= document.getElementById("table");
+
+        //클릭시 보여지는 테이블 관련 html 입력
+        x.innerHTML="<tbody>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\" rowspan=\"2\" bgcolor=\"gray\">sect1</td>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"2\" bgcolor=\"red\">sect2</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"bgcolor=\"orange\">sect3</td>\n            <td  style=\" vertical-align:top; text-align:center;\"bgcolor=\"#9acd32\">sect4</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\" rowspan=\"2\" bgcolor=\"#00bfff\">sect5</td>\n            <td  style=\" vertical-align:top; text-align:center;\"bgcolor=\"#a52a2a\">sect6</td>\n            <td  style=\" vertical-align:top; text-align:center;\"rowspan=\"2\" bgcolor=\"#ff4500\">sect7</td>\n        </tr>\n        <tr>\n\n\n            <td style=\" vertical-align:top; text-align:center;\"bgcolor=\"yellow\">sect8</td>\n        </tr>\n        <tr>\n            <td style=\" vertical-align:top; text-align:center;\"colspan=\"5\" bgcolor=\"#2f4f4f\">sect9</td>\n        </tr>\n       </tbody>";
+
+        //layout에 밑줄긋기
+        l1.innerHTML="<u>layout1</u>";
+        l2.innerHTML="layout2";
+        l3.innerHTML="layout3";
+
+    }
+    function layout2()
+    {
+        //id값으로 가져오기
+        var l1 = document.getElementById("lay1");
+        var l2 = document.getElementById("lay2");
+        var l3 = document.getElementById("lay3");
+        var x= document.getElementById("table");
+
+        //클릭시 보여지는 테이블 관련 html 입력
+        x.innerHTML="<tbody>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\"  bgcolor=\"gray\">sect1</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\" bgcolor=\"red\">sect2</td>\n            <td  style=\" vertical-align:top; text-align:center;\" bgcolor=\"orange\">sect3</td>\n            <td  style=\" vertical-align:top; text-align:center;\" bgcolor=\"#9acd32\">sect4</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"2\" bgcolor=\"#00bfff\">sect5</td>\n            <td  style=\" vertical-align:top; text-align:center;\"rowspan=\"4\"bgcolor=\"#a52a2a\">sect6</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"2\"bgcolor=\"#ff4500\">sect7</td>\n        </tr>\n\n        <tr>\n            <td style=\" vertical-align:top; text-align:center;\"colspan=\"2\"bgcolor=\"yellow\">sect8</td>\n        </tr>\n        <tr>\n            <td style=\" vertical-align:top; text-align:center;\"colspan=\"2\"bgcolor=\"#2f4f4f\">sect9</td>\n        </tr>\n       </tbody>";
+
+        //layout에 밑줄긋기
+        l1.innerHTML="layout1";
+        l2.innerHTML="<u>layout2</u>";
+        l3.innerHTML="layout3";
+    }
+    function layout3()
+    {
+        var l1 = document.getElementById("lay1");
+        var l2 = document.getElementById("lay2");
+        var l3 = document.getElementById("lay3");
+        var x=document.getElementById("table");
+        x.innerHTML="<tbody>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\"  bgcolor=\"gray\">sect1</td>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\" bgcolor=\"red\">sect2</td>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\" bgcolor=\"orange\">sect3</td>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"3\" bgcolor=\"#9acd32\">sect4</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"6\" bgcolor=\"#00bfff\">sect5</td>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"6\" bgcolor=\"#a52a2a\">sect6</td>\n        </tr>\n        <tr>\n            <td  style=\" vertical-align:top; text-align:center;\"colspan=\"4\"bgcolor=\"#ff4500\">sect7</td>\n            <td style=\" vertical-align:top; text-align:center;\"colspan=\"4\"bgcolor=\"yellow\">sect8</td>\n            <td style=\" vertical-align:top; text-align:center;\"colspan=\"4\"bgcolor=\"#2f4f4f\">sect9</td>\n        </tr>\n       </tbody>";
+
+        l1.innerHTML="layout1";
+        l2.innerHTML="layout2";
+        l3.innerHTML="<u>layout3</u>";
+    }
+</script>
+<head>
+    <title>프레임</title>
+
+
+</head>
+<body>
+    <center>
+        <!--글자입력 및 이벤트 등록 -->
+        <font id="lay1" size="5" onclick=layout1()>layout1</font>
+        <font id="lay2" size="5" onclick=layout2()>layout2</font>
+        <font id="lay3" size="5" onclick=layout3()>layout3</font>
+
+    <table id = "table" bgcolor="white" height="600" width="800" >
+
+    </table>
+    </center>
+
+
+</body>
+
+</html>

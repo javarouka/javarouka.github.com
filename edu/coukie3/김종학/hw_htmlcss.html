@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<head>
+<style>
+body { margin : 0px 0px 0px 0px }
+div { border : 0px ; text-align : center }
+body , div { font-family : Gulim ; font-size : 12px ; line-height : 130% }
+
+#one_container { width: 510px; height:620px; margin:0 auto}
+
+#one_top { width : 500px ; height : 250px ; }
+#one_sect1 { width : 250px ; height : 250px ; float: left; margin: 5px; background: gray}
+
+#one_top_right { width : 240px ; height : 250px ; float: right}
+#one_sect2 { width : 240px ; height : 100px ; margin: 5px; background: red}
+
+#one_top_bottom {width: 250px; height: 140px;}
+#one_sect3 { width : 115px ; height : 140px ; float: left; margin: 5px; background: orange}
+#one_sect4 { width : 115px ; height : 140px ; float: right; margin: 5px ; background: green}
+
+#one_middle { width : 510px ; height : 250px ; margin-bottom: 25px}
+#one_sect5 { width : 250px ; height : 250px ; float: left; margin: 5px; background: skyblue}
+
+#one_mid_right { width : 250px ; height : 250px ; float: right}
+#one_mid_bottom { width: 115px; height: 250px; float:left; }
+#one_sect6 { width : 115px ; height : 122px ;  margin: 5px; background: purple}
+#one_sect7 { width : 115px ; height : 250px ;  margin: 5px; float:right; background: pink}
+#one_sect8 { width : 115px ; height : 122px ;  margin: 5px;  background: yellow}
+
+#one_sect9 { width: 500px; height: 100px; margin: 5px; background: blue}
+
+
+#two_container { width: 520px; height:620px; margin:0 auto}
+#two_sect1 { width : 500px ; height : 100px ; margin: 5px; background : #111311 }
+#two_sect1 { color : #ccc }
+
+#two_center { width: 510px; height: 100px;}
+#two_sect2 , #two_sect3 , #two_sect4 { float : left ; height : 100px }
+#two_sect2 { width : 160px ; margin: 5px ; background : #ffc800 }
+#two_sect3 { width : 160px ; margin: 5px ; background : #e7e5e7 }
+#two_sect4 { width : 160px ; margin: 5px ; background : royalblue }
+
+#bottom_left { width: 330px; height: 400px; float: left; }
+#bottom_right{ width: 160px; height: 400px; float: right ;margin: 5px; background: violet}
+#bottom { width : 510px ; height : 400px ;  }
+#bottom { clear : both }
+
+#two_sect5{width: 330px; height: 96px; margin: 5px; background: red}
+#two_sect7{width: 330px; height: 96px; margin: 5px; background: yellow}
+#two_sect8{width: 330px; height: 96px; margin: 5px; background: green}
+#two_sect9{width: 330px; height: 96px; margin: 5px; background: purple}
+
+
+#three_container { width: 540px; height:530px; margin:0 auto;}
+#three_top { width: 540px; height: 100px; }
+
+#three_sect1 { width: 125px; height: 100px; margin: 5px; float: left;  background: red}
+#three_sect2 {width: 125px; height: 100px; margin: 5px;float: left;  background: yellow}
+#three_sect3 {width: 125px; height: 100px; margin: 5px;float: left;  background: green}
+#three_sect4 {width: 125px; height: 100px; margin: 5px;float: left;  background: purple}
+
+#three_middle {width: 540px; height: 250px;}
+#three_sect5 {width: 260px; height: 250px; margin: 5px;float: left;  background: #ffc800}
+#three_sect6 {width: 260px; height: 250px; margin: 5px;float: left;  background: #e7e5e7}
+
+#three_bottom { width: 540px; height: 160px; margin:0px}
+#three_sect7 {width: 170px; height: 150px; margin: 5px;float: left;  background: pink }
+#three_sect8 {width: 170px; height: 150px; margin: 5px;float: left;  background: skyblue}
+#three_sect9 {width: 170px; height: 150px; margin: 5px;float: right;  background: #c800ff}
+
+
+</style>
+
+<script>
+var l1 = "<div id='one_container'>"
+	+"<div id='one_top'>"
+		+"<div id='one_sect1'>sect1</div>"
+		+"<div id='one_top_right'>"
+			+"<div id='one_sect2'>sect2</div>"
+			+"<div id='one_top_bottom'>"
+				+"<div id='one_sect3'>sect3</div>"
+				+"<div id='one_sect4'>sect4</div>"
+			+"</div>"
+		+"</div>"
+	+"</div>"
+	+"<div id='one_middle'>"
+		+"<div id='one_sect5'>sect5</div>"
+		+"<div id='one_mid_right'>"
+			+"<div id='one_mid_bottom'>"
+				+"<div id='one_sect6'>sect6</div>"
+				+"<div id='one_sect8'>sect8</div>"
+			+"</div>"
+			+"<div id='one_sect7'>sect7</div>"
+		+"</div>"
+	+"</div>"
+	+"<div id='one_sect9'>sect9</div>"
++"</div>";
+
+	var	l3 = "<div id='three_container'>"
+		+"<div id='three_three_top'>"
+			+"<div id='three_sect1'>sect1</div>"
+			+"<div id='three_sect2'>sect2</div>"
+			+"<div id='three_sect3'>sect3</div>"
+			+"<div id='three_sect4'>sect4</div>"
+		+"</div>"
+		+"<div id='three_middle'>"
+			+"<div id='three_sect5'>sect5</div>"
+			+"<div id='three_sect6'>sect6</div>"
+		+"</div>"
+		+"<div id='three_bottom'>"
+			+"<div id='three_sect7'>sect1</div>"
+			+"<div id='three_sect8'>sect2</div>"
+			+"<div id='three_sect9'>sect3</div>"
+		+"</div>"
+	+"</div>"
+	+"</div>";
+
+	var l2 = "<div id='two_container'>"
+	+"<div id='two_sect1'>sect1</div>"
+	+"<div id='two_center'>"
+		+"<div id='two_sect2'>sect2</div>"
+		+"<div id='two_sect3'>sect3</div>"
+		+"<div id='two_sect4'>sect4</div>"
+	+"</div>"
+	+"<div id='bottom'>"
+		+"<div id='bottom_left'>"
+			+"<div id='two_sect5'>sect5</div>"
+			+"<div id='two_sect7'>sect7</div>"
+			+"<div id='two_sect8'>sect8</div>"
+			+"<div id='two_sect9'>sect9</div>"
+		+"</div>"
+		+"<div id='bottom_right'>sect6</div>"
+	+"</div>"
++"</div>";
+
+	
+function change1()
+{
+	var dv = document.getElementById("layout");
+	dv.innerHTML = l1;
+}
+function change2()
+{
+	var dv = document.getElementById("layout");
+	dv.innerHTML = l2;
+}
+function change3()
+{
+	var dv = document.getElementById("layout");
+	dv.innerHTML = l3;
+}
+</script>
+ 
+<body>
+	<div>
+		<a href="#" onClick=change1()>layout1</a>
+		<a href="#" onClick=change2()>layout2</a>
+		<a href="#" onClick=change3()>layout3</a>
+	</div>
+
+	<div id='layout'>
+	<div id='one_container'>
+	<div id='one_top'>
+		<div id='one_sect1'>sect1</div>
+		<div id='one_top_right'>
+			<div id='one_sect2'>sect2</div>
+			<div id='one_top_bottom'>
+				<div id='one_sect3'>sect3</div>
+				<div id='one_sect4'>sect4</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='one_middle'>
+		<div id='one_sect5'>sect5</div>
+		<div id='one_mid_right'>
+			<div id='one_mid_bottom'>
+				<div id='one_sect6'>sect6</div>
+				<div id='one_sect8'>sect8</div>
+			</div>
+			<div id='one_sect7'>sect7</div>
+		</div>
+	</div>
+
+	<div id='one_sect9'>sect9</div>
+</div>
+	</div>
+	
+</body>

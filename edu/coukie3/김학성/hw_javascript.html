@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        var contentIndex = 6;
+        function add()
+        {
+            contentIndex++;
+            var content = $("#content").val();
+            $("#ul_id").append("<li id="+contentIndex+" ondblclick='lineThrough(contentIndex)'>" + content + "</li>");
+        }
+
+        function removeAll()
+        {
+            $("#ul_id").empty();
+            contentIndex = 0;
+        }
+
+        function lineThrough(_id)
+        {
+            $("#"+_id).css('text-decoration','line-through');
+        }
+    </script>
+    <title>My ToDo List</title>
+</head>
+<body>
+<h1>My ToDo List</h1>
+<ul id="ul_id">
+    <li id="1" ondblclick="lineThrough('1')">공부</li>
+    <li id="2" ondblclick="lineThrough('2')">자바스크립트 공부</li>
+    <li id="3" ondblclick="lineThrough('3')">연애 공부</li>
+    <li id="4" ondblclick="lineThrough('4')">노래 공부</li>
+    <li id="5" ondblclick="lineThrough('5')">이름 공부</li>
+    <li id="6" ondblclick="lineThrough('6')">과제 공부</li>
+</ul>
+<b>해야할일</b><input type="text" name="" id="content"><input type="button" value="저장" name="" onclick="add()"> <input type="button" value="모두지우기" name="" onclick="removeAll()">
+</body>
+</html>

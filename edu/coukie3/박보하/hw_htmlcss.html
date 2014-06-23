@@ -1,0 +1,476 @@
+<html>
+	<!--
+	this program is used in layout html
+		it contain css & html & javascript-->
+	
+	<style type="text/css">
+		.hide {
+			display: none
+		}
+
+		.set1 {
+			height: 100%;
+			margin: 10px;
+			background-color: #2E323D;
+		}
+
+		.set2 {
+			background-color: #E40029;
+		}
+		.set3 {
+			background-color: #F58F18;
+		}
+		.set4 {
+			background-color: #95C82A;
+		}
+		.set5 {
+			background-color: #3C90D1;
+		}
+		.set6 {
+			background-color: #4D1815;
+		}
+		.set7 {
+			background-color: #F9C20E;
+		}
+		.set8 {
+			background-color: #EB401D;
+		}
+		.set9 {
+			background-color: #559F99;
+		}
+
+		#menu_div {
+			width: 100%;
+			text-align: center;
+		}
+
+		#menu {
+			display: inline-block;
+		}
+
+		#menu li {
+			float: left;
+			margin-left: 20px;
+		}
+
+		#canvas {
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+		}
+
+	</style>
+
+	<style>
+		body {
+			width: 660px;
+			display: block;
+			margin: 10px auto;
+		}
+		#foursquare {
+			background: #F0F0F0;
+			width: 640px;
+			height: 800px;
+			margin: auto;
+			padding: 1px;
+			display: block;
+			position: absolute;
+		}
+		#layout1_1_1 {
+
+			width: 280px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#topright {
+
+			width: 320px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+
+		#topright_top {
+
+			width: 310px;
+			height: 90px;
+			display: block;
+			float: left;
+		}
+
+		#topright_left_bottom {
+
+			position: relative;
+			top: 100px;
+			display: block;
+			width: 150px;
+			height: 200px;
+			display: block;
+			float: left;
+			clear: left;
+		}
+
+		#topright_right_bottom {
+
+			position: relative;
+			top: 100px;
+			left: 160px;
+			display: block;
+			width: 150px;
+			height: 200px;
+			display: block;
+		}
+
+		#middle_left_1 {
+			position: relative;
+			width: 150px;
+			height: 145px;
+		}
+
+		#middle_left_2 {
+			position: relative;
+			top: 10px;
+			width: 150px;
+			height: 145px;
+		}
+
+		#bottomleft {
+
+			width: 280px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+			clear: left;
+		}
+		#bottomright {
+			width: 320px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#middle_left_3 {
+			position: relative;
+			top: -290px;
+			left: 160px;
+			width: 150px;
+			height: 145px;
+			width: 150px;
+			height: 300px;
+			display: block;
+		}
+		#bottom {
+			position: relative;
+			/* width: 300px; */
+			height: 145px;
+			width: 610px;
+			height: 130px;
+			display: block;
+		}
+		#bottomdiv {
+			width: 320px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+
+		#layout2_1 {
+			width: 610px;
+			height: 120px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_2_1 {
+			width: 190px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_2_2 {
+			width: 190px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_2_3 {
+			width: 190px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_3_left_1 {
+			position: relative;
+			width: 400px;
+			height: 100px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_3_left_2 {
+			position: relative;
+			width: 190px;
+			height: 460px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout2_3_left_3 {
+			position: relative;
+			width: 400px;
+			height: 100px;
+			margin: 10px;
+			display: block;
+			top: -360px;
+			float: left;
+		}
+		#layout2_3_left_4 {
+			position: relative;
+			width: 400px;
+			height: 100px;
+			margin: 10px;
+			display: block;
+			top: -360px;
+			float: left;
+		}
+		#layout2_3_left_5 {
+			position: relative;
+			width: 400px;
+			height: 100px;
+			margin: 10px;
+			display: block;
+			top: -360px;
+			float: left;
+		}
+
+		#layout3_1_1 {
+
+			width: 140px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_1_2 {
+
+			width: 140px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_1_3 {
+
+			width: 140px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_1_4 {
+
+			width: 140px;
+			height: 150px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_2_1 {
+
+			width: 300px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+
+		#layout3_2_2 {
+
+			width: 300px;
+			height: 300px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_3_1 {
+
+			width: 192px;
+			height: 250px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_3_2 {
+
+			width: 192px;
+			height: 250px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+		#layout3_3_3 {
+
+			width: 192px;
+			height: 250px;
+			margin: 10px;
+			display: block;
+			float: left;
+		}
+
+		.set1 {
+			background-color: #2E323D;
+		}
+
+		.set2 {
+			background-color: #E40029;
+		}
+		.set3 {
+			background-color: #F58F18;
+		}
+		.set4 {
+			background-color: #95C82A;
+		}
+		.set5 {
+			background-color: #3C90D1;
+		}
+		.set6 {
+			background-color: #4D1815;
+		}
+		.set7 {
+			background-color: #EB401D;
+		}
+		.set8 {
+			background-color: #F9C20E;
+		}
+		.set9 {
+			background-color: #559F99;
+		}
+
+	</style>
+	<body>
+
+		<div id="menu_div">
+			<ul id="menu">
+				<li>
+					<a id="layout1" href="#tab1">layout1</a>
+				</li>
+				<li>
+					<a id="layout2" href="#tab2">layout2</a>
+				</li>
+				<li>
+					<a id="layout3" href="#tab3">layout3</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="canvas">
+
+			<div id="layout1_img">
+				<div id="foursquare">
+					<div id="layout1_1_1" class="set1"></div>
+					<div id="topright">
+						<div id="topright_top" class="set2"style=" display: inline-block;">
+
+							<div id="topright_left_bottom" class="set3"></div>
+							<div id="topright_right_bottom"class="set4"></div>
+
+						</div>
+
+					</div>
+					<div id="bottomleft" class="set5">
+
+					</div>
+					<div id="bottomright">
+						<div id="middle_left_1"class="set6">
+							set6
+						</div>
+						<div id="middle_left_2"class="set8"></div>
+						<div id="middle_left_3"class="set7"></div>
+					</div>
+					<div id="bottomdiv">
+						<div id="bottom" class="set9">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="hide"  id="layout2_img">
+				<div id="foursquare">
+					<div id="layout2_1" class="set1"></div>
+					<div id="layout2_2" >
+						<div id="layout2_2_1" class="set2"></div>
+						<div id="layout2_2_2" class="set3"></div>
+						<div id="layout2_2_3" class="set4"></div>
+					</div>
+
+					<div id="layout2_3">
+						<div id="layout2_3_left_1" class="set5"></div>
+						<div id="layout2_3_left_2" class="set6"></div>
+						<div id="layout2_3_left_3" class="set7"></div>
+						<div id="layout2_3_left_4" class="set8"></div>
+						<div id="layout2_3_left_5" class="set9"></div>
+					</div>
+				</div>
+			</div>
+			<div class="hide"  id="layout3_img">
+				<div id="foursquare">
+					<div>
+						<div id="layout3_1_1" class="set1"></div>
+						<div id="layout3_1_2"class="set2"></div>
+						<div id="layout3_1_3"class="set3"></div>
+						<div id="layout3_1_4"class="set4"></div>
+					</div>
+					<div id="layout3_2">
+						<div id="layout3_2_1"class="set5"></div>
+						<div id="layout3_2_2"class="set6"></div>
+					</div>
+					<div>
+						<div id="layout3_3_1"class="set7"></div>
+						<div id="layout3_3_2"class="set8"></div>
+						<div id="layout3_3_3"class="set9"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function addEvent(el, eType, fn, uC) {
+				if (el.addEventListener) {
+					el.addEventListener(eType, fn, uC);
+					return true;
+				} else if (el.attachEvent) {
+					return el.attachEvent('on' + eType, fn);
+				} else {
+					el['on' + eType] = fn;
+				}
+			}
+
+			function clickHandler(e) {
+				var id = e.target.id;
+				var t = document.getElementById(e.target.id + '_img');
+				var p = document.getElementById('canvas');
+				for (var i = 0; i < p.childNodes.length; i++) {
+					var c = p.childNodes[i];
+					if (c.nodeName == 'DIV') {
+						c.setAttribute('class', 'hide');
+					}
+				}
+				t.setAttribute('class', '');
+			}
+
+			addEvent(document.getElementById('layout1'), 'click', clickHandler);
+			addEvent(document.getElementById('layout2'), 'click', clickHandler);
+			addEvent(document.getElementById('layout3'), 'click', clickHandler);
+		</script>
+	</body>
+</html>

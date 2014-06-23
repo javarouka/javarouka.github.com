@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title> - jsFiddle demo</title>
+    <script type='text/javascript' src='/js/lib/mootools-core-1.4.5-nocompat.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+    <style type='text/css'>
+        .sect1 {
+            background-color: #2E323D;
+        }
+        .sect2 {
+            background-color: #E40029;
+        }
+        .sect3 {
+            background-color: #F58F18;
+        }
+        .sect4 {
+            background-color: #95C82A;
+        }
+        .sect5 {
+            background-color: #3C90D1;
+        }
+        .sect6 {
+            background-color: #4D1815;
+        }
+        .sect7 {
+            background-color: #EB401D;
+        }
+        .sect8 {
+            background-color: #F9C20E;
+        }
+        .sect9 {
+            background-color: #559F99;
+        }
+
+        div {
+            text-align: center;
+            color: #FFFFFF;
+            padding-top: 10px;
+        }
+
+        b {
+            color: #000000;
+            font-size: 9px;
+        }
+
+        td {
+            color: #FFFFFF;
+            font-size: 7px;
+            text-align: center;
+            vertical-align: top;
+            padding-top: 5px;
+        }
+    </style>
+
+    <script type='text/javascript'>//<![CDATA[
+    window.addEvent('load', function() {
+
+    });//]]>
+
+    function test(layoutId)
+    {
+        document.getElementById("layout1").style.textDecoration="none";
+        document.getElementById("layout2").style.textDecoration="none";
+        document.getElementById("layout3").style.textDecoration="none";
+        document.getElementById(layoutId).style.textDecoration="underline";
+        switchView(layoutId);
+    }
+
+    function switchView(layoutId)
+    {
+        document.getElementById("layout1Table").style.display = "none";
+        document.getElementById("layout2Table").style.display = "none";
+        document.getElementById("layout3Table").style.display = "none";
+        if(layoutId == 'layout1')
+        {
+            document.getElementById("layout1Table").style.display = "";
+        }
+        else if(layoutId == 'layout2')
+        {
+            document.getElementById("layout2Table").style.display = "";
+        }
+        else
+        {
+            document.getElementById("layout3Table").style.display = "";
+        }
+    }
+    </script>
+
+</head>
+<body style="margin: 0px; text-align: center">
+
+<div>
+    <b id="layout1" onclick="test('layout1')" style="text-decoration: underline">layout1</b>
+    <b id="layout2" onclick="test('layout2')">layout2</b>
+    <b id="layout3" onclick="test('layout3')">layout3</b>
+</div>
+
+<table id="layout1Table" style="width: 100%; padding-top: 5px; padding-left: 50px; padding-right: 50px; padding-bottom: 5px; border-spacing: 5px; border-collapse: separate">
+    <tr style="width: 600px; height: 100px">
+        <td class="sect1" style="width: 40%; height: 100px" rowspan="2">sect1</td>
+        <td class="sect2" style="width: 25%; height: 100px" colspan="2">sect2</td>
+    </tr>
+    <tr style="width: 600px; height: 160px">
+        <td class="sect3" style="width: 25%; height: 100px">sect3</td>
+        <td class="sect4" style="width: 25%; height: 100px">sect4</td>
+    </tr>
+    <tr style="width: 600px; height: 140px">
+        <td class="sect5" style="width: 25%; height: 100px" rowspan="2">sect5</td>
+        <td class="sect6" style="width: 25%; height: 100px" >sect6</td>
+        <td class="sect7" style="width: 25%; height: 100px" rowspan="2">sect7</td>
+    </tr>
+    <tr style="width: 600px; height: 140px">
+        <td class="sect8" style="width: 25%; height: 100px">sect8</td>
+    </tr>
+    <tr style="height: 140px">
+        <td class="sect9" style="width: 100%; height: 100px" colspan="3">sect9</td>
+    </tr>
+</table>
+
+
+<table id="layout2Table" style="width: 100%; padding-top: 5px; padding-left: 50px; padding-right: 50px; padding-bottom: 5px; border-spacing: 5px; border-collapse: separate; display: none">
+    <tr style="height: 140px">
+        <td class="sect1" style="width: 100%; height: 100px" colspan="3">sect1</td>
+    </tr>
+    <tr style="width: 600px; height: 150px">
+        <td class="sect2" style="width: 33%; height: 100px" >sect2</td>
+        <td class="sect3" style="width: 33%; height: 100px" >sect3</td>
+        <td class="sect4" style="width: 33%; height: 100px" >sect4</td>
+    </tr>
+    <tr style="width: 600px; height: 100px">
+        <td class="sect5" style="width: 66%; height: 100px" colspan="2">sect5</td>
+        <td class="sect6" style="height: 100px" rowspan="4">sect6</td>
+    </tr>
+    <tr style="width: 600px; height: 100px">
+        <td class="sect7" style="width: 66%; height: 100px" colspan="2">sect7</td>
+    </tr>
+    <tr style="width: 600px; height: 100px">
+        <td class="sect8" style="width: 66%; height: 100px" colspan="2">sect8</td>
+    </tr>
+    <tr style="width: 600px; height: 100px">
+        <td class="sect9" style="width: 66%; height: 100px" colspan="2">sect9</td>
+    </tr>
+</table>
+
+<table id="layout3Table" style="width: 100%; padding-top: 5px; padding-left: 50px; padding-right: 50px; padding-bottom: 5px; border-spacing: 5px; border-collapse: separate; display: none" >
+    <tr style="width: 600px; height: 1px">
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="width: 600px; height: 150px">
+        <td class="sect1" colspan="3">sect1</td>
+        <td class="sect2" colspan="3">sect2</td>
+        <td class="sect3" colspan="3">sect3</td>
+        <td class="sect4" colspan="3">sect4</td>
+    </tr>
+    <tr style="width: 600px; height: 280px">
+        <td class="sect5" colspan="6">sect5</td>
+        <td class="sect6" colspan="6">sect6</td>
+    </tr>
+    <tr style="width: 600px; height: 200px">
+        <td class="sect7" colspan="4">sect7</td>
+        <td class="sect8" colspan="4">sect8</td>
+        <td class="sect9" colspan="4">sect9</td>
+    </tr>
+</table>
+</body>
+</html>
+

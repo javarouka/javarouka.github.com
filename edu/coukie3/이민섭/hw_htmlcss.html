@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>HW</title>
+    <script type = "text/javascript">
+        // layout1 클릭 실행함수. 1번 layout visible 나머지 hidden
+        function onclick1(){
+            var layout1 = document.getElementById('layout1');
+            var layout2 = document.getElementById('layout2');
+            var layout3 = document.getElementById('layout3');
+            layout1.style.visibility="visible";
+            layout2.style.visibility="hidden";
+            layout3.style.visibility="hidden";
+        }
+        // layout1 클릭 실행함수. 2번 layout visible 나머지 hidden
+        function onclick2(){
+            var layout1 = document.getElementById('layout1');
+            var layout2 = document.getElementById('layout2');
+            var layout3 = document.getElementById('layout3');
+            layout1.style.visibility="hidden";
+            layout2.style.visibility="visible";
+            layout3.style.visibility="hidden";
+        }
+        // layout1 클릭 실행함수. 3번 layout visible 나머지 hidden
+        function onclick3(){
+            var layout1 = document.getElementById('layout1');
+            var layout2 = document.getElementById('layout2');
+            var layout3 = document.getElementById('layout3');
+            layout1.style.visibility="hidden";
+            layout2.style.visibility="hidden";
+            layout3.style.visibility="visible";
+        }
+    </script>
+
+    <style type="text/css">
+        /*layout 선택 메뉴 구성.*/
+        #menu{width:1000px; height:30px;}
+        /*layout 1. 각각의 레이아웃은 relative position을 이용하여 겹쳐놓도록 한다.*/
+        #layout1{width:1000px; height:1100px; position : relative; visibility : hidden;}
+        #header1{width:1000px; height:390px;}
+        #sect1{width:490px; height:390px; float: left; margin-left:10px; margin-bottom:10px; background:darkslategrey;}
+        #sect2{width:490px; height:130px; float: left; margin-left:10px; margin-bottom:10px; background:red;}
+        #sect3{width:235px; height:250px; float: left; margin-left:10px; margin-bottom:10px; background:orange;}
+        #sect4{width:245px; height:250px; float: right; margin-bottom:10px; background:yellowgreen;}
+        #middle1{width:1000px; height:390px;}
+        #sect5{width:490px; height:390px; float: left; margin-left:10px; margin-bottom:10px; background:skyblue;}
+        #sect6{width:235px; height:190px; float: left; margin-left:10px; margin-bottom:10px; background:brown;}
+        #sect7{width:245px; height:390px; float: right; margin-left:10px; margin-bottom:10px; background:orangered;}
+        #sect8{width:235px; height:190px; float: left; margin-left:10px; margin-bottom:10px; background:yellow;}
+        #sect9{width:990px; height:300px; float:left; margin-left:10px; background:cadetblue;}
+        /*layout2 구성. position 조절을 하여 레이아웃1과 겹치도록 한다. 기본상태는 hidden*/
+        #layout2{width:1000px; height:1100px; position : relative; top : -1100px;  visibility : hidden;}
+        #sect11{width:990px; height:200px; float: left; margin-left:10px; margin-bottom:10px; background:darkslategrey;}
+        #header2{width:1000px; height:250px;}
+        #sect12{width:323px; height:250px; float: left; margin-left:10px; margin-bottom:10px; background:red;}
+        #sect13{width:323px; height:250px; float: left; margin-left:10px; margin-bottom:10px; background:orange;}
+        #sect14{width:323px; height:250px; float: right; margin-bottom:10px; background:yellowgreen;}
+        #middle2{width:1000px; height:640px;}
+        #sect15{width:656px; height:152.5px; float: left; margin-left:10px; margin-bottom:10px; background:skyblue;}
+        #sect16{width:323px; height:640px; float: right; margin-left:10px; margin-bottom:10px; background:brown;}
+        #sect17{width:656px; height:152.5px; float: left; margin-left:10px; margin-bottom:10px; background:orangered;}
+        #sect18{width:656px; height:152.5px; float: left; margin-left:10px; margin-bottom:10px; background:yellow;}
+        #sect19{width:656px; height:152.5px; float: left; margin-left:10px; background:cadetblue;}
+        /*layout3 구성. position 조절을 하여 레이아웃1과 겹치도록 한다. 기본상태는 hidden*/
+        #layout3{width:1000px; height:1100px; position : relative; top : -2200px;  visibility : visible;}
+        #header3{width:1020px; height:250px;}
+        #sect21{width:240px; height:250px; float: left; margin-top:10px; margin-left:10px; margin-bottom:10px; background:darkslategrey;}
+        #sect22{width:240px; height:250px; float: left; margin-top:10px; margin-left:10px; margin-bottom:10px; background:red;}
+        #sect23{width:240px; height:250px; float: left; margin-left:10px; margin-bottom:10px; background:orange;}
+        #sect24{width:240px; height:250px; float: left; margin-left:10px; margin-bottom:10px; background:yellowgreen;}
+        #middle3{width:1000px; height:500px;}
+        #sect25{width:490px; height:490px; float: left; margin-left:10px; margin-bottom:10px; background:skyblue;}
+        #sect26{width:490px; height:490px; float: left; margin-left:10px; margin-bottom:10px; background:brown;}
+        #bottom3{width:1000px; height:400px;}
+        #sect27{width:323px; height:340px; float: left; margin-left:10px; margin-bottom:10px; background:red;}
+        #sect28{width:323px; height:340px; float: left; margin-left:10px; margin-bottom:10px; background:yellow;}
+        #sect29{width:323px; height:340px; float: left; margin-left:10px; background:cadetblue;}
+    </style>
+
+</head>
+<body>
+<div align= "center" id="menu">
+    <a href=# onclick=onclick1();>layout1</a>
+    <a href=# onclick=onclick2();>layout2</a>
+    <a href=# onclick=onclick3();>layout3</a>
+</div>
+<div id="layout1" style="color:white" align="center">
+    <div id="header1">
+        <div id="sect1">sect1</div>
+        <div id="sect2">sect2</div>
+        <div id="sect3">sect3</div>
+        <div id="sect4">sect4</div>
+    </div>
+    <div id="middle1">
+        <div id="sect5">sect5</div>
+        <div id="sect6">sect6</div>
+        <div id="sect7">sect7</div>
+        <div id="sect8">sect8</div>
+    </div>
+    <div id="sect9">sect9</div>
+</div>
+<div id="layout2" style="color:white" align="center">
+    <div id="sect11">sect1</div>
+    <div id="header2">
+        <div id="sect12">sect2</div>
+        <div id="sect13">sect3</div>
+        <div id="sect14">sect4</div>
+    </div>
+    <div id="middle2">
+        <div id="sect15">sect5</div>
+        <div id="sect16">sect6</div>
+        <div id="sect17">sect7</div>
+        <div id="sect18">sect8</div>
+        <div id="sect19">sect9</div>
+    </div>
+
+</div>
+<div id="layout3" style="color:white" align="center">
+    <div id="header3">
+        <div id="sect21">sect1</div>
+        <div id="sect22">sect2</div>
+        <div id="sect23">sect3</div>
+        <div id="sect24">sect4</div>
+    </div>
+    <div id="middle3">
+        <div id="sect25">sect5</div>
+        <div id="sect26">sect6</div>
+        <div id="sect27">sect7</div>
+    </div>
+    <div id="bottom3">
+        <div id="sect28">sect8</div>
+        <div id="sect29">sect9</div>
+    </div>
+</div>
+</body>
+</html>

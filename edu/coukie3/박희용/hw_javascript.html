@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<h1>My ToDo List</h1>
+<ul>
+<div id = "div1">
+</div>
+</ul>
+<input type="text" id="doing"><button id = "save" onClick="savedata()">저장</button><button id = "AllErase" onClick="allErase()">모두 지우기</button>
+<script>
+var Count = 0;
+var Save = new Array();
+var target = document.getElementById("doing");
+function savedata()
+{
+	Save[Count++] = target.value;
+	var li = document.createElement("li");
+	var node = document.createTextNode(target.value);
+	li.appendChild(node);
+	var divList = document.getElementById("div1");
+	divList.appendChild(li);
+	li.ondblclick=function(){
+		li.style.textDecoration = 'line-through';
+	}
+}
+function allErase()
+{
+	var divList = document.getElementById("div1");
+	for( var i = 0 ; i <= Count ; i++)
+	{
+		divList.removeChild(divList.childNodes[0]);
+	}
+	Count = 0;
+}
+
+</script>
+
+</body>
+</html>

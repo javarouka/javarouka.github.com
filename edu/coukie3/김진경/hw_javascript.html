@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index</title>
+
+<style type="text/css">
+/* <div id="input"> 부분을 가로로 배치하기 위한 스타일 */
+#input { 
+	margin: 0px; padding: 0px;
+	width: 500px; height: 500px;
+	float: left;
+}
+#input dl {
+	margin: 0px; padding: 0px;
+	width: 500px; height: 500px;
+	float: left;
+}
+#input dl dt {
+	margin: 0px; padding: 0px;
+	width: 70px;
+	float: left;
+}
+#input dl dd {
+	margin: 0px; padding: 0px;
+	float: left;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+var list_array = null; // todo 항목을 관리하기 위한 전역변수
+
+function onLoad() {
+	var todo_send = null;
+	var todo_del = null;
+	
+	todo_send = document.getElementById("todo_send");
+	todo_del = document.getElementById("todo_del");
+	
+	todo_send.addEventListener("click", todoSend); // 저장 버튼 이벤트 등록
+	todo_del.addEventListener("click", todoDel); // 모두 지우기 버튼 이벤드 등록
+	
+	init(); // todo 목록 초기화
+	
+}
+
+function init() {
+	var json = null;
+	var ul_list = null;
+	var li_tag = null;
+	
+	json = sessionStorage.getItem("list"); // 세션스토리지에 저장되어있는 todo 목록을 가져온다.
+	
+	if(json) { // 세션스토리지에 저장되어있는 todo 목록이 있는 경우
+		list_array = JSON.parse(json); // string 형태를 array 형태로 변환
+		ul_list = document.getElementById("ul_list");
+		
+		for(var i=0; i<list_array.length; i++) {
+			li_tag = document.createElement("li"); // li 태그 생성
+			li_tag.setAttribute("id", i); // li 태그에 id 값으로 목록 번호 생성
+			li_tag.innerHTML = list_array[i].value; // todo 내용을 li 태그에 텍스트로 저장
+			
+			if(list_array[i].flag == 1) { // 만약 todo 항목중 flag 가 1인 경우 line-through 스타일 지정 
+				li_tag.style.textDecoration="line-through";
+			}
+			ul_list.appendChild(li_tag); // li 태그를 ul 태그에 붙인다.
+			li_tag.addEventListener("dblclick", todoComplite); // li 태그를 더블 클릭했을 경우 이벤트 등록
+		}
+	}
+	else {
+		list_array = new Array(); // 세션 스토리지에서 저장되어있는 todo 목록이 없는 경우 
+	}
+}
+
+function todoComplite(e) {
+	var json = null;
+	
+	for(var i in list_array) { // list_array에 저장되어있는 모든 항목을 검사
+		// todo 목록에서 더블클릭한 항목과 저장되어있는 todo 목록의 숫자 값이 같은 것을 탐색
+		if(e.target.id == list_array[i].number) {
+			list_array[i].flag = 1; // 더블클릭한 항목은 line-through 스타일을 줘야하기 때문에 flag 를 1로 변경
+			json = JSON.stringify(list_array); // list_array array를 string 형태로 변환
+			sessionStorage.setItem("list", json); // 세션스토리지에 저장
+		}
+	}
+	
+	
+	e.target.style.textDecoration="line-through"; // 선택한 todo 항목에 line-through 스타일을 지정
+}
+
+function todoSend(e) {
+	var input_text = null;
+	var input_tag = null;
+	var ul_list = null;
+	var li_tag = null;
+	var json = null;
+
+	input_tag = document.getElementById("todo");
+	input_text = input_tag.value;
+	
+	if(input_text) { // input text 부분이 공백이 아닌 경우 (공백인 경우 공백이 todo 항목에 저장될 수 있기 때문에 예외처리)
+		ul_list = document.getElementById("ul_list");
+		li_tag = document.createElement("li");
+		li_tag.setAttribute("id", list_array.length); // 생성한 li 태그에 id 값으로 현재 list_array의 맨 마지막 번호를 저장
+		li_tag.innerHTML = input_text;
+		ul_list.appendChild(li_tag);
+		li_tag.addEventListener("dblclick", todoComplite);
+		
+		// value: todo 내용, number: list_array의 가장 끝 번호, flag: line-through 스타일 지정 여부(0:없음, 1:line-through)
+		list_array.push({value:input_text,number:list_array.length,flag:0});
+		json = JSON.stringify(list_array); // list_array array를 string 형태로 변환
+		sessionStorage.setItem("list", json); // 세션스토리지에 저장
+		
+		input_tag.value = ""; // input text 공백처리
+	}
+	
+}
+
+function todoDel(e) {
+	var ul_list = null;
+	var input_tag = null;
+	
+	input_tag = document.getElementById("todo");
+	input_tag.value = "";
+	
+	ul_list = document.getElementById("ul_list");
+	ul_list.innerHTML = null;
+	list_array = new Array(); // 모든 데이터를 삭제했기 때문에 array 초기화
+	sessionStorage.clear(); // 모든 데이터를 삭제했기 때문에 세션스토리지 초기화
+	
+}
+</script>
+</head>
+
+<body onload="onLoad()">
+<h1>My Todo List</h1>
+<div id="list">
+	<ul id="ul_list"></ul>
+</div>
+<div id="input">
+	<dl>
+		<dt>해야할 일 </dt>
+		<dd><input type="text" name="todo" id="todo" /></dd>
+		<dd><input type="button" value="저장" name="todo_send" id="todo_send" /></dd>
+		<dd><input type="button" value="모두 지우기" name="todo_del" id="todo_del" /></dd>
+	</dl>
+</div>
+
+</body>
+</html>

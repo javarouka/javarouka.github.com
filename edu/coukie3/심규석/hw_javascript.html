@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+
+    function eventDblClickList(e) {
+        var e = e || event;
+        var target = e.target || e.srcElement // 호환성을 위함.
+
+        if(target.tagName == "LI") {
+            var newDelNode = document.createElement("del");
+            var textNode = document.createTextNode(target.firstChild.textContent);
+            newDelNode.appendChild(textNode);
+
+            target.removeChild(target.firstChild);
+            target.appendChild(newDelNode);
+        }else if(target.tagName == "DEL") {
+
+        }
+    }
+
+    function eventOnClickSaveBtn() {
+        var textBox = document.getElementById("todoTextBox")
+        var textTodo = textBox.value;
+
+        var li = document.createElement("li");
+        var textNode = document.createTextNode(textTodo);
+        li.appendChild(textNode);
+
+        var ul = document.getElementById("todoList");
+        ul.appendChild(li);
+
+    }
+
+    function eventOnClickdelAllBtn() {
+        var ul = document.getElementById("todoList");
+
+        while(ul.hasChildNodes())
+        {
+            var li = ul.lastChild;
+            ul.removeChild(li);
+        }
+    }
+
+</script>
+<head>
+    <title>My ToDo List</title>
+</head>
+<body>
+
+<h1>My ToDo List</h1>
+<ul id="todoList" ondblclick="eventDblClickList()">
+    <li><del>공부</del></li>
+    <li>빨래</li>
+</ul>
+<label for="todoTextBox">해야할 일 <input type="text" id="todoTextBox"></label> <input type="button" id="saveBtn" value="저장" onclick="eventOnClickSaveBtn()" > <input type="button" id="clearBtn" value="모두 지우기" onclick="eventOnClickdelAllBtn()">
+
+</body>
+</html>

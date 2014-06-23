@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type='text/css'>
+        .row{
+            border-collapse:collapse;
+            width: 100%;
+            height: 100px;
+            vertical-align: top;
+        }
+        .sect1{
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #2E323D;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+        }
+
+        .sect2{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #E40029;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect3{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #F58F18;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect4{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #95C82A;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect5 {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #3C90D1;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect6 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #4D1815;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+        }
+        .sect7 {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #F9C20E;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect8 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #EB401D;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .sect9 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #559F99;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+
+        .l2sect1{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #2E323D;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect2{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #E40029;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect3{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #F58F18;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect4{
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #95C82A;
+            text-align: center;
+            margin: 0px;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect5 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #3C90D1;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect6 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #4D1815;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect7 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #F9C20E;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect8 {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background: #EB401D;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+        .l2sect9 {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            background: #559F99;
+            text-align: center;
+            vertical-align: top;
+            color: white;
+
+        }
+    </style>
+</head>
+
+
+<script language=javascript>
+
+
+    function toggle(value){
+        if(value == 1) {
+            document.getElementById("tr1").style.display='';
+            document.getElementById("tr2").style.display='none';
+            document.getElementById("tr3").style.display='none';
+            document.getElementById("lay1").style.textDecoration='underline';
+            document.getElementById("lay2").style.textDecoration='';
+            document.getElementById("lay3").style.textDecoration='';
+        }
+        if(value == 2) {
+            document.getElementById("tr1").style.display='none';
+            document.getElementById("tr2").style.display='';
+            document.getElementById("tr1").style.display='none';
+            document.getElementById("lay1").style.textDecoration='';
+            document.getElementById("lay2").style.textDecoration='underline';
+            document.getElementById("lay3").style.textDecoration='';
+
+        }
+        if(value == 3) {
+            document.getElementById("tr1").style.display='none';
+            document.getElementById("tr2").style.display='none';
+            document.getElementById("tr3").style.display='';
+            document.getElementById("lay1").style.textDecoration='';
+            document.getElementById("lay2").style.textDecoration='';
+            document.getElementById("lay3").style.textDecoration='underline';
+
+
+        }
+    }
+
+</script>
+
+
+<body onload="javascript:toggle(1)">
+
+
+<table align="center">
+    <tr>
+        <td id="lay1" onclick="toggle(1)">layout1</td>
+        <td id="lay2" onclick="toggle(2)">layout2</td>
+        <td id="lay3" onclick="toggle(3)">layout3</td>
+
+    </tr>
+</table>
+
+
+
+<table width=500px id="tr1" align="center">
+    <tr class=row>
+        <td rowspan=2 class="sect1">sector1</td>
+        <td colspan=2 class="sect2">sector2</td>
+    </tr>
+    <tr class=row>
+        <td class="sect3">sector3</td>
+        <td class="sect4">sector4</td>
+    </tr>
+    <tr class=row>
+        <td rowspan=2 class="sect5">sector5</td>
+        <td class="sect6">sector6</td>
+        <td rowspan=2 class="sect7">sector7</td>
+    </tr>
+    <tr class=row>
+        <td class="sect8">sector8</td>
+    </tr>
+    <tr class=row>
+        <td colspan=3 class="sect9">sector9</td>
+    </tr>
+</table>
+
+
+<table width=500px id="tr2" align="center">
+    <tr class=row>
+        <td class="l2sect1" colspan=3>sector1</td>
+    </tr>
+    <tr classs=row>
+        <td class="l2sect2">sector2</td>
+        <td class="l2sect3">sector3</td>
+        <td class="l2sect4">sector4</td>
+    </tr>
+    <tr>
+        <td class="l2sect5" colspan=2>sector5</td>
+        <td class="l2sect9" rowspan=4>sector9</td>
+    </tr>
+    <tr><td class="l2sect6" colspan=2>sector6</td></tr>
+    <tr><td class="l2sect7" colspan=2>sector7</td></tr>
+    <tr><td class="l2sect8" colspan=2>sector8</td></tr>
+</table>
+
+<table width=500px stype=border-collapse:collapse;border-spacing:0; id="tr3" align="center">
+    <tr class="row" >
+        <td class="sect1" width=25% colspan=3 >sector1</td>
+        <td class="sect2" width=22% colspan=3>sector2</td>
+        <td class="sect3" width=22% colspan=3>sector3</td>
+        <td class="sect4" width=25% colspan=3>sector4</td>
+
+    </tr>
+    <tr class = "row" >
+        <td class="sect5" colspan="6">sector5</td>
+        <td class="sect6" colspan="6">sector6</td>
+    </tr>
+    <tr class = "row" >
+        <td class="sect7" width=33% colspan="4">sect7</td>
+        <td class="sect8" width=40% colspan="4">sect8</td>
+        <td class="sect9" width=33% colspan="4">sect9</td>
+
+    </tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" charset="UTF-8">
+        function add_list() {
+            var text=document.getElementById("next_todo");
+            if(text.value!="") {
+                document.getElementById("todo_list").innerHTML += "<li><p ondblclick='text_line(this)'>"+text.value+"</p></li>";
+                text.value = "";
+            }
+        }
+
+        function remove_list() {
+            document.getElementById("todo_list").innerHTML="";
+        }
+
+        function text_line(text) {
+            text.style.textDecoration="line-through";
+        }
+    </script>
+    <title>TO DO LIST</title>
+</head>
+<body>
+        <h1>My To Do List</h1>
+        <ul id="todo_list"></ul>
+        해야할 일 <input type="text" id="next_todo" /> <button onclick="add_list()">저장</button> <button onclick="remove_list()">모두 지우기</button>
+</body>
+</html>

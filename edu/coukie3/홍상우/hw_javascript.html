@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko"  xml:lang="ko">
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+    <script type="text/javascript" language="JavaScript">
+
+        var countN=0;//list id 용
+        function addItem(){     //추가버튼
+            //id가져오기
+            var inputWord = document.getElementById("editWord");
+
+            //텍스트 입력받아오기
+            var word = document.createTextNode(inputWord.value);
+            var x = document.createElement("LI");
+            x.appendChild(word);
+
+            //id 설정하기
+            var listName= "N"+countN;
+            countN++;
+            x.setAttribute("id",listName);
+
+            //더블클릭 이벤트 등록
+            x.ondblclick = underline;
+
+            //목록에 추가
+            document.getElementById("ul").appendChild(x);
+
+
+
+        }
+        function underline(e){  //더블클릭스 취소선 이벤트
+
+            //id가져오기
+            var x = document.getElementById(e.currentTarget.id);
+
+            //취소선이 이미 설정되어있는지 체크
+            if(x.innerHTML.charAt(0)=='<'){
+
+            }
+            else
+                x.innerHTML= x.innerHTML.strike();  //취소선 넣기
+
+
+        }
+        function deleteItem(){  //아이템 모두 삭제
+
+            //삭제하기
+            document.getElementById("ul").innerHTML =
+                    "";
+
+            //id리셋
+            countN=0;
+
+
+
+
+        }
+    </script>
+    <head>
+        <title>ToDo List 과제 홍상우(망우)</title>
+    </head>
+<body>
+
+    <h1>My ToDo List</h1>
+
+
+
+    <ul id="ul">
+
+    </ul>
+
+	<output type="text" id="printWord" value="">
+
+
+
+    </output>
+    <form>해야할일<input type="text" id="editWord" name="word" >
+        <input type="button" id="saveButton" value="저장" onclick="addItem()">
+        <input type="button" id="clearButton" value="모두지우기" onclick="deleteItem()">
+
+    </form>
+
+</body>
+</html>

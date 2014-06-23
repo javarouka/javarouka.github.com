@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>Insert title here</title>
+    <script>
+
+        function change_layout(id) {
+
+            if (id == "layout1_btn")
+            {
+                document.getElementById("layout1").style.display="";
+                document.getElementById("layout2").style.display="none";
+                document.getElementById("layout3").style.display="none";
+            }
+            else if (id == "layout2_btn")
+            {
+                document.getElementById("layout1").style.display="none";
+                document.getElementById("layout2").style.display="";
+                document.getElementById("layout3").style.display="none";
+            }
+            else
+            {
+                document.getElementById("layout1").style.display="none";
+                document.getElementById("layout2").style.display="none";
+                document.getElementById("layout3").style.display="";
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+<input type="button" id="layout1_btn" value="layout1" onClick="change_layout(this.id)" style="background-color:white">
+<input type="button" id="layout2_btn" value="layout2" onClick="change_layout(this.id)" style="background-color:white">
+<input type="button" id="layout3_btn" value="layout3" onClick="change_layout(this.id)" style="background-color:white">
+
+
+<form name="layout_form">
+
+    <div id="layout1">
+
+        <div id="header">
+            <div id="left_header" style="float: left">
+                <div id="sect1"
+                     style="height: 375px; width: 295px; background: #2E323D; margin-right: 10px; color:white; text-align:center">sect1
+                </div>
+            </div>
+            <div id="right_header" style="float: left">
+                <div id="sect2"
+                     style="height: 146px; width: 395px; background: #E40029;color:white; text-align:center">sect2
+                </div>
+                <div id="sect2_down" style="witdh: 395px; margin-top: 10px;">
+                    <div id="sect3"
+                         style="height: 219px; width: 192.5px; margin-right: 10px; background: #F58F18; float: left;color:white; text-align:center">
+                        sect3
+                    </div>
+                    <div id="sect4"
+                         style="height: 219px; width: 192.5px; background: #95C82A; float: left;color:white; text-align:center">sect4
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="clear: left;"></div>
+
+
+        <div id="main" style="height: 375px; width: 700px; margin-top: 10px;">
+            <div id="left_main" style="float: left; margin-right: 10px;">
+                <div id="sect5"
+                     style="height: 375px; width: 295px; background: #3C90D1;color:white; text-align:center">sect5
+                </div>
+            </div>
+            <div id="right_main" style="float: left; width:395px;">
+
+                <div id="rm_right" style="margin-right: 10px; float: left;">
+                    <div id="sect6"
+                         style="height: 182.5px; width: 192.5px; background: #4D1815;color:white; text-align:center">sect6
+                    </div>
+                    <div id="sect8"
+                         style="height: 182.5px; width: 192.5px; background: #F9C20E; margin-top: 10px;color:white; text-align:center">sect8
+                    </div>
+                </div>
+
+                <div id="rm_left" style="width:192.5px; float:left;">
+                    <div id="sect7"
+                         style="height: 375px; width: 192.5px; background: #EB401D;color:white; text-align:center">sect7
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div style="clear: both;"></div>
+
+        <div id="sect9"
+             style="height: 250px; width: 700px; margin-top: 10px; background: #559F99;color:white; text-align:center">
+            sect9
+        </div>
+
+    </div>
+
+    <div id="layout2" style="display:none">
+
+        <div id="sect1"
+             style="width: 620px; height: 200px; background: #2E323D;color:white; text-align:center;">sect1
+        </div>
+
+        <div id="main" style="width:620; height:250; margin-top: 10px;">
+            <div id="sect2"
+                 style="width: 200px; height: 250px; background: #E40029; float: left; margin-right: 10px;color:white; text-align:center;">sect2
+            </div>
+            <div id="sect3"
+                 style="width: 200px; height: 250px; background: #F58F18; float: left; margin-right: 10px;color:white; text-align:center;">sect3
+            </div>
+            <div id="sect4"
+                 style="width: 200px; height: 250px; background: #95C82A; float: left; margin-right: 10px;color:white; text-align:center;">sect4
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="footer" style="width:620; height:630px; margin-top: 10px;">
+            <div id="foot_left" style="margin-right: 10px; float:left;">
+                <div id="sect5"
+                     style="width: 410px; height: 150px; background: #3C90D1;color:white; text-align:center;">sect5
+                </div>
+                <div id="sect7"
+                     style="width: 410px; height: 150px; background: #EB401D; margin-top:10px; color:white; text-align:center;">sect7
+                </div>
+                <div id="sect8"
+                     style="width: 410px; height: 150px; background: #F9C20E; margin-top:10px;color:white; text-align:center;">sect8
+                </div>
+                <div id="sect9"
+                     style="width: 410px; height: 150px; background: #559F99; margin-top:10px;color:white; text-align:center;">sect9
+                </div>
+
+            </div>
+
+            <div id="foot_right">
+                <div id="sect6"
+                     style="width: 200px; height: 630px; background:#4D1815; float:left;color:white; text-align:center;">sect6
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="layout3" style="display:none">
+        <div id="header" style="float: left;">
+            <div id="sect1"
+                 style="width: 147.5px; height: 170px; background: #2E323D; margin-right: 10px; float: left;color:white; text-align:center;">sect1
+            </div>
+            <div id="sect2"
+                 style="width: 147.5px; height: 170px; background: #E40029; margin-right: 10px; float: left;color:white; text-align:center;">sect2
+            </div>
+            <div id="sect3"
+                 style="width: 147.5px; height: 170px; background: #F58F18; margin-right: 10px; float: left;color:white; text-align:center;">sect3
+            </div>
+            <div id="sect4"
+                 style="width: 147.5px; height: 170px; background: #95C82A; float: left;color:white; text-align:center;">sect4
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+
+        <div id="main" style="margin-top: 10px;">
+            <div id="sect5"
+                 style="width: 305px; height: 320px; background: #3C90D1; margin-right: 10px; float: left;color:white; text-align:center;">sect5
+            </div>
+            <div id="sect6"
+                 style="width: 305px; height: 320px; background: #4D1815; float: left;color:white; text-align:center;">sect6
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="footer" style="margin-top: 10px;">
+            <div id="sect7"
+                 style="width: 200px; height: 220px; background: #EB401D; margin-right: 10px; float: left;color:white; text-align:center;">sect7
+            </div>
+            <div id="sect8"
+                 style="width: 200px; height: 220px; background: #F9C20E; margin-right: 10px; float: left;color:white; text-align:center;">sect8
+            </div>
+            <div id="sect9"
+                 style="width: 200px; height: 220px; background: #559F99; float: left;color:white; text-align:center; ">sect9
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>

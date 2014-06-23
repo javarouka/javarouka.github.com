@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>javascript_homework</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            //동적 생성 엘리먼트에 이벤트 핸들러 부여
+            $('#result').on("dblclick", "li", function () {
+                $(this).css("text-decoration", "line-through");
+            });
+
+            $("#btnwork").click(function () {
+                var work_list = my_form.my_job.value;
+                $("#result").append('<li>' + work_list + '</li>');
+                my_form.my_job.value = '';
+            });
+
+            $("#btndel").click(function () {
+                $("li").remove();
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<form name="my_form">
+    My ToDo List<br/>
+
+    <ul id="result"></ul>
+
+    해야할 일 <input type="text" name="my_job" value="">
+
+    <input type="button" id="btnwork" value="저장">
+    <input type="button" id="btndel" value="모두 지우기">
+</form>
+
+</body>
+</html>
