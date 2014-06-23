@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>이민섭 - To Do List</title>
+    <script type="text/javascript">
+        // 확인 키 동작 실행함수.
+        function insert(){
+            // TxtBox의 값 > newnode
+            // display - 한줄 생성 <- newnode 대입
+            // list 에 display 추가.
+            var newnode = document.getElementById('todo').value;
+            var display = document.createElement('LI');
+            var list = document.getElementById('list').appendChild(display);
+            display.innerText = newnode;
+            todo.value = "";      // 보너스로 텍스트박스 초기화.
+            // 더블클릭 동작 함수.
+            display.ondblclick = doubleclick;
+            function doubleclick(){  // 더블클릭하면 텍스트에 줄을 긋는다.
+                display.style.textDecoration = "line-through" ;
+            }
+        }
+        // 모두지우기 키 동작 실행함수.
+        function delete_all(){
+            //그냥 list에 없는 값을 대입하여 초기화.
+            var list = document.getElementById('list');
+            list.innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <h1> My ToDo List </h1>
+    <ul id = "list">
+    </ul>
+    <t2>해야할 일 </t2>
+        <input type="text" id="todo" size="30">
+        <input type="button" value="확인" onclick="insert()"> </input>
+        <input type="button" value="모두 지우기" onclick="delete_all()"> </input>
+
+
+
+</body>
+</html>

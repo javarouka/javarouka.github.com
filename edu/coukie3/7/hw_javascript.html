@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>김종학 - My ToDo List</title>
+<script type="text/javascript" lang="javascript">
+var cnt = 0;
+function Create()
+{
+	//  입력된 값 받아오기
+	var input = document.form1.text_field.value;
+	
+	// ul 객체, li 객체 가져오기
+	var ul = document.getElementById("ul1");	
+ 	var	obj = document.createElement("li");
+ 	
+ 	// li 표시 값 설정
+ 	obj.innerHTML=input;
+	
+	// li 객체를 ul객체에 추가 
+	ul.appendChild(obj); 
+	 
+	// 삭제 시 사용하기 위해 li의 id를 cnt 값을 이용해 지정
+	 ++cnt;
+	obj.setAttribute("id", "li"+cnt);
+	
+	// li 객체의 더블클릭 이벤트 처리
+	obj.ondblclick = function(){
+		obj.innerHTML = input.strike();
+	};
+}
+
+function RemoveAll(){
+	// id를 이용해 ul의 하위 요소를 전부 제거하고 
+	// cnt 값은 감소시켜 0으로 만든다.
+	while(cnt>0){
+		var obj	= document.getElementById("li"+cnt--);
+		var ul	= document.getElementById("ul1");
+		ul.removeChild(obj);
+	}
+}
+</script>
+
+</head>
+<body>
+	<h1>My ToDo List</h1>
+	
+	<ul id='ul1'>
+	</ul>
+
+
+	<form name='form1'>
+		해야할 일
+		<input type="text" name='text_field' ondblclick="modifyStrike()"/>
+		<input type="button" value="저장" onclick="Create()"/>
+		<input type="button" value="모두 지우기" onclick="RemoveAll()"/>
+	</form>
+</body>
+</html>

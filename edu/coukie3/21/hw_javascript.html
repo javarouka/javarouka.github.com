@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)file:///Users/Coupang/Downloads/homework/ex3-140620/.idea/copyright/ex3_140620.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="./쿠키 3기 함문규_자바스크립트 과제_files/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>함문규 - 쿠키 3기 함문규_자바스크립트 과제</title>
+<script language="javascript">
+
+    function SAVE()
+    {
+        var d = document.getElementById('input').value;
+        var data = document.getElementById('data');
+        var in_data = document.createElement('LI');
+        data.appendChild(in_data);
+        in_data.innerHTML=d;
+
+        in_data.ondblclick = d_click;
+        function d_click()
+        {
+            in_data.style.textDecoration="line-through";
+        }
+
+    }
+    function DEL()
+    {
+        var del_data = document.getElementById('data');
+        del_data.innerHTML = '';
+    }
+
+
+</script></head>
+
+<body>
+    <from>
+     <p><big>My To Do List</big></p>
+        <ul id="data" ondblclick="">
+             <li>공부</li>
+             <li>자바스크립트 공부</li>
+             <li>연애 공부</li>
+                <li>노래 공부</li>
+                <li>일단 공부</li>
+                <li>과제 공부</li>
+        </ul>
+
+        해야할 일
+        <input id="input">
+        <input type="button" name="btn1" value="저장" onclick="return SAVE()">
+        <input type="button" name="btn2" value="목록지우기" onclick="return DEL()">
+    </from>
+
+
+</body></html>
