@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko"  xml:lang="ko">
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+
+
+<html>
+<head>
+</head>
+
+<script type='text/javascript'>
+ function saveToDo(i)
+ {
+ 	var newItem = document.createElement("li");
+ 	newItem.innerHTML = i;
+ 	document.getElementById('list').appendChild(newItem);
+    var text = document.getElementById('item');
+	text.value = '';
+    newItem.ondblclick = function (){
+ 		newItem.style.textDecoration = "line-through";
+ 	}
+}
+
+
+
+function removeToDo()
+{
+	var list = document.getElementById('list');
+	list.innerHTML='';
+	var text = document.getElementById('item');
+	text.value = '';
+}
+</script>
+
+
+<body>
+
+<h1>이정민 - My ToDo List</h1><br>
+
+<ul id="list"></ul>
+
+ 
+해야할 일 
+<input type="text" id="item" maxlength="10">
+<input type="button" id="btnSave" value="저장" onClick="saveToDo(document.getElementById('item').value)">
+<input type="button" id="btnClear" value="모두 지우기" onClick="removeToDo()">
+
+</body>
+ 
+</html>
