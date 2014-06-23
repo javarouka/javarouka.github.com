@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>To Do List</title>
+<script type='text/javascript'>
+	window.onload = function() {
+
+		function li_modify() {
+			this.innerHTML = '<del>' + this.innerText + '</del>';
+		}
+
+		var value;
+
+		var text = document.getElementById("text");
+		var content = document.getElementById("content");
+		var ul = document.getElementById("list");
+		var save = document.getElementById("save");
+		var reset = document.getElementById("reset");
+
+		save.onclick = function() {
+
+			value = text.value;
+			if (value != '') {
+				var li = document.createElement("li");
+				li.ondblclick = li_modify;
+				li.innerHTML = value;
+				ul.appendChild(li);
+				text.value = '';
+			} else {
+				alert('할 일을 입력해주세요.');
+			}
+		};
+
+		reset.onclick = function() {
+			list.innerHTML = '';
+		};
+	}
+</script>
+</head>
+<body>
+	<h1>My To Do List</h1>
+	<div id="content">
+		<ul id="list"></ul>
+	</div>
+	해야할 일 :
+	<input id="text" type="text">
+	<button id="save">저장</button>
+	<button id="reset">모두 지우기</button>
+</body>
+</html>

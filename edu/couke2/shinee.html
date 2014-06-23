@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	//쿠키 사용
+	function setCookie(name, value, day) {
+		var date = new Date();
+		date.setDate(date.getDate() + day);
+		var cookieData = '';
+		cookieData += name + '=' + encodeURIComponent(value) + ';';
+		cookieData += 'expires=' + date.toUTCString() + '';
+
+		document.cookie = cookieData;
+	}
+
+	function getCookie(name) {
+		var cookies = document.cookie.split(';');
+
+		for ( var i in cookies) {
+			if (cookies[i].search(name) != -1) {
+				return decodeURIComponent(cookies[i].replace(name + '=', ''));
+			}
+		}
+	}
+
+	function removeCookie(name) {
+		var date = new Date();
+		date.setDate(date.getDate() - 1);
+
+		var cookieData = '';
+		cookieData += name + '=remove;';
+		cookieData += 'expires=' + date.toUTCString();
+
+		document.cookie = cookieData;
+	}
+	
+	function liDblClick() {
+		this.innerHTML = '<del>' + this.innerText + '</del>';
+	}
+</script>
+
+<script type="text/javascript">
+	window.onload = function() {
+
+		var saveBtn = document.getElementById("saveBtn");
+		var deleteBtn = document.getElementById("deleteBtn");
+
+		var cookieData = document.cookie;
+		var cookieCnt = 0;
+		var localStorageCnt = 0;
+
+		var useInfo = confirm('쿠키의 데이터를 불러오시려면 확인, \n로컬 스토리지의 데이터를 불러오시려면 취소버튼을 눌러주세요.');
+		
+		if (useInfo == false) {
+			if (window.localStorage.length != 0) {
+				for (var i = 0; i < window.localStorage.length; i++) {
+					var lis = document.querySelector("ul > li");
+					if (lis == null) {
+						var element = window.localStorage.getItem(i);
+						document.querySelector("ul").innerHTML = '<li>' + element + '</li>';
+						document.querySelector("ul > li").ondblclick = liDblClick;
+					} else {
+						var li = document.createElement("li");
+						li.innerHTML = window.localStorage.getItem(i);
+						document.querySelector("ul").appendChild(li);
+						li.ondblclick = liDblClick;
+					}
+				}
+			}
+		}
+
+		if (useInfo == true) {
+			if (cookieData != '') {
+				var cookies = document.cookie.split(';');
+
+				for (var i = 0; i < cookies.length; i++) {
+					var lis = document.querySelector("ul > li");
+					if (lis == null) {
+						var element = getCookie(i);
+						document.querySelector("ul").innerHTML = '<li>'	+ element + '</li>';
+						document.querySelector("ul > li").ondblclick = liDblClick;
+					} else {
+						var li = document.createElement("li");
+						li.innerHTML = getCookie(i);
+						document.querySelector("ul").appendChild(li);
+						li.ondblclick = liDblClick;
+					}
+				}
+			}
+		}
+
+		saveBtn.onclick = function() {
+			var lis = document.querySelector("ul > li");
+			if (lis == null) {
+				var content = document.getElementById("content");
+				var element = content.value;
+				setCookie(cookieCnt++, element, 1);
+				window.localStorage.setItem(localStorageCnt++, element);
+				document.querySelector("ul").innerHTML = '<li>' + element
+						+ '</li>';
+				document.querySelector("ul > li").ondblclick = liDblClick;
+			} else {
+				var content = document.getElementById("content");
+				var li = document.createElement("li");
+				setCookie(cookieCnt++, content.value, 1);
+				window.localStorage.setItem(localStorageCnt++, content.value);
+				li.innerHTML = content.value;
+				document.querySelector("ul").appendChild(li);
+				li.ondblclick = liDblClick;
+			}
+		};
+
+		deleteBtn.onclick = function() {
+			document.querySelector("ul").innerHTML = '';
+			var cookies = document.cookie.split(';');
+			for ( var i in cookies) {
+				removeCookie(i);
+			}
+			for ( var i in window.localStorage) {
+				window.localStorage.clear();
+			}
+		};
+	}
+</script>
+</head>
+<body>
+	<h1>My ToDo List</h1>
+	<div>
+		<ul></ul>
+	</div>
+	해야할 일
+	<input id="content" type="text" />
+	<input id="saveBtn" type="button" value="저장" />
+	<input id="deleteBtn" type="button" value="모두 지우기" />
+</body>
+</html>

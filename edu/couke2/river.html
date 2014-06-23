@@ -1,0 +1,44 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <style type="text/css">
+.line{
+    text-decoration:line-through
+}
+.noLine{
+    text-decoration:no-line-through
+}
+    </style>
+</head>
+<body>
+<h1>My todo List</h1>
+    <div id="div"> </div>
+<br/>
+해야할일
+<input type="text" id="txt"/>
+<input type="button" id="save" value="save"/>
+<input type="button" value="clean" id="clean"/>
+<script type="text/javascript">
+
+    $("#save").click(function(){
+        var txt = $("#txt").val();
+        var $div = $("#div");
+        if (txt === "") {
+            alert("input text please")
+            return;
+        }
+        $("#div").append("<li class=\"noLine\" onclick=\"javascript:centerLine(this);\" >" + txt + "</li>");
+    });
+
+    $("#clean").click(function() {
+        $("li").each(function() {
+            $(this).remove();
+        });
+    });
+
+    function centerLine(li){
+        li.setAttribute('class','line');
+    }
+</script>
+</body>
+</html>

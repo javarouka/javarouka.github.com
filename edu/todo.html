@@ -64,7 +64,9 @@
 
         clear: function() {
             todoList.innerHTML = "";
-            localStorage.removeItem("todo-list");
+            if(localStorage) {
+                localStorage.removeItem("todo-list");
+            }
         },
 
         saveRequest: function () {

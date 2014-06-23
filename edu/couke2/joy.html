@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<Div style :>
+	<p>My ToDo List</p>
+</Div>
+
+<Div>
+	<ul id="listText"></ul>
+</Div>
+
+<p>해야할 일</p>
+<form method="GET">
+
+	<input id="input_area" type="text" name="inputText"
+		onkeypress="enterKey(event)" />     <input type="text"
+		style="display: none;" /> <input id="save_button" type="button"
+		value="저장" onclick="save()" return false; /> <input
+		id="removeAll_button" type="button" value="모두 지우기"
+		onclick="removeAll()" return false; />
+
+</form>
+
+<title>Insert title here</title>
+</head>
+<body onload="init()">
+	<script type="text/javascript">
+		var ul;
+		var content;
+		var output;
+		var count = 0;
+		function init() {
+			content = document.getElementById("input_area");
+			ul = document.getElementById("listText");
+			loadLocalStorage();
+		}
+
+		function enterKey(event) {
+
+			if (event.keyCode == 13) {
+				save();
+			}
+		}
+
+		function saveLocalStorage() {
+
+			window.localStorage[count] = content.value;
+			count++;
+		}
+
+		function liDblClick() {
+			var text = this.innerHTML;
+		
+			if(!text.indexOf("<del>")){
+				this.innerHTML = this.innerText;	
+			}
+			else{
+				this.innerHTML = '<del>' + this.innerText + '</del>';
+			}
+			window.localStorage[this.value] = this.innerHTML;
+		}
+
+		function loadLocalStorage() {
+			var msg;
+			count = window.localStorage.length;
+			for (var i = 0; i < count; i++) {
+
+				appendItem(window.localStorage.getItem(i));
+			}
+		}
+
+		function save() {
+
+			if (content.value == null || content.value == '')
+				return;
+
+			saveLocalStorage();
+
+			appendItem(content.value)
+		}
+
+		function appendItem(data) {
+			var li = document.createElement("li");
+			output = '<li>' + data + '</li>';
+
+			li.innerHTML = data;
+			li.ondblclick = liDblClick;
+			li.value = ul.childElementCount;
+			ul.appendChild(li);
+
+			content.value = '';
+
+		}
+
+		function removeAll() {
+			content.value = '';
+			ul.innerHTML = '';
+			window.localStorage.clear();
+			count = 0;
+		}
+	</script>
+
+</body>
+</html>

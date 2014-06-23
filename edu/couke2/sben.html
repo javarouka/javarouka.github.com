@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var list = new Array();
+	var real = new Array();
+	var index = 0;
+	var same = 0;
+
+	function input_data() {
+		if (document.getElementById("term").value.length > 0) {
+			for (var i = 0; i < real.length; i++) {
+				if (document.getElementById("term").value == real[i]) {
+					same += 1;
+				}
+			}
+			if (same == 0) {
+				real[index] = document.getElementById("term").value;
+				list[index] = '<li ondblClick="done(' + index + ')">'
+						+ real[index] + '</li>';
+				index++;
+				document.getElementById("savedShow").innerHTML = '<ul>'
+						+ list.join("") + '</ul>';
+                term.value='';
+			} else {
+				alert('동일한 목록이 있습니다.');
+			}
+			same = 0;
+		} else {
+			alert('할일을 입력해 주세요.')
+		}
+	};
+
+	function reset_data() {
+		saved = '';
+		index = 0;
+		list = new Array();
+		real = new Array();
+		same = 0;
+		document.getElementById("savedShow").innerHTML = saved;
+	};
+	function done(a) {
+		list[a] = '<s>' + list[a] + '</s>';
+		document.getElementById("savedShow").innerHTML = '<ul>' + list.join("")
+				+ '</ul>';
+	};
+</script>
+</head>
+<body>
+	<header>
+		<h1>My ToDo List</h1>
+	</header>
+	<div id=savedShow>
+		<ul>
+
+		</ul>
+	</div>
+	<input type="text" id="term" onKeyPress="javascript:if(event.keyCode == 13) {input_data()}">
+	<input type="submit" id="save" value="저장" onClick="input_data()">
+	<input type="reset" name="reset" value="초기화" onClick="reset_data()">
+</body>
+</html>
