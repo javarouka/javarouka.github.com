@@ -33,9 +33,33 @@
                         <div class="panel-heading">쿠키 2기</div>
                         <div class="panel-body">
                             <ul>
-                                <li><a href="coukie2/cheeze.html" target="_blank">브리치즈</a></li>
-                                <li><a href="coukie2/chile.html" target="_blank">칠리</a></li>
-                                <li><a href="coukie2/joy.html" target="_blank">조이</a></li>
+                                <li>
+                                    <a href="coukie2/cheeze.html" target="_blank">브리치즈</a>
+                                    <div class="bg-success">
+                                        굉장히 간결한 코드로 가독성이 좋음
+                                    </div>
+                                    <div class="bg-danger">
+                                        스크립트 위치, 인라인 스크립트
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="coukie2/chile.html" target="_blank">칠리</a>
+                                    <div class="bg-success">
+                                        모든 요구사항 만족, Element prototype 확장 구현 등 다양한 개념 사용
+                                    </div>
+                                    <div class="bg-danger">
+                                        잘못된 마크업과 이벤트 핸들러 적용법
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="coukie2/joy.html" target="_blank">조이</a>
+                                    <div class="bg-success">
+                                        모든 요구사항 만족
+                                    </div>
+                                    <div class="bg-danger">
+                                        잘못된 마크업, 인라인 스크립트
+                                    </div>
+                                </li>
                                 <li>
                                     <a href="coukie2/luna.html" target="_blank">루나</a>
                                     <div class="bg-success">
@@ -122,6 +146,17 @@
 
         </footer>
     </div>
+
+    <script type="text/javascript">
+
+        (function($) {
+
+            $(".bg-success").prepend("<span class='glyphicon glyphicon-ok' />");
+            $(".bg-danger").prepend("<span class='glyphicon glyphicon-remove' />");
+
+        })(jQuery)
+
+    </script>
 
 </body>
 </html>
