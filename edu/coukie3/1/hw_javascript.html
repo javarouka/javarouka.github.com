@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>강태우 - untitle</title>
+<title>강태우</title>
 </head>
 <body>
     <section id="listsection">
@@ -19,7 +19,8 @@ var i2 = document.getElementById('item2');
 i2.addEventListener('dblclick', function() { i2.innerHTML="<strike>" + i2.textContent + "</strike>"} );
 </script>
 
-work to do <input type="text" name="workname">
+<!--work to do <input type="text" name="workname">-->
+work to do <input type="text" id="workname" name="workname">
 <input type="button" id="savebutton" value="save">
 <input type="button" id="clearbutton" value="clear">
 
@@ -27,10 +28,20 @@ work to do <input type="text" name="workname">
 var saveButton = document.getElementById('savebutton');
 var my_list = document.getElementById('mylist');
 saveButton.addEventListener('click', function() {
+
     var newElement = document.createElement("li");
     newElement.id="new";
+
+    // var node = document.createTextNode(document.getElementById("workname").value);
+    // input 엘리먼트 참조를 얻은 뒤 value 속성으로 가져올 수 있겠네요.
     var node = document.createTextNode("new task");
+
+    // 오타가 있네요.
+    // appendChild
+    // newElement.appendChild(node);
     newElement.appentChild(node);
+
+
     my_list.appendChild(newElement); }
     );
 

@@ -1,10 +1,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-
+        <title>박보하 - Todo List</title>
 	</head>
 	<body>
-		<h1>박보하 - My ToDo List</h1>
+		<h1>My ToDo List</h1>
 		<div>
 			<ul id="todo_list"></ul>
 		</div>
@@ -18,6 +18,8 @@
 		var todolist_str = localStorage.getItem('test');
 
 		var res = todolist_str.split(",");
+
+        console.log(res);
 
 		for (var i = 1; i < res.length; i++) {
 			var target = document.getElementById('todo_list');
@@ -51,6 +53,8 @@
 			li.appendChild(text);
 			target.appendChild(li);
 
+            // 기존 저장된 값을 불러와서 저장했으면...
+            // var saved = localStorage.getItem('test');
 			localStorage.setItem('test', todolist_str + "," + str);
 		}
 

@@ -10,9 +10,13 @@
         body {
             font-family: Gulim;
         }
-        .top-wrapper ul li > div {
-            font-size: 11px;
+        .top-wrapper ul li > div,  .top-wrapper ul li > p{
+            font-size: 12px;
             padding: 5px;
+        }
+        .panel-body ul li  {
+            padding: 4px;
+            margin: 2px;
         }
     </style>
 </head>
@@ -20,16 +24,71 @@
     <div class="container top-wrapper">
 
         <header class="row page-header">
-            <h2 class="jumbotron">Coukie Homework <small>link set</small></h2>
+            <h1>Coukie Homework <small>link set</small></h1>
         </header>
 
         <section class="row">
 
-            <section class="panel panel-default">
-                <div class="panel-heading">ToDo List</div>
-
+            <section class="coukie2 panel panel-default">
+                <div class="panel-heading">
+                    <h3>ToDo List</h3>
+                </div>
                 <div class="panel-body">
-                    <article class="panel panel-default">
+
+                    <article class="coukie3 panel panel-info">
+                        <div class="panel-heading">쿠키 3기</div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="coukie3/1/hw_javascript.html" target="_blank">강태우</a></li>
+                                <li><a href="coukie3/2/hw_javascript.html" target="_blank">구성완</a></li>
+                                <li><a href="coukie3/3/hw_javascript.html" target="_blank">권형신</a></li>
+                                <li><a href="coukie3/4/hw_javascript.html" target="_blank">김대일</a></li>
+                                <li class="bg-success">
+                                    <a href="coukie3/5/hw_javascript.html" target="_blank">김미리내</a>
+                                    <p>쿠키를 사용한 상태 저장. CSS, JS의 별도 파일 분리 및 함수의 기능별 정의가 훌륭했음. 비간섭 자바스크립트 사용</p>
+                                </li>
+                                <li><a href="coukie3/7/hw_javascript.html" target="_blank">김종학</a></li>
+                                <li class="bg-success">
+                                    <a href="coukie3/8/hw_javascript.html" target="_blank">김진경</a>
+                                    <p>sessionStorage를 사용한 상태 저장. body onload 를 제외한 비간섭 자바스크립트 사용</p>
+                                </li>
+                                <li><a href="coukie3/9/hw_javascript.html" target="_blank">김학성</a></li>
+                                <li class="bg-success">
+                                    <a href="coukie3/10/hw_javascript.html" target="_blank">박보하</a>
+                                    <p>localStorage 사용한 상태 저장. Task 입력 시 기존 변수에 append 하는 식으로 했다면 완벽히 구현되었을 듯</p>
+                                </li>
+                                <li>
+                                    <a href="coukie3/11/hw_javascript.html" target="_blank">박희용</a>
+                                    <p style="display: none;">&lt;head&gt; 태그에 meta charset 을 지정해줘야 한글을 제대로 볼 수 있습니다.</p>
+                                </li>
+                                <li><a href="coukie3/12/hw_javascript.html" target="_blank">백현창</a></li>
+                                <li><a href="coukie3/13/hw_javascript.html" target="_blank">설우식</a></li>
+                                <li><a href="coukie3/14/hw_javascript.html" target="_blank">심규석</a></li>
+                                <li>
+                                    <a href="coukie3/15/hw_javascript.html" target="_blank">윤진영</a>
+                                    <p>짧은 코드로 기능을 구현</p>
+                                </li>
+                                <li>
+                                    <a href="coukie3/16/hw_javascript.html" target="_blank">이민섭</a>
+                                    <p>짧은 코드로 기능을 구현, Task 입력 뒤 입력란을 지워주는 UX까지 고려됨</p>
+                                </li>
+                                <li><a href="coukie3/17/hw_javascript.html" target="_blank">이정민</a></li>
+                                <li><a href="coukie3/18/hw_javascript.html" target="_blank">전상민</a></li>
+                                <li class="bg-success">
+                                    <a href="coukie3/19/hw_javascript.html" target="_blank">조연희</a>
+                                    <p>쿠키 기반의 상태 저장. 완료 상태까지 저장되는 비범함. 그런데 모두 삭제시 이 프로그램에서 쓰이지 않는 쿠키까지 삭제되어 위험</p>
+                                </li>
+                                <li>
+                                    <a href="coukie3/20/hw_javascript.html" target="_blank">최하영</a>
+                                    <p>짧은 코드로 기능을 구현</p>
+                                </li>
+                                <li><a href="coukie3/21/hw_javascript.html" target="_blank">함문규</a></li>
+                                <li><a href="coukie3/22/hw_javascript.html" target="_blank">홍상우</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="panel panel-info">
                         <div class="panel-heading">쿠키 2기</div>
                         <div class="panel-body">
                             <ul>
@@ -127,18 +186,8 @@
                         </div>
                     </article>
 
-                    <article class="panel panel-default">
-                        <div class="panel-heading">쿠키 3기</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li><a href="coukie2/uni.html" target="_blank">우니</a></li>
-                            </ul>
-                        </div>
-                    </article>
                 </div>
-
             </section>
-
 
         </section>
 
@@ -151,8 +200,8 @@
 
         (function($) {
 
-            $(".bg-success").prepend("<span class='glyphicon glyphicon-ok' />");
-            $(".bg-danger").prepend("<span class='glyphicon glyphicon-remove' />");
+            $("div.bg-success").prepend("<span class='glyphicon glyphicon-ok' />");
+            $("div.bg-danger").prepend("<span class='glyphicon glyphicon-remove' />");
 
         })(jQuery)
 
