@@ -28,12 +28,13 @@
 
         function bootstrap(e) {
 
-            var logElement = document.getElementById("log"),
-                matcherHighligt = /highlight/g;
+            var logElement = document.getElementById("log"), // 예외 표시 영역
+                matcherHighligt = /\S*highlight\S*/g; // 하일라이팅 된 클래스 매처
 
+            // 하일라이트 된 요소에서 하일라이트 클래스를 전부 지운다
             function removeHighlight() {
                 var highlight = document.querySelectorAll(".highlight");
-                console.log("highlight size", highlight.length);
+
                 for(var i = 0, len = highlight.length; i < len; i++) {
                     highlight[i].className = highlight[i].className.replace(matcherHighligt, '');
                 }
@@ -41,16 +42,27 @@
 
             function matchHighlight(e) {
 
+                // 새로운 셀렉터가 입력되었으므로, 하일라이트 된 요소의 하일라이트를 전부 지워준다
                 removeHighlight();
 
+                // 에외 영역을 비운다
                 logElement.innerHTML = "";
 
-                var input = e.currentTarget, selString = '', selected = [];
+                var input = e.currentTarget,
+                    selString = '',
+                    selected = [];
+
                 try {
+                    // 이벤트의 요소가 input 인지 확인
                     if (input.tagName && input.tagName.toUpperCase() === 'INPUT') {
                         selString = input.value;
+
                         if(selString) {
+
+                            // input 의 값으로 셀렉터 쿼리를 해본다. 이 결과는 NodeList 의 유사 배열 형태
                             selected = document.querySelectorAll(selString);
+
+                            // 매치된 NodeList를 순회하며 className 속성에 hightlight 추가
                             for (var i = 0, len = selected.length; i < len; i++) {
                                 selected[i].className += " highlight";
                             }
@@ -58,15 +70,18 @@
                     }
                 }
                 catch(e) {
+                    // 예외 발생 시 로그 영역에 출력
                     logElement.innerHTML = e.stack;
                 }
             }
 
+            // input tag에 키보드 키 이벤트 핸들러 등록
             var selector = document.getElementById("selector");
             selector.addEventListener("keyup", matchHighlight);
 
         }
 
+        // HTML 요소가 전부 로딩되면 실행되는 이벤트 핸들러 등록
         window.addEventListener("load", bootstrap);
 
     </script>
