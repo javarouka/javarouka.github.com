@@ -57,8 +57,10 @@
 
             $(window).on("hashchange", function(e) {
                 try {
-                    $(".view-item").hide();
-                    $(location.hash.toString()).show();
+                    $(".view-item").hide('fast', function(){
+                        $(location.hash.toString()).show(200);
+                    });
+
                 }
                 catch(e) {
                     alert("not found")
