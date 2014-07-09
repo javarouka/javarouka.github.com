@@ -199,7 +199,7 @@ function getAdvertiseStatement(name) {
                 </section>
 
                 <section>
-                    <pre class="code"><code data-tarim>// 함수를 실행한다.
+                    <pre class="code"><code data-tarim>// 세상 이라는 문자열을 인자로 해서 함수를 실행한다.
 getAdvertiseStatement("세상");</code></pre>
                     <ol>
                         <li class="fragment">함수가 실행되면 실행 컨텍스트라는 내부 객체가 생성된다</li>
@@ -207,6 +207,8 @@ getAdvertiseStatement("세상");</code></pre>
                         <li class="fragment">실행 컨텍스트는 현재 실행되는 함수의 [[Scope]] 속성으로 스코프 체인을 초기화한다.</li>
                         <li class="fragment">함수 실행을 위한 스코프 체인이 초기화됐다. 이제 실행하기 위해 로컬 변수 식별을 위한 스텝을 진행한다.</li>
                     </ol>
+                    <small class="fragment">주의: 지금 읽으면 혼란스러울 수 있다!<br/>
+                        <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank">[Link]What is Execution Context?</a></small>
                 </section>
 
                 <section>
