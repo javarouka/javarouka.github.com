@@ -100,8 +100,39 @@ alert(isMarried(programer));</code></pre>
                 <section>
                     <h4>JavaScript는 블럭 스코프를 지원하지 않는다.</h4>
                     <p class="fragment">var 변수 선언은 항상 함수 스코프이다</p>
-                    <p class="fragment">var 를 뺀 선언은 암묵적으로 전역의 프로퍼티로(implict define property) 추가 된다.</p>
+                    <p class="fragment">var 를 뺀 선언은 암묵적으로 전역 객체의 프로퍼티로(implict define property) 추가 된다.</p>
                     <small class="fragment">EC6에서는 let이라는 블럭 스코프 선언이 추가된다고 한다.</small>
+                </section>
+
+                <!--<section>-->
+                    <!--<pre class="code"><code data-tarim>var vars = "variable";-->
+<!--window.propert = "property";-->
+<!--delete vars;-->
+<!--delete propert;-->
+
+<!--alert(vars);-->
+<!--alert(propert);-->
+                    <!--</code></pre>-->
+                    <!--<a data-executor>RUN</a>-->
+                <!--</section>-->
+
+                <section>
+                    <pre class="code"><code data-tarim>(function implictGlobalDefineProperty() {
+    prop = "implict property";
+    var vari = "local define variable";
+})(); // Named 함수 즉시 실행
+
+// Step 1 글로벌 변수 확인
+try { alert(prop); } catch(e) { alert("step1\n" + e.stack); }
+
+// Step 2 글로벌 프로퍼티 확인
+try { alert(window.prop); } catch(e) { alert("step2\n" + e.stack); }
+
+// Step 3 삭제 연산 후 확인
+delete window.prop;
+try { alert(prop); } catch(e) { alert("Step3\n" + e.stack); }
+</code></pre>
+                    <a data-executor>RUN</a>
                 </section>
 
                 <section>
@@ -143,7 +174,7 @@ testScope();</code></pre>
                 <section>
                     <h3>함수의 스코프</h3>
                     <p>[[Scope]]</p>
-                    <p class="fragment">모든 함수는 프로그래머가 코드로 접근할 수 없는 [[Scope]] 라는 속성을 가진다.</p>
+                    <p class="fragment">모든 함수는 프로그래머가 접근할 수 없는 [[Scope]] 라는 속성 (ECMAS-262) 을 가진다.</p>
                     <p class="fragment">[[Scope]] 는 key-value 해쉬맵의 배열이다.</p>
                     <p class="fragment">실제 함수가 실행될 때 이 배열을 스코프로서 사용한다.</p>
                     <p class="fragment">[[Scope]]는 현재 함수가 생성된 환경의 Scope 를 가진다</p>
@@ -172,12 +203,14 @@ function getAdvertiseStatement(name) {
 getAdvertiseStatement("세상");</code></pre>
                     <ol>
                         <li class="fragment">함수가 실행되면 실행 컨텍스트라는 내부 객체가 생성된다</li>
+                        <li class="fragment">실행 컨텍스트 (execution context) 는 실행 단위을 정의하는 내부 객체이다.</li>
                         <li class="fragment">실행 컨텍스트는 현재 실행되는 함수의 [[Scope]] 속성으로 스코프 체인을 초기화한다.</li>
+                        <li class="fragment">함수 실행을 위한 스코프 체인이 초기화됐다. 이제 실행하기 위해 로컬 변수 식별을 위한 스텝을 진행한다.</li>
                     </ol>
                 </section>
 
                 <section>
-                    <h5>스코프 체인에 활성 객체 추가</h5>
+                    <h5>그것이 활성 객체를 만드는 일이다.</h5>
                     <ol>
                         <li class="fragment">함수 내에 선언된 지역변수, 매개변수, arguments, this 등을 가진 key-value 맵을 만든다</li>
                         <li class="fragment">이것을 활성 객체 (Activation Object) 라고 부른다</li>
