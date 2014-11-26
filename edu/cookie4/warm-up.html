@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="ko">
     <meta charset="UTF-8">
     <title>사전과제</title>
     <!--[if lt IE 9]>
@@ -20,14 +20,38 @@
 
         <div class="row">
             <p>
-                각기 다른 팀에서 작업한 JavaScript 파일 3개가 있다. 그런데 공교롭게도 파일 안의 변수와 함수들의 몇몇 이름들이 중복되고 있다.
-                <br/>이럴 경우 발생하는 문제는 무엇이고, 해결 방법은 무엇인지 고민한 뒤 세 파일을 사용해서 예제를 완성시켜보자.
-                <br/>단 원본 소스의 변수명은 건드리지 말고 작업해야 한다.
+                각기 다른 팀에서 작업한 JavaScript 파일 3개가 있다.
+                <br/>
+                <br/>
+                <em>brands.js, restaurant.js, main.js</em> 이 파일 셋이며 당신은 <em>main.js</em> 를 담당하는 팀이다. 이제 <em>main.js</em> 의 나머지를 채워서 나머지 작업을 마무리해야 한다.
+                <br/>
+                <br/>
+                그런데 파일을 보니 당장 사용하기엔 문제가 있어 보인다. 변수와 함수 이름이 중복되어, 충돌하고 있기 때문이다.
+                <br/>
+                이럴 경우 발생하는 문제는 무엇이고, 해결 방법은 무엇인지 고민한 뒤 <em>main.js</em> 를 채워 예제를 완성시켜보자.
+                <br/>
+                <br/>
+                <span class="label label-danger">Point</span> <small style="color: red;">화면이 이렇게 (<span class="label label-info preview-answer-toggle" style="cursor:pointer;" data-toggle-ref=".preview-answer">Click</span>) 나오면 가산점.</small>
+                <div class="preview-answer" style="display: none;">
+                    <img src="K.png">
+                </div>
+                <span class="label label-danger">Point</span> <small style="color: red;">파일 자체의 변수 및 함수 이름을 수정하지 않고 동작하게 만들면 가산점.</small>
+                <br/>
+                <span class="label label-danger">Point</span> <small style="color: red;">자신이 수정한 이유에 대해 충분한 주석으로 설명이 있다면 가산점.</small>
+                <br/>
+                <br/>
+                <span class="label label-primary">TIP!</span> <small>변수 Scope, Module 화에 대해 생각해보자</small>
             </p>
+
+            <p class="well">
+                질문은 <a href="mailto:javarouka@gmail.com">메일</a>로 :)
+            </p>
+
         </div>
 
         <section class="code-content code-1">
-            <pre class="code"><code data-trim>var hitDealTitles = [
+            <pre class="code"><code data-trim>/* @file brands.js */
+var data = [
     '레드윙',
     '호킨스',
     '닥터마틴',
@@ -35,29 +59,80 @@
     '버팔로',
     '팀버랜드'
 ];
-function getHitDealTitles() {
-    return hitDealTitles;
+
+function render($parent) {
+    var $brandList = $("&lt;ul&gt;&lt;/ul&gt;");
+    $.each(data, function(index, item) {
+        $brandList.append("&lt;li&gt;" + item + "&lt;/li&gt;")
+    });
+    $parent.append($brandList);
 }</code></pre>
         </section>
         <section class="code-content code-2">
-            <pre class="code"><code data-trim>var hitDealElement;
-var makeGridElement(data) {
-    if(hitDealElement != undefined || hitDealElement != null) {
-        return hitDealElement;
-    }
-    var $ul = $("&lt;ul&gt;&lt;/ul&gt;");
+            <pre class="code"><code data-trim>/* @file restaurant.js */
+var data = [
+    '매드 포 갈릭',
+    '부처스 컷',
+    '빕스',
+    '바피아노',
+    '아웃벡 스테이크'
+];
+
+function render($parent) {
+    var $restaurantList = $("&lt;ul&gt;&lt;/ul&gt;");
     $.each(data, function(index, item) {
-        $table.append("&lt;li&gt;" + item + "&lt;/li&gt;")
+        $restaurantList.append("&lt;li&gt;" + item + "&lt;/li&gt;")
     });
-    hitDealElement = $ul;
-    return $ul;
+    $parent.append($restaurantList);
 }</code></pre>
         </section>
         <section class="code-content code-3">
-            <pre class="code"><code data-trim>var hitDealTitles = getHitDealTitles();
-var hitDealElement = makeGridElement(hitDealTitles);
-$("body").append(hitDealTitles);</code></pre>
+            <pre class="code"><code data-trim>/* @file main.js */
+$(document).ready(function() {
+
+    var $brand = $("#brand"); // 브랜드 리스트를 그릴 영역
+    var $restaurant = $("#restaurant"); // 레스토랑 리스트를 그릴 영역
+
+    // 브랜드 리스트를 그린다
+    // ?
+
+    // 레스토랑 리스트를 그린다
+    // ?
+});
+</code></pre>
+
+        <h3>여기는 사용할 HTML</h3>
+        <pre class="code"><code data-trim>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head lang="ko"&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;답안&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+        &lt;h1&gt;인기 브랜드 리스트&lt;/h1&gt;
+        &lt;div id="brand"&gt;&lt;/div&gt;
+
+        &lt;h1&gt;인기 레스토랑 리스트&lt;/h1&gt;
+        &lt;div id="restaurant"&gt;&lt;/div&gt;
+
+        &lt;script src="//code.jquery.com/jquery-1.11.0.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="brand.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="restaurant.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="main.js"&gt;&lt;/script&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>예제 다운로드</h3>
+        <a href="download/download.zip">download.zip</a>
         </section>
+
+        <hr>
+
+        <footer style="padding: 20px 0; font-size: 20px;">
+            This document written by <a href="mailto:javarouka@gmail.com">javarouka</a>
+        </footer>
 
     </div>
 
@@ -67,6 +142,9 @@ $("body").append(hitDealTitles);</code></pre>
 
     <script>
         hljs.initHighlightingOnLoad();
+        $(".preview-answer-toggle").click(function(e) {
+            $($(e.target).data("toggleRef")).toggle();
+        });
     </script>
 
 </body>
