@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>사전과제</title>
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../asset/custom.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="row">
+            <h1>쿠키 4 사전 과제</h1>
+            <p></p>
+        </header>
+
+        <div class="row">
+            <p>
+                각기 다른 팀에서 작업한 JavaScript 파일 3개가 있다. 그런데 공교롭게도 파일 안의 변수와 함수들의 몇몇 이름들이 중복되고 있다.
+                <br/>이럴 경우 발생하는 문제는 무엇이고, 해결 방법은 무엇인지 고민한 뒤 세 파일을 사용해서 예제를 완성시켜보자.
+                <br/>단 원본 소스의 변수명은 건드리지 말고 작업해야 한다.
+            </p>
+        </div>
+
+        <section class="code-content code-1">
+            <pre class="code"><code data-trim>var hitDealTitles = [
+    '레드윙',
+    '호킨스',
+    '닥터마틴',
+    '클락스',
+    '버팔로',
+    '팀버랜드'
+];
+function getHitDealTitles() {
+    return hitDealTitles;
+}</code></pre>
+        </section>
+        <section class="code-content code-2">
+            <pre class="code"><code data-trim>var hitDealElement;
+var makeGridElement(data) {
+    if(hitDealElement != undefined || hitDealElement != null) {
+        return hitDealElement;
+    }
+    var $ul = $("&lt;ul&gt;&lt;/ul&gt;");
+    $.each(data, function(index, item) {
+        $table.append("&lt;li&gt;" + item + "&lt;/li&gt;")
+    });
+    hitDealElement = $ul;
+    return $ul;
+}</code></pre>
+        </section>
+        <section class="code-content code-3">
+            <pre class="code"><code data-trim>var hitDealTitles = getHitDealTitles();
+var hitDealElement = makeGridElement(hitDealTitles);
+$("body").append(hitDealTitles);</code></pre>
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="../asset/highlight.js"></script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+</body>
+</html>
