@@ -8,6 +8,15 @@
     <![endif]-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="../asset/custom.css" rel="stylesheet">
+    <link href="../asset/animate.css" rel="stylesheet">
+    <style>
+        img {
+            display: block;
+        }
+        .x-hide {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -32,21 +41,17 @@
                 <br/>
                 <br/>
                 <span class="label label-danger">Point</span> <small style="color: red;">화면이 이렇게 (<span class="label label-info preview-answer-toggle" style="cursor:pointer;" data-toggle-ref=".preview-answer">Click</span>) 나오면 가산점.</small>
-                <div class="preview-answer" style="display: none;">
-                    <img src="K.png">
-                </div>
+                <img src="K.png" class="preview-answer x-hide">
+                <br/>
                 <span class="label label-danger">Point</span> <small style="color: red;"><em>brands.js, restaurant.js</em>의 변수 및 함수 이름을 수정하지 않고 동작하게 만들면 가산점.</small>
                 <br/>
                 <span class="label label-danger">Point</span> <small style="color: red;">자신이 수정한 이유에 대해 충분한 주석으로 설명이 있다면 가산점.</small>
-                <br/>
-                <br/>
-                <br/>
-                <blockquote>
-                    <span class="label label-primary">TIP!</span>
-                    <small style="margin: 10px 0;">변수의 유효범위 및 Module 화에 대해 생각해보자</small>
-                </blockquote>
-
             </p>
+
+            <blockquote>
+                <span class="label label-primary">TIP!</span>
+                <small style="margin: 10px 0;">변수의 유효범위 및 Module 화에 대해 생각해보자</small>
+            </blockquote>
 
             <p class="well">
                 질문은 <a href="mailto:javarouka@gmail.com">메일</a>로 :)
@@ -148,7 +153,7 @@ $(document).ready(function() {
     <script>
         hljs.initHighlightingOnLoad();
         $(".preview-answer-toggle").click(function(e) {
-            $($(e.target).data("toggleRef")).toggle();
+            $($(e.target).data("toggleRef")).toggleClass('x-hide animated lightSpeedIn');
         });
     </script>
 
