@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>답안</title>
+    <!--스타일 시트를 링크 하여주고 .x-hide라는 class 이름을 가진 객체들에게  css정의, 처음 디스플레이를 보이지 않게 지정하였습니다. -->
+    <link type="text/css" href="./animate.css" rel="stylesheet" />
+    <style type="text/css">
+    	.x-hide {
+    		display:none;
+    	}
+    </style>
+</head>
+<body>
+	<div class="preview-answer x-hide">
+	    <h1>인기 브랜드 리스트</h1>
+	    <div id="brand"> </div>
+	
+	    <h1>인기 레스토랑 리스트</h1>
+	    <div id="restaurant"> </div>
+	</div>
+<!--버튼을 만들어주고 div에 class이름을 만들어주어 css가 적용되게 하였습니다.-->
+	<button class="preview-answer-toggle" data-toggle-ref=".preview-answer">Click</button>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="highlight.js"></script>
+    <script type="text/javascript" src="brand.js"></script>
+    <script type="text/javascript" src="restaurant.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <!--버튼을 누르면 애니메이션이 동작할수 있게 이벤트를 주었습니다.-->
+	<script type="text/javascript">
+	        hljs.initHighlightingOnLoad();
+	        $(".preview-answer-toggle").click(function(e) {
+	            $($(e.target).data("toggleRef")).toggleClass('x-hide animated lightSpeedIn');
+	        });
+	</script>
+</body>
+</html>
