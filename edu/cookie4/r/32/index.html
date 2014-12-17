@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <!-- Animation 적용을 위해 animate.css를 link한다 -->
+    <link href="animate.css" rel="stylesheet">
+    <!-- jquery나 js파일의 loading에 따른 성능 issue가 존재하지 않으므로 header에서 load하기로 선택
+    그렇지 않으면 두 h1가 먼저 출력된 후 rendering되어 문제가 생긴다.-->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="brand.js"></script>
+    <script type="text/javascript" src="restaurant.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <title>답안</title>
+</head>
+<body>
+
+<!-- animation을 위해 toggle로 클래스 설정 -->
+<div class="toggle">
+    <h1>인기 브랜드 리스트</h1>
+    <div id="brand"></div>
+
+    <h1>인기 레스토랑 리스트</h1>
+    <div id="restaurant"></div>
+</div>
+
+</body>
+</html>
