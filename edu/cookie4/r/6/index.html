@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ko">
+        <meta charset="UTF-8">
+        <title>답안</title>
+        <link rel='stylesheet' href="asset/animate.css" type='text/css' />
+		<style type="text/css">
+			.x-hide{
+				display:none;
+			}
+		</style>
+    </head>
+    <body>
+    	<button class="preview-answer-toggle">click</button>
+		<div class='preview-answer x-hide'>
+	        <h1>인기 브랜드 리스트</h1>
+			<div id="brand"></div>
+	
+	        <h1>인기 레스토랑 리스트</h1>
+	        <div id="restaurant"></div>
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src='asset/highlight.js'></script>
+        <script type="text/javascript" src="brand.js"></script>
+        <script type="text/javascript" src="restaurant.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript">
+	        hljs.initHighlightingOnLoad();//프레임워크 로드 메서
+	        $(".preview-answer-toggle").click(function(e) {//버튼을 셀렉션해서 click 이벤트를 등록한다.
+	        	var $wrap = $('.preview-answer'); //래퍼를 찾
+	           	$wrap.toggleClass('x-hide animated lightSpeedIn');//클래스 어트리뷰트를 토글시킨다.
+	        });
+		</script>
+    </body>
+</html>
