@@ -1,6 +1,22 @@
 .report-list {
     font-size: 12px;
 }
+.report-list > div {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-radius: 8px;
+    background-color: #8cfff0;
+    margin: 5px 5px;
+    padding: 12px 5px;
+    text-align: center;
+    box-shadow: 1px 1px 1px 2px #6ac4b6;
+}
+.report-list > div:hover {
+    background-color: #70c0b1;
+    box-shadow: 2px 3px 3px #666;
+}
 .report-list h3 {
     font-size: 15px;
     line-height: 20px;
