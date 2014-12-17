@@ -4,3 +4,4 @@
 .class
 .jar
 node_modules
+component/lib/*

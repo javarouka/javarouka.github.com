@@ -21,11 +21,11 @@
                         arr = Array.prototype.slice.call(bindable);
                     arr.forEach(function(el) {
                         var dataSet = el.dataset['event' + eventType.charAt(0).toUpperCase() + eventType.substr(1)].trim();
-                        el.addEventListener(eventType, function(e) {
-                            //eval("listeners." + dataSet);
-                            with(listeners) {
-                                eval(dataSet);
-                            }
+                        el.addEventListener(eventType, function($event) {
+                            eval("listeners." + dataSet);
+//                            with(listeners) {
+//                                eval(dataSet);
+//                            }
                         }, false);
                     });
                 });
@@ -42,7 +42,7 @@
 
                 autoBind({
                     sayHello: function(val) {
-                        alert(val);
+                        alert($event);
                     }
                 });
 

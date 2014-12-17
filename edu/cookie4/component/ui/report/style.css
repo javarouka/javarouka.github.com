@@ -1,0 +1,9 @@
+.report-list {
+    font-size: 12px;
+}
+.report-list li h3 {
+    font-size: 15px;
+}
+.report-playground {
+    display: none;
+}
