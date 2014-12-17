@@ -1,12 +1,10 @@
 <section class="row report-list">
-    <ul class="col-md-12">
-        {{#this}}
-        <li>
-            <h3>{{name}}</h3>
-            <span>점수</span><span>{{score}}</span>
-            <span><a href="r/{{id}}/" target="_blank" data-event-click="viewReport(e)">보기</a></span>
-        </li>
-        {{/this}}
-    </ul>
+    {{#this}}
+    <div class="col-sm-1">
+        <h3>{{name}}</h3>
+        <span>점수</span><span>{{score}}</span>
+        <span><a href="r/{{id}}/" target="_blank" data-event-click="viewReport(e)">보기</a></span>
+    </div>
+    {{/this}}
 </section>
 <article class="report-playground row"></article>

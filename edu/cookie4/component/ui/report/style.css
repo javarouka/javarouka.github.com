@@ -1,8 +1,11 @@
 .report-list {
     font-size: 12px;
 }
-.report-list li h3 {
+.report-list h3 {
     font-size: 15px;
+    line-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 .report-playground {
     display: none;
