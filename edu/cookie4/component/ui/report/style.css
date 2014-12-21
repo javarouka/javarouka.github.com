@@ -1,4 +1,5 @@
 .report-list {
+    position: relative;
     font-size: 12px;
 }
 .report-list > div {
@@ -7,14 +8,15 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     border-radius: 8px;
-    background-color: #8cfff0;
+    background-color: #e5ffff;
     margin: 5px 5px;
     padding: 12px 5px;
     text-align: center;
-    box-shadow: 1px 1px 1px 2px #6ac4b6;
+    border: solid 1px #b7c0d0;
+    box-shadow: 1px 1px 1px 2px #eee;
 }
 .report-list > div:hover {
-    background-color: #70c0b1;
+    background-color: #fffdfe;
     box-shadow: 2px 3px 3px #666;
 }
 .report-list h3 {
@@ -24,5 +26,29 @@
     margin-bottom: 5px;
 }
 .report-playground {
+    display: none;
+}
+.expanded {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    position: absolute;
+    /*top: 0;*/
+    z-index: 9;
+}
+.etc-area {
+    display: none;
+}
+.expanded .etc-area {
+    background-color: white;
+    border-radius: 6px;
+    border: solid 1px #aaa;
+    display: block;
+    text-align: left;
+    padding: 10px 20px;
+    margin: 5px 20px;
+}
+.force-hidden {
     display: none;
 }

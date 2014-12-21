@@ -37,6 +37,14 @@ define([
 //            }
 //        });
         area.append(html);
+        area.on("click", ".box-item", function(e) {
+            var $t = $(e.currentTarget);
+            area.find(".expanded").not($t).removeClass("col-md-12").removeClass("expanded").addClass("col-md-1");
+            ($t.hasClass("expanded")) ?
+                $t.removeClass("col-md-12").addClass("col-md-1").removeClass("expanded") :
+                $t.removeClass("col-md-1").addClass("col-md-12").addClass("expanded");
+            $t.find(".etc-area").html($t.data("etc"));
+        });
     }
 
     return {
