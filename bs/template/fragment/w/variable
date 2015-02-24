@@ -1,0 +1,7 @@
+var locationPicker = document.getElementById("location-picker"),
+    content = document.getElementById("weather-content");
+
+var weatherTemplateText = document.getElementById("weather-template").innerHTML,
+    weatherResourceURL = "http://api.openweathermap.org/data/2.5/find?callback=renderWeather&q=",
+    weatherTemplate = Handlebars.compile(weatherTemplateText),
+    now_process = false;

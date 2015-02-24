@@ -1,0 +1,17 @@
+var userData = [
+    {
+        "seq": 1,
+        "id": "javarouka",
+        "name": "이항희"
+    },
+    {
+        "seq": 2,
+        "id": "yellow",
+        "name": "홍진호"
+    },
+    {
+        "seq": 3,
+        "id": "faker",
+        "name": "이상혁"
+    }
+];

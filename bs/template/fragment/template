@@ -1,0 +1,8 @@
+<script id="user-list-template" type="text/x-handlebars-template">
+    {{#this}}
+        <tr data-seq="{{seq}}">
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+        </tr>
+    {{/this}}
+</script>

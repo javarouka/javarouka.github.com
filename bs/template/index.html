@@ -54,7 +54,7 @@
             <h1>목차</h1>
             <ul>
                 <!--<li class="fragment roll-in">Global Scope</li>-->
-                <li class="fragment roll-in">예전에는</li>
+                <li class="fragment roll-in">데이터에 따라 변하는 페이지</li>
                 <li class="fragment roll-in">JavaScript로 HTML을 그릴 때</li>
                 <li class="fragment roll-in">Template</li>
                 <li class="fragment roll-in">Handlebars</li>
@@ -62,7 +62,7 @@
         </section>
 
         <section>
-            <h2>예전에는...</h2>
+            <h2>데이터에 따라 변하는 페이지</h2>
             <p>서버사이드에서 동적인 HTML을 렌더링하는게 일반적이었던 시절이 있었다.</p>
         </section>
 
@@ -91,6 +91,13 @@
         </section>
 
         <section>
+            <p>데이터를 표현할 방법을 JSP의 문법에 맞춰 틀을 정의해두면,</p>
+            <p class="fragment roll-in">묶어주는 데이터에 따라 문자열을 생성.</p>
+            <p class="fragment roll-in">JSP말고도 PHP등 여러 템플릿 엔진들은 서버에서 처리됐지만</p>
+            <p class="fragment roll-in">최근엔 서버는 데이터만, 그리는건 클라이언트가 하는 일이 많아졌다</p>
+        </section>
+
+        <section>
            <h2>JavaScript로 HTML을 그릴 때</h2>
            <ol>
                 <li class="fragment roll-in">디자이너가 디자인해준 HTML을 분석한다</li>
@@ -104,9 +111,7 @@
         <section>
             <h3>이러한 구조일 것이다</h3>
             <div class="fragment">
-                <pre class="code">// 서버에서 데이터를 가져왔다고 가정
-var userList = User.findList() || [],
-      elUserInfoGridBody = document.getElementById('userInfoGridBody'),
+                <pre class="code">var elUserInfoGridBody = document.getElementById('userInfoGridBody'),
       user;
 
 // 전에 있던 영역을 지워준다
@@ -124,8 +129,7 @@ for (var i = 0, len = userList.length; i < len; i++) {
 
         <section>
             <p>직접 브라우저가 된 기분으로 문자열 결합을 예측하여 완성될 HTML을 예측해야 한다</p>
-            <p class="fragment roll-in">혹시</p>
-            <p class="fragment roll-in">for 루프 때마다 innerHTML의 DOM Api 접근이 마음에 들지 않는다면...</p>
+            <p class="fragment roll-in">DOM Api 로 처리하면?</p>
         </section>
 
         <section>
@@ -169,27 +173,6 @@ function scope() ...
             <img class="fragment roll-in" src="img/otl.jpg" style="border: none">
         </section>
 
-        <!--<section>-->
-            <!--<h3>서로간 스코프 침범불가</h3>-->
-            <!--<pre class="code"><code data-trim>var globalVar = "G";-->
-<!--function A() {-->
-    <!--var a = "A";-->
-    <!--alert("A function: " + globalVar + " / " + a + " / " + b);-->
-<!--}-->
-<!--function B() {-->
-    <!--var b = "B";-->
-    <!--alert("B function: " + globalVar + " / " + a + " / " + b);-->
-<!--}-->
-<!--try {-->
-    <!--A(); B();-->
-<!--}-->
-<!--catch(e) {-->
-    <!--alert("Opps! " + e);-->
-<!--}-->
-<!--</code></pre>-->
-            <!--<a data-executor>RUN</a>-->
-        <!--</section>-->
-
         <section>
             <h2>Handlebars</h2>
             <p class="fragment roll-in">Server/Client Template</p>
@@ -208,11 +191,153 @@ function scope() ...
 
         <section>
             <h3>바로 시작해보자</h3>
-            <pre>[
+            <p>먼저 사용할 데이터</p>
+            <pre class="code"><code data-trim>var userData = [
     {
+        "seq": 1,
+        "id": "javarouka",
+        "name": "이항희"
+    },
+    {
+        "seq": 2,
+        "id": "yellow",
+        "name": "홍진호"
+    },
+    {
+        "seq": 3,
+        "id": "faker",
+        "name": "이상혁"
     }
-]
-            </pre>
+];</code></pre>
+        </section>
+
+        <section>
+            <p>템플릿 작성</p>
+            <p class="fragment roll-in">스크립트 태그안에 작성하는 이유는 렌더링 요소가 아니고, 노드 안의 텍스트 보존이 용이</p>
+            <p class="fragment roll-in">반드시 타입을 text/template 등으로 지정해서</p>
+            <p class="fragment roll-in">스크립트가 아님을 브라우저에게 알려줘 실행을 막는다.</p>
+            <pre class="code fragment roll-in"><code data-trim>&lt;script id="user-list-template" type="text/x-handlebars-template"&gt;
+    {{#this}}
+        &lt;tr data-seq="{{seq}}"&gt;
+            &lt;td&gt;{{id}}&lt;/td&gt;
+            &lt;td&gt;{{name}}&lt;/td&gt;
+        &lt;/tr&gt;
+    {{/this}}
+&lt;/script&gt;</code></pre>
+        </section>
+
+        <section>
+            <p>다음은... 템플릿 컴파일</p>
+            <p class="fragment roll-in">템플릿은 데이터를 묶어 HTML텍스트를 생성하기전 별도 컴파일을 필요로 한다</p>
+            <p class="fragment roll-in">템플릿 컴파일 결과로 템플릿 <strong>함수</strong>가 나온다.</p>
+            <pre class="code"><code data-trim>// 위에서 정의한 스크립트 태그 노드를 가져온다
+var templateTag = document.getElementById("user-list-template");
+
+// 그 안의 텍스트를 꺼내서 Handlebars.compile 함수로 컴파일해서 변수에 할당해둔다.
+var compiled = Handlebars.compile(templateTag.innerHTML);</code></pre>
+        </section>
+
+        <section>
+            <p>이제 데이터랑 묶어서, HTML을 생성한다</p>
+            <p class="fragment roll-in">템플릿은 데이터를 묶어 HTML텍스트를 생성하기전 별도 컴파일을 필요로 한다</p>
+            <pre class="code"><code data-trim>// 데이터를 인자로 컴파일된 템플릿 함수를 실행하면 HTML이 나온다
+var html = compiled(userData);
+
+// 나온 HTML을 원하는 영역에 그린다!
+document.getElementById("user-info-grid-body").innerHTML = html;</code></pre>
+        </section>
+
+        <section>
+            <h3>간단한 날씨 뷰어 예제</h3>
+            <p>
+                화면을 그리는데 필요한 데이터는 openWeather JSONP 를 사용한다
+                <a href="http://api.openweathermap.org/data/2.5/find?q=Seoul">서울날씨 데이터</a>
+            </p>
+        </section>
+
+        <section>
+            <h3>JSONP 요청을 보낼 함수</h3>
+            <pre class="code"><code data-trim>var now_process = false;
+var listenWeatherData = function(location) {
+
+    if(now_process) {
+        return;
+    }
+
+    now_process = true;
+
+    var scriptTag = document.getElementById("jsonp-script");
+    if(scriptTag) {
+    document.body.removeChild(oldScriptTag);
+    }
+
+    scriptTag = document.createElement("script");
+    scriptTag.id = "jsonp-script";
+    scriptTag.type = "text/javascript";
+    scriptTag.src = weatherResourceURL + location;
+
+    document.body.appendChild(scriptTag);
+}
+</code></pre>
+        </section>
+
+        <section>
+            <h3>템플릿</h3>
+            <pre class="code"><code data-trim>&lt;script id="weather-template" type="text/x-handlebars-template"&gt;
+    {{#list}}
+        &lt;h2&gt;
+            {{name}}
+            &lt;small&gt;- {{sys.country}}&lt;/small&gt;
+        &lt;/h2&gt;
+        {{#weather}}
+            &lt;img src="http://openweathermap.org/img/w/{{icon}}.png" style="float: left; margin: 5px;"&gt;
+            &lt;h3&gt;{{main}}&lt;/h3&gt;
+            &lt;p&gt;
+                {{description}}
+            &lt;/p&gt;
+            &lt;div style="clear: both; height: 0;"&gt;&lt;/div&gt;
+        {{/weather}}
+    {{/list}}
+    &lt;/script&gt;</code></pre>
+        </section>
+
+        <section>
+            <h3>동작 함수들</h3>
+            <pre class="code"><code data-trim>var listenWeatherData = function(location) {
+
+        if(now_process) {
+            return;
+        }
+
+        now_process = true;
+
+        var scriptTag = document.getElementById("jsonp-script");
+        if(scriptTag) {
+            document.body.removeChild(scriptTag);
+        }
+
+        scriptTag = document.createElement("script");
+        scriptTag.id = "jsonp-script";
+        scriptTag.type = "text/javascript";
+        scriptTag.src = weatherResourceURL + location;
+
+        document.body.appendChild(scriptTag);
+    },
+
+    renderWeather = function(weatherData) {
+        content.innerHTML = weatherTemplate(weatherData);
+        now_process = false;
+    },
+
+    changeLocation = function(eventObj) {
+        document.title = "Weather - " + locationPicker.value;
+        listenWeatherData(locationPicker.value);
+    };</code></pre>
+        </section>
+
+        <section>
+            <h1>완성</h1>
+            <p><a href="http://garann.github.io/template-chooser/" target="_blank">So you need a template engine..</a></p>
         </section>
 
         <section>

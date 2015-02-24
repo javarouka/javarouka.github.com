@@ -1,0 +1,2 @@
+var templateTag = document.getElementById("user-list-template");
+var compiled = Handlebars.compile(templateTag.innerHTML);

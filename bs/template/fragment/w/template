@@ -1,0 +1,16 @@
+&lt;script id="weather-template" type="text/x-handlebars-template"&gt;
+    {{#list}}
+        &lt;h2&gt;
+            {{name}}
+            &lt;small&gt;- {{sys.country}}&lt;/small&gt;
+        &lt;/h2&gt;
+        {{#weather}}
+            &lt;img src="http://openweathermap.org/img/w/{{icon}}.png" style="float: left; margin: 5px;"&gt;
+            &lt;h3&gt;{{main}}&lt;/h3&gt;
+            &lt;p&gt;
+                {{description}}
+            &lt;/p&gt;
+            &lt;div style="clear: both; height: 0;"&gt;&lt;/div&gt;
+        {{/weather}}
+    {{/list}}
+&lt;/script&gt;

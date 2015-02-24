@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>테스트</title>
+    <style>
+        thead tr {
+            background-color: #333;
+            color: #FFF;
+            height: 30px;
+        }
+        th, td {
+            width: 200px;
+            border: solid 1px #eee;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <script id="user-list-template" type="text/x-handlebars-template">
+        {{#this}}
+            <tr data-seq="{{seq}}">
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+            </tr>
+        {{/this}}
+    </script>
+
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+            </tr>
+        </thead>
+        <tbody id="user-info-grid-body"></tbody>
+    </table>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+<script type="text/javascript">
+
+    var userData = [
+        {
+            "seq": 1,
+            "id": "javarouka",
+            "name": "이항희"
+        },
+        {
+            "seq": 2,
+            "id": "yellow",
+            "name": "홍진호"
+        },
+        {
+            "seq": 3,
+            "id": "faker",
+            "name": "이상혁"
+        }
+    ];
+
+
+    var templateTag = document.getElementById("user-list-template");
+
+    var compiled = Handlebars.compile(templateTag.innerHTML);
+
+    var html = compiled(userData);
+
+    document.getElementById("user-info-grid-body").innerHTML = html;
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+var listenWeatherData = function(location) {
+
+        if(now_process) {
+            return;
+        }
+
+        now_process = true;
+
+        var scriptTag = document.getElementById("jsonp-script");
+        if(scriptTag) {
+            document.body.removeChild(scriptTag);
+        }
+
+        scriptTag = document.createElement("script");
+        scriptTag.id = "jsonp-script";
+        scriptTag.type = "text/javascript";
+        scriptTag.src = weatherResourceURL + location;
+
+        document.body.appendChild(scriptTag);
+    },
+
+    renderWeather = function(weatherData) {
+        content.innerHTML = weatherTemplate(weatherData);
+        now_process = false;
+    },
+
+    changeLocation = function(eventObj) {
+        document.title = "Weather - " + locationPicker.value;
+        listenWeatherData(locationPicker.value);
+    };
