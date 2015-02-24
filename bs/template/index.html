@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Play JavaScript Template</title>
+    <meta name="description" content="JavaScript Template">
+    <meta name="author" content="javarouka">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="lib/css/github.css">
+    <link rel="stylesheet" href="plugin/spotlight/spotlight.css">
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+    <script>
+        WebFont.load({
+            custom: {
+                families: ['Nanum Gothic'],
+                urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+            }
+        });
+    </script>
+
+    <style>
+        .reveal pre {
+            font-family: 'Nanum Gothic', serif !important;
+        }
+        .reveal code {
+            font-family: 'Nanum Gothic', serif !important;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section>
+            <h1>Play JavaScript Template</h1>
+            <h3>+ Handlebars Basic</h3>
+            <p>
+                <small>Created by
+                    <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a> /
+                    <a href="http://blog.javarouka.me" target="new">javarouka.me</a>
+                </small>
+            </p>
+        </section>
+
+        <section>
+            <h1>목차</h1>
+            <ul>
+                <!--<li class="fragment roll-in">Global Scope</li>-->
+                <li class="fragment roll-in">JavaScript로 HTML을 그릴 때</li>
+                <li class="fragment roll-in">Template</li>
+                <li class="fragment roll-in">Handlebars</li>
+            </ul>
+        </section>
+
+        <section>
+           <h2>JavaScript로 HTML을 그릴 때</h2>
+           <p class="fragment roll-in">예전에는 이랬다.</p>
+           <ol>
+                <li class="fragment roll-in">디자이너가 디자인해준 HTML을 분석한다</li>
+                <li class="fragment roll-in">그 HTML을 자바스크립트 문자열로 바꾼다</li>
+                <li class="fragment roll-in">문자열 중간중간에 데이터를 결합해가며</li>
+                <li class="fragment roll-in">document.appendChild 를 쓰거나 innerHTML을 써서 화면에 그린다</li>
+                <li class="fragment roll-in">완성</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>이러한 구조일 것이다</h3>
+            <div class="fragment">
+                <pre class="code">// 서버에서 데이터를 가져왔다고 가정
+var userList = User.findList() || [],
+      elUserInfoGridBody = document.getElementById('userInfoGridBody');
+
+// 전에 있던 영역을 지워준다
+elUserInfoGridBody.innerHTML = '';
+
+for (var i = 0, len = userList.length; i < len; i++) {
+
+    // 열심히 그린다
+    elUserInfoGridBody.innerHTML += '&lt;tr&gt; &lt;td&gt;' + userList[i].id + '&lt;/td&gt; &lt;td&gt;' + userList[i].name + '&lt;/td&gt; &lt;/tr&gt;';
+
+}</pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>그렇다면 이런건...</h3>
+            <p>
+                <a href=""></a>
+            </p>
+}</code></pre>
+            <p class="fragment roll-in">Cannot Compile...</p>
+            <p class="fragment roll-in">But JavaScript...?</p>
+        </section>
+
+        <section>
+            <h3>오로지 함수 범위</h3>
+            <p>함수 정의 영역에서만 범위가 결정됩니다.</p>
+            <pre class="code"><code data-trim>// JavaScript
+function scope() {
+    var isPass = true;
+    var  coupang = "쿠팡!";
+    if(isPass) {
+        var costco = "코스트코";
+    }
+    alert(coupang + " vs " + costco);
+}
+scope();</code></pre>
+            <a data-executor>RUN</a>
+        </section>
+
+        <section>
+            <h4>그렇다면 이 코드의 실행 결과는...?</h4>
+            <div class="fragment roll-in">
+                <pre class="code"><code data-trim>// Hmm...?
+var coffee = "아메리카노";
+function hoist() {
+    if(coffee == undefined) {
+        var coffee = "카페모카"
+    }
+    alert(coffee + " 사드릴게요");
+};
+hoist();</code></pre>
+                <a data-executor>RUN</a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Hoisting 이라고 부릅니다.</h3>
+            <p>함수 스코프이기에 이런 일이 발생합니다.</p>
+            <p class="fragment roll-in">스코프내의 모든 변수는 실행 전 선언됩니다</p>
+            <p class="fragment roll-in">변수는 실행되면서 할당됩니다</p>
+        </section>
+
+        <section>
+            <p>실제로는 이렇게 실행되고 있습니다.</p>
+            <pre class="code"><code data-trim>// 실제 인터프리터가 해석하는 방법
+var coffee = "아메리카노";
+function hoist() {
+    var coffee;
+    if(coffee == undefined) {
+        coffee = "카페모카"
+    }
+    console.log(coffee + " 사드릴게요");
+};
+hoist();</code></pre>
+        </section>
+
+        <section>
+            <h3>서로간 스코프 침범불가</h3>
+            <pre class="code"><code data-trim>var globalVar = "G";
+function A() {
+    var a = "A";
+    alert("A function: " + globalVar + " / " + a + " / " + b);
+}
+function B() {
+    var b = "B";
+    alert("B function: " + globalVar + " / " + a + " / " + b);
+}
+try {
+    A(); B();
+}
+catch(e) {
+    alert("Opps! " + e);
+}
+</code></pre>
+            <a data-executor>RUN</a>
+        </section>
+
+        <section>
+            <h2>Scope Chain</h2>
+            <p>지금까지 살펴본 스코프가 왜 저렇게 그리고, 어떻게 구성되는지 알아봅니다.</p>
+        </section>
+
+        <section>
+            <h3>다시 Function...</h3>
+            <p>함수는 객체!</p>
+            <p class="fragment roll-in">JavaScript의 Function은 객체이기에 속성을 가집니다.</p>
+            <div class="fragment roll-in">
+                <pre class="code"><code data-trim>function A() { /* ... */ }
+A.coupang = "쿠팡!";
+alert(A.coupang);
+alert(A.toString()); // 기본으로 상속된 메서드도 있다.</code></pre>
+            <a data-executor>RUN</a>
+            </div>
+        </section>
+
+        <section>
+            <h3>변수 찾기</h3>
+            <p>객체의 속성에 접근하는 방법은 <strong>'.'</strong> 연산자로 접근</p>
+            <pre class="code"><code data-trim>var obj = { coupang: "쿠팡!" };
+obj.coupang = "쿠팡!";
+alert(obj.coupang);
+alert(obj.costco);</code></pre>
+            <a data-executor>RUN</a>
+            <p class="fragment roll-in">JavaScript는 특정 변수를 찾을 때 해당 이름을 키로 객체를 뒤져 찾습니다.</p>
+        </section>
+
+        <section>
+            <h3>[[Scope]] Property</h3>
+            <p>함수 객체에만 있는 인터프리터만 사용하는 내부 속성.</p>
+            <p class="fragment roll-in">함수가 "선언" 되면 인터프리터에 의해 일련의 과정을 거쳐 할당됩니다.</p>
+        </section>
+
+        <section>
+            <h3>이렇게...</h3>
+            <pre class="code fragment roll-in"><code data-trim>// 전역에 함수를 생성했습니다.
+function getById(id, prefix) {
+    prefix = prefix || "coupang_";
+    return document.getElementById(prefix + id);
+}</code></pre>
+            <pre class="code fragment roll-in"><code data-trim>// 다음과 같이 [[Scope]] 속성이 할당된다.
+getById.[[Scope]] = [ {
+    A: A,
+    window: window,
+    document: window.document
+    /* ...기타 전역변수들... */
+} ]</code></pre>
+            <p class="fragment roll-in">아직 함수는 실행되지 않았다는 사실에 주의.<br/>단지 생성되어 있습니다.</p>
+        </section>
+
+        <section>
+            <h3>인터프리터는 이 속성을 사용합니다</h3>
+            <p>함수 실행 시 이 속성을 바탕으로 변수를 식별합니다</p>
+            <p class="fragment roll-in">그런데 잘 보시면, key-value 배열 형태입니다. 이 배열의 요소들을 변수 객체라고 부릅니다</p>
+            <p class="fragment roll-in">변수 객체는 현재 접근할 수 있는 변수로 초기화됩니다.</p>
+        </section>
+
+        <section>
+            <h3>여기부터 중요합니다.</h3>
+            <pre class="code"><code data-trim>getById("someElement");</code></pre>
+            <p class="fragment roll-in">함수가 실행되면 실행 컨텍스트가 생성됩니다.</p>
+            <p class="fragment roll-in">실행 컨텍스트는 변수를 식별하기 위해 [[Scope]] 를 사용하여 스코프 체인을 초기화합니다.</p>
+            <p class="fragment roll-in">이 상태라면 아마도 이런 구조일 것입니다.</p>
+            <pre class="code fragment roll-in"><code data-trim>[ExecutionContext::getById].ScopeChain = [ {
+    A: A,
+    window: window,
+    document: window.document
+    /* ...기타 전역변수들... */
+} ]</code></pre>
+        </section>
+
+        <section>
+            <h3>이어서...</h3>
+            <p class="fragment roll-in">이어서 실행 컨텍스트는 활성 객체(Activation Object)라고 부르는 객체를 하나 만듭니다.</p>
+            <p class="fragment roll-in">이 객체는 앞서 설명한 호이스팅된 객체들이 매핑됩니다</p>
+            <p class="fragment roll-in">추가로, this 변수와 arguments 변수도 초기화됩니다</p>
+        </section>
+
+        <section>
+            <p>이 상태라면 아마도 이런 구조일 것입니다.</p>
+            <pre class="code fragment roll-in"><code data-trim>[ExecutionContext::getById].ScopeChain = [
+    {
+        id: "someElement",
+        prefix: undefined,
+        this: window,
+        arguments: [ "someElement" ]
+    },
+    {
+        A: A,
+        window: window,
+        document: window.document
+        /* ...기타 전역변수들... */
+    }
+]</code></pre>
+        </section>
+
+        <section>
+            <h3>이제 실행됩니다.</h3>
+            <p class="fragment roll-in">인터프리터는 변수를 만날 때마다 ScopeChain 속성에서 배열 첫번째 부터 차례대로 찾습니다</p>
+            <pre class="code fragment roll-in"><code data-trim>function getById(id, prefix) {
+    prefix = prefix || "coupang_";
+    return document.getElementById(prefix + id);
+}
+[ExecutionContext::getById].ScopeChain = [
+    {
+        id: "someElement",
+        prefix: undefined,
+        this: window,
+        arguments: [ "someElement" ]
+    },
+    {
+        A: A,
+        window: window,
+        document: window.document
+        /* ...기타 전역변수들... */
+    }
+]</code></pre>
+        </section>
+
+        <section>
+            <h3>실행이 끝나면...</h3>
+            <p>실행 컨텍스트는 파괴되고, 생성된 활성 객체도 사라집니다.</p>
+            <p class="fragment roll-in">그런데 예외가 있습니다</p>
+            <p class="fragment roll-in">바로 Closure라고 부르는 영역이 등장할 때입니다.</p>
+        </section>
+
+        <section>
+          <h2>Closure</h2>
+          <p>
+              단어의 뜻은 폐쇄.<br/>
+              뭘 폐쇄한다는 뜻일까요?
+          </p>
+        </section>
+
+        <section>
+            <h3>보통은</h3>
+            <p>실행 컨텍스트와 활성 객체는 운명을 같이 합니다.<br/>하지만 예외가 발생할 때가 있습니다.</p>
+            <p class="fragment roll-in">함수는 말했지만 "생성" 시 [[Scope]] 를 초기화합니다.</p>
+            <p class="fragment roll-in">[[Scope]] 는 현재 접근 가능한 변수객체로 초기화됩니다.</p>
+        </section>
+
+        <section>
+            <h3>함수가 중첩될 때...</h3>
+            <pre class="code fragment roll-in"><code data-trim>function A(val) {
+    function B() {
+        var b = "B";
+        return val + b;
+    }
+    return B;
+}
+var b = A("A");</code></pre>
+            <p class="fragment roll-in">A를 실행하면 A안이 실행되면서 B가 선언되고,<br/>반환하고 있습니다.</p>
+            <p class="fragment roll-in">반환된 함수의 [[Scope]] 는 어떤 구조일까요?</p>
+        </section>
+
+        <section>
+            <h3>함수 A로 돌아가서</h3>
+            <ol>
+                <li class="fragment roll-in">A가 생성되면 [[Scope]] 가 전역 변수로 초기화됩니다.</li>
+                <li class="fragment roll-in">이제 A를 실행합니다</li>
+                <li class="fragment roll-in">실행 컨텍스트가 만들어집니다</li>
+                <li class="fragment roll-in">A.[[Scope]]를 사용하여 ScopeChain에 변수 객체를 초기화했을 것입니다</li>
+                <li class="fragment roll-in">활성 객체도 만들어져 ScopeChain 맨 앞에 삽입했습니다.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>그런데 실행 중</h3>
+            <ol>
+                <li class="fragment roll-in">안에 또 함수 B가 있고 생성됩니다. B의 [[Scope]] 는 생성될 것입니다.</li>
+                <li class="fragment roll-in">A는 함수 B를 반환하면서 종료되고 실행 컨텍스트는 파괴되어 없어집니다</li>
+                <li class="fragment roll-in">그런데 A가 실행되며 생성한 활성 객체는 이번에는 파괴되지 않습니다</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>반환된 함수가 사용하고 있습니다!</h3>
+            <pre class="code fragment roll-in"><code data-trim>// b의 [[Scope]] 속성 구조.
+// 뭔가 하나 늘었다...
+b.[[Scope]] = [
+    {
+        B: B,
+        val: "A",
+        arguments: [ "A" ],
+        this: window
+    },
+    {
+        A: A,
+        window: window,
+        document: window.document
+        /* ...기타 전역변수들... */
+    }
+]</code></pre>
+        </section>
+
+        <section>
+            <h3>b를 실행하면...</h3>
+            <p>ScopeChain 이 초기화되며 다음과 같을 것입니다.</p>
+            <pre class="code fragment roll-in"><code data-trim>// 스코프체인의 변수객체가 3개.
+[ExecutionContext::b].ScopeChain = [
+    {
+        b: "B",
+        arguments: [],
+        this: window
+    },
+    {
+        B: B,
+        val: "A",
+        arguments: [ "A" ],
+        this: window
+    },
+    {
+        A: A,
+        window: window,
+        document: window.document
+        /* ...기타 전역변수들... */
+    }
+]</code></pre>
+        </section>
+
+        <section>
+            <p class="fragment roll-in">이런식으로 함수가 자신을 생성해준 스코프 체인을 유지하는 것을 클로저가 생성되었다고 표현합니다.</p>
+            <p class="fragment roll-in">한번 생성된 [[Scope]] 는 반환, 인자 전달등으로 방법으로도 변경할 수 없습니다.</p>
+            <p class="fragment roll-in">이러한 특성을 사용하면 여러가지 기법을 활용할 수 있습니다</p>
+        </section>
+
+        <section>
+            <h3>예제 #1</h3>
+            <pre class="code"><code data-trim="">var hello = '바이 짜이찌엔';
+function fn5() {
+    var world = '그럼 난 갈게. ';
+    alert(world + hello);
+    }
+fn5();
+
+function fn6() {
+    var world = '그럼 난 갈게. ';
+    var hello = '바이 사요나라';
+    alert(world + hello);
+}</code></pre>
+            <a href="https://github.com/NiceNodeJS/study/blob/master/sample/scope.js#LC35">Example</a>
+        </section>
+        <section>
+            <h3>예제 #2</h3>
+            <pre class="code"><code data-trim="">var foo = 'foo';
+function fn7() {
+    return foo;
+}
+
+function fn8(fn) {
+    var foo = 'huk?';
+    alert(fn()); // ?
+}
+fn8(fn7);</code></pre>
+            <a data-executor>RUN</a>
+            <a href="https://github.com/NiceNodeJS/study/blob/master/sample/scope.js#LC100">Example</a>
+        </section>
+
+        <section>
+            <h3>예제 #3</h3>
+            <pre class="code"><code data-trim="">function privateClosure(name, age) {
+    var myName = name;
+    var myage = age;
+    return {
+        profile: function() {
+            return myName + " / " + myage;
+        }
+    };
+}
+try {
+    var pr = privateClosure("javarouka", "34");
+    alert(pr.profile());
+    pr.myName = "이항희";
+    alert(pr.profile());
+}
+catch(e) { alert("Error! > " + e); }</code></pre>
+            <a data-executor>RUN</a>
+        </section>
+
+        <section>
+            <h1>감사합니다</h1>
+            <img src="img/7.gif">
+            <p><small>Happy Coding!</small></p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'night',//Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: 'cube', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/spotlight/spotlight.js', async: true, condition: function() { return !!document.body.classList; } }
+            //{ src: 'plugin/repoll/repoll.js', async: true, condition: function() { return !!document.body.classList; } },
+        ]
+    });
+
+    var codeExecutor = document.querySelectorAll("a[data-executor]");
+    Array.prototype.forEach.call(codeExecutor, function(v) {
+        v.onclick = function(e) {
+            var parent = e.target.parentNode;
+            eval.call(window, parent.querySelector("pre.code code").innerText);
+        }
+    });
+
+</script>
+
+</body>
+</html>
