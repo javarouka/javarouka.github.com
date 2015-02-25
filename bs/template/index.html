@@ -50,41 +50,41 @@
             </p>
         </section>
 
-        <section>
-            <h2>데이터에 따라 변하는 페이지</h2>
-            <p>서버사이드에서 동적인 HTML을 렌더링하는게 일반적이었던 시절이 있었다.</p>
-        </section>
+        <!--<section>-->
+            <!--<h2>데이터에 따라 변하는 페이지</h2>-->
+            <!--<p>서버사이드에서 동적인 HTML을 렌더링하는게 일반적이었던 시절이 있었다.</p>-->
+        <!--</section>-->
 
-        <section>
-            <p class="fragment roll-in">우리의 친구 JSP</p>
-            <pre class="fragment roll-in code"><code data-trim>&lt;select name="locale"&gt;
-&lt;c:forEach var="localeString" items="${locales.localeNames}" &gt;
-&lt;c:choose&gt;
-    &lt;c:when test="${selectedFlag}"&gt;
-        &lt;c:choose&gt;
-            &lt;c:when
-                 test="${f:equals(selectedLocaleString, localeString)}" &gt;
-                &lt;option selected&gt;${localeString}&lt;/option&gt;
-            &lt;/c:when&gt;
-            &lt;c:otherwise&gt;
-                &lt;option&gt;${localeString}&lt;/option&gt;
-            &lt;/c:otherwise&gt;
-        &lt;/c:choose&gt;
-    &lt;/c:when&gt;
-    &lt;c:otherwise&gt;
-        &lt;option&gt;${localeString}&lt;/option&gt;
-    &lt;/c:otherwise&gt;
-&lt;/c:choose&gt;
-&lt;/c:forEach&gt;
-&lt;/select&gt;</code></pre>
-        </section>
+        <!--<section>-->
+            <!--<p class="fragment roll-in">우리의 친구 JSP</p>-->
+            <!--<pre class="fragment roll-in code"><code data-trim>&lt;select name="locale"&gt;-->
+<!--&lt;c:forEach var="localeString" items="${locales.localeNames}" &gt;-->
+<!--&lt;c:choose&gt;-->
+    <!--&lt;c:when test="${selectedFlag}"&gt;-->
+        <!--&lt;c:choose&gt;-->
+            <!--&lt;c:when-->
+                 <!--test="${f:equals(selectedLocaleString, localeString)}" &gt;-->
+                <!--&lt;option selected&gt;${localeString}&lt;/option&gt;-->
+            <!--&lt;/c:when&gt;-->
+            <!--&lt;c:otherwise&gt;-->
+                <!--&lt;option&gt;${localeString}&lt;/option&gt;-->
+            <!--&lt;/c:otherwise&gt;-->
+        <!--&lt;/c:choose&gt;-->
+    <!--&lt;/c:when&gt;-->
+    <!--&lt;c:otherwise&gt;-->
+        <!--&lt;option&gt;${localeString}&lt;/option&gt;-->
+    <!--&lt;/c:otherwise&gt;-->
+<!--&lt;/c:choose&gt;-->
+<!--&lt;/c:forEach&gt;-->
+<!--&lt;/select&gt;</code></pre>-->
+        <!--</section>-->
 
-        <section>
-            <p>데이터를 표현할 방법을 JSP의 문법에 맞춰 틀을 정의해두면,</p>
-            <p class="fragment roll-in">묶어주는 데이터에 따라 문자열을 생성.</p>
-            <p class="fragment roll-in">JSP말고도 PHP등 여러 템플릿 엔진들은 서버에서 처리됐지만</p>
-            <p class="fragment roll-in">최근엔 서버는 데이터만, 그리는건 클라이언트가 하는 일이 많아졌다</p>
-        </section>
+        <!--<section>-->
+            <!--<p>데이터를 표현할 방법을 JSP의 문법에 맞춰 틀을 정의해두면,</p>-->
+            <!--<p class="fragment roll-in">묶어주는 데이터에 따라 문자열을 생성.</p>-->
+            <!--<p class="fragment roll-in">JSP말고도 PHP등 여러 템플릿 엔진들은 서버에서 처리됐지만</p>-->
+            <!--<p class="fragment roll-in">최근엔 서버는 데이터만, 그리는건 클라이언트가 하는 일이 많아졌다</p>-->
+        <!--</section>-->
 
         <section>
            <h2>JavaScript로 HTML을 그릴 때</h2>
@@ -155,7 +155,7 @@ function scope() ...
 
         <section>
             <h3>이따위 읽을 수 있다고 한다면</h3>
-            <p class="fragment roll-in">보통 실무에서는 저런 장난같은 간단한 코드는 없다.<br/>보통 비즈니스가 뒤섞여 아래와 같은 코드가 나온다</p>
+            <!--<p class="fragment roll-in">보통 실무에서는 저런 장난같은 간단한 코드는 없다.<br/>보통 비즈니스가 뒤섞여 아래와 같은 코드가 나온다</p>-->
             <p class="fragment roll-in">
                 <a href="https://github.com/javarouka/javarouka.github.com/blob/master/bs/template/bad-html-concat.js" target="_blank">Huk...</a>
             </p>
@@ -272,7 +272,7 @@ var listenWeatherData = function(location) {
 
     var scriptTag = document.getElementById("jsonp-script");
     if(scriptTag) {
-    document.body.removeChild(oldScriptTag);
+        document.body.removeChild(oldScriptTag);
     }
 
     scriptTag = document.createElement("script");
