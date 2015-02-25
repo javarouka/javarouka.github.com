@@ -216,7 +216,10 @@ document.getElementById("test-render-area").innerHTML = html;</code></pre>
 &lt;/script&gt;</code></pre>
             <p class="fragment roll-in">이렇게 스크립트 태그에 넣어두면 HTML을 그대로 보존하면서 알아보기 쉽게 볼 수 있다</p>
             <pre class="code fragment roll-in"><code data-trim>// 스크립트 태그에 붙인 아이디로 노드를 가져와서 innerHTML으로 템플릿 문자열을 얻으면~
-var userData = document.getElementById("my-template").innerHTML;</code></pre>
+var lyricTemplateText = document.getElementById("my-template").innerHTML;
+
+// 그리고 컴파일
+var compiled = Handlebars.compile(lyricTemplateText);</code></pre>
         </section>
 
         <section>
