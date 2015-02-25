@@ -99,21 +99,20 @@
 
         <section>
             <h3>이러한 구조일 것이다</h3>
-            <div class="fragment">
-                <pre class="code">var elUserInfoGridBody = document.getElementById('userInfoGridBody'),
+            <pre class="code"><code data-trim>var elUserInfoGridBody = document.getElementById('userInfoGridBody'),
       user;
 
 // 전에 있던 영역을 지워준다
 elUserInfoGridBody.innerHTML = '';
 
-for (var i = 0, len = userList.length; i < len; i++) {
+for (var i = 0, len = userList.length; i &gt; len; i++) {
 
     user = userList[i];
 
     // 열심히 그린다
-    elUserInfoGridBody.innerHTML += '&lt;tr&gt; &lt;td&gt;' +user.id + '&lt;/td&gt; &lt;td&gt;' + user.name + '&lt;/td&gt; &lt;/tr&gt;';
-}</pre>
-            </div>
+    elUserInfoGridBody.innerHTML += '&lt;tr&gt; &lt;td&gt;' + user.id + '&lt;/td&gt; &lt;td&gt;' + user.name + '&lt;/td&gt; &lt;/tr&gt;';
+}
+</code></pre>
         </section>
 
         <section>
@@ -185,7 +184,43 @@ function scope() ...
         </section>
 
         <section>
-            <h3>바로 시작해보자</h3>
+            <h3>흐름</h3>
+            <p class="fragment roll-in">템플릿으로 사용할 문자열을 Handlebars.complie 함수로 컴파일</p>
+            <p class="fragment roll-in">컴파일 결과에 묶을 데이터를 인자로 실행</p>
+            <p class="fragment roll-in">실행 결과로 나온 문자열을 그릴 곳에 넣기</p>
+        </section>
+
+        <section>
+            <h3>기초예제</h3>
+            <pre class="code"><code data-trim>// 데이터입니다.
+var lyric = "정상에 올라 너의 이름 토한 날\n나를 누르던 앙금같은 기억도";
+
+// 우선 핸들바로 템플릿 문자열을 컴파일합니다.
+// {{식별자}} 형식으로 데이터를 표현할 수 있습니다.
+// this 식별자는 묶일 데이터 바로 자기 자신을 가르킵니다.
+var compiled = Handlebars.compile("&lt;pre&gt;{{this}}&lt;/pre&gt;");
+
+// 컴파일 결과로 함수가 나옵니다. 여기에 데이터를 인자로 실행시킵니다.
+var html = compiled(lyric);
+
+// 결과를 적당한 영역에 넣어줍니다.
+document.getElementById("test-render-area").innerHTML = html;</code></pre>
+            <div id="test-render-area" style="margin-top: 5px; padding-left: 5%;"></div>
+            <a data-executor>RUN</a>
+        </section>
+
+        <section>
+            <h4>템플릿 문자열을...</h4>
+            <pre class="code"><code>&lt;script id="my-template" type="text/x-handlebars-template"&gt;
+    &lt;pre&gt;{{this}}&lt;/pre&gt;
+&lt;/script&gt;</code></pre>
+            <p class="fragment roll-in">이렇게 스크립트 태그에 넣어두면 HTML을 그대로 보존하면서 알아보기 쉽게 볼 수 있다</p>
+            <pre class="code fragment roll-in"><code data-trim>// 스크립트 태그에 붙인 아이디로 노드를 가져와서 innerHTML으로 템플릿 문자열을 얻으면~
+var userData = document.getElementById("my-template").innerHTML;</code></pre>
+        </section>
+
+        <section>
+            <h3>바로 간단한 테이블 그리기</h3>
             <p>먼저 사용할 데이터</p>
             <pre class="code"><code data-trim>var userData = [
     {
@@ -208,9 +243,9 @@ function scope() ...
 
         <section>
             <p>템플릿 작성</p>
-            <p class="fragment roll-in">스크립트 태그안에 작성하는 이유는 렌더링 요소가 아니고, 노드 안의 텍스트 보존이 용이</p>
-            <p class="fragment roll-in">반드시 타입을 text/template 등으로 지정해서</p>
-            <p class="fragment roll-in">스크립트가 아님을 브라우저에게 알려줘 실행을 막는다.</p>
+            <!--<p class="fragment roll-in">스크립트 태그안에 작성하는 이유는 렌더링 요소가 아니고, 노드 안의 텍스트 보존이 용이</p>-->
+            <!--<p class="fragment roll-in">반드시 타입을 text/template 등으로 지정해서</p>-->
+            <!--<p class="fragment roll-in">스크립트가 아님을 브라우저에게 알려줘 실행을 막는다.</p>-->
             <pre class="code fragment roll-in"><code data-trim>&lt;script id="user-list-template" type="text/x-handlebars-template"&gt;
     {{#this}}
         &lt;tr data-seq="{{seq}}"&gt;
@@ -343,6 +378,7 @@ var listenWeatherData = function(location) {
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
 <script>
 
