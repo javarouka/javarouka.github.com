@@ -1,0 +1,13 @@
+// 데이터입니다.
+var lyric = "정상에 올라 너의 이름 토한 날\n나를 누르던 앙금같은 기억도";
+
+// 우선 핸들바로 템플릿 문자열을 컴파일합니다.
+// {{식별자}} 형식으로 데이터를 표현할 수 있습니다.
+// this 식별자는 묶일 데이터 바로 자기 자신을 가르킵니다.
+var compiled = Handlebars.compile("<pre>{{this}}</pre>");
+
+// 컴파일 결과로 함수가 나옵니다. 여기에 데이터를 인자로 실행시킵니다.
+var html = compiled(lyric);
+
+// 결과를 적당한 영역에 넣어줍니다.
+document.getElementById("testa-render-area").innerHTML = html;
