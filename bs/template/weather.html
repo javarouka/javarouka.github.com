@@ -3,6 +3,33 @@
 <head lang="ko">
     <meta charset="UTF-8">
     <title>Simple Weather</title>
+    <style>
+        .widget {
+            padding: 5px 20px;
+            margin: 1%;
+            border: solid 1px #eee;
+            box-shadow: 1px 1px 2px #aaa;
+            width: 200px;
+        }
+        #weather-content h2 {
+            padding-bottom: 2px;
+            border-bottom: solid 1px #aaa;
+        }
+        #weather-content img {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        #weather-content img:hover {
+            -ms-transform: scale(2.5,2.5) translate(20px, -10px);
+            -webkit-transform: scale(2.5,2.5) translate(20px, -10px);
+            transform: scale(2.5,2.5) translate(20px, -10px);
+        }
+        .clearfix {
+            clear: both;
+            height: 0;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -18,12 +45,12 @@
                 <p>
                     {{description}}
                 </p>
-                <div style="clear: both; height: 0;"></div>
+                <div class="clearfix"></div>
             {{/weather}}
         {{/list}}
     </script>
 
-    <section style="padding: 5px 20px; margin: 1%; border: solid 1px #eee; box-shadow: 1px 1px 2px #aaa; width: 200px;">
+    <section class="widget">
 
         <select id="location-picker">
             <option value="Seoul">서울</option>
