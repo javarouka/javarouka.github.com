@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>ECMAScript 5th New Feature By javarouka (@YiHanghee)</title>
+		<title>ECMAScript 5th Features By javarouka (@YiHanghee)</title>
 		<meta name="description" content="ecmascript 5th new feature">
 		<meta name="author" content="javarouka">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 			<div class="slides">
 
 				<section>
-					<h1>ECMA Script 5 new Feature</h1>
+					<h1>ECMAScript 5 Features</h1>
 					<h3>이미 우리 바로 옆에 있는 ECMAScript5</h3>
 					<p>
 						<small>Created by
@@ -380,22 +380,6 @@ var PinkLUV = {
                     </div>
                 </section>
                 <section>
-                    <p>Object.keys(obj)</p>
-                    <div class="fragment roll-in">
-                        <pre class="code"><code data-tarim>!function() {
-    var PinkLUV = {
-        singer: "Apink",
-        leader: "Chorong, Park",
-        title: "LUV",
-        video: "www.youtube.com/watch?v=8dVjSvLzD1I"
-    };
-    var keys = Object.keys(PinkLUV);
-    alert(keys);
-}();                   </code></pre>
-                        <a data-executor>RUN</a>
-                    </div>
-                </section>
-                <section>
                     <h3>Object get/set</h3>
                     <pre class="code"><code data-tarim>(function() {
 
@@ -411,6 +395,171 @@ var PinkLUV = {
     alert(Browser.name); // get.
 
 })();               </code></pre>
+                    <a data-executor>RUN</a>
+                </section>
+                <section>
+                    <h4>Object.defineProperty</h4>
+                    <div class="fragment roll-in">
+                        <pre class="code"><code data-tarim>(function() {
+    Object.defineProperty(객체, 키이름, 디스크립터);
+})();</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h4>Object.defineProperty</h4>
+                    <div class="fragment roll-in">
+                        <pre class="code"><code data-tarim>!function() {
+    var Coupang = {
+        name: "쿠팡"
+    };
+    Object.defineProperty(Coupang, 'age', {
+        value: 4
+    });
+
+    alert(Coupang.name);
+    alert(Coupang.age);
+
+    // !!!!????
+    alert(JSON.stringify(Coupang));
+    alert(Object.keys(Coupang));
+
+}();</code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
+                    <h4>Ddescriptor properties!</h4>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <em>value</em><br/>
+                            <small>값.</small>
+                        </li>
+                        <li class="fragment roll-in">
+                            <em>writable</em><br/>
+                            <small>값을 덮어쓸 수 있는지 여부. 기본값은 false</small>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <div>
+                        <pre class="code"><code data-tarim>!function() {
+    var Coupang = {};
+    Object.defineProperty(Coupang, 'name', {
+        value: "쿠팡",
+        writable: false
+    });
+
+    Coupang.name = "티켓몬스터";
+
+    alert(Coupang.name);
+
+}();</code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <em>configurable</em><br/>
+                            <small>객체 재정의 허용여부. 기본값은 false</small>
+                        </li>
+                        <li class="fragment roll-in">
+                            <em>enumerable</em><br/>
+                            <small>객체 프로퍼티를 외부 노출 기능 (keys, for-in, JSON.stringify...)에 노출할지 여부. 기본값은 false</small>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <div>
+                        <pre class="code"><code data-tarim>try {
+    var Coupang = {};
+    Object.defineProperty(Coupang, 'name', {
+        value: "쿠팡", configurable: false
+    });
+    alert("keys > [ " + Object.keys(Coupang) + " ]");
+
+    Object.defineProperty(Coupang, 'name', {
+        value: "티켓몬스터", enumerable: true
+    });
+    alert(Object.keys(Coupang));
+}
+catch(ex) {
+    alert(ex);
+}</code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <pre class="code"><code data-tarim>try {
+    var Coupang = {};
+        Object.defineProperty(Coupang, 'name', {
+        value: "쿠팡", configurable: true, enumerable: true
+    });
+    alert("keys > [ " + Object.keys(Coupang) + " ]");
+
+    Object.defineProperty(Coupang, 'name', {
+        value: "티켓몬스터", enumerable: true
+    });
+
+    alert("Coupang.name > " + Coupang.name);
+}
+catch(ex) {
+    alert(ex);
+}</code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <em>get</em><br/>
+                            <small>필드의 값을 참조할 경우 실행되는 getter 함수를 지정</small>
+                        </li>
+                        <li class="fragment roll-in">
+                            <em>set</em><br/>
+                            <small>필드의 값을 할당할 경우 실행되는 setter 함수를 지정</small>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <pre class="code" style="font-size: .50em;"><code data-tarim>function ECommerce() {
+    var name = "쿠팡";
+
+    Object.defineProperty(this, 'descriptionText', {
+        set: function(_name) { name = _name },
+        get: function() { return name + ", 한국의 E-커머스 회사입니다." }
+    });
+
+}
+var eCommerce = new ECommerce();
+alert(eCommerce.descriptionText);
+eCommerce.descriptionText = "티켓몬스터";
+alert(eCommerce.descriptionText);
+</code></pre>
+                    <a data-executor>RUN</a>
+                </section>
+                <section>
+                    <h4>Object.create + descriptor</h4>
+                    <pre class="code" style="font-size: .45em;"><code data-trim>var javarouka = Object.create({}, {
+    name: {
+        value: "이항희",
+        enumerable: true
+    },
+    age: {
+        value: 36,
+        writable: true,
+        configurable: true
+    }
+});
+alert(javarouka.name + " / " + javarouka.age);
+
+// try modify properties
+javarouka.name = "JavaRouka";
+javarouka.age = 29;
+alert(javarouka.name + " / " + javarouka.age);</code></pre>
                     <a data-executor>RUN</a>
                 </section>
                 <section>
@@ -436,7 +585,7 @@ var PinkLUV = {
 
                 <section>
                     <h4>Array.some</h4>
-                    <p>판단 함수를 인자로 받으며 판단 함수에서 하나라도 true를 반환하면 true.</p>
+                    <p>하나라도 true를 반환하면 true.</p>
                     <pre class="code"><code data-tarim>!function() {
     var groups = [
         { name: "이항희", job: "programer", gender: "male" },
@@ -474,7 +623,7 @@ var PinkLUV = {
 
                 <section>
                     <h4>Array.map</h4>
-                    <p>배열 요소를 새로운 규칙의 배열로 작성함. mapping.</p>
+                    <p>배열 요소를 순회하며 반환값으로 구성되는 새 배열을 반환.</p>
                     <pre class="code"><code data-tarim>(function() {
     var groups = [
         { name: "이항희", job: "programer", gender: "male" },
