@@ -380,16 +380,32 @@ var PinkLUV = {
                     </div>
                 </section>
                 <section>
+                    <p>Object.keys</p>
+                    <div class="fragment roll-in">
+                        <pre class="code"><code data-tarim>!function() {
+    var PinkLUV = {
+        singer: "Apink",
+        leader: "Chorong, Park",
+        title: "LUV",
+        video: "www.youtube.com/watch?v=8dVjSvLzD1I"
+    };
+
+    alert(Object.keys(PinkLUV));
+}();</code></pre>
+                        <a data-executor>RUN</a>
+                    </div>
+                </section>
+                <section>
                     <h3>Object get/set</h3>
                     <pre class="code"><code data-tarim>(function() {
 
     var Browser = {
-        defaultBrowser: "Internet Explorer 를 사용중입니다.",
         get name() { return this.defaultBrowser; },
         set name(v) { this.defaultBrowser = v + " 를 사용중입니다."; }
     };
 
-    alert(Browser.name); // get. 그냥 속성명처럼 사용
+    Browser.name = "Internet Explorer"; // set.
+    alert(Browser.name); // get.
 
     Browser.name = "Chrome"; // set.
     alert(Browser.name); // get.
