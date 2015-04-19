@@ -138,11 +138,12 @@
                     <h4>ECMA Script 3nd</h4>
                     <pre class="code"><code data-trim>(function() {
 
-  var jsonString = "{ \"hello\": \"world\" }";
+    var jsonString = "{ \"hello\": \"world\" }";
 
-  // eval 사용
-  // eval(json 문자열);
-  alert("hello " + (eval("("+jsonString+")")).hello);
+    // eval 사용
+    // eval(json 문자열);
+    var jsn = eval("("+jsonString+")");
+    alert(JSON.stringify(jsn, null, '    '));
 
 })();</code></pre>
                     <a data-executor>RUN</a>
@@ -156,7 +157,8 @@
 
     // 동적 함수 사용
     // new Function(json 문자열을 리턴하는 소스 문자열);
-    alert("hello " + (new Function("return " + jsonString))().hello);
+    var jsn = new Function("return " + jsonString)();
+    alert(JSON.stringify(jsn, null, '    '));
 
 })();</code></pre>
                     <a data-executor>RUN</a>
@@ -170,8 +172,6 @@
 
   // Native JSON Object
   var jsn = JSON.parse(jsonString)
-  alert(jsn.hello);
-
   alert(JSON.stringify(jsn, null, '    '));
 
 }();                   </code></pre>
@@ -279,28 +279,34 @@ delete undefined // Syntax Error
                 </section>
                 <section>
                     <h4>Create Object # ES3</h4>
-                    <pre class="code"><code data-tarim>var javacafe = {};
+                    <pre class="code"><code data-tarim>!function() {
 
-var javacafe = new Object();
+    var javacafe = {};
 
-var JavacafeConstructor = function() {};
-JavacafeConstructor.prototype = {
-    constructor: JavacafeConstructor
-    // etc ...
-};
-javacafe = new JavacafeConstructor();</code></pre>
+    var javacafe = new Object();
+
+    var JavacafeConstructor = function() {};
+    JavacafeConstructor.prototype = {
+        constructor: JavacafeConstructor
+        // etc ...
+    };
+    javacafe = new JavacafeConstructor();
+
+}();</code></pre>
                 </section>
                 <section>
                     <h4>Create Object # ES5</h4>
                     <p class="fragment">Object.create(prototype)!</p>
                     <div class="fragment">
                         <pre class="code"><code data-tarim>!function() {
-    var javacafe = Object.create({
-        hello: "world",
+
+    var step = Object.create({
+        "hello": "world",
         "hi": "안녕"
     });
-    alert("javacafe.hello # " + javacafe.hello);
-    alert("javacafe.hi # " + javacafe.hi);
+    alert(step.hi);
+    alert(step.hello);
+
 }();</code></pre>
                         <a data-executor>RUN</a>
                     </div>
@@ -345,25 +351,27 @@ javacafe = new JavacafeConstructor();</code></pre>
                 <section>
                     <h3>Object Key</h3>
                     <p>객체의 모든 속성명을 얻고싶은데...</p>
-                    <pre class="code"><code data-tarim>// 객체의 속성명 name, boss, type 을 가져오고 싶다.
-var javacafe = {
-    name: "javacafe",
-    boss: "hrkim",
-    type: "study group"
+                    <pre class="code"><code data-tarim>// 객체의 속성명 singer, leader, video 를 가져오고 싶다.
+var PinkLUV = {
+    singer: "Apink",
+    leader: "Chorong, Park",
+    title: "LUV",
+    video: "www.youtube.com/watch?v=8dVjSvLzD1I"
 }</code></pre>
                 </section>
                 <section>
                     <p>for - in</p>
                     <div class="fragment roll-in">
                         <pre class="code"><code data-tarim>!function() {
-    var javacafe = {
-            name: "javacafe",
-            boss: "hrkim",
-            type: "study group"
+        var PinkLUV = {
+            singer: "Apink",
+            leader: "Chorong, Park",
+            title: "LUV",
+            video: "www.youtube.com/watch?v=8dVjSvLzD1I"
         },
         keys = [];
-    for(var k in javacafe) {
-        if(!javacafe.hasOwnProperty(k)) continue;
+    for(var k in PinkLUV) {
+        if(!PinkLUV.hasOwnProperty(k)) continue;
         keys.push(k);
     }
     alert(keys);
@@ -375,12 +383,13 @@ var javacafe = {
                     <p>Object.keys(obj)</p>
                     <div class="fragment roll-in">
                         <pre class="code"><code data-tarim>!function() {
-    var javacafe = {
-        name: "javacafe",
-        boss: "hrkim",
-        type: "study group"
+    var PinkLUV = {
+        singer: "Apink",
+        leader: "Chorong, Park",
+        title: "LUV",
+        video: "www.youtube.com/watch?v=8dVjSvLzD1I"
     };
-    var keys = Object.keys(javacafe);
+    var keys = Object.keys(PinkLUV);
     alert(keys);
 }();                   </code></pre>
                         <a data-executor>RUN</a>
@@ -413,9 +422,9 @@ var javacafe = {
                     <h4>Array.indexOf</h4>
                     <p>인자로 준 요소가 해당 배열의 어느 인덱스인지 반환.<br/>없다면 -1.</p>
                     <pre class="code"><code data-tarim>!function() {
-    var javarouka = { name: "이항희", job: "programer" gender: "male" },
-        sora = { name: "강소라", job: "actress, gender: "female" },
-        suzi = { name: "수지", job: "singer, gender: "female" };
+    var javarouka = { name: "이항희", job: "programer", gender: "male" },
+        sora = { name: "강소라", job: "actress", gender: "female" },
+        suzi = { name: "수지", job: "singer", gender: "female" };
 
     var groups = [ javarouka, sora, suzi ];
 
@@ -436,12 +445,12 @@ var javacafe = {
     ];
 
     // 남자가 한명이라도 있는지?
-    var r = groups.some(function(v){ return v.gender === "female"; });
+    var r = groups.some(function(v){ return v.gender === 'female'; });
     alert("남자가 있나? " + r);
 
     // 프로그래머가 한명이라도 있는지?
-    r = groups.some(function(v){ return v.job === programer;  });
-    alert("30대가 있나? " + r);
+    r = groups.some(function(v){ return v.job === 'programer';  });
+    alert("프로그래머가 있나? " + r);
 }();</code></pre>
                     <a data-executor>RUN</a>
                 </section>
@@ -490,7 +499,8 @@ var javacafe = {
                     </p>
                     <pre class="code"><code data-tarim>!function() {
 
-    // 초기누적값이 없으면 첫번쨰 요소를 사용하며 순서는 두번째부터 시작함
+    // 초기누적값은 옵션.
+    // 초기누적값이 없다면 첫 콜백 실행시 첫번째 요소를 사용하며 콜백 호출은 두번째부터.
     arrayObj.reduce(callback[, 초기누적값])
 
     // 각 콜백에 전달되는 인자
