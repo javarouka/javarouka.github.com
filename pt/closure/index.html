@@ -138,6 +138,10 @@ hoist();</code></pre>
         </section>
 
         <section>
+            <p>var a = 2</p>
+        </section>
+
+        <section>
             <p>실제 엔진이 실행할땐 이런식으로 (실제 코드가 이렇게 변하진 않습니다)</p>
             <pre class="code"><code data-trim>// 실제 인터프리터가 해석하는 방법
 var coffee = "아메리카노";
@@ -149,6 +153,24 @@ function hoist() {
     console.log(coffee + " 사드릴게요");
 };
 hoist();</code></pre>
+        </section>
+
+        <section>
+            <p>JavaScript 는 이 코드를 몇단계로 나누어 생성하고 실행합니다</p>
+        </section>
+
+        <section>
+            <p class="fragment roll-in">컴파일러는 코드의 렉싱(lexing)을 거친 뒤 토큰된 문자열을 분석하기 시작함</p>
+            <p class="fragment roll-in">var 는 선언구문이라 변수를 선언하는 코드를 생성해야 한다</p>
+            <p class="fragment roll-in">먼저 a가 해당 스코프에 선언되어 있는지 판별하여 없으면 선언, 아니면 그냥 무시한다</p>
+            <p class="fragment roll-in">그 다음 컴파일러는 a에 변수를 할당하는 코드를 생성한다</p>
+            <p class="fragment roll-in">나머지 컴파일이 완료되고, 실행될 때가 되면 엔진은 a가 현재 스코프에서 찾을 수 있는지 확인한다</p>
+            <p class="fragment roll-in">이 과정에서 스코프 체이닝이 발생. 찾아낸 변수 a에 2를 할당</p>
+            <p class="fragment roll-in">체이닝 결과로 변수를 못찾으면 ReferenceError 발생</p>
+        </section>
+
+        <section>
+            <p>이러한 과정에서 중요한 것은 매 과정에 스코프가 깊이 관여하고 있다는 점.</p>
         </section>
 
         <section>
