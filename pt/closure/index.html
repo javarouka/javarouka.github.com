@@ -34,7 +34,6 @@
         <section>
             <h1>목차</h1>
             <ul>
-                <!--<li class="fragment roll-in">Global Scope</li>-->
                 <li class="fragment roll-in">JavaScript Function</li>
                 <li class="fragment roll-in">Function Scope</li>
                 <li class="fragment roll-in">Scope Chain</li>
@@ -42,13 +41,6 @@
                 <li class="fragment roll-in">Tip</li>
             </ul>
         </section>
-
-        <!--<section>-->
-            <!--<h2>Global Scope</h2>-->
-            <!--<p class="fragment roll-in">전역 스코프.</p>-->
-            <!--<p class="fragment roll-in">자바스크립트 어디에서든 접근할 수 있는 변수.</p>-->
-            <!--<p class="fragment roll-in">사용에 주의 필요.</p>-->
-        <!--</section>-->
 
         <section>
             <h2>JavaScript Function</h2>
@@ -79,7 +71,7 @@ var helloWorld = function() { /* Implemenet... */ };
 
         <section>
             <h2>Function Scope</h2>
-            <p>JavaScript의 스코프는 보통 언어와 다른 범위를 가집니다.</p>
+            <p>JavaScript의 스코프는 보통 언어와 다른 범위</p>
             <pre class="code"><code data-trim>// Java
 public class Scope {
     private void scope() {
@@ -100,7 +92,7 @@ public class Scope {
 
         <section>
             <h3>오로지 함수 범위</h3>
-            <p>함수 정의 영역에서만 범위가 결정됩니다.</p>
+            <p>함수 정의 영역에서만 범위가 결정</p>
             <pre class="code"><code data-trim>// JavaScript
 function scope() {
     var isPass = true;
@@ -131,10 +123,9 @@ hoist();</code></pre>
         </section>
 
         <section>
-            <h3>Hoisting 이라고 부릅니다.</h3>
-            <p>함수 스코프이기에 이런 일이 발생합니다.</p>
-            <p class="fragment roll-in">스코프내의 모든 변수는 실행 전 선언됩니다</p>
-            <p class="fragment roll-in">변수는 실행되면서 할당됩니다</p>
+            <h3>Hoisting</h3>
+            <p class="fragment roll-in">스코프내의 모든 변수는 실행 전 선언 (컴파일 단계)</p>
+            <p class="fragment roll-in">변수는 실행되면서 할당 (엔진에 의한 코드 실행 단계)</p>
         </section>
 
         <section>
@@ -142,7 +133,7 @@ hoist();</code></pre>
         </section>
 
         <section>
-            <p>실제 엔진이 실행할땐 이런식으로 (실제 코드가 이렇게 변하진 않습니다)</p>
+            <p>실제 엔진이 실행할땐 이런식으로</p>
             <pre class="code"><code data-trim>// 실제 인터프리터가 해석하는 방법
 var coffee = "아메리카노";
 function hoist() {
@@ -156,7 +147,7 @@ hoist();</code></pre>
         </section>
 
         <section>
-            <p>JavaScript 는 이 코드를 몇단계로 나누어 생성하고 실행합니다</p>
+            <p>JavaScript 는 이 코드를 몇단계로 나누어 생성하고 실행</p>
         </section>
 
         <section>
@@ -175,13 +166,12 @@ hoist();</code></pre>
 
         <section>
             <h2>Scope Chain</h2>
-            <p>지금까지 살펴본 스코프가 왜 저렇게 그리고, 어떻게 구성되는지 알아봅니다.</p>
         </section>
 
         <section>
             <h3>다시 Function...</h3>
             <p>함수는 객체!</p>
-            <p class="fragment roll-in">JavaScript의 Function은 객체이기에 속성을 가집니다.</p>
+            <p class="fragment roll-in">JavaScript의 Function은 객체이기에 속성을 가진다.</p>
             <div class="fragment roll-in">
                 <pre class="code"><code data-trim>function A() { /* ... */ }
 A.coupang = "쿠팡!";
@@ -199,18 +189,18 @@ obj.coupang = "쿠팡!";
 alert(obj.coupang);
 alert(obj.costco);</code></pre>
             <a data-executor>RUN</a>
-            <p class="fragment roll-in">JavaScript는 특정 변수를 찾을 때 해당 이름을 키로 객체를 뒤져 찾습니다.</p>
+            <p class="fragment roll-in">JavaScript 는 특정 변수를 찾을 때 해당 이름을 키로 객체를 뒤져 찾는다</p>
         </section>
 
         <section>
             <h3>[[Scope]] Property</h3>
             <p>함수 객체에만 있는 인터프리터만 사용하는 내부 속성.</p>
-            <p class="fragment roll-in">함수가 "선언" 되면 인터프리터에 의해 일련의 과정을 거쳐 할당됩니다.</p>
+            <p class="fragment roll-in">함수가 "선언" 되면 인터프리터에 의해 일련의 과정을 거쳐 할당된다</p>
         </section>
 
         <section>
             <h3>이렇게...</h3>
-            <pre class="code fragment roll-in"><code data-trim>// 전역에 함수를 생성했습니다.
+            <pre class="code fragment roll-in"><code data-trim>// 전역에 함수를 생성.
 function getById(id, prefix) {
     prefix = prefix || "coupang_";
     return document.getElementById(prefix + id);
@@ -222,22 +212,22 @@ getById.[[Scope]] = [ {
     document: window.document
     /* ...기타 전역변수들... */
 } ]</code></pre>
-            <p class="fragment roll-in">아직 함수는 실행되지 않았다는 사실에 주의.<br/>단지 생성되어 있습니다.</p>
+            <p class="fragment roll-in">아직 함수는 실행되지 않았다는 사실에 주의.<br/>단지 생성되어 있다.</p>
         </section>
 
         <section>
-            <h3>엔진이 실행시 이 속성을 사용합니다</h3>
-            <p>함수 실행 시 이 속성을 바탕으로 변수를 식별합니다</p>
-            <p class="fragment roll-in">그런데 잘 보시면, key-value 배열 형태입니다. 이 배열의 요소들을 변수 객체라고 부릅니다</p>
-            <p class="fragment roll-in">변수 객체는 현재 접근할 수 있는 변수로 초기화됩니다.</p>
+            <h3>엔진이 실행시 이 속성을 사용</h3>
+            <p>함수 실행 시 이 속성을 바탕으로 변수를 식별</p>
+            <p class="fragment roll-in">그런데 잘 보시면, key-value 배열 형태이다. 이 배열의 요소들을 변수 객체라고 부른다</p>
+            <p class="fragment roll-in">변수 객체는 현재 접근할 수 있는 변수로 초기화된다.</p>
         </section>
 
         <section>
-            <h3>여기부터 중요합니다.</h3>
+            <h3>여기부터 중요.</h3>
             <pre class="code"><code data-trim>getById("someElement");</code></pre>
-            <p class="fragment roll-in">함수가 실행되면 실행 컨텍스트가 생성됩니다.</p>
-            <p class="fragment roll-in">실행 컨텍스트는 변수를 식별하기 위해 [[Scope]] 를 사용하여 스코프 체인을 초기화합니다.</p>
-            <p class="fragment roll-in">이 상태라면 아마도 이런 구조일 것입니다.</p>
+            <p class="fragment roll-in">함수가 실행되면 실행 컨텍스트가 생성된다.</p>
+            <p class="fragment roll-in">실행 컨텍스트는 변수를 식별하기 위해 [[Scope]] 를 사용하여 스코프 체인을 초기화.</p>
+            <p class="fragment roll-in">이 상태라면 아마도 이런 구조일 것이다.</p>
             <pre class="code fragment roll-in"><code data-trim>[ExecutionContext::getById].ScopeChain = [ {
     A: A,
     window: window,
@@ -248,13 +238,13 @@ getById.[[Scope]] = [ {
 
         <section>
             <h3>이어서...</h3>
-            <p class="fragment roll-in">이어서 실행 컨텍스트는 활성 객체(Activation Object)라고 부르는 객체를 하나 만듭니다.</p>
-            <p class="fragment roll-in">이 객체는 앞서 설명한 호이스팅된 객체들이 매핑됩니다</p>
-            <p class="fragment roll-in">추가로, this 변수와 arguments 변수도 초기화됩니다</p>
+            <p class="fragment roll-in">이어서 실행 컨텍스트는 활성 객체(Activation Object)라고 부르는 객체를 하나 만든다.</p>
+            <p class="fragment roll-in">이 객체는 앞서 설명한 호이스팅된 객체들이 매핑된다</p>
+            <p class="fragment roll-in">추가로, this 변수와 arguments 변수도 초기화된다</p>
         </section>
 
         <section>
-            <p>이 상태라면 아마도 이런 구조일 것입니다.</p>
+            <p>이 상태라면 아마도 이런 구조일 것이다.</p>
             <pre class="code fragment roll-in"><code data-trim>[ExecutionContext::getById].ScopeChain = [
     {
         id: "someElement",
@@ -272,8 +262,8 @@ getById.[[Scope]] = [ {
         </section>
 
         <section>
-            <h3>이제 실행됩니다.</h3>
-            <p class="fragment roll-in">인터프리터는 변수를 만날 때마다 ScopeChain 속성에서 배열 첫번째 부터 차례대로 찾습니다</p>
+            <h3>이제 실행된다.</h3>
+            <p class="fragment roll-in">인터프리터는 변수를 만날 때마다 ScopeChain 속성에서 배열 첫번째 부터 차례대로 찾는다</p>
             <pre class="code fragment roll-in"><code data-trim>function getById(id, prefix) {
     prefix = prefix || "coupang_";
     return document.getElementById(prefix + id);
@@ -296,9 +286,9 @@ getById.[[Scope]] = [ {
 
         <section>
             <h3>실행이 끝나면...</h3>
-            <p>실행 컨텍스트는 파괴되고, 생성된 활성 객체도 사라집니다.</p>
-            <p class="fragment roll-in">그런데 예외가 있습니다</p>
-            <p class="fragment roll-in">바로 Closure라고 부르는 영역이 등장할 때입니다.</p>
+            <p>실행 컨텍스트는 파괴되고, 생성된 활성 객체도 사라진다.</p>
+            <p class="fragment roll-in">그런데 예외가 있다</p>
+            <p class="fragment roll-in">바로 Closure라고 부르는 영역이 등장할 때이다.</p>
         </section>
 
         <section>
@@ -311,9 +301,9 @@ getById.[[Scope]] = [ {
 
         <section>
             <h3>보통은</h3>
-            <p>실행 컨텍스트와 활성 객체는 운명을 같이 합니다.<br/>하지만 예외가 발생할 때가 있습니다.</p>
-            <p class="fragment roll-in">함수는 말했지만 "생성" 시 [[Scope]] 를 초기화합니다.</p>
-            <p class="fragment roll-in">[[Scope]] 는 현재 접근 가능한 변수객체로 초기화됩니다.</p>
+            <p>실행 컨텍스트와 활성 객체는 운명을 같이 .<br/>하지만 예외가 발생할 때가 있다.</p>
+            <p class="fragment roll-in">함수는 말했지만 "생성" 시 [[Scope]] 를 초기화.</p>
+            <p class="fragment roll-in">[[Scope]] 는 현재 접근 가능한 변수객체로 초기화된다.</p>
         </section>
 
         <section>
@@ -326,7 +316,7 @@ getById.[[Scope]] = [ {
     return B;
 }
 var b = A("A");</code></pre>
-            <p class="fragment roll-in">A를 실행하면 A안이 실행되면서 B가 선언되고,<br/>반환하고 있습니다.</p>
+            <p class="fragment roll-in">A를 실행하면 A안이 실행되면서 B가 선언되고,<br/>반환하고 있다.</p>
             <p class="fragment roll-in">반환된 함수의 [[Scope]] 는 어떤 구조일까요?</p>
         </section>
 
@@ -351,7 +341,7 @@ b.[[Scope]] = [
 
         <section>
             <h3>b를 실행하면...</h3>
-            <p>ScopeChain 이 초기화되며 다음과 같을 것입니다.</p>
+            <p>ScopeChain 이 초기화되며 다음과 같을 것이다.</p>
             <pre class="code fragment roll-in"><code data-trim>// 스코프체인의 변수객체가 3개.
 [ExecutionContext::b].ScopeChain = [
     {
@@ -375,7 +365,7 @@ b.[[Scope]] = [
         </section>
 
         <section>
-            <p>이런식으로 함수가 자신을 생성해준 스코프 체인을 유지하는 것을 클로저 생성이라고 합니다</p>
+            <p>이런식으로 함수가 자신을 생성해준 스코프 체인을 유지하는 것</p>
         </section>
 
         <section>
@@ -415,7 +405,7 @@ catch(e) { alert("Error! > " + e); }</code></pre>
         </section>
 
         <section>
-            <h1>감사합니다</h1>
+            <h1>감사</h1>
             <img src="img/7.gif">
             <p><small>Happy Coding!</small></p>
         </section>
