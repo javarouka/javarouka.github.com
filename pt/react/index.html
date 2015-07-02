@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+
+	<head>
+		<meta charset="utf-8">
+		<title>ECMAScript 5th Features By javarouka (@YiHanghee)</title>
+		<meta name="description" content="ecmascript 5th new feature">
+		<meta name="author" content="javarouka">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="lib/css/github.css">
+        <link rel="stylesheet" href="plugin/spotlight/spotlight.css">
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+		<script src="lib/js/html5shiv.js"></script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h1>React with RequireJS</h1>
+					<h3>같이 써보는 React</h3>
+					<p>
+						<small>Created by
+                            <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a>
+                        </small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>React ?</h2>
+                </section>
+
+                <section>
+                    <p>사용자 커스텀 HTML 엘리먼트를 생성할 수 있는 Library</p>
+                </section>
+
+                <section>
+                    <p>naver.com</p>
+                </section>
+
+                <section>
+                    <h3>이렇게 표현할 수 있다면?</h3>
+                    <pre class="code"><code data-tarim>&lt;Naver&gt;
+    &lt;Header&gt;
+        &lt;Logo/&gt;
+        &lt;SearchBar/&gt;
+    &lt;/Header&gt;
+    &lt;Main&gt;
+        &lt;Advertise rotate="true"/&gt;
+        &lt;LoginForm/&gt;
+        &lt;News/&gt;
+    &lt;/Main&gt;
+&lt;/Naver&gt;</code></pre>
+                </section>
+
+                <section>
+                    <p></p>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'simple',//Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'zoom', //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/spotlight/spotlight.js', async: true, condition: function() { return !!document.body.classList; } }
+					//{ src: 'plugin/repoll/repoll.js', async: true, condition: function() { return !!document.body.classList; } },
+				]
+			});
+
+            var codeExecutor = document.querySelectorAll("a[data-executor]");
+            Array.prototype.forEach.call(codeExecutor, function(v) {
+                v.onclick = function(e) {
+                    var parent = e.target.parentNode;
+                    eval.call(window, parent.querySelector("pre.code code").innerText);
+                }
+            });
+
+		</script>
+
+	</body>
+</html>
