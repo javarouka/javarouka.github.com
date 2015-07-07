@@ -1,17 +1,15 @@
 define([
-    'jquery',
-//    'nav/Navigation',
-    'jsx!nav/nav'
-], function($, Navigation) {
+    'jsx!Navigation'
+], function(Navigation) {
 
     'use strict';
 
-    var view = $('[data-view]');
+    var view = document.querySelector('[data-view]');
 
     (function initialize() {
 
         var nav = new Navigation();
-        nav.render(view[0]);
+        nav.render(view);
 
     })();
 
