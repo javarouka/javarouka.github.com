@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var TypeChecker = {
+            isFunction: function(v) {
+                return typeof v === 'function';
+            },
+            isString: function(v) {
+                return typeof v === 'string';
+            },
+            isNumber: function(v) {
+                return typeof v === 'number';
+            },
+            isObject: function(v) {
+                return typeof v === 'object';
+            },
+            isBoolean: function(v) {
+                return typeof v === 'boolean';
+            },
+            isNull: function(v) {
+                return v === null;
+            },
+            isUndefined: function(v) {
+                return v === undefined;
+            }
+        };
+
+        var type = [
+                'Function', 'String', 'Number', 'Object', 'Boolean', 'Null', 'Undefined', 'Array', 'Date', 'RegExp'
+            ],
+            ImproveTypeChecker = {};
+
+        type.forEach(function(type) {
+            ImproveTypeChecker[ 'is' + type ] = function(v) {
+                return Object.prototype.toString.call(v) === '[object ' + type + ']';
+            };
+        });
+
+    </script>
+</body>
+</html>
