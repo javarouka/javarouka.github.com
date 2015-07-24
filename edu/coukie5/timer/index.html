@@ -54,7 +54,7 @@
 
         function timerModuleFactory() {
 
-            var interval = 500;
+            var defaultInterval = 500;
             var tid = 0;
             var job = [];
 
@@ -66,8 +66,8 @@
 
             return {
 
-                interval: function() {
-                    tid = setInterval(action, interval)
+                interval: function(interval) {
+                    tid = setInterval(action, interval || defaultInterval)
                 },
 
                 stop: function() {
@@ -86,25 +86,35 @@
 
         function App() {
 
+            function loadConfig() {
+                return $.get('./config.json')
+            }
+
+            function appInitialize(config) {
+
+                var trace = $("#trace");
+                var timer = timerModuleFactory();
+                var randomElement = randomElementModuleFactory(trace);
+
+                timer.on(function() {
+
+                    if(trace.find(".box").size() > config.maxCount) {
+                        trace.find(".box").remove();
+                    }
+                    else {
+                        var randomEl = randomElement.make();
+                        trace.append(randomEl);
+                    }
+                });
+
+                timer.interval(config.interval);
+            }
+
             return {
                 start: function() {
 
-                    var trace = $("#trace");
-                    var timer = timerModuleFactory();
-                    var randomElement = randomElementModuleFactory(trace);
+                    loadConfig().done(appInitialize)
 
-                    timer.on(function() {
-
-                        if(trace.find(".box").size() > 100) {
-                            trace.find(".box").remove();
-                        }
-                        else {
-                            var randomEl = randomElement.make();
-                            trace.append(randomEl);
-                        }
-                    });
-
-                    timer.interval();
                 }
             }
         }
