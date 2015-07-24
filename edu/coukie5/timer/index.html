@@ -5,6 +5,9 @@
     <title>예제</title>
 
     <style>
+        #trace {
+            margin: 10px auto;
+        }
         .box {
             position: absolute;
             width: 30px;
@@ -25,19 +28,28 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
 
-        function toUnsignedInt(val) {
-            return ~~val;
-        }
+        function randomElementModuleFactory(container) {
 
-        function randomElementFactory(maxX, maxY) {
+            function toUnsignedInt(val) {
+                return ~~val;
+            }
 
-            var x = toUnsignedInt(Math.random() * maxX),
-                y = toUnsignedInt(Math.random() * maxY);
+            var maxX = container.width();
+            var maxY = container.height();
 
-            return $("<div class='box'></div>").css({
-                top: y,
-                left: x
-            });
+            return {
+                make: function() {
+
+                    var x = toUnsignedInt(Math.random() * maxX),
+                        y = toUnsignedInt(Math.random() * maxY);
+
+                    return $("<div class='box'></div>").css({
+                        top: y,
+                        left: x
+                    });
+
+                }
+            };
         }
 
         function timerModuleFactory() {
@@ -72,21 +84,33 @@
             }
         }
 
-        var timer = timerModuleFactory();
+        function App() {
 
-        timer.on(function() {
-            var trace = $("#trace");
+            return {
+                start: function() {
 
-            if(trace.find(".box").size() > 100) {
-                trace.find(".box").remove();
+                    var trace = $("#trace");
+                    var timer = timerModuleFactory();
+                    var randomElement = randomElementModuleFactory(trace);
+
+                    timer.on(function() {
+
+                        if(trace.find(".box").size() > 100) {
+                            trace.find(".box").remove();
+                        }
+                        else {
+                            var randomEl = randomElement.make();
+                            trace.append(randomEl);
+                        }
+                    });
+
+                    timer.interval();
+                }
             }
-            else {
-                console.log("1");
-                trace.append(randomElementFactory(trace.width(), trace.height()));
-            }
-        });
+        }
 
-        timer.interval();
+        var app = new App();
+        app.start();
 
 
     </script>
