@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>예제</title>
+
+    <style>
+        .box {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #b2dba1;
+            box-shadow: 1px 1px 2px 2px #006600;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="trace" style="width: 50%; height: 600px; position: relative;">
+
+    </div>
+
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+
+        function toUnsignedInt(val) {
+            return ~~val;
+        }
+
+        function randomElementFactory(maxX, maxY) {
+
+            var x = toUnsignedInt(Math.random() * maxX),
+                y = toUnsignedInt(Math.random() * maxY);
+
+            return $("<div class='box'></div>").css({
+                top: y,
+                left: x
+            });
+        }
+
+        function timerModuleFactory() {
+
+            var interval = 500;
+            var tid = 0;
+            var job = [];
+
+            function action() {
+                job.forEach(function(act) {
+                    act();
+                });
+            }
+
+            return {
+
+                interval: function() {
+                    tid = setInterval(action, interval)
+                },
+
+                stop: function() {
+                    clearInterval(tid);
+                },
+
+                on: function(fn) {
+                    job.push(fn);
+                },
+
+                off: function(fn) {
+                    job.splice(job.indexOf(fn), 1);
+                }
+            }
+        }
+
+        var timer = timerModuleFactory();
+
+        timer.on(function() {
+            var trace = $("#trace");
+
+            if(trace.find(".box").size() > 100) {
+                trace.find(".box").remove();
+            }
+            else {
+                console.log("1");
+                trace.append(randomElementFactory(trace.width(), trace.height()));
+            }
+        });
+
+        timer.interval();
+
+
+    </script>
+
+</body>
+</html>
