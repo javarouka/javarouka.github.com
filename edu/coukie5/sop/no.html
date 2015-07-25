@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <iframe src="http://www.coupang.com" id="coupang" style="height:100px; width: 100%" frameborder="0"></iframe>
+
+    <script>
+        document.getElementById('google').onload = function() {
+            try {
+                alert(frames[0].location)
+            } catch(e) {
+                alert("Error: "+e)
+            }
+        }
+    </script>
+
+</body>
+</html>
