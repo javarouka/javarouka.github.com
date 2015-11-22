@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>ECMAScript 5th Features By javarouka (@YiHanghee)</title>
+		<title>jQuery to React By javarouka (@YiHanghee)</title>
 		<meta name="description" content="ecmascript 5th new feature">
 		<meta name="author" content="javarouka">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -26,10 +26,10 @@
 			<div class="slides">
 
 				<section>
-					<h1>React with RequireJS</h1>
-					<h3>같이 써보는 React</h3>
+					<h1>jQuery to React</h1>
+					<h3>React 얇게 들여다보기</h3>
 					<p>
-						<small>Created by
+						<small>written by
                             <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a>
                         </small>
 					</p>
@@ -44,26 +44,72 @@
                 </section>
 
                 <section>
-                    <p>naver.com</p>
+                    <p>오로지 View 영역만 담당.</p>
+                    <p class="fragment">나머지는 뭘 써도 자유로움.</p>
+                    <p class="fragment"> + Backbone, jQuery, myCoolLibrary</p>
                 </section>
 
                 <section>
-                    <h3>이렇게 표현할 수 있다면?</h3>
-                    <pre class="code"><code data-tarim>&lt;Naver&gt;
-    &lt;Header&gt;
-        &lt;Logo/&gt;
-        &lt;SearchBar/&gt;
-    &lt;/Header&gt;
-    &lt;Main&gt;
-        &lt;Advertise rotate="true"/&gt;
-        &lt;LoginForm/&gt;
-        &lt;News/&gt;
-    &lt;/Main&gt;
-&lt;/Naver&gt;</code></pre>
+                    <img src="img/naver.png" style="border: none">
                 </section>
 
                 <section>
-                    <p></p>
+                    <img src="img/naver-sep.png" style="border: none">
+                </section>
+
+                <section>
+                    <h3>이렇게...</h3>
+                    <pre class="code"><code data-trim class="text">&lt;div&gt;
+    &lt;header&gt;
+        &lt;Logo /&gt;
+        &lt;SearchBar /&gt;
+        &lt;MainNavigation /&gt;
+    &lt;/header&gt;
+
+    &lt;Advertise /&gt;
+    &lt;LoginForm /&gt;
+    &lt;News /&gt;
+    &lt;SubNavigation /&gt;
+
+&lt;/div&gt;</code></pre>
+                </section>
+
+                <section>
+                    <p>무작정 쓰기보다, 흐름정도는 알아보고 써보자.</p>
+                </section>
+
+                <section>
+                    <p>간단한 TODO APP 구현</p>
+                </section>
+
+                <section>
+                    <img src="img/todo-app.png" style="border: none">
+                </section>
+
+                <section>
+                    <img src="img/todo-app-js.png" style="border: none">
+                </section>
+
+                <section>
+                    <p>추가 버튼을 누르면 바로 HTML 에 바로 추가함</p>
+                    <p class="fragment">중복 여부 또한 HTML 을 뒤져 중복을 체크함</p>
+                    <p class="fragment">삭제 버튼을 누르면 바로 HTML 에서 바로 삭제함</p>
+                </section>
+
+                <section>
+                    <p>코드를 조금 고쳐서, HTML 접근을 최소화해보자.</p>
+                </section>
+
+                <section>
+                    <img src="img/state.png" style="border: none">
+                </section>
+
+                <section>
+                    <img src="img/ui-code.png" style="border: none">
+                </section>
+
+                <section>
+
                 </section>
 
 			</div>
@@ -106,7 +152,6 @@
                     eval.call(window, parent.querySelector("pre.code code").innerText);
                 }
             });
-
 		</script>
 
 	</body>

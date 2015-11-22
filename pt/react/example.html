@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <script id="task-template" type="text/template">
+        <li class="task">
+            <span class="task-text"></span>
+            <button type="button" class="trigger remove-task">삭제</button>
+        </li>
+    </script>
+
+    <div class="todo-app">
+        <label>
+            할일 입력
+            <input type="text" class="task-value" required>
+        </label>
+        <button type="button" class="trigger add-task">추가</button>
+        <ul class="task-list">
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function($) { 'use strict';
+            var app = $('.todo-app'),
+                listEl = app.find('.task-list'),
+                valueEl = app.find('.task-value'),
+                template = $('#task-template');
+
+            var hasDuplicatedTask = function(taskText) {
+                    return Array.prototype.some.call(listEl.find('.task-text'), function(el) {
+                        return el.innerHTML.trim() === taskText.trim();
+                    });
+                },
+                removeTask = function(e) {
+                    $(e.target).closest('.task').remove();
+                },
+                addTask = function(e) {
+                    var taskText = valueEl.val(), taskEl = $(template.html());
+
+                    if(!taskText || hasDuplicatedTask(taskText)) return alert('할일이 입력되지 않았거나, 중복된 할일이 존재합니다');
+
+                    taskEl.find('.task-text').html(taskText);
+                    listEl.append(taskEl);
+                };
+            app.on('click', '.trigger.add-task', addTask)
+                .on('click', '.trigger.remove-task', removeTask);
+
+        })(jQuery);
+    </script>
+</body>
+</html>
