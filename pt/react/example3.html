@@ -55,26 +55,29 @@
                 state.taskFormValue = taskText;
             };
 
-        var taskList = function(taskItems) {
+        var ul = function(children) {
                 return  {
-                    uuid: 'task-list', name: 'ul', className: 'task-list', children: [ taskItems ]
+                    className: 'task-list',
+                    children: children
                 }
             },
-            taskItem = function(taskText, removeButton) {
+            li = function(children) {
                 return {
-                    uuid: 'task-item$' + taskText.uuid + removeButton.uuid,
-                    name: 'li', className: 'task', children: [ taskText, removeButton ]
+                    className: 'task',
+                    children: children
                 }
             },
-            removeButton = function(text) {
+            button = function(text) {
                 return {
-                    uuid: 'task-text$' + text, name: 'button', className: 'trigger add-task', text: '삭제',
+                    className: 'trigger add-task',
+                    text: '삭제',
                     onClick: function() { removeTask(text); }
                 }
             },
-            taskText = function(text) {
+            span = function(text) {
                 return {
-                    uuid: 'task-text$' + text, name: 'span', text: text, className: 'task-text'
+                    text: text,
+                    className: 'task-text'
                 }
             };
 
@@ -84,9 +87,9 @@
 
             // 일단 할일 목록 VirtualDOM 생성
             var tasksVirtual = state.tasks.map(function(text, index) {
-                return taskItem( taskText(text), removeButton(text) );
+                return li( span(text), button(text) );
             });
-            var taskListVirtual = taskList( tasksVirtual );
+            var taskListVirtual = ul( tasksVirtual );
 
             // 이전에 그려진 할일 목록 VirtualDOM 와 비교한다
             var diff = diff(prevTaskListVirtual, taskListVirtual);
