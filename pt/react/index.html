@@ -97,7 +97,8 @@
                 </section>
 
                 <section>
-                    <p>코드를 조금 고쳐서, HTML 접근을 최소화해보자.</p>
+                    <p>JS와 DOM API간의 연계는 상당한 비용이 드는 작업.</p>
+                    <p class="fragment">코드를 조금 고쳐서, HTML 접근을 최소화해보자.</p>
                 </section>
 
                 <section>
@@ -109,7 +110,56 @@
                 </section>
 
                 <section>
+                    <p>처음 코드의 흐름</p>
+                    <img src="img/before.png" style="border: none">
+                    <a href="http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/"
+                       style="font-size: 0.6em;"
+                       target="_blank">http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/</a>
+                </section>
 
+                <section>
+                    <p>나중 코드의 흐름</p>
+                    <img src="img/after.png" style="border: none">
+                    <a href="http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/"
+                       style="font-size: 0.6em;"
+                       target="_blank">http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/</a>
+                </section>
+
+                <section>
+                    <p>코드의 흐름이 일관성있게 흐르게 된 것 뿐 아니라 상태를 활용한 여러가지 일이 가능하다.</p>
+                    <ul>
+                        <li class="fragment">디버깅 편리</li>
+                        <li class="fragment">이벤트 추적 및 처리 용이성</li>
+                        <li class="fragment">상태를 localStorage 등에 저장해두고 화면 복원</li>
+                        <li class="fragment">... 등등</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>잠깐...</p>
+                    <p class="fragment">오히려 updateUI가 호출될 때마다 전부 지우고 새로 그리기 때문에, 나쁠것 같은데...?</p>
+                </section>
+
+                <section>
+                    <p>변경되는 부분만 새로 그리자!</p>
+                </section>
+
+                <section>
+                    <p>그러기 위해서, 먼저 Virtual DOM 이라는 걸 만들고 가자.</p>
+                </section>
+
+                <section>
+                    <img src="img/virtual-dom.png" style="border: none">
+                </section>
+
+                <section>
+                    <h3>순수 JS 로만 만들어진 DocumentTree</h3>
+                    <p class="fragment">이 객체 구조를 바탕으로 화면을 그리게 된다</p>
+                    <p class="fragment">상태와 이벤트는 모두 이 객체만을 조작한다.</p>
+                </section>
+
+                <section>
+                    <img src="img/virtual-dom-apply.png" style="border: none">
                 </section>
 
 			</div>
