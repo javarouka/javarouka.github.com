@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/base.css" id="theme">
 		<link rel="stylesheet" href="lib/css/github.css">
         <link rel="stylesheet" href="plugin/spotlight/spotlight.css">
 		<script>
@@ -50,11 +51,11 @@
                 </section>
 
                 <section>
-                    <img src="img/naver.png" style="border: none">
+                    <img src="img/naver.png">
                 </section>
 
                 <section>
-                    <img src="img/naver-sep.png" style="border: none">
+                    <img src="img/naver-sep.png">
                 </section>
 
                 <section>
@@ -83,11 +84,11 @@
                 </section>
 
                 <section>
-                    <img src="img/todo-app.png" style="border: none">
+                    <img src="img/todo-app.png">
                 </section>
 
                 <section>
-                    <img src="img/todo-app-js.png" style="border: none">
+                    <img src="img/todo-app-js.png">
                 </section>
 
                 <section>
@@ -97,21 +98,23 @@
                 </section>
 
                 <section>
-                    <p>JS와 DOM API간의 연계는 상당한 비용이 드는 작업.</p>
+                    <p>JS와 DOM 간의 연계는 상당한 비용이 드는 작업.</p>
                     <p class="fragment">코드를 조금 고쳐서, HTML 접근을 최소화해보자.</p>
                 </section>
 
                 <section>
-                    <img src="img/state.png" style="border: none">
+                    <img src="img/state.png">
+                    <p>오로지 상태만을 관리</p>
                 </section>
 
                 <section>
-                    <img src="img/ui-code.png" style="border: none">
+                    <img src="img/ui-code.png">
+                    <p>이쪽은 DOM 접근과 이벤트 접수</p>
                 </section>
 
                 <section>
                     <p>처음 코드의 흐름</p>
-                    <img src="img/before.png" style="border: none">
+                    <img src="img/before.png">
                     <a href="http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/"
                        style="font-size: 0.6em;"
                        target="_blank">http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/</a>
@@ -119,7 +122,7 @@
 
                 <section>
                     <p>나중 코드의 흐름</p>
-                    <img src="img/after.png" style="border: none">
+                    <img src="img/after.png">
                     <a href="http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/"
                        style="font-size: 0.6em;"
                        target="_blank">http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/</a>
@@ -145,36 +148,11 @@
                 </section>
 
                 <section>
-                    <p>그러기 위해서, 먼저 Virtual DOM 이라는 걸 만들고 가자.</p>
+                    <h3>Virtual DOM</h3>
                 </section>
 
                 <section>
-                    <img src="img/virtual-dom.png" style="border: none">
-                    <!--<pre style="font-size: 0.5em"><code data-trim>var ul = function(children) {-->
-        <!--return  {-->
-            <!--className: 'task-list',-->
-            <!--children: children-->
-        <!--}-->
-    <!--},-->
-    <!--li = function(children) {-->
-        <!--return {-->
-            <!--className: 'task',-->
-            <!--children: children-->
-        <!--}-->
-    <!--},-->
-    <!--button = function(text) {-->
-        <!--return {-->
-            <!--className: 'trigger add-task',-->
-            <!--text: '삭제',-->
-            <!--onClick: function() { removeTask(text); }-->
-        <!--}-->
-    <!--},-->
-    <!--span = function(text) {-->
-        <!--return {-->
-            <!--text: text,-->
-            <!--className: 'task-text'-->
-        <!--}-->
-    <!--};</code></pre>-->
+                    <img src="img/virtual-dom.png">
                 </section>
 
                 <section>
@@ -185,17 +163,7 @@
                 </section>
 
                 <section>
-                    <img src="img/virtual-dom-apply.png" style="border: none">
-                </section>
-
-                <section>
-                    <pre><code>// 비교조정 작업.
-var diff = function( prevVD, nextVD ) {
-    // 트리의 비교는 상당한 비용이 들기에 두가지 가정으로 복잡도를 최소화한다
-    // 1. 같은 클래스의 두 컴포넌트는 비슷한 트리를 생성하고,
-    //    서로 다른 클래스를 가진 두 컴포넌트는 서로 다른 트리를 생성.
-    // 2. 각 렌더 과정들 사이에 유지되는 엘리먼트에 고유한 키를 지정.
-};</code></pre>
+                    <img src="img/virtual-dom-apply.png">
                 </section>
 
                 <section>
@@ -207,17 +175,21 @@ var diff = function( prevVD, nextVD ) {
                 </section>
 
                 <section>
-                    <p>몇가지 가정으로 트리 비교 수행</p>
-                    <ul>
-                        <li class="fragment">새로운 노드가 기존의 노드와 비교해서 다른 노드라면 children 비교를 하지 않고 전체를 다른 노드로 가정함</li>
-                        <li class="fragment">만일 서로 같은 노드라면, Attribute 만을 비교하는 단순 비교가 가능</li>
-                        <li class="fragment">목록성의 노드끼리의 비교라면 key 라는 고유 속성을 할당하여 비교</li>
-                    </ul>
+                    <pre><code>// 비교조정 작업.
+var diff = function( prevVD, nextVD ) {
+    // 휴리스틱에 기반한 비교 조정
+    // 1. 같은 클래스의 두 컴포넌트는 비슷한 트리를 생성하고,
+    //    서로 다른 클래스를 가진 두 컴포넌트는 서로 다른 트리를 생성.
+    // 2. 각 렌더 과정들 사이에 유지되는 엘리먼트에 고유한 키를 지정.
+};</code></pre>
                 </section>
 
                 <section>
-                    <p>비교 알고리즘 구현까지 자세히 이해하면 더 좋겠지만...
-                        대략적인 비교 알고리즘을 알아야 실제 React 코딩 시 컴포넌트의 배치 및 key 값의 지정 등으로 불필요한 UI 갱신을 막을 수 있다</p>
+                    <ul>
+                        <li>새로운 노드가 기존의 노드와 비교해서 다른 노드라면 children 비교를 하지 않고 전체를 다른 노드로 가정함</li>
+                        <li class="fragment">만일 서로 같은 노드라면, Attribute 만을 비교하는 단순 비교가 가능</li>
+                        <li class="fragment">목록성의 노드끼리의 비교라면 key 라는 고유 속성을 할당하여 비교</li>
+                    </ul>
                 </section>
 
                 <section>

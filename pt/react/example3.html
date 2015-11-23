@@ -57,27 +57,23 @@
 
         var ul = function(children) {
                 return  {
-                    className: 'task-list',
-                    children: children
+                    className: 'task-list', children: children
                 }
             },
             li = function(children) {
                 return {
-                    className: 'task',
-                    children: children
+                    className: 'task', children: children
                 }
             },
             button = function(text) {
                 return {
-                    className: 'trigger add-task',
-                    text: '삭제',
+                    className: 'trigger add-task', text: '삭제',
                     onClick: function() { removeTask(text); }
                 }
             },
             span = function(text) {
                 return {
-                    text: text,
-                    className: 'task-text'
+                    text: text, className: 'task-text'
                 }
             };
 
