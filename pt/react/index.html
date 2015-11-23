@@ -76,7 +76,8 @@
                 </section>
 
                 <section>
-                    <p>무작정 쓰기보다, 흐름정도는 알아보고 써보자.</p>
+                    <p>무작정 쓰기보다, 대략의 구성을 알면 더 좋은건 당연.</p>
+                    <p class="fragment">jQuery 로 React 비슷한 구현을 해보자</p>
                 </section>
 
                 <section>
@@ -84,10 +85,12 @@
                 </section>
 
                 <section>
+                    <p>마크업</p>
                     <img src="img/todo-app.png">
                 </section>
 
                 <section>
+                    <p>구현</p>
                     <img src="img/todo-app-js.png">
                 </section>
 
@@ -183,7 +186,16 @@
                 </section>
 
                 <section>
-                    <p>객체 선언을 바탕으로 UI를  Virtual DOM 을 사용하여 View를 담당하는 UI 라이브러리</p>
+                    <p>몇가지 가정으로 트리 비교 수행</p>
+                    <ul>
+                        <li class="fragment">새로운 노드가 기존의 노드와 비교해서 다른 노드라면 children 비교를 하지 않고 전체를 다른 노드로 가정함</li>
+                        <li class="fragment">만일 서로 같은 노드라면, Attribute 만을 비교하는 단순 비교가 가능</li>
+                        <li class="fragment">목록성의 노드끼리의 비교라면 key 라는 고유 속성을 할당하여 비교</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>React는 객체 선언을 바탕으로 UI를 Virtual DOM 을 사용하여 View를 담당하는 UI 라이브러리이다</p>
                     <p class="fragment">무엇보다 Facebook 이 자신들의 프로덕션에 직접 사용한다!</p>
                 </section>
 
