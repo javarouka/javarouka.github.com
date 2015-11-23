@@ -82,7 +82,7 @@
         var updateUI = function() {
 
             // 일단 할일 목록 VirtualDOM 생성
-            var tasksVirtual = state.tasks.map(function(text, index) {
+            var tasksVirtual = state.tasks.map(function(text) {
                 return li( span(text), button(text) );
             });
             var taskListVirtual = ul( tasksVirtual );
