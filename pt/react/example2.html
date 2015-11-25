@@ -28,13 +28,13 @@
     (function($) { 'use strict';
         var app = $('.todo-app'),
             listEl = app.find('.task-list'),
-            template = $('#task-template');
+            template = $('#task-template').html().trim();
         var state = {
             taskFormValue: '',
             tasks: []
         };
         var hasDuplicatedTask = function(taskText) {
-                return Array.prototype.some.call(state.tasks, function(task) {
+                return state.tasks.some(function(task) {
                     return task === taskText.trim();
                 });
             },
@@ -56,7 +56,7 @@
 
         var updateUI = function() {
                 var taskEls = state.tasks.map(function(taskText) {
-                    var taskEl = $(template.html());
+                    var taskEl = $(template);
                     taskEl.find('.task-text').html(taskText);
                     return taskEl;
                 });
