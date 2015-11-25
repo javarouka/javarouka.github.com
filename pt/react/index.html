@@ -215,7 +215,7 @@ var state = {
                     <p>이제 구성된 상태로 할일을 그리는 렌더링 함수</p>
                     <pre><code data-trim class="javascript">var updateUI = function() {
     var taskEls = state.tasks.map(function(taskText) {
-        var taskEl = $(template.html());
+        var taskEl = $(template);
         taskEl.find('.task-text').html(taskText);
         return taskEl;
     });
@@ -239,18 +239,21 @@ var state = {
                 </section>
 
                 <section>
-                    <p>
-                        여기 예제는 updateUI 수행을 함수 실행시마다로 정했지만,
-                        <br/>
-                        글로벌 타이머 등으로 비동기 처리해서 상태 변경을 한번에 시간마다 처리하면 비용이 훨씬 줄어들 것이다.</p>
-                </section>
-
-                <section>
+                    <p>전체소스#1</p>
                     <img src="img/ui-code.png">
                 </section>
 
                 <section>
+                    <p>전체소스#2</p>
                     <img src="img/state.png">
+                </section>
+
+                <section>
+                    <p>
+                        여기 예제는 updateUI 수행을 함수 실행시마다로 정했지만,
+                        <br/>
+                        글로벌 타이머 등으로 상태 변경을 일정 간마다 처리하면 비용이 훨씬 줄어들 것이다.
+                    </p>
                 </section>
 
                 <section>
