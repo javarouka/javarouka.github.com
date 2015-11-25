@@ -54,6 +54,10 @@
                     <img src="img/naver.png">
                 </section>
 
+                <!--<section>-->
+                    <!--<img src="img/chainsaw.jpg">-->
+                <!--</section>-->
+
                 <section>
                     <img src="img/naver-sep.png">
                 </section>
@@ -82,6 +86,7 @@
 
                 <section>
                     <p>간단한 TODO APP 구현</p>
+                    <img src="img/todo-sc.png">
                 </section>
 
                 <section>
@@ -90,7 +95,52 @@
                 </section>
 
                 <section>
-                    <p>구현</p>
+                    <p>사용할 엘리먼트</p>
+                    <pre><code data-trim class="javascript">var app = $('.todo-app'), // 앱 영역
+    listEl = app.find('.task-list'), // 할일 리스트
+    valueEl = app.find('.task-value'), // 사용자 입력영역
+    template = $('#task-template').html().trim(); // 할일 HTML 템플릿</code></pre>
+                </section>
+
+                <section>
+                    <p>할일 추가 함수</p>
+                    <pre><code data-trim class="javascript">var addTask = function() {
+    var taskText = valueEl.val(),
+        taskEl = $(template); // 위에서 저장해둔 텍스트로 Element 생성
+
+    // 텍스트가 비어있거나 같은 할일이 등록되었는지 판단
+    if(!taskText || hasDuplicatedTask(taskText)) {
+        return alert('할일이 입력되지 않았거나, 중복된 할일이 존재합니다');
+    }
+    taskEl.find('.task-text').html(taskText);
+    listEl.append(taskEl);
+};</code></pre>
+                </section>
+
+                <section>
+                    <p>중복체크</p>
+                    <pre><code data-trim class="javascript">var hasDuplicatedTask = function(taskText) {
+    return Array.prototype.some.call(listEl.find('.task-text'), function(el) {
+        return el.innerHTML.trim() === taskText.trim();
+    });
+};</code></pre>
+                </section>
+
+                <section>
+                    <p>삭제 함수</p>
+                    <pre><code data-trim class="javascript">var removeTask = function(e) {
+    $(e.target).closest('.task').remove();
+}</code></pre>
+                    <img src="img/closest.png">
+                </section>
+
+                <section>
+                    <p>이벤트 묶음</p>
+                    <pre><code data-trim class="javascript">app.on('click', '.trigger.add-task', addTask)
+    .on('click', '.trigger.remove-task', removeTask);</code></pre>
+                </section>
+
+                <section>
                     <img src="img/todo-app-js.png">
                 </section>
 
@@ -106,13 +156,89 @@
                 </section>
 
                 <section>
-                    <img src="img/state.png">
-                    <p>오로지 상태만을 관리</p>
+                    <p>먼저 전체를 관리할 상태라는 객체를 선언해둔다.</p>
+                    <pre><code data-trim class="javascript">
+var state = {
+    taskFormValue: '', // 인풋 박스 값
+    tasks: [ ] // 할일
+}
+
+</code></pre>
+                    <p class="fragment">이제 이벤트 핸들러는 이 상태만 변경하게 고치자</p>
+                </section>
+
+                <section>
+                    <p>할일 추가 함수</p>
+                    <pre><code data-trim class="javascript">var addTask = function(<span style="color: red; font-weight: bold">taskText</span>) {
+    <span style="text-decoration: line-through">var taskText = valueEl.val(), taskEl = $(template);</span>
+
+    if(!taskText || hasDuplicatedTask(taskText)) {
+        return alert('할일이 입력되지 않았거나, 중복된 할일이 존재합니다');
+    }
+    <span style="text-decoration: line-through">taskEl.find('.task-text').html(taskText);</span>
+    <span style="text-decoration: line-through">listEl.append(taskEl);</span>
+    state.tasks.push(state.taskFormValue);
+};</code></pre>
+                </section>
+
+                <section>
+                    <p>중복체크</p>
+                    <pre><code data-trim class="javascript">var hasDuplicatedTask = function(taskText) {
+    <span style="text-decoration: line-through">return Array.prototype.some.call(listEl.find('.task-text'), function(el) {</span>
+        <span style="text-decoration: line-through">return el.innerHTML.trim() === taskText.trim();</span>
+    <span style="text-decoration: line-through">});</span>
+
+    return Array.prototype.some.call(state.tasks, function(task) {
+        return task === taskText.trim();
+    });
+};</code></pre>
+                </section>
+
+                <section>
+                    <p>삭제 함수</p>
+                    <pre><code data-trim class="javascript">var removeTask = function(e) {
+    <span style="text-decoration: line-through">$(e.target).closest('.task').remove();</span>
+
+    var index = state.tasks.indexOf(taskText);
+    if(index !== -1) {
+        state.tasks.splice(index, 1);
+    }
+}</code></pre>
+                </section>
+
+                <section>
+                    <p>상태로 할일을 그리는 렌더링 함수</p>
+                    <pre><code data-trim class="javascript">var updateUI = function() {
+    var taskEls = state.tasks.map(function(taskText) {
+    var taskEl = $(template.html());
+    taskEl.find('.task-text').html(taskText);
+        return taskEl;
+    });
+    listEl.empty().append(taskEls);
+}</code></pre>
+                </section>
+
+                <section>
+                    <p>이벤트 묶음</p>
+                    <pre><code data-trim class="javascript">app.on('keyup', '.task-value', function(e) {
+        changeTaskFormValue(e.target.value);
+    })
+    .on('click', '.trigger.add-task', function(e) {
+        addTask();
+        <span style="color: red; font-weight: bold">updateUI();</span>
+    })
+    .on('click', '.trigger.remove-task', function(e) {
+        removeTask($(e.target).prev().text());
+        <span style="color: red; font-weight: bold">updateUI();</span>
+    });</code></pre>
                 </section>
 
                 <section>
                     <img src="img/ui-code.png">
-                    <p>이쪽은 DOM 접근과 이벤트 접수</p>
+                </section>
+
+                <section>
+                    <img src="img/state.png">
                 </section>
 
                 <section>
@@ -170,18 +296,22 @@
                 </section>
 
                 <section>
-                    <p class="fragment">트리 비교는 상당한 비용이 있는 작업이며, 최신 알고리즘을 적용한다 하더라도 O(n3) 의 복잡도.</p>
+                    <p>트리 비교는 상당한 비용이 있는 작업이며, 최신 알고리즘을 적용한다 하더라도 O(n3) 의 복잡도.</p>
                     <a class="fragment" style="font-size: 0.6em" href="http://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf">
                         트리 비교 알고리즘 자료.pdf (영문).
                     </a>
                 </section>
 
                 <section>
-                    <p>휴리스틱 방식 - 경험 기반</p>
+                    <p>React 팀에서 선택한 방식은 휴리스틱(heuristic) 방식</p>
+                    <p>
+                        <a href="https://ko.wikipedia.org/wiki/%EB%B0%9C%EA%B2%AC%EB%B2%95" target="_blank">위키백과 : 발견법</a>
+                        <blockquote style="font-size: 0.5em">대부분의 경우에 잘맞는 경험에 의한 규칙 (rules of thumb)</blockquote>
+                    </p>
                 </section>
 
                 <section>
-                    <p>항상 모든 경우를 다 찾아내진 못한다.</p>
+                    <p>100%의 정확도를 가지진 못하지만 성능이 상당히 뛰어나다.</p>
                     <img src="img/conan.jpg">
                 </section>
 
@@ -196,6 +326,7 @@
 
                 <section>
                     <p>React는 객체 선언을 바탕으로 UI를 Virtual DOM 을 사용하여 View를 담당하는 UI 라이브러리이다</p>
+                    <p class="fragment">+ <a href="https://facebook.github.io/react/docs/jsx-in-depth.html">JSX</a></p>
                     <p class="fragment">무엇보다 Facebook 이 자신들의 프로덕션에 직접 사용한다!</p>
                 </section>
 
