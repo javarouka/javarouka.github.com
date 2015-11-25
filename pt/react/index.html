@@ -193,7 +193,7 @@ var state = {
         <span style="text-decoration: line-through">return el.innerHTML.trim() === taskText.trim();</span>
     <span style="text-decoration: line-through">});</span>
 
-    return Array.prototype.some.call(state.tasks, function(task) {
+    return state.tasks.some(function(task) {
         return task === taskText.trim();
     });
 };</code></pre>
