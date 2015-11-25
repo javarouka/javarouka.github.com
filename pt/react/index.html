@@ -136,8 +136,11 @@
 
                 <section>
                     <p>이벤트 묶음</p>
-                    <pre><code data-trim class="javascript">app.on('click', '.trigger.add-task', addTask)
-    .on('click', '.trigger.remove-task', removeTask);</code></pre>
+                    <pre><code data-trim class="javascript">
+app.on('click', '.trigger.add-task', addTask)
+    .on('click', '.trigger.remove-task', removeTask);
+
+</code></pre>
                 </section>
 
                 <section>
@@ -175,8 +178,10 @@ var state = {
     if(!taskText || hasDuplicatedTask(taskText)) {
         return alert('할일이 입력되지 않았거나, 중복된 할일이 존재합니다');
     }
+
     <span style="text-decoration: line-through">taskEl.find('.task-text').html(taskText);</span>
     <span style="text-decoration: line-through">listEl.append(taskEl);</span>
+
     state.tasks.push(state.taskFormValue);
 };</code></pre>
                 </section>
@@ -207,11 +212,11 @@ var state = {
                 </section>
 
                 <section>
-                    <p>상태로 할일을 그리는 렌더링 함수</p>
+                    <p>이제 구성된 상태로 할일을 그리는 렌더링 함수</p>
                     <pre><code data-trim class="javascript">var updateUI = function() {
     var taskEls = state.tasks.map(function(taskText) {
-    var taskEl = $(template.html());
-    taskEl.find('.task-text').html(taskText);
+        var taskEl = $(template.html());
+        taskEl.find('.task-text').html(taskText);
         return taskEl;
     });
     listEl.empty().append(taskEls);
@@ -231,6 +236,13 @@ var state = {
         removeTask($(e.target).prev().text());
         <span style="color: red; font-weight: bold">updateUI();</span>
     });</code></pre>
+                </section>
+
+                <section>
+                    <p>
+                        여기 예제는 updateUI 수행을 함수 실행시마다로 정했지만,
+                        <br/>
+                        글로벌 타이머 등으로 비동기 처리해서 상태 변경을 한번에 시간마다 처리하면 비용이 훨씬 줄어들 것이다.</p>
                 </section>
 
                 <section>
@@ -268,7 +280,8 @@ var state = {
                 </section>
 
                 <section>
-                    <p>잠깐...</p>
+                    <img src="img/gendo.png" width="400">
+                    <p>잠깐...최적화를 해도 결국엔 updateUI 에 문제가 있다...</p>
                     <p class="fragment">오히려 updateUI가 호출될 때마다 전부 지우고 새로 그리기 때문에, 나쁠것 같은데...?</p>
                 </section>
 
