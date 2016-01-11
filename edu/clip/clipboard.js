@@ -1,20 +1,41 @@
-;(function(exports, $) {
+/**
+ * 클립보드 카피 모듈
+ *
+ * @Dependency global exports
+ * @Dependency jQuery
+ */
+;(function(exports, $) { // IIFE
 
+    // missing dependency, return empty object
     if(!exports || !$) {
         return {};
     }
 
     var copiedText = '복사되었어요!',
+        fadeOutMillis = 900,
+        autoFadeOutMillis = 2000,
+        copyAreaCss = {
+            left: e.pageX,
+            top: e.pageY,
+            textAlign: 'center',
+            zIndex:999999999,
+            padding: '8px 10px',
+            'border-radius': '5px',
+            color: '#ccc',
+            backgroundColor: '#333'
+        },
         autoApplySelectMarker = '[data-require-clipboard]',
         copyInfo = $('<div style="position:absolute;">' + copiedText + '</div>'),
         clipboard = {},
         TOP = $(document.body),
         clipboardClaz = 'click-to-copy';
 
+    // can ie clipboard copy?
     clipboard.canCopyClipboard = function() {
         return !!(window.clipboardData && window.clipboardData.setData);
     };
 
+    // if ie, copy clipboard
     clipboard.clipboardTextIE = function(text, callback, fail) {
         try {
             if (window.clipboardData) {
@@ -25,16 +46,7 @@
         catch(ignore) {}
     };
 
-    clipboard.enableSelectable = function(content, markSelector) {
-
-        (content || $("body"))
-            .find(markSelector || autoApplySelectMarker).not('.clipboard-applied').each(function() {
-                var target = $(this).addClass('clipboard-applied'),
-                    clickToCopy = $('<i class="fa fa-copy ' + clipboardClaz + '" title="click to copy" style="cursor: pointer; margin-left: 3px;"></i>');
-                clickToCopy.insertAfter(target);
-            });
-    };
-
+    // select range text
     clipboard.selectText = function() {
         if (document.selection) {
             return function(containerSelector) {
@@ -68,6 +80,7 @@
         }
     }();
 
+    // bind event icon
     (function initialize() {
         TOP.on('click', '.' + clipboardClaz,
             clipboard.canCopyClipboard() ? function (e) {
@@ -79,25 +92,27 @@
                     clearTimeout(timeId);
                 }
                 clipboard.clipboardTextIE(text, function () {
-                    copyInfo.css({
-                        left: e.pageX,
-                        top: e.pageY,
-                        textAlign: 'center',
-                        zIndex:999999999,
-                        padding: '8px 10px',
-                        'border-radius': '5px',
-                        color: '#ccc',
-                        backgroundColor: '#333'
-                    }).html(text + '<br/>' + copiedText + '').appendTo('body').show();
+                    copyInfo.css(copyAreaCss).html(text + '<br/>' + copiedText + '').appendTo('body').show();
                     copyInfo.data('hideTimeout', setTimeout(function() {
-                        copyInfo.fadeOut(900);
-                    }, 2000));
+                        copyInfo.fadeOut(fadeOutMillis);
+                    }, autoFadeOutMillis));
                 });
             } : function (e) {
                 clipboard.selectText($(e.target).prev());
             }
         );
     })();
+
+    // initialize copy clipboard
+    clipboard.enableSelectable = function(content, markSelector) {
+
+        (content || $("body"))
+            .find(markSelector || autoApplySelectMarker).not('.clipboard-applied').each(function() {
+                var target = $(this).addClass('clipboard-applied'),
+                    clickToCopy = $('<i class="fa fa-copy ' + clipboardClaz + '" title="click to copy" style="cursor: pointer; margin-left: 3px;"></i>');
+                clickToCopy.insertAfter(target);
+            });
+    };
 
     var _clipboard = exports.clipboard;
 
