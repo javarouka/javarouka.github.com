@@ -4,7 +4,7 @@
         return {};
     }
 
-    var copiedText = 'copy to click',
+    var copiedText = '복사되었어요!',
         autoApplySelectMarker = '[data-require-clipboard]',
         copyInfo = $('<div style="position:absolute;">' + copiedText + '</div>'),
         clipboard = {},
