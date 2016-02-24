@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>Canvas tutorial</title>
-    <script type="text/javascript">
-        function draw() {
-            var canvas = document.getElementById('tutorial');
-            if (canvas.getContext) {
-                var ctx = canvas.getContext('2d');
-                ctx.beginPath();
-//                ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
-//                ctx.moveTo(110,75);
-//                ctx.arc(75,75,35,0,Math.PI,false);   // Mouth
-//                ctx.moveTo(65,65);
-//                ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
-//                ctx.moveTo(95,65);
-//                ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
-//                ctx.stroke();
-
-                ctx.moveTo(25, 25);
-                ctx.lineTo(125, 45);
-                ctx.stroke();
-
-            }
-        }
-    </script>
-    <style type="text/css">
-        canvas { border: 1px solid black; }
-    </style>
+	<title>s65-canvas</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"/>
 </head>
-<body onload="draw();">
-<canvas id="tutorial" width="150" height="150"></canvas>
+<body>
+<div id="stage"><canvas id="canvas" width="600" height="400"></canvas></div>
+<script src="Css.js"></script>
+<script src="V.js"></script>
+<script src="tags.js"></script>
+<script>
+	{
+		let stage = new V.Stage('Canvas',document.getElementById('canvas'));
+
+		let div = new Div();
+		div.style.backgroundColor = '#ff4800';
+		div.style.border = '4 red';
+		//div.style.textAlign = 'right';
+
+		let img0 = new Img('1.jpg');
+		let img1 = new Img('1.jpg');
+		let img2 = new Img('2.jpg');
+		let loaded = 0;
+		let cb = ()=>++loaded == 3 ? start() : 0;
+		img0.addListener('load', cb);
+		img1.addListener('load', cb);
+		img2.addListener('load', cb);
+		img1.style.margin = 10;
+		div.addChild(img0);
+		div.addChild(img1);
+		div.addChild(img2);
+
+		stage.addChild(div);
+
+		let start = ()=>{
+		let loop = ()=>{
+			if(img1.style.margin++>40) img1.style.margin = 10;
+			stage.render();
+			requestAnimationFrame(loop);
+		}
+		loop();
+	};
+	}
+</script>
 </body>
 </html>
