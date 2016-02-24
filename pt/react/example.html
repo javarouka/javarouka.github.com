@@ -29,7 +29,7 @@
             var app = $('.todo-app'),
                 listEl = app.find('.task-list'),
                 valueEl = app.find('.task-value'),
-                template = $('#task-template');
+                template = $('#task-template').html().trim();
 
             var hasDuplicatedTask = function(taskText) {
                     return Array.prototype.some.call(listEl.find('.task-text'), function(el) {
@@ -39,8 +39,8 @@
                 removeTask = function(e) {
                     $(e.target).closest('.task').remove();
                 },
-                addTask = function(e) {
-                    var taskText = valueEl.val(), taskEl = $(template.html());
+                addTask = function() {
+                    var taskText = valueEl.val(), taskEl = $(template);
 
                     if(!taskText || hasDuplicatedTask(taskText)) return alert('할일이 입력되지 않았거나, 중복된 할일이 존재합니다');
 
