@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>PlayJS By javarouka (@YiHanghee)</title>
+    <meta name="description" content="Javascript Scope">
+    <meta name="author" content="javarouka">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <div class="slides js-scope">
+
+            <section>
+                <h1>Javascript Scope</h1>
+                <p>&nbsp;</p>
+                <p>
+                    <small>Created by
+                        <a href="http://www.facebook.com/hanghui.i" target="new">이항희</a> /
+                        <a href="http://atconsole.com" target="new">blog.javarouka.me</a>
+                    </small>
+                </p>
+            </section>
+
+            <section>
+                <h4>JavaScript는 블럭 스코프를 지원하지 않는다.</h4>
+                <p class="fragment">var 변수 선언은 항상 함수 스코프이다</p>
+                <p class="fragment">var 를 뺀 선언은 암묵적으로 전역 객체의 프로퍼티로(implict define property) 추가 된다.</p>
+                <small class="fragment">EC6에서는 let이라는 블럭 스코프 선언이 추가된다고 한다.</small>
+            </section>
+
+            <section>
+                <h2>감사합니다</h2>
+            </section>
+
+        </div>
+
+    </div>
+    <script src="build/main.bundle.js"></script>
+</body>
+</html>
