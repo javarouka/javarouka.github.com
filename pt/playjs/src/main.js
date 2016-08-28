@@ -1,5 +1,9 @@
 import 'reveal.js/css/reveal.css'
-import 'reveal.js/css/theme/sky.css'
+import 'reveal.js/css/theme/simple.css'
+import 'highlight.js/styles/default.css'
+import 'highlight.js/styles/monokai-sublime.css'
+import './index.css'
+import hijs from 'highlight.js/lib/index'
 import Reveal from 'reveal.js'
 
 Reveal.initialize({
@@ -10,6 +14,8 @@ Reveal.initialize({
 	theme: 'simple',//Reveal.getQueryHash().theme, // available themes are in /css/theme
 	transition: 'zoom' //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 });
+
+hijs.initHighlighting();
 
 var codeExecutor = document.querySelectorAll("a[data-executor]");
 Array.prototype.forEach.call(codeExecutor, function(v) {

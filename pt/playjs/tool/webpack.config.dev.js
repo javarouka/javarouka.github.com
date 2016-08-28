@@ -3,34 +3,32 @@ import path from 'path'
 import webpack from 'webpack'
 import precss from 'precss'
 import autoprefixer from 'autoprefixer'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 dotenv.load();
 
-const VERBOSE = process.argv.includes('--verbose');
-const basePath = path.resolve(__dirname, './src');
+const basePath = path.resolve(__dirname, '../src');
+const host = process.env.DEV_HOST || 'localhost';
+const port = process.env.DEV_PORT || 1980;
 
 export default {
 
-	devtool: 'source-map',
+	watch: true,
+	progress: true,
+	devtool: 'heap-module-eval-source-map',
 	context: basePath,
-	entry: path.join(basePath, 'main.js'),
 
-	stats: {
-		colors: true,
-		reasons: true,
-		hash: VERBOSE,
-		version: VERBOSE,
-		timings: true,
-		chunks: VERBOSE,
-		chunkModules: VERBOSE,
-		cached: VERBOSE,
-		cachedAssets: VERBOSE
-	},
+	entry: [
+		'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
+		'webpack/hot/only-dev-server',
+		path.join(basePath, 'main.js')
+	],
 
 	// 번들링 후 파일을 생성하는 옵션
 	output: {
-		path: './build',
-		filename: '[name].bundle.js'
+		path: basePath + '/build',
+		filename: '[name].bundle.js',
+		publicPath: 'http://' + host + ':' + port + '/build'
 	},
 
 	module: {
@@ -49,14 +47,14 @@ export default {
 				test: /\.css/,
 				loader: 'style!css'
 			},
+			//
+			//{
+			//	test: /\.scss/,
+			//	loader: 'style!css!postcss-loader!resolve-url!sass'
+			//},
 
 			{
-				test: /\.scss/,
-				loader: 'style!css!postcss-loader!resolve-url!sass'
-			},
-
-			{
-				test: /\.(txt|hbs)/,
+				test: /\.(txt|eot|ttf)/,
 				loader: 'raw-loader'
 			},
 
@@ -85,12 +83,16 @@ export default {
 	},
 
 	plugins: [
+		new HtmlWebpackPlugin({
+			template: basePath + '/template/index.html'
+		}),
 
 		new webpack.EnvironmentPlugin([
 			"NODE_ENV"
 		]),
 
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.OccurenceOrderPlugin()
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin()
 	]
 }
