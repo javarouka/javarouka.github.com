@@ -1,0 +1,15 @@
+.reveal p {
+    font-size: 0.8em;
+}
+
+.reveal li {
+    font-size: 0.7em;
+}
+
+.reveal pre code {
+    font-size: 0.7em;
+}
+.reveal .text-highlight {
+    font-weight: bold;
+    color: indianred;
+}

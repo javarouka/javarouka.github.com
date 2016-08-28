@@ -54,7 +54,7 @@ export default {
 			//},
 
 			{
-				test: /\.(txt|eot|ttf)/,
+				test: /\.(html|txt|eot|ttf)/,
 				loader: 'raw-loader'
 			},
 

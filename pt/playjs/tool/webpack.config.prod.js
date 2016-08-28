@@ -59,13 +59,13 @@ export default {
 			//},
 
 			{
-				test: /\.(txt|eot|ttf)/,
+				test: /\.(html|txt|eot|ttf)/,
 				loader: 'raw-loader'
 			},
 
 			{
 				test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-				loader: 'url?limit=10000'
+				loader: 'url?limit=10000&name=[name].[ext]'
 			}
 		]
 	},
@@ -88,6 +88,12 @@ export default {
 	},
 
 	plugins: [
+
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		}),
 
 		new CleanWebpackPlugin([
 			__dirname + '/index.html',
