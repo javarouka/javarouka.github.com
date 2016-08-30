@@ -277,6 +277,7 @@ console.log(duck1 === duck2) // false;</code></pre>
             <pre><code class="jsx" data-trim data-noescape>const unique = Symbol('unique'); // 그냥 생성
 const uniqueFor1 = Symbol.for('unique'); // 전역 생성
 const uniqueFor2 = Symbol.for('unique'); // 다시 생성할 경우 기존 생성된 Symbol 을 반환.
+const uniqueFor2 = Symbol.keyFor('unique'); // 생성된 심볼을 가져올 경우 Symbol.for('unique') 와 동일 효과
 
 console.log(unique === uniqueFor1); // false;
 console.log(uniqueFor1 === uniqueFor2); // true;</code></pre>
@@ -288,8 +289,8 @@ console.log(uniqueFor1 === uniqueFor2); // true;</code></pre>
             <pre><code class="jsx" data-trim data-noescape>const [ action,comedy,sing ] = ['action','comedy','sing'].map(v => Symbol(v));
 function showVariety(star) {
     if(star[action]) return star[action]();
-    if(star[comedy]) return star[comedy](); return '개그를 하자';
-    if(star[sing]) return star[sing](); return '노래를 부르자';
+    if(star[comedy]) return star[comedy]();
+    if(star[sing]) return star[sing]();
     throw new TypeError('아무것도 할수없어...');
 }
 var suhyungHong = { [actor](){ return '연기를 하자' } }
@@ -344,22 +345,22 @@ console.log(`수정된(?)  개발자 소개 > ${person}`); // immutable!</code><
         <section>
             <h4>Symbol.toPrimitive</h4>
             <p>toString, valueOf 에 대응하지만 스펙이 좀 다르다.</p>
-            <pre><code class="jsx" data-trim data-noescape>const bart = {
+            <pre><code class="jsx" data-trim data-noescape>const es6Man = {
     // 변환의 힌트가 인자로 온다. 힌트는 'string', 'number', 'default' 셋이다.
     [Symbol.toPrimitive](hint) {
         switch(hint) {
             case 'number': return 28;
-            case 'string': return '바트';
-            default: return '바트'
+            case 'string': return 'ES2015';
+            default: return 'ES2015'
         }
     }
 }
-console.log(bart + 1); // 바트1
+console.log(bart + 1); // ES20151
 console.log(Number(bart)); // 28
 
-console.log(bart); // 바트
-console.log(`${bart} 입니다`); // 바트 입니다
-alert(bart); // 바트</code></pre>
+console.log(bart); // ES2015
+console.log(`${bart} 입니다`); // ES2015 입니다
+alert(bart); // ES2015</code></pre>
         </section>
 
         <section>
