@@ -6,8 +6,8 @@ import webpackConfig from './webpack.config.dev.js';
 dotenv.load();
 
 const compiler = webpack(webpackConfig);
-const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || 3002;
+const host = process.env.DEV_HOST || 'localhost';
+const port = process.env.DEV_PORT || 3002;
 
 const serverOptions = {
 	contentBase: 'http://' + host + ':' + port,

@@ -6,11 +6,13 @@ import autoprefixer from 'autoprefixer'
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 dotenv.load();
 
 const VERBOSE = process.argv.includes('--verbose');
 const basePath = path.resolve(__dirname, '../src');
+const outPath = path.resolve(__dirname, '../build');
 
 export default {
 
@@ -32,7 +34,7 @@ export default {
 
 	// 번들링 후 파일을 생성하는 옵션
 	output: {
-		path: './',
+		path: './build',
 		filename: 'bundle.js'
 	},
 
@@ -95,15 +97,19 @@ export default {
 			}
 		}),
 
-		new CleanWebpackPlugin([
-			__dirname + '/index.html',
-			__dirname + '/bundle.js',
-			__dirname + '/bundle.js.map',
-			__dirname + '/style.bundle.css',
-			__dirname + '/style.bundle.css.map'
-		], {
-			root:  path.resolve(__dirname, '../')
-		}),
+		//new CleanWebpackPlugin([
+		//	outPath + '/index.html',
+		//	outPath + '/bundle.js',
+		//	outPath + '/bundle.js.map',
+		//	outPath + '/style.bundle.css',
+		//	outPath + '/style.bundle.css.map'
+		//], {
+		//	root:  path.resolve(__dirname, '../')
+		//}),
+
+		//new CopyWebpackPlugin([
+		//	{ from: outPath, to: path.resolve(__dirname, '../') }
+		//]),
 
 		new ExtractTextPlugin('./style.bundle.css'),
 

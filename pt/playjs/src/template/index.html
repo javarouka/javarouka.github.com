@@ -131,14 +131,6 @@ console.log(typeChecker.isUndefined(undefined)); // false</code></pre>
             <p class="fragment">toString 과 마찬가지로 대부분의 built-in Object 들은 이것을 override.</p>
         </section>
 
-        <!--<section>-->
-            <!--<p>toString 과 마찬가지로 대부분의 built-in Object 들은 이것을 override.</p>-->
-            <!--<p>-->
-                <!--대부분의 built-in 객체는 자기 자신의 값을 다시 반환하지만,-->
-                <!--Date 는 예외로서, valueOf 가 현재 밀리초를 반환하는 getTime 메서드와 완전히 같음-->
-            <!--</p>-->
-        <!--</section>-->
-
         <section>
             <h4>valueOf 구현 예제</h4>
             <pre><code class="jsx" data-trim data-noescape>function NiceNumber(primitiveValue) {
@@ -198,11 +190,7 @@ JSON.stringify(smartSayMan); // { "hello": "세계" } }</code></pre>
 
         <section>
             <h3>야, 할수 있어? 할 수 있냐고?</h3>
-        </section>
-
-        <section>
-            <h4>오리 타자</h4>
-            <img data-img-required="duck.gif"/>
+            <img class="fragment" data-img-required="duck.gif"/>
             <p class="fragment"><a href="http://summerlight.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0-%E4%B8%8A">Duck Typing</a></p>
         </section>
 
@@ -215,7 +203,7 @@ JSON.stringify(smartSayMan); // { "hello": "세계" } }</code></pre>
             <pre><code class="jsx" data-trim data-noescape>function cookDuckMeat(something) {
 
     // 오리처럼 꿕꿕대고, 걷고있나?
-    if(!something.quack && !something.walk) {
+    if(!something.quack || !something.walk) {
         throw new TypeError('이건 오리가 아니다...');
     }
 
@@ -224,11 +212,11 @@ JSON.stringify(smartSayMan); // { "hello": "세계" } }</code></pre>
         </section>
 
         <section>
-            <pre><code class="jsx" data-trim data-noescape>const duck = {
+            <blockquote>문자열이 필요할 때 만일 객체가 toString 을 할 수 있다면 그것을 호출해 주겠다.</blockquote>
+            <pre class="fragment"><code class="jsx" data-trim data-noescape>const duck = {
    toString() { return "미운오리새끼" }
 };
 console.log(`저는 ${duck} 입니다`);</code></pre>
-            <blockquote>문자열이 필요할 때 만일 객체가 toString 을 할 수 있다면 그것을 호출해 주겠다.</blockquote>
         </section>
 
         <section>
@@ -297,20 +285,54 @@ console.log(uniqueFor1 === uniqueFor2); // true;</code></pre>
         <section>
             <p>Duck Typing 에 사용</p>
             <p>네가 만약 Symbol.xxx 를 할수있다면 xxx 를 하겠다</p>
+            <pre><code class="jsx" data-trim data-noescape>const [ action,comedy,sing ] = ['action','comedy','sing'].map(v => Symbol(v));
+function showVariety(star) {
+    if(star[action]) return star[action]();
+    if(star[comedy]) return star[comedy](); return '개그를 하자';
+    if(star[sing]) return star[sing](); return '노래를 부르자';
+    throw new TypeError('아무것도 할수없어...');
+}
+var suhyungHong = { [actor](){ return '연기를 하자' } }
+console.log(showVariety(suhyungHong)); // 연기를 하자</code></pre>
         </section>
 
         <section>
             <p>UUID 등 에 사용</p>
             <p>불변 고유한 값이므로, 심볼을 공유하여 불변상태를 제어하기 쉽다</p>
+            <pre><code class="jsx" data-trim data-noescape>// 모델 코드 ..
+user.update = function() {
+    this.hash = Symbol(); // 업데이트 해쉬 발급
+    // ... 모델 내 업데이트
+}
+const userStore = new UserStore(user);
+
+// 화면 코드 ..
+userStore.subscribe = function(newUser, prevUser) {
+    if(newUser.hash == prevUser) return; // 기존 user 와 비교하여 업데이트되지 않으면 pass
+    // ... UI 업데이트
+}</code></pre>
+        </section>
         </section>
 
         <section>
             <p>class private 구현에 사용</p>
-            <p>여기서는 심볼의 기능을 설명하고 있으므로, ES2015의 class 에 대해서는 다른 자료를 참고한다</p>
-            <ul>
-                <li><a href="http://www.bsidesoft.com/?p=2339">참고: BsideSoft 맹기완님의 블로그</a></li>
-                <li><a href="http://www.2ality.com/2016/01/private-data-classes.html">참고: 악셀 박사님의 블로그</a></li>
-            </ul>
+            <pre><code class="jsx" data-trim data-noescape>// @file Bart.js
+const privateVars = Symbol('Bart.private');
+export default class SecretDeveloper {
+    constructor() {
+        this[privateVars] = {
+            name: '갓갓갓',
+            desc: '비밀이 많다'
+        }
+    }
+    get name() { return this[privateVars].name; }
+    get desc() { return this[privateVars].desc; }
+    toString() { return `${this.name}, ${this.desc}` }
+}
+const person = new SecretDeveloper();
+console.log(`개발자 소개 > ${person}`); // DuckTyping 으로 toString 이 자동 호출
+person.name = 'GodGodGod';
+console.log(`수정된(?)  개발자 소개 > ${person}`); // immutable!</code></pre>
         </section>
 
         <section>
