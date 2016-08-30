@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 		progress: true,
 		history: true,
 		center: true,
-		transition: 'concave' //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+		transition: 'convex' //Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 	});
 
 	hijs.initHighlighting();
