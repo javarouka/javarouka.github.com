@@ -276,6 +276,22 @@ duck[quack](); // "꽥!"</code></pre>
         </section>
 
         <section>
+            <h5>그렇지만, Reflection 에 다르게 대응함</h5>
+            <pre><code class="jsx" data-trim data-noescape>const sym = Symbol('Symbol.key');
+const prop = 'String.key'
+const obj = { [sym]: '심볼 값', [prop]: '속성 값' }
+
+for(var k in obj) {
+console.log(k, obj[k]);
+} // 'String.key 속성 값'
+
+console.log(Object.keys(obj)) // ['String.key']
+
+// <mark>Object.getOwnPropertySymbols</mark> 로 열거할 수 있다.
+console.log(Object.getOwnPropertySymbols(obj)) // [Symbol(Symbol.key)]</code></pre>
+        </section>
+
+        <section>
             <h4>고유성을 보장</h4>
             <pre><code class="jsx" data-trim data-noescape>// 생성시마다 유니크함
 const s1 = Symbol();
@@ -296,22 +312,6 @@ const uniqueFor2 = Symbol.keyFor('unique'); // 생성된 심볼을 가져올 경
 
 console.log(unique === uniqueFor1); // false;
 console.log(uniqueFor1 === uniqueFor2); // true;</code></pre>
-        </section>
-
-        <section>
-            <h5>심볼은 일반적인 속성이 아님</h5>
-            <pre><code class="jsx" data-trim data-noescape>const sym = Symbol('Symbol.key');
-const prop = 'String.key'
-const obj = { [sym]: '심볼 값', [prop]: '속성 값' }
-
-for(var k in obj) {
-    console.log(k, obj[k]);
-} // 'String.key 속성 값'
-
-console.log(Object.keys(obj)) // ['String.key']
-
-// <mark>Object.getOwnPropertySymbols</mark> 로 열거할 수 있다.
-console.log(Object.getOwnPropertySymbols(obj)) // [Symbol(Symbol.key)]</code></pre>
         </section>
 
         <section>
