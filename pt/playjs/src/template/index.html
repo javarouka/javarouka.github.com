@@ -29,6 +29,10 @@
         </section>
 
         <section>
+            <small>본 자료는 ES2015 문법으로 작성되어 있습니다.</small>
+        </section>
+
+        <section>
             <h2>Object</h2>
         </section>
 
@@ -36,6 +40,12 @@
             <p>JavaScript 의 Object 는 Key-Value Pair.</p>
             <p>즉, Dictionary 나 Map 으로 불리는 것과 비슷하다.</p>
             <p class="fragment">게다가 JS 객체는 Object 와 모두 연결되어 있다</p>
+        </section>
+
+        <section>
+            <img data-img-required="proto-chain.png" style="height: 450px"/>
+            <br/>
+            <span style="font-size: 0.6em">프로토타입 체인이라고 부른다</span>
         </section>
 
         <section>
@@ -141,20 +151,19 @@ console.log(typeChecker.isUndefined(undefined)); // false</code></pre>
 NiceNumber.prototype.valueOf = function() { return this.primitiveValue; }
 
 const myNiceNumber = new NiceNumber(100);
-const byOperator = myNiceNumber * 2;
-const byMethod = myNiceNumber.valueOf() * 2;
-
-console.log(byOperator === byMethod) // true; 200 === 200</code></pre>
+console.log(myNiceNumber * 2) // 200
+console.log(myNiceNumber.valueOf() * 2); // 200
+console.log(myNiceNumber * myNiceNumber); // 10000</code></pre>
         </section>
 
-        <section>
-            <h5>주의! Date 는 다르다!</h5>
-            <pre><code class="jsx" data-trim data-noescape>const now = new Date();
+        <!--<section>-->
+            <!--<h5>주의! Date 는 다르다!</h5>-->
+            <!--<pre><code class="jsx" data-trim data-noescape>const now = new Date();-->
 
-// Date 구현의 경우 기본값 표현이 필요할 경우에도 toString 이 호출된다.
-// 필요한 경우 타 객체와 달리 valueOf 명시적인 호출이 필요하다
-const oneYearsAfter = new Date(now2.valueOf() + (1000 * 60 * 60 * 24 * 365)) // 1년 뒤</code></pre>
-        </section>
+<!--// Date 구현의 경우 기본값 표현이 필요할 경우에도 toString 이 호출된다.-->
+<!--// 필요한 경우 타 객체와 달리 valueOf 명시적인 호출이 필요하다-->
+<!--const oneYearsAfter = new Date(now2.valueOf() + (1000 * 60 * 60 * 24 * 365)) // 1년 뒤</code></pre>-->
+        <!--</section>-->
 
         <section>
             <h4>toJSON 메서드</h4>
@@ -189,8 +198,12 @@ JSON.stringify(smartSayMan); // { "hello": "세계" } }</code></pre>
         </section>
 
         <section>
-            <h3>야, 할수 있어? 할 수 있냐고?</h3>
-            <img class="fragment" data-img-required="duck.gif"/>
+            <h4>야, 할수 있어? 할 수 있냐고?</h4>
+            <p class="fragment">
+                <span>할수있지!</span>
+                <br/>
+                <img data-img-required="duck.gif"/>
+            </p>
             <p class="fragment"><a href="http://summerlight.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0-%E4%B8%8A">Duck Typing</a></p>
         </section>
 
@@ -216,6 +229,8 @@ JSON.stringify(smartSayMan); // { "hello": "세계" } }</code></pre>
             <pre class="fragment"><code class="jsx" data-trim data-noescape>const duck = {
    toString() { return "미운오리새끼" }
 };
+
+// toString 할 수 있어?
 console.log(`저는 ${duck} 입니다`);</code></pre>
         </section>
 
@@ -281,6 +296,22 @@ const uniqueFor2 = Symbol.keyFor('unique'); // 생성된 심볼을 가져올 경
 
 console.log(unique === uniqueFor1); // false;
 console.log(uniqueFor1 === uniqueFor2); // true;</code></pre>
+        </section>
+
+        <section>
+            <h5>심볼은 일반적인 속성이 아님</h5>
+            <pre><code class="jsx" data-trim data-noescape>const sym = Symbol('Symbol.key');
+const prop = 'String.key'
+const obj = { [sym]: '심볼 값', [prop]: '속성 값' }
+
+for(var k in obj) {
+    console.log(k, obj[k]);
+} // 'String.key 속성 값'
+
+console.log(Object.keys(obj)) // ['String.key']
+
+// <mark>Object.getOwnPropertySymbols</mark> 로 열거할 수 있다.
+console.log(Object.getOwnPropertySymbols(obj)) // [Symbol(Symbol.key)]</code></pre>
         </section>
 
         <section>
@@ -359,13 +390,13 @@ console.log(bart + 1); // ES20151
 console.log(Number(bart)); // 28
 
 console.log(bart); // ES2015
-console.log(`${bart} 입니다`); // ES2015 입니다
-alert(bart); // ES2015</code></pre>
+console.log(-bart); // 28
+console.log(`${bart} 입니다`); // ES2015 입니다</code></pre>
         </section>
 
         <section>
             <h4>Symbol.toStringTag</h4>
-            <p>Object.prototype.toString 의 컨텍스트로 호출할 경우 표현할 타입을 지정한다</p>
+            <p>이 속성의 문자열은 Object.prototype.toString 의 컨텍스트로 호출할 경우 표현할 타입이 된다.</p>
             <pre><code class="jsx" data-trim data-noescape>function Duck() {}
 const duck = new Duck();
 console.log(Object.prototype.toString.call(duck)); // [object Object]
@@ -377,8 +408,8 @@ console.log(Object.prototype.toString.call(startDuck)); // [object SmartDuck]</c
         </section>
 
         <section>
-            <h4>Symbol.toStringTag</h4>
-            <p>Object.prototype.toString 의 컨텍스트로 호출할 경우 표현할 타입을 지정한다. instanceOf 에서 사용된다.</p>
+            <h4>Symbol.hasInstance</h4>
+            <p>생성자 객체가 어떤 객체를 자신의 인스턴스(instance)로 인식하는지 확인하는데 사용하는 메소드. instanceOf 연산 시 자동 호출된다.</p>
             <pre><code class="jsx" data-trim data-noescape>const fakeDate = {
     [Symbol.hasInstance](instance) {
         return Date === instance.constructor;
@@ -390,7 +421,7 @@ console.log(new Date() instanceof fakeDate);</code></pre>
         </section>
 
         <section>
-            <p>나머지는 아래에!</p>
+            <p>ETC...</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols">Well-known symbols</a>
         </section>
 

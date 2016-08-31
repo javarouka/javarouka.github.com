@@ -6,9 +6,11 @@ import './index.css'
 import hijs from 'highlight.js/lib/index'
 import Reveal from 'reveal.js'
 import duck from './img/duck.gif'
+import proto from './img/proto-chain.png'
 
 const imageMap = {
-	'duck.gif': duck
+	'duck.gif': duck,
+	'proto-chain.png': proto
 };
 
 window.addEventListener("load", () => {
