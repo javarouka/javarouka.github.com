@@ -48,21 +48,21 @@
             <span style="font-size: 0.6em">프로토타입 체인이라고 부른다</span>
         </section>
 
-        <section>
-            <h3>기본</h3>
-            <pre><code class="jsx" data-trim data-noescape>const good = {}; // 혹은 new Object();
-good.job = '잘했어'; // 속성
-good.printGoodJob = () => console.log(this.job); // 메서드</code></pre>
-        </section>
+        <!--<section>-->
+            <!--<h3>기본</h3>-->
+            <!--<pre><code class="jsx" data-trim data-noescape>const good = {}; // 혹은 new Object();-->
+<!--good.job = '잘했어'; // 속성-->
+<!--good.printGoodJob = () => console.log(this.job); // 메서드</code></pre>-->
+        <!--</section>-->
 
-        <section>
-            <h4>생성자 호출 시</h4>
-            <pre><code class="jsx" data-trim data-noescape>// 생성자의 경우 인자로 전달된 타입에 따라 형변환
-const number = new Object(1); // 1
-const string = new Object("안녕"); // "안녕"
-const arr = new Object([1,2]); // [1,2]
-const date = new Object(new Date()); // 날자</code></pre>
-        </section>
+        <!--<section>-->
+            <!--<h4>생성자 호출 시</h4>-->
+            <!--<pre><code class="jsx" data-trim data-noescape>// 생성자의 경우 인자로 전달된 타입에 따라 형변환-->
+<!--const number = new Object(1); // 1-->
+<!--const string = new Object("안녕"); // "안녕"-->
+<!--const arr = new Object([1,2]); // [1,2]-->
+<!--const date = new Object(new Date()); // 날자</code></pre>-->
+        <!--</section>-->
 
         <section>
             <h3>기본 메서드들</h3>
@@ -191,6 +191,7 @@ JSON.stringify(sayMan); // { "hello": { "ko": "세계", "en": "world" } }</code>
         'en': 'world'
     },
     toJSON() {
+        // global navigator 객체의 language 이용.
         return { hello: this.hello[navigator.language] }
     }
 };
@@ -423,6 +424,58 @@ console.log(new Date() instanceof fakeDate);</code></pre>
         <section>
             <p>ETC...</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols">Well-known symbols</a>
+        </section>
+
+        <section>
+            <p>Symbol 이라는게 있지만 아직 ES6의 몇몇 부분은 여전히 문자열을 사용한 DuckTyped 방식이다.</p>
+        </section>
+
+        <section>
+            <h5>예) Promise.resolve의 then duck-typing</h5>
+            <pre><code class="jsx" data-trim data-noescape>const thenable = {
+    then(resolve, reject) {
+        !!Math.round(new Date()%2) ? resolve('resolved!') : reject('rejected!')
+    }
+};
+
+// 이것은 데너블 하군요.
+Promise.resolve(thenable)</code></pre>
+        </section>
+
+        <section>
+            <p>하지만 신규로 제작된 스펙은 Symbol Duck Typed 이다.</p>
+        </section>
+
+        <section>
+            <h5>Iterator #1</h5>
+            <pre><code class="jsx" data-trim data-noescape>const arr = [1,2,3,4,5];
+for(const el of arr) { console.log(el); }
+
+const str = `hello`;
+for(const el of str) { console.log(el); }
+
+const mySet = new Set([1,2,3,4,5]);
+for(const el of mySet) { console.log(el); }</code></pre>
+        </section>
+
+        <section>
+            <h5>아마 for - of 의 내부 해석은 이런 식일 것이다.</h5>
+            <pre><code class="jsx" data-trim data-noescape>function forOf(iterator) {
+    if(!(Symbol.iterator in iterator)) {
+        throw new TypeError(`${iterator}[Symbol.iterator] is not a function`);
+    }
+
+    // 이터러블을 가져온다.
+    // 이터러블은 next() 함수를 가지는 인터페이스이다.
+    // 여기도 문자열이 아닌 Symbol.next 의 방식이었다면 좋았을것 같지만...
+    const iterable = iterator[Symbol.iterator]();
+
+    if(typeof iterable.next !== 'function') {
+        throw new TypeError(`iterator.next is not a function(…)`)
+    }
+
+    // ...순회 구현... for...while..
+}</code></pre>
         </section>
 
         <section>
