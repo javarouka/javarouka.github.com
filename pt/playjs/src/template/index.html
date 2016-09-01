@@ -439,7 +439,8 @@ console.log(new Date() instanceof fakeDate);</code></pre>
 };
 
 // 이것은 데너블 하군요.
-Promise.resolve(thenable)</code></pre>
+Promise.resolve(thenable)
+    .then(th => console.log(th))</code></pre>
         </section>
 
         <section>
