@@ -48,22 +48,6 @@
             <span style="font-size: 0.6em">프로토타입 체인이라고 부른다</span>
         </section>
 
-        <!--<section>-->
-            <!--<h3>기본</h3>-->
-            <!--<pre><code class="jsx" data-trim data-noescape>const good = {}; // 혹은 new Object();-->
-<!--good.job = '잘했어'; // 속성-->
-<!--good.printGoodJob = () => console.log(this.job); // 메서드</code></pre>-->
-        <!--</section>-->
-
-        <!--<section>-->
-            <!--<h4>생성자 호출 시</h4>-->
-            <!--<pre><code class="jsx" data-trim data-noescape>// 생성자의 경우 인자로 전달된 타입에 따라 형변환-->
-<!--const number = new Object(1); // 1-->
-<!--const string = new Object("안녕"); // "안녕"-->
-<!--const arr = new Object([1,2]); // [1,2]-->
-<!--const date = new Object(new Date()); // 날자</code></pre>-->
-        <!--</section>-->
-
         <section>
             <h3>기본 메서드들</h3>
             <p>별도 구현하지 않을 경우 prototype chain 으로 Object 의 구현이 사용된다.</p>
@@ -155,15 +139,6 @@ console.log(myNiceNumber * 2) // 200
 console.log(myNiceNumber.valueOf() * 2); // 200
 console.log(myNiceNumber * myNiceNumber); // 10000</code></pre>
         </section>
-
-        <!--<section>-->
-            <!--<h5>주의! Date 는 다르다!</h5>-->
-            <!--<pre><code class="jsx" data-trim data-noescape>const now = new Date();-->
-
-<!--// Date 구현의 경우 기본값 표현이 필요할 경우에도 toString 이 호출된다.-->
-<!--// 필요한 경우 타 객체와 달리 valueOf 명시적인 호출이 필요하다-->
-<!--const oneYearsAfter = new Date(now2.valueOf() + (1000 * 60 * 60 * 24 * 365)) // 1년 뒤</code></pre>-->
-        <!--</section>-->
 
         <section>
             <h4>toJSON 메서드</h4>
@@ -260,11 +235,11 @@ console.log(`저는 ${duck} 입니다`);</code></pre>
         <section>
             <pre><code class="jsx" data-trim data-noescape>// 객체의 키로 사용
 const nameKey = Symbol('company');
-const coupang = {
-    [nameKey]: 쿠팡
+const niceCompany = {
+    [nameKey]: '좋은회사'
 };
-// const coupang = {};
-// coupang[nameKey] = "쿠팡";
+// const niceCompany = {};
+// niceCompany[nameKey] = "좋은회사";
 
 // class 문법에도 사용가능
 const quack = Symbol('duck.quack');
@@ -325,7 +300,7 @@ function showVariety(star) {
     if(star[sing]) return star[sing]();
     throw new TypeError('아무것도 할수없어...');
 }
-var suhyungHong = { [actor](){ return '연기를 하자' } }
+var suhyungHong = { [action]() { return '연기를 하자' } }
 console.log(showVariety(suhyungHong)); // 연기를 하자</code></pre>
         </section>
 
