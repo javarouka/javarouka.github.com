@@ -29,6 +29,8 @@
         </section>
 
         <section>
+            <img src="8deda8ace3c8604873373de3abbbf156.png" />
+            <br/>
             <small>본 자료는 ES2015 문법으로 작성되어 있습니다.</small>
         </section>
 
@@ -482,8 +484,8 @@ for(const el of mySet) { console.log(el); }</code></pre>
     }
 
     // 이터러블을 가져온다.
-    // 이터러블은 next() 함수를 가지는 인터페이스이다.
-    // 여기도 문자열이 아닌 Symbol.next 의 방식이었다면 좋았을것 같지만...
+    // 이터러블은 next() 메소드를 가지며 { value: 순회값, done: 종료여부 } 를 반환하는 인터페이스를 말한다.
+    // 문자열이 아닌 Symbol.next 의 방식이었다면 좋았을것 같지만 문자열 함수 방식이다.
     const iterable = iterator[Symbol.iterator]();
 
     if(typeof iterable.next !== 'function') {
