@@ -412,13 +412,27 @@ console.log(Object.prototype.toString.call(startDuck)); // [object SmartDuck]</c
 console.log(new Date() instanceof fakeDate);</code></pre>
         </section>
 
-        <section>
-            <p>이 외의 Well-Known Symbol 은 다음 링크에.</p>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols">Well-known symbols</a>
-        </section>
+        <!--<section>-->
+            <!--<h4>Symbol.species</h4>-->
+            <!--<p>서브클래싱 시에 서브클래스된 메소드에서 생성한 instance 의 Type 을 결정하게 할 수 있다.</p>-->
+            <!--<pre><code class="jsx" data-trim data-noescape>class AlwaysPromise extends Promise {-->
+    <!--constructor(...args) {-->
+        <!--super(...args);-->
+        <!--console.log("AlwaysPromise, created")-->
+        <!--this.always = (f) {-->
+            <!--return this.catch(error => {-->
+                <!--console.error(error);-->
+                <!--return error;-->
+            <!--})-->
+            <!--.then(f);-->
+        <!--}-->
+    <!--}-->
+    <!--static get [Symbol.species]() { return Promise; }-->
+<!--}</code></pre>-->
+        <!--</section>-->
 
         <section>
-            <h3>ES6은 오리가 필요한 모든곳에 Symbol 로 처리했을까?</h3>
+            <h5>ES6은 오리가 필요한 모든곳에 Symbol 로 처리했을까?</h5>
             <p class="fragment">아니다</p>
         </section>
 
@@ -481,10 +495,16 @@ for(const el of mySet) { console.log(el); }</code></pre>
         </section>
 
         <section>
+            <p>이 외의 Well-Known Symbol 은 다음 링크에.</p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols">Well-known symbols</a>
+        </section>
+
+        <section>
             <h2>참고자료</h2>
             <ul>
                 <li><a href="http://www.bsidesoft.com/">BsideSoft 기술블로그</a></li>
                 <li><a href="http://exploringjs.com/es6/ch_symbols.html">Exploring ES6 # 7장 "Symbols"</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols">MDN: Well-known symbols</a></li>
             </ul>
         </section>
 
