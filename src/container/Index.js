@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Index {
+export default class Index extends React.Component {
 	render() {
 		return <div>Hello?</div>
 	}

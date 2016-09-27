@@ -1,19 +1,21 @@
 import dotenv from 'dotenv'
+import fs from 'fs'
+import path from 'path'
 import Express from 'express'
 import webpack from 'webpack'
-import webpackConfig from './webpack.config.dev.js';
+import rewrite from 'express-urlrewrite'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from './webpack.config.dev.js'
 
 dotenv.load();
 
 const compiler = webpack(webpackConfig);
-const host = process.env.DEV_HOST || 'localhost';
 const port = process.env.DEV_PORT || 3002;
 
-const serverOptions = {
-	contentBase: 'http://' + host + ':' + port,
-	hot: true,
-	progress: true,
-	watch: true,
+const app = new Express();
+
+app.use(webpackDevMiddleware(compiler, {
 	publicPath: webpackConfig.output.publicPath,
 	headers: {
 		'Access-Control-Allow-Origin': '*'
@@ -21,12 +23,16 @@ const serverOptions = {
 	stats: {
 		colors: true
 	}
-};
+}));
 
-const app = new Express();
+app.use(webpackHotMiddleware(compiler));
 
-app.use(require('webpack-dev-middleware')(compiler, serverOptions));
-app.use(require('webpack-hot-middleware')(compiler));
+fs.readdirSync(__dirname).forEach(file => {
+	if (fs.statSync(path.join(__dirname, file)).isDirectory())
+		app.use(rewrite('/' + file + '/*', '/' + file + '/index.html'))
+})
+
+app.use(Express.static(__dirname));
 
 app.listen(port, err => {
 	if (err) {

@@ -28,7 +28,7 @@ export default {
 	output: {
 		path: basePath + '/build',
 		filename: '[name].bundle.js',
-		publicPath: 'http://' + host + ':' + port + '/build'
+		publicPath: 'http://' + host + ':' + port
 	},
 
 	module: {
@@ -47,11 +47,11 @@ export default {
 				test: /\.css/,
 				loader: 'style!css'
 			},
-			//
-			//{
-			//	test: /\.scss/,
-			//	loader: 'style!css!postcss-loader!resolve-url!sass'
-			//},
+
+			{
+				test: /\.scss/,
+				loader: 'style!css!postcss-loader!resolve-url!sass'
+			},
 
 			{
 				test: /\.(html|txt|eot|ttf)/,
