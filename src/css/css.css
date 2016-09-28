@@ -11,6 +11,9 @@ img {
     border: solid 0;
 }
 nav, header, section, footer {
+    position: relative;
+    padding: 5px 1%;
+    margin: 0.5%;
     background-color: #bbf6fb;
     box-shadow: 2px 3px 3px #CCC;
     -webkit-transition: all 1s ease;
@@ -18,11 +21,20 @@ nav, header, section, footer {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
 header, section, footer {
     float: left;
-    position: relative;
-    padding: 5px 1%;
-    margin: 0.5%;
     min-width: 250px;
 }
 header:hover, section:hover, footer:hover {
@@ -88,7 +100,7 @@ footer {
     margin: 0;
     width: 32px;
     height: 32px;
-    background: url(images/tilt-social-share-icons.png);
+    background: url(../images/tilt-social-share-icons.png);
     background-repeat: no-repeat;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;

@@ -24,7 +24,6 @@ export default {
 		path.join(basePath, 'app.js')
 	],
 
-	// 번들링 후 파일을 생성하는 옵션
 	output: {
 		path: basePath + '/build',
 		filename: '[name].bundle.js',
