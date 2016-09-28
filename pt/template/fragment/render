@@ -1,2 +1,0 @@
-var html = compiled(userData);
-document.getElementById("user-info-grid-body").innerHTML = html;

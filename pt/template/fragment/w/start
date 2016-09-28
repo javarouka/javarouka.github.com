@@ -1,5 +1,0 @@
-var start = function() {
-    locationPicker.addEventListener("change", changeLocation);
-};
-
-start();

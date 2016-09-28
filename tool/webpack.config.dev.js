@@ -28,7 +28,7 @@ export default {
 	output: {
 		path: basePath + '/build',
 		filename: '[name].bundle.js',
-		publicPath: 'http://' + host + ':' + port
+		publicPath: '/'
 	},
 
 	module: {

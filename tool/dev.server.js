@@ -27,13 +27,6 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-fs.readdirSync(__dirname).forEach(file => {
-	if (fs.statSync(path.join(__dirname, file)).isDirectory())
-		app.use(rewrite('/' + file + '/*', '/' + file + '/index.html'))
-})
-
-app.use(Express.static(__dirname));
-
 app.listen(port, err => {
 	if (err) {
 		console.error(err);
