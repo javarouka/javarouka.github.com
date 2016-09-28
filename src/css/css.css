@@ -10,7 +10,7 @@ ul {
 img {
     border: solid 0;
 }
-nav, header, section, footer {
+.navigation, header, section, footer {
     position: relative;
     padding: 5px 1%;
     margin: 0.5%;
@@ -22,13 +22,13 @@ nav, header, section, footer {
     transition: all 1s ease;
 }
 
-nav ul {
+.navigation ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-nav ul li {
+.navigation ul li {
     display: inline-block;
     padding: 10px;
 }

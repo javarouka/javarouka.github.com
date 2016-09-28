@@ -18,7 +18,7 @@ export default {
 
 	devtool: 'source-map',
 	context: basePath,
-	entry: path.join(basePath, 'main.js'),
+	entry: path.join(basePath, 'app.js'),
 
 	stats: {
 		colors: true,
@@ -67,7 +67,7 @@ export default {
 
 			{
 				test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-				loader: 'url?limit=10000&name=[name].[ext]'
+				loader: 'url?limit=30000&name=[name].[ext]'
 			}
 		]
 	},
@@ -114,7 +114,7 @@ export default {
 		new ExtractTextPlugin('./style.bundle.css'),
 
 		new HtmlWebpackPlugin({
-			template: basePath + '/template/index.html'
+			template: basePath + '/views/index.html'
 		}),
 
 		new webpack.EnvironmentPlugin([

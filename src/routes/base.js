@@ -1,7 +1,7 @@
 import App from '../container/App'
-import Index from '../container/Index'
-import Presentation from '../container/Presentation'
-import Blog from '../container/Blog'
+import Index from '../component/Index'
+import Presentation from '../component/career/Presentation'
+import Blog from '../component/Blog'
 
 export default {
     path: '/',

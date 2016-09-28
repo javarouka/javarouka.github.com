@@ -27,7 +27,7 @@ export default {
 	output: {
 		path: basePath + '/build',
 		filename: '[name].bundle.js',
-		publicPath: '/'
+		publicPath: '/build'
 	},
 
 	module: {
