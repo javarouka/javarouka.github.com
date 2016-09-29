@@ -1,24 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { INIT_APP } from '../action/base'
+import { getNode, removeClassOnNode } from '../helper/ElementHelper'
 import { delayFor, executeIfNotTimeout } from '../helper/DeferHelper'
 import Header from '../component/layout/Header'
 import Pots from '../component/layout/Pots'
 import Footer from '../component/layout/Footer'
+import indexService from './indexService'
 
-const removeFirstPositionClass = nodeList => {
-	for(var i = 0, len = nodeList.length; i < len; i++) {
-		nodeList[i].classList.remove("first-position");
-	}
-};
 const select = state => state;
-const dispatcher = dispatch => ({
-	initialize() {
-		dispatch({ type: INIT_APP });
-	}
-});
 
-@connect(select, dispatcher)
+@connect(select, indexService)
 export default class Index extends React.Component {
 
 	componentDidMount() {
@@ -28,8 +19,8 @@ export default class Index extends React.Component {
 	initialize() {
 		executeIfNotTimeout(
 			2000,
-			delayFor(500).then(() => removeFirstPositionClass(document.querySelectorAll("section, header, footer"))),
-			delayFor(1300).then(() => removeFirstPositionClass(document.querySelectorAll("a.github-link")))
+			delayFor(500).then(() => removeClassOnNode(getNode("section, header, footer"), "first-position")),
+			delayFor(1300).then(() => removeClassOnNode(getNode("a.github-link"), "first-position"))
 		).then(() => this.props.initialize());
 	}
 

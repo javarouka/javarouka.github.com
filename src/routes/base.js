@@ -12,6 +12,6 @@ export default {
         { path: 'home', component: Index },
         { path: 'pt', component: Presentation },
         { path: 'blog', component: Blog },
-        { path: 'post/:id', component: Post }
+        { path: 'post/:year/:month/:file', component: Post }
     ]
 };

@@ -5,9 +5,9 @@ import Blog from '../blog/Blog'
 
 export const Pots = ({ children }) => (
     <section className="first-position">
-        <Project />
-        <Presentation />
         <Blog />
+        <Presentation />
+        <Project />
     </section>
 );
 

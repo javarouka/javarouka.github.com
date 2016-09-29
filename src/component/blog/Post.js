@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { postSelector } from './BlogService'
+import { postSelector } from './blogService'
 import { dispatcher } from './dispatcher'
 import ArticleTitle from './ArticleTitle'
+
+const createMarkup = html => ({__html: html});
 
 @connect(postSelector, dispatcher)
 export default class Post extends React.Component {
@@ -10,21 +12,19 @@ export default class Post extends React.Component {
     componentDidMount() {
 
         const {
-            params: { id },
+            params,
             loadPost
         } = this.props;
 
-
-        loadPost(id);
+        loadPost(params);
     }
 
     render() {
-        const { params } = this.props;
+        const {
+            articles
+        } = this.props;
         return (
-            <div>
-                <ArticleTitle {...this.props} />
-                <div>{JSON.stringify(params)}</div>
-            </div>
+            <div dangerouslySetInnerHTML={createMarkup(articles.displayHtml)} />
         );
     }
 };

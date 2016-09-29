@@ -13,8 +13,6 @@ const port = process.env.DEV_PORT || 1980;
 
 export default {
 
-	watch: true,
-	progress: true,
 	devtool: 'heap-module-eval-source-map',
 	context: basePath,
 
