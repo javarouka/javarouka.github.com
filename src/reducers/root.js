@@ -1,8 +1,8 @@
-const reducers = {
-    main(state = {}, action = {}) {
-        const { type } = action;
-        return state;
-    }
-};
+import { combineReducers } from 'redux'
+import entities from './entities'
+import ui from './ui'
 
-export default reducers;
+export default combineReducers({
+    entities,
+    ui
+});

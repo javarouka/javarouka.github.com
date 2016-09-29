@@ -26,6 +26,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.use(webpackHotMiddleware(compiler));
+app.use(Express.static(path.resolve(__dirname, '../')));
 
 app.listen(port, err => {
 	if (err) {

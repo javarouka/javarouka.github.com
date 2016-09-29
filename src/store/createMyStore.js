@@ -1,8 +1,8 @@
-import reducers from '../reducers/root'
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import thunkMiddleWare from 'redux-thunk'
 import loggerMiddleware from '../middleware/logger'
+import app from '../reducers/root'
 
 export default function createMyStore(defaultState = {}) {
 
@@ -12,7 +12,7 @@ export default function createMyStore(defaultState = {}) {
     ];
 
     return createStore(combineReducers({
-        ...reducers,
+        app,
         routing: routerReducer
     }), defaultState, applyMiddleware(...middleware))
 }
