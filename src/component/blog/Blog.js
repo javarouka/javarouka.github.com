@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { dispatcher } from './dispatcher'
-import { blogRecentlySelector } from './blogService'
+import { dispatcher } from './blogService'
+import { blogRecentlySelector } from './blogSelector'
 import ArticleTitle from './ArticleTitle'
 
 @connect(blogRecentlySelector, dispatcher)
@@ -11,8 +11,7 @@ export default class Blog extends React.Component {
 
         const {
             articles: {
-                recently = [],
-                totalPost = 0
+                recently = []
             },
             viewPost
         } = this.props;
@@ -22,7 +21,12 @@ export default class Blog extends React.Component {
                 <h2>Recently Post</h2>
                 <ul>
                     {recently.map(article => {
-                        return <li key={`article${article.file}`}><ArticleTitle article={article} viewPost={viewPost} /></li>
+                        return (
+                            <li key={`article${article.file}`}>
+                                <ArticleTitle article={article} viewPost={viewPost} />
+                                <p>{article.summary}</p>
+                            </li>
+                        )
                     })}
                 </ul>
             </div>
