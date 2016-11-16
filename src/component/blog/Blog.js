@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { dispatcher } from './dispatcher'
-import { blogRecentlySelector } from './blogService'
+import { blogRecentlySelector } from './blogSelector'
+import { blogService } from './blogService'
 import ArticleTitle from './ArticleTitle'
 
-@connect(blogRecentlySelector)
+@connect(blogRecentlySelector, blogService)
 export default class Blog extends React.Component {
 
     render() {
-
+debugger;
         const {
             articles: {
                 recently = [],
@@ -16,6 +16,8 @@ export default class Blog extends React.Component {
             },
             viewPost
         } = this.props;
+
+
 
         return (
             <div>

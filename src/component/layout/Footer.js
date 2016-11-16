@@ -5,7 +5,7 @@ export const Footer = ({ children }) => (
         <h2>Blog</h2>
         <ul className="blog">
             <li><a href="http://javarouka.github.io/blog" target="_blank">JavaRouka Blog (ACtive)</a></li>
-            <li><a href="http://blog.javarouka.me/" target="_blank">Nonblock (Off)</a></li>
+            <li><a href="http://blog.javarouka.me/" target="_blank" style="text-decoration: line-through; color: gray;">Nonblock (Off)</a></li>
         </ul>
         <h2>SNS</h2>
         <ul className="sns">
