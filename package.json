@@ -46,7 +46,7 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel-node ./tool/build --verbose",
+    "build": "cross-env NODE_ENV=development babel-node ./tool/build --verbose",
     "dev": "cross-env NODE_ENV=development babel-node ./tool/dev.server"
   }
 }

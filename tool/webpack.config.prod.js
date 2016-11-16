@@ -91,11 +91,11 @@ export default {
 
 	plugins: [
 
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-			}
-		}),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: {
+		// 		warnings: false
+		// 	}
+		// }),
 
 		//new CleanWebpackPlugin([
 		//	outPath + '/index.html',
